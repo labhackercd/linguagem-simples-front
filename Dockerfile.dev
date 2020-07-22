@@ -1,0 +1,14 @@
+FROM node:latest
+
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+
+
+RUN mkdir -p  /usr/src/app
+WORKDIR /usr/src/app
+COPY . /usr/src/app
+
+RUN npm install
+
+
+CMD ["npm", "start"]
+© 2020 GitHub, Inc.
