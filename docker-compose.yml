@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  prod:
+    build:
+      context: .
+    ports:
+      - '5000:5000'
+    stdin_open: true
+  
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3000:3000'
+    stdin_open: true
