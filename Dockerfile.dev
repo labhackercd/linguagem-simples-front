@@ -11,4 +11,3 @@ RUN npm install
 
 
 CMD ["npm", "start"]
-© 2020 GitHub, Inc.
