@@ -7,10 +7,7 @@ cache:
 services:
 - docker
 
-sudo: required
-
 notifications:
-webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
 
 env:
 - DOCKER_COMPOSE_VERSION=1.25.5
