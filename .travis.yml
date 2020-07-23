@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+  - node_modules
+services:
+- docker
+
+notifications:
+
+env:
+- DOCKER_COMPOSE_VERSION=1.25.5
+
+before_install:
+- sudo rm /usr/local/bin/docker-compose
+- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
+script:
+  - docker-compose up --build -d dev
+  - docker-compose start dev
+  - docker-compose run dev npm test -- --watchAll=false
