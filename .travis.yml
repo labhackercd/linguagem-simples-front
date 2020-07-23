@@ -17,6 +17,10 @@ before_install:
 - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
+
+after_script: # Upload coverage reports 
+  - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
+  
 script:
   - docker-compose up --build -d dev
   - docker-compose start dev
