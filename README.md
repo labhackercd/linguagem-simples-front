@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/labhackercd/linguagem-simples-front.svg?branch=master)](https://travis-ci.org/labhackercd/linguagem-simples-frontend)
+
 # linguagem-simples
 Este repositório contém os arquivos de front-end do projeto Linguagem Simples
 
