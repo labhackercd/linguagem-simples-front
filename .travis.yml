@@ -20,5 +20,5 @@ before_install:
 script:
   - docker-compose up --build -d dev
   - docker-compose start dev
-  - docker-compose run dev npm run test -- --coverage --watchAll=false
-  - docker-compose run dev npm run coveralls
+  - docker-compose exec dev /bin/bash -c "npm run test -- --coverage --watchAll=false"
+  - docker-compose exec dev /bin/bash -c "cat coverage/lcov.info" 
