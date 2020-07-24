@@ -21,3 +21,4 @@ script:
   - docker-compose up --build -d dev
   - docker-compose start dev
   - docker-compose run dev npm run test -- --coverage --watchAll=false
+  - docker-compose run dev npm run coveralls
