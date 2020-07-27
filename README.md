@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/labhackercd/linguagem-simples-front.svg?branch=master)](https://travis-ci.org/labhackercd/linguagem-simples-frontend)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/03e26f6afcb7d21ba77f/test_coverage)](https://codeclimate.com/github/labhackercd/linguagem-simples-front/test_coverage)
 
 # linguagem-simples
 Este repositório contém os arquivos de front-end do projeto Linguagem Simples

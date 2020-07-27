@@ -17,7 +17,14 @@ before_install:
 - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
+
+
 script:
   - docker-compose up --build -d dev
   - docker-compose start dev
-  - docker-compose run dev npm test -- --watchAll=false
+  - docker-compose exec dev /bin/bash -c "bash codeclimate.sh"
+  - docker-compose exec dev /bin/bash -c "npm run test -- --coverage --watchAll=false"
+  - docker-compose exec dev /bin/bash -c "cat coverage/lcov.info" 
+   
+after_success:
+  - docker-compose exec dev /bin/bash -c "./cc-test-reporter after-build -r 89f438a803a265aba44550a6485bcee827739763792822868bee15b592794dbb --exit-code $TRAVIS_TEST_RESULT" 
