@@ -27,4 +27,4 @@ script:
   - docker-compose exec dev /bin/bash -c "cat coverage/lcov.info" 
    
 after_success:
-  - docker-compose exec dev /bin/bash -c "./cc-test-reporter after-build -r b487a1ca5bd742a63fe9d2ab3a78cb3be4a0d29e29457eefa42417e8156c7f80 --exit-code $TRAVIS_TEST_RESULT" 
+  - docker-compose exec dev /bin/bash -c "./cc-test-reporter after-build -r 43edda924d3c72b1712c32ecd821485a587239a56f3ad0184ba7b4a32965978a --exit-code $TRAVIS_TEST_RESULT" 
