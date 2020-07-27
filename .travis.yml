@@ -11,7 +11,6 @@ notifications:
 
 env:
 - DOCKER_COMPOSE_VERSION=1.25.5
-- CC_TEST_REPORTER_ID=43edda924d3c72b1712c32ecd821485a587239a56f3ad0184ba7b4a32965978a
 
 before_install:
 - sudo rm /usr/local/bin/docker-compose
@@ -19,15 +18,11 @@ before_install:
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
 
-before_script:
-  - yarn global add nyc
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-  
+
 script:
   - docker-compose up --build -d dev
   - docker-compose start dev
+  - docker-compose exec dev /bin/bash -c "bash codeclimate.sh"
   - docker-compose exec dev /bin/bash -c "npm run test -- --coverage --watchAll=false"
   - docker-compose exec dev /bin/bash -c "cat coverage/lcov.info" 
    
