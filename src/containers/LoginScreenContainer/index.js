@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     position: 'fixed',
     display: 'flex',
-    fontFamily: 'Open sans'
+    fontFamily: 'Open sans',
   },
   sidebar: {
   	height: "100vh",
@@ -49,7 +49,10 @@ const useStyles = makeStyles((theme) => ({
   loginButton: {
     backgroundColor: '#C4C4C4',
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    '&:hover': {
+      backgroundColor: "#00AF82"
+    }
   }, 
   forgotPassword: {
     color: '#666',
