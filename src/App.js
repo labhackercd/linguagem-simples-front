@@ -10,6 +10,7 @@ import EstudioAcompanhePageContainer from './containers/EstudioAcompanhePageCont
 const openSansSemiBold = {
   fontFamily: 'OpenSans',
   fontStyle: 'normal',
+  fontDisplay: 'swap',
   src: `
     local('OpenSans'),
     local('OpenSans-SemiBold'),
@@ -19,7 +20,7 @@ const openSansSemiBold = {
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: 'OpenSans',
+    fontFamily: "OpenSans",
     body:{
       fontSize:12,
       fontStyle: 'semibold',
