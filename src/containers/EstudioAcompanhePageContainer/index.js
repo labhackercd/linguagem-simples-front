@@ -12,12 +12,18 @@ import Button from '@material-ui/core/Button';
 import { colors } from "@material-ui/core";
 
 import NewSessionFormComponent from '../../components/EstudioAcompanhePageComponents/NewSessionFormComponent'
+
 import AcompanheLogo from './logo_acompanhe.svg'
+import BackgroundImage from './background.svg'
 
 
 const useStyles = makeStyles({
   root: {
-    background:'#007E5A',
+
+    backgroundImage: "url(" + BackgroundImage + ")",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+    backgroundSize: "cover",
     border: 0,
     height: '100%',
     width: '100%',
@@ -25,12 +31,13 @@ const useStyles = makeStyles({
     display: "flex"
   },
   paper:{
-    height: '70%',
-    width: '100%',
+    width: '80%',
   },
   box:{
-    marginLeft:"200px",
-    marginTop:"200px"
+    paddingLeft:"370px",
+    paddingTop:"250px",
+    width:'100%',
+    height:'100%'
   },
   logo:{
     marginBottom:"20px"
@@ -43,31 +50,33 @@ export default function EstudioAcompanhePageContainer(){
     return (
       <div className={classes.root}>
         <Box className={classes.box}>
-            <div className={classes.logo}>
+            <Box className={classes.logo}>
                 <img src={AcompanheLogo} alt="Kiwi standing on oval"></img>
-            </div>
-
-            <Paper elevation={10} className={classes.paper} square={false}> 
-              <Box ml={5}>
-                <Grid container>
-                  <Grid item xs={12}>
-                    <Box display="flex" justifyContent="flex-start" pt={2} pb={3}>
-                      <Typography variant="h3">Bem vindo, editor </Typography>
-                    </Box>
+            </Box>
+      
+              <Paper elevation={10} className={classes.paper} square={false}> 
+                <Box ml={5}>
+                  <Grid container>
+                    <Grid item xs={12}>
+                      <Box display="flex" justifyContent="flex-start" pt={3} pb={4}>
+                        <Typography variant="h3">Bem vindo, editor </Typography>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Box>
+                          <NewSessionFormComponent></NewSessionFormComponent>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Box>
+                          Box 2
+                      </Box>
+                    </Grid>                 
                   </Grid>
-                  <Grid item xs={6}>
-                    <Box>
-                        <NewSessionFormComponent></NewSessionFormComponent>
-                    </Box>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Box>
-                        Box 2
-                    </Box>
-                  </Grid>                 
-                </Grid>
-              </Box>
-            </Paper>
+                </Box>
+              </Paper>
+          
+          
         </Box>
       </div>
     );

@@ -56,6 +56,12 @@ const theme = createMuiTheme({
       },
     },
   },
+  palette: {
+    primary: {
+      main: '#007E5A',
+    },
+  },
+
 });
 
 
