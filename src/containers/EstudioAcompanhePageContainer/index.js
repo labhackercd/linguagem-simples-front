@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import { colors } from "@material-ui/core";
 
 import NewSessionFormComponent from '../../components/EstudioAcompanhePageComponents/NewSessionFormComponent'
-
+import AcompanheLogo from './logo_acompanhe.svg'
 
 
 const useStyles = makeStyles({
@@ -28,8 +28,12 @@ const useStyles = makeStyles({
     height: '70%',
     width: '100%',
   },
-  forms:{
-
+  box:{
+    marginLeft:"200px",
+    marginTop:"200px"
+  },
+  logo:{
+    marginBottom:"20px"
   }
 });
 
@@ -38,13 +42,17 @@ export default function EstudioAcompanhePageContainer(){
 
     return (
       <div className={classes.root}>
-        <Box mt={"300px"} ml={"200px"}>
+        <Box className={classes.box}>
+            <div className={classes.logo}>
+                <img src={AcompanheLogo} alt="Kiwi standing on oval"></img>
+            </div>
+
             <Paper elevation={10} className={classes.paper} square={false}> 
               <Box ml={5}>
                 <Grid container>
                   <Grid item xs={12}>
                     <Box display="flex" justifyContent="flex-start" pt={2} pb={3}>
-                      <Typography variant="h3" >Bem vindo, editor </Typography>
+                      <Typography variant="h3">Bem vindo, editor </Typography>
                     </Box>
                   </Grid>
                   <Grid item xs={6}>
@@ -61,7 +69,6 @@ export default function EstudioAcompanhePageContainer(){
               </Box>
             </Paper>
         </Box>
-
       </div>
     );
 
