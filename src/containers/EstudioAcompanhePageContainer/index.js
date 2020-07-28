@@ -11,6 +11,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { colors } from "@material-ui/core";
 
+import NewSessionFormComponent from '../../components/EstudioAcompanhePageComponents/NewSessionFormComponent'
+
+
+
 const useStyles = makeStyles({
   root: {
     background:'#007E5A',
@@ -22,7 +26,7 @@ const useStyles = makeStyles({
   },
   paper:{
     height: '70%',
-    width: '320%',
+    width: '100%',
   },
   forms:{
 
@@ -36,16 +40,16 @@ export default function EstudioAcompanhePageContainer(){
       <div className={classes.root}>
         <Box mt={"300px"} ml={"200px"}>
             <Paper elevation={10} className={classes.paper} square={false}> 
-              <Box ml={3}>
+              <Box ml={5}>
                 <Grid container>
                   <Grid item xs={12}>
                     <Box display="flex" justifyContent="flex-start" pt={2} pb={3}>
-                      <Typography variant="h5" component="h2">Bem vindo, editor </Typography>
+                      <Typography variant="h3" >Bem vindo, editor </Typography>
                     </Box>
                   </Grid>
                   <Grid item xs={6}>
                     <Box>
-                        Box 1
+                        <NewSessionFormComponent></NewSessionFormComponent>
                     </Box>
                   </Grid>
                   <Grid item xs={6}>
