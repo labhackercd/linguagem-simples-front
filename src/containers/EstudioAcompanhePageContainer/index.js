@@ -4,6 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import Grid  from "@material-ui/core/Grid";
 import Typography  from "@material-ui/core/Typography";
 import { makeStyles } from '@material-ui/core/styles';
+import { borders } from '@material-ui/system';
 
 import NewSessionFormComponent from '../../components/EstudioAcompanhePageComponents/NewSessionFormComponent';
 import SessionHistoryComponent from '../../components/EstudioAcompanhePageComponents/SessionHistoryComponent';
@@ -16,20 +17,18 @@ const useStyles = makeStyles({
   root: {
     backgroundImage: "url(" + BackgroundImage + ")",
     backgroundRepeat: "no-repeat",
-    backgroundAttachment: "fixed",
-    backgroundSize: "cover",
-    border: 0,
-    height: '100%',
-    width: '100%',
+    backgroundSize: "100% 100%",
+    minHeight: '100%',
+    minWidth:'100%',
     position: "fixed",
     display: "flex"
   },
   paper:{
-    width: '80%',
+    width: '75%',
   },
   box:{
     paddingLeft:"370px",
-    paddingTop:"250px",
+    paddingTop:"12%",
     width:'100%',
     height:'100%'
   },
@@ -47,8 +46,7 @@ export default function EstudioAcompanhePageContainer(){
             <Box className={classes.logo}>
                 <img src={AcompanheLogo} alt="Logo Estudio Acompanhe"></img>
             </Box>
-      
-              <Paper elevation={10} className={classes.paper} square={false}> 
+              <Paper borders={10} elevation={10} className={classes.paper} square={false}> 
                 <Box ml={5}>
                   <Grid container>
                     <Grid item xs={12}>

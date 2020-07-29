@@ -10,6 +10,12 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
+
+
 import { ReactComponent as DocumentIcon } from './document_icon.svg';
 import ScheduleIcon from './schedule_session.svg'
 import FinishedIcon from './finished_session.svg'
@@ -25,9 +31,9 @@ const useStyles = makeStyles({
     display: "flex"
   },
   sessionList:{
-    position: 'relative',
     overflow: 'auto',
-    maxHeight: 300,
+    maxHeight: 350,
+    maxWidth: '100%'
   },
   input:{
       color: "green"
@@ -40,9 +46,10 @@ const useStyles = makeStyles({
     margin:5
   },
   boxPaper:{
-      padding:"10px"
+      padding:"5px"
   }
 });
+
 
 export default function SessionHistoryComponent(){
   const classes = useStyles();
@@ -71,12 +78,17 @@ export default function SessionHistoryComponent(){
                         </Grid>
                 </Grid>
                 <Grid item xs={12}>
-                    <Box paddingBottom={1}><ScheduleSessionHistoryCard status="agendada"></ScheduleSessionHistoryCard></Box>
-                    <Box paddingBottom={1}><ScheduleSessionHistoryCard></ScheduleSessionHistoryCard></Box>
-                    <Box paddingBottom={1}><ScheduleSessionHistoryCard status="agendada"></ScheduleSessionHistoryCard></Box>
+                    <List className={classes.sessionList}>
+                        <ListItem><Box><ScheduleSessionHistoryCard status="agendada"></ScheduleSessionHistoryCard></Box></ListItem>
+                        <ListItem><Box><ScheduleSessionHistoryCard status="agendada"></ScheduleSessionHistoryCard></Box></ListItem>
+                        <ListItem><Box><ScheduleSessionHistoryCard status="encerrada"></ScheduleSessionHistoryCard></Box></ListItem>
+                        <ListItem><Box><ScheduleSessionHistoryCard status="agendada"></ScheduleSessionHistoryCard></Box></ListItem>
+                        <ListItem><Box><ScheduleSessionHistoryCard status="agendada"></ScheduleSessionHistoryCard></Box></ListItem>
+                        <ListItem><Box><ScheduleSessionHistoryCard status="agendada"></ScheduleSessionHistoryCard></Box></ListItem>
+                    </List>
                 </Grid>
             </Grid>
-            <Box pt={4} pb={8}>
+            <Box pt={2}>
                 
             </Box>
         </Box>
