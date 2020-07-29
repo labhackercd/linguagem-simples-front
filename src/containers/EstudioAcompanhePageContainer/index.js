@@ -1,25 +1,19 @@
-import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
+import React from "react";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import Grid  from "@material-ui/core/Grid";
 import Typography  from "@material-ui/core/Typography";
-import { palette } from '@material-ui/system';
-import { spacing } from '@material-ui/system';
-
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import { colors } from "@material-ui/core";
 
-import NewSessionFormComponent from '../../components/EstudioAcompanhePageComponents/NewSessionFormComponent'
+import NewSessionFormComponent from '../../components/EstudioAcompanhePageComponents/NewSessionFormComponent';
+import SessionHistoryComponent from '../../components/EstudioAcompanhePageComponents/SessionHistoryComponent';
 
-import AcompanheLogo from './logo_acompanhe.svg'
-import BackgroundImage from './background.svg'
+import AcompanheLogo from './logo_acompanhe.svg';
+import BackgroundImage from './background.svg';
 
 
 const useStyles = makeStyles({
   root: {
-
     backgroundImage: "url(" + BackgroundImage + ")",
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
@@ -51,7 +45,7 @@ export default function EstudioAcompanhePageContainer(){
       <div className={classes.root}>
         <Box className={classes.box}>
             <Box className={classes.logo}>
-                <img src={AcompanheLogo} alt="Kiwi standing on oval"></img>
+                <img src={AcompanheLogo} alt="Logo Estudio Acompanhe"></img>
             </Box>
       
               <Paper elevation={10} className={classes.paper} square={false}> 
@@ -62,21 +56,20 @@ export default function EstudioAcompanhePageContainer(){
                         <Typography variant="h3">Bem vindo, editor </Typography>
                       </Box>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={5}>
                       <Box>
                           <NewSessionFormComponent></NewSessionFormComponent>
                       </Box>
                     </Grid>
-                    <Grid item xs={6}>
-                      <Box>
-                          Box 2
+                    <Grid item xs={2}></Grid>
+                    <Grid item xs={4}>
+                      <Box >
+                          <SessionHistoryComponent></SessionHistoryComponent>
                       </Box>
                     </Grid>                 
                   </Grid>
                 </Box>
               </Paper>
-          
-          
         </Box>
       </div>
     );

@@ -46,9 +46,17 @@ const theme = createMuiTheme({
       fontStyle: 'semibold',
     },
     h6:{
-      fontSize:12,
+      fontSize:15,
       fontStyle: 'semibold',
     },
+    body1:{
+      fontSize:12,
+      fontStyle: 'regular'
+    },
+    body2:{
+      fontSize:9,
+      fontStyle: 'semibold',
+    }
   },
   overrides: {
     MuiCssBaseline: {
@@ -60,6 +68,18 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#007E5A',
+    },
+    cinza1: {
+      main: '#F2F2F2',
+    },
+    cinza2: {
+      main: '#C4C4C4',
+    },
+    grey: {
+      main: '#666666',
+    },
+    amareloCamara: {
+      main: '#FAC915',
     },
   },
 

@@ -43,7 +43,7 @@ export default function NewSessionFormComponent(){
                 </Grid>
                 <Grid item xs={12}>
                     <Grid container xs={12} spacing={2}>
-                        <Grid item xs={4}>
+                        <Grid item xs={5}>
                             <Box display="block" justifyContent="flex-start" >
                                 <div><Typography variant="h6"> Local </Typography></div>
                                 <TextField
@@ -58,14 +58,14 @@ export default function NewSessionFormComponent(){
                         </Grid>
                         <Grid item xs={7}>
                             <Box display="block" justifyContent="flex-start" >
-                                <div><Typography variant="h6"> Local </Typography></div>
+                                <div><Typography variant="h6" color="textSecondary"> Comissão </Typography></div>
                                 <TextField id="select" value="1" variant="outlined" size="small" fullWidth="true" disabled select>
                                     <MenuItem value="1">Selecione</MenuItem>
                                 </TextField>
                             </Box>
     
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={5}>
                             <Box display="block" justifyContent="flex-start" >
                                 <div><Typography variant="h6"> Data </Typography></div>
                                  <TextField
