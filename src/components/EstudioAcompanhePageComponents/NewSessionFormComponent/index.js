@@ -23,10 +23,14 @@ const useStyles = makeStyles({
     position: "fixed",
     display: "flex"
   },
-  input:{
-      color: "green"
+  inputBorderColor:{
+      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+        borderColor: "green"
+      },
+  },
+  inputTextColor:{
+    color:'green',
   }
-
 });
 
 export default function NewSessionFormComponent(){
@@ -47,12 +51,15 @@ export default function NewSessionFormComponent(){
                             <Box display="block" justifyContent="flex-start" >
                                 <div><Typography variant="h6"> Local </Typography></div>
                                 <TextField
-                                className={classes.input}
+                                className={classes.inputBorderColor}
                                 id="sessionPlace"
                                 variant="outlined"
                                 size="small"
                                 color="primary"
                                 value="Plenário"
+                                InputProps={{
+                                    className: classes.inputTextColor
+                                  }}
                                 />
                             </Box>
                         </Grid>
@@ -98,6 +105,7 @@ export default function NewSessionFormComponent(){
                                     control={<Checkbox color="primary" />}
                                     label="Acompanhe"
                                     labelPlacement="Acompanhe"
+                                    className={classes.inputBorderColor}
                                     />
                                     <FormControlLabel
                                     value="Twitter"

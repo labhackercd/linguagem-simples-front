@@ -12,9 +12,6 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
-
 
 import { ReactComponent as DocumentIcon } from './document_icon.svg';
 import ScheduleIcon from './schedule_session.svg'
@@ -78,13 +75,13 @@ export default function SessionHistoryComponent(){
                         </Grid>
                 </Grid>
                 <Grid item xs={12}>
-                    <List className={classes.sessionList}>
-                        <ListItem><Box><ScheduleSessionHistoryCard status="agendada"></ScheduleSessionHistoryCard></Box></ListItem>
-                        <ListItem><Box><ScheduleSessionHistoryCard status="agendada"></ScheduleSessionHistoryCard></Box></ListItem>
-                        <ListItem><Box><ScheduleSessionHistoryCard status="encerrada"></ScheduleSessionHistoryCard></Box></ListItem>
-                        <ListItem><Box><ScheduleSessionHistoryCard status="agendada"></ScheduleSessionHistoryCard></Box></ListItem>
-                        <ListItem><Box><ScheduleSessionHistoryCard status="agendada"></ScheduleSessionHistoryCard></Box></ListItem>
-                        <ListItem><Box><ScheduleSessionHistoryCard status="agendada"></ScheduleSessionHistoryCard></Box></ListItem>
+                    <List className={classes.sessionList} disablePadding dense={true}>
+                        <ListItem><ScheduleOrFinishedSessionHistoryCard status="agendada"></ScheduleOrFinishedSessionHistoryCard></ListItem>
+                        <ListItem><ScheduleOrFinishedSessionHistoryCard status="agendada"></ScheduleOrFinishedSessionHistoryCard></ListItem>
+                        <ListItem><ScheduleOrFinishedSessionHistoryCard status="agendada"></ScheduleOrFinishedSessionHistoryCard></ListItem>
+                        <ListItem><ScheduleOrFinishedSessionHistoryCard status="encerrada"></ScheduleOrFinishedSessionHistoryCard></ListItem>
+                        <ListItem><ScheduleOrFinishedSessionHistoryCard status="encerrada"></ScheduleOrFinishedSessionHistoryCard></ListItem>
+                        <ListItem><ScheduleOrFinishedSessionHistoryCard status="encerrada"></ScheduleOrFinishedSessionHistoryCard></ListItem>
                     </List>
                 </Grid>
             </Grid>
@@ -95,7 +92,7 @@ export default function SessionHistoryComponent(){
     );
 }
 
-function ScheduleSessionHistoryCard(props){
+function ScheduleOrFinishedSessionHistoryCard(props){
     const classes = useStyles();
     const sessionStatus = props.status;
 
