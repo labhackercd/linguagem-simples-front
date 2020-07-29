@@ -1,10 +1,6 @@
-import React, {Component} from 'react';
-import { Paper, Box, Grid, TextField, Button } from '@material-ui/core';
-import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import { palette, spacing } from '@material-ui/system';
+import React from 'react';
+import { Box, Grid, TextField, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { colors } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -69,7 +65,7 @@ export default function LoginScreen () {
  							<Grid container item xs={6} sm={6} md={6} style={{display: 'flex', justifyContent: 'space-between'}}>
                 <div className="formItems">
                   <Grid item>
-                    <img src="../../img/estudio_acompanhe_logo.svg"/>
+                    <img src="../../img/estudio_acompanhe_logo.svg" alt="Estudio Acompanhe logo"/>
                   </Grid>
                   <Grid item className={classes.loginForm}>
                     <TextField className={classes.textField} variant="outlined" placeholder="email" id="username" type="email" fullWidth autoFocus required />
@@ -86,14 +82,14 @@ export default function LoginScreen () {
                 </div>
                 <div className="camaraLogo">
                   <Grid item style={{justifyContent: 'flex-end', margin: '5rem 0 -10rem 0'}}>
-                    <img src="../../img/camara_logo.svg"/> 
+                    <img src="../../img/camara_logo.svg" alt="Câmara dos Deputados Logo"/> 
                   </Grid>
                 </div>
  							</Grid>
  					</Grid>
           <Grid item xs={12} sm={5} md={5}>
             <div className={classes.prototipo}>
-              <img src="../../img/interacao_prototipo.png"/>
+              <img src="../../img/interacao_prototipo.png" alt="Imagem ilustrativa da interação do protótipo"/>
             </div>            
           </Grid>
  					<Grid item xs={12} sm={1} md={1} className={classes.sidebar}>
