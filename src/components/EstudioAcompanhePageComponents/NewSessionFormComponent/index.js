@@ -71,7 +71,7 @@ export default function NewSessionFormComponent(){
                         <Grid item xs={7}>
                             <Box display="block" justifyContent="flex-start" >
                                 <div><Typography variant="h6" color="textSecondary"> Comissão </Typography></div>
-                                <TextField id="select" value="1" variant="outlined" size="small" fullWidth="true" disabled select>
+                                <TextField id="selectComission" value="1" variant="outlined" size="small" fullWidth="true" disabled select>
                                     <MenuItem value="1">Selecione</MenuItem>
                                 </TextField>
                             </Box>
@@ -86,7 +86,7 @@ export default function NewSessionFormComponent(){
                                         disableToolbar
                                         variant="inline"
                                         format="dd/MM/yyyy"
-                                        id="date-picker-search"
+                                        id="sessionDate"
                                         InputLabelProps={{
                                             shrink: true,
                                           }}
@@ -100,7 +100,7 @@ export default function NewSessionFormComponent(){
                         <Grid item xs={7}>
                             <Box display="block" justifyContent="flex-start" >
                                 <div><Typography variant="h6"> Tipo de Sessão </Typography></div>
-                                <TextField id="select" value="1" variant="outlined" size="small" fullWidth="true" select>
+                                <TextField id="sessionType" value="1" variant="outlined" size="small" fullWidth="true" select>
                                     <MenuItem value="1">Selecione</MenuItem>
                                 </TextField>
                             </Box>
@@ -110,13 +110,21 @@ export default function NewSessionFormComponent(){
                                 <div><Typography variant="h6"> Canais de transmissão </Typography></div>
                                 <FormGroup aria-label="position" row>
                                     <FormControlLabel
-                                    value="Acompanhe"
-                                    control={<Checkbox color="primary" />}
+                                    id="acompanheTransmissionChannel"
+                                    value="true"
+                                    control={
+                                        <Checkbox
+                                          checked={true}
+                                          name="checkedB"
+                                          color="primary"
+                                        />
+                                    }
                                     label="Acompanhe"
                                     labelPlacement="Acompanhe"
                                     className={classes.inputBorderColor}
                                     />
                                     <FormControlLabel
+                                    id="twitterTransmissionChannel"
                                     value="Twitter"
                                     control={<Checkbox color="primary" />}
                                     label="Twitter"
