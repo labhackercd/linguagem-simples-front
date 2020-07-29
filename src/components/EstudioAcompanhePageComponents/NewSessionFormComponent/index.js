@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Box from "@material-ui/core/Box";
 import Grid  from "@material-ui/core/Grid";
 import Typography  from "@material-ui/core/Typography";
@@ -13,6 +13,11 @@ import SendIcon from '@material-ui/icons/Send';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider, KeyboardDatePicker,
+} from '@material-ui/pickers';
+import ptBrLocale from "date-fns/locale/pt-BR";
 
 const useStyles = makeStyles({
   root: {
@@ -75,17 +80,21 @@ export default function NewSessionFormComponent(){
                         <Grid item xs={5}>
                             <Box display="block" justifyContent="flex-start" >
                                 <div><Typography variant="h6"> Data </Typography></div>
-                                 <TextField
-                                    id="date"
-                                    type="date"
-                                    variant="outlined"
-                                    defaultValue="0000-00-00"
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                    size="small"
-                                    fullWidth="true"
-                                />
+    
+                                    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={ptBrLocale}>
+                                    <KeyboardDatePicker
+                                        disableToolbar
+                                        variant="inline"
+                                        format="dd/MM/yyyy"
+                                        id="date-picker-search"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                          }}
+                                        inputVariant="outlined"
+                                        size="small"
+                                        />
+                                    </MuiPickersUtilsProvider>
+
                             </Box>
                         </Grid>
                         <Grid item xs={7}>

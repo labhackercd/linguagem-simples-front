@@ -1,16 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import Box from "@material-ui/core/Box";
 import Grid  from "@material-ui/core/Grid";
 import Typography  from "@material-ui/core/Typography";
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField'
-import InputAdornment from '@material-ui/core/InputAdornment'
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
-import SearchIcon from '@material-ui/icons/Search';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
@@ -19,6 +16,13 @@ import ScheduleIcon from './schedule_session.svg'
 import FinishedIcon from './finished_session.svg'
 import StartedIcon from './session_started.svg'
 import SessionHappening from './session_happening_icon.svg'
+
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider, KeyboardDatePicker,
+} from '@material-ui/pickers';
+import ptBrLocale from "date-fns/locale/pt-BR";
+
 
 const useStyles = makeStyles({
   root: {
@@ -74,12 +78,18 @@ export default function SessionHistoryComponent(){
                             </Grid>
                             <Grid item xs={6}>
                                 <Box display="flex" justifyContent="flex-end" paddingBottom={3}>
-                                    <TextField
-                                        id="standard-adornment-weight"
-                                        endAdornment={<InputAdornment position="end"><SearchIcon></SearchIcon></InputAdornment>}
-                                        size="small"
-                                        type="date"
-                                    />
+                                    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={ptBrLocale}>
+                                    <KeyboardDatePicker
+                                        disableToolbar
+                                        variant="inline"
+                                        format="dd/MM/yyyy"
+                                        id="date-picker-search"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                          }}
+             
+                                        />
+                                    </MuiPickersUtilsProvider>
                                 </Box>
                             </Grid>
                         </Grid>
