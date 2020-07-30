@@ -9,10 +9,3 @@ test('Test if app render properly learn react link', () => {
   ReactDOM.render(<App></App>, div)
   ReactDOM.unmountComponentAtNode(div)
 });
-
-
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/Hello world/i);
-  expect(linkElement).toBeInTheDocument();
-});
