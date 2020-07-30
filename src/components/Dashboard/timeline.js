@@ -6,8 +6,8 @@ import SummaryBox from './summaryBox';
 
 const useStyles = makeStyles((theme) => ({
   summaryBox: {
-  	height: '30vh',
-  }, 
+  	height: '40vh',
+  },
   newUpdateBox: {
   	height: '30vh',
   	backgroundColor: 'blue'
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Timeline() {
 	const classes = useStyles();
-	const [updates, setUpdates] = useState([]) 
+	const [updates, setUpdates] = useState([])
 	return (
 		<Grid container className={classes.body}>
 			<Grid container>
