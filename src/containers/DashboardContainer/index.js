@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Dashboard/sidebar';
 import Timeline from '../../components/Dashboard/timeline';
+import NewUpdate from '../../components/Dashboard/newUpdate';
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -26,11 +27,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const plenaryUpdates = [
-  {title: 'REQ 1502/2020', 
-   link: '/', 
+  {title: 'REQ 1502/2020',
+   link: '/',
    authors: 'Autores: Wellington Roberto (PL-PB), Arthur Lira (PP-AL) Fred Costa (PATRIOTA-MG), Jhonatan de Jesus (REPUBLIC-RR) , Wolney Queiroz (PDT-PE)'},
-  {title: 'REQ 104/2020', 
-   link: '/', 
+  {title: 'REQ 104/2020',
+   link: '/',
    authors: 'Autora: Christiane de Souza Yared(PL-PR)'},
   {
     title: 'REQ 2801/2020',
@@ -49,6 +50,7 @@ export default function Dashboard() {
           <Timeline></Timeline>
 				</Grid>
 				<Grid item md={7} className={classes.content}>
+          <NewUpdate></NewUpdate>
 				</Grid>
 			</Grid>
 		)
