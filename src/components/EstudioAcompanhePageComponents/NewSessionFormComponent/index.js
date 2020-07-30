@@ -51,7 +51,7 @@ export default function NewSessionFormComponent(){
                     </Box>
                 </Grid>
                 <Grid item xs={12}>
-                    <Grid container xs={12} spacing={2}>
+                    <Grid container spacing={2}>
                         <Grid item xs={5}>
                             <Box display="block" justifyContent="flex-start" >
                                 <div><Typography variant="h6"> Local </Typography></div>
@@ -71,7 +71,7 @@ export default function NewSessionFormComponent(){
                         <Grid item xs={7}>
                             <Box display="block" justifyContent="flex-start" >
                                 <div><Typography variant="h6" color="textSecondary"> Comissão </Typography></div>
-                                <TextField id="selectComission" value="1" variant="outlined" size="small" fullWidth="true" disabled select>
+                                <TextField id="selectComission" value="1" variant="outlined" size="small" fullWidth={true} disabled select>
                                     <MenuItem value="1">Selecione</MenuItem>
                                 </TextField>
                             </Box>
@@ -100,7 +100,7 @@ export default function NewSessionFormComponent(){
                         <Grid item xs={7}>
                             <Box display="block" justifyContent="flex-start" >
                                 <div><Typography variant="h6"> Tipo de Sessão </Typography></div>
-                                <TextField id="sessionType" value="1" variant="outlined" size="small" fullWidth="true" select>
+                                <TextField id="sessionType" value="1" variant="outlined" size="small" fullWidth={true} select>
                                     <MenuItem value="1">Selecione</MenuItem>
                                 </TextField>
                             </Box>
@@ -120,7 +120,6 @@ export default function NewSessionFormComponent(){
                                         />
                                     }
                                     label="Acompanhe"
-                                    labelPlacement="Acompanhe"
                                     className={classes.inputBorderColor}
                                     />
                                     <FormControlLabel
@@ -128,7 +127,6 @@ export default function NewSessionFormComponent(){
                                     value="Twitter"
                                     control={<Checkbox color="primary" />}
                                     label="Twitter"
-                                    labelPlacement="Twitter"
                                     />
                                 </FormGroup>
                             </Box>
