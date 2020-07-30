@@ -1,18 +1,8 @@
 import React from 'react'
-import {cleanup, fireEvent, render} from '@testing-library/react';
+import {render} from '@testing-library/react';
 import ReactDOM from 'react-dom'
 import NewSessionFormComponent from './../index'
-import {
-    getByLabelText,
-    getByText,
-    getByTestId,
-    queryByTestId,
-    // Tip: all queries are also exposed on an object
-    // called "queries" which you could import here as well
-    waitFor,
-  } from '@testing-library/dom'
 import renderer from 'react-test-renderer';
-
 
 
 

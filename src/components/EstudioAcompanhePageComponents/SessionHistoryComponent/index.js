@@ -11,11 +11,11 @@ import ListItem from '@material-ui/core/ListItem';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
-import { ReactComponent as DocumentIcon } from './document_icon.svg';
-import ScheduleIcon from './schedule_session.svg'
-import FinishedIcon from './finished_session.svg'
-import StartedIcon from './session_started.svg'
-import SessionHappening from './session_happening_icon.svg'
+import { ReactComponent as DocumentIcon } from './assets/document_icon.svg';
+import ScheduleIcon from './assets/schedule_session.svg'
+import FinishedIcon from './assets/finished_session.svg'
+import StartedIcon from './assets/session_started.svg'
+import SessionHappening from './assets/session_happening_icon.svg'
 
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
