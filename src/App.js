@@ -1,11 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
-
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-
 import OpenSansSemiBold from './fonts/OpenSans-SemiBold.ttf'
 import EstudioAcompanhePageContainer from './containers/EstudioAcompanhePageContainer'
+import LoginScreen from "./containers/LoginScreenContainer";
 
 const openSansSemiBold = {
   fontFamily: 'OpenSans',
@@ -85,8 +84,6 @@ const theme = createMuiTheme({
 
 });
 
-
-
 function App() {
   return (
     <div className="App">
@@ -94,7 +91,7 @@ function App() {
           <Router>
             <Switch>
               <Route exact path="/">
-                <div> Hello world </div>
+                <LoginScreen theme={theme}></LoginScreen>
               </Route>
               <Route exact path="/estudio">
                 <EstudioAcompanhePageContainer></EstudioAcompanhePageContainer>
