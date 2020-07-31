@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
   },
   postsTimeline: {
   	height: '40vh',
-  	backgroundColor: 'purple'
   }
 }));
 

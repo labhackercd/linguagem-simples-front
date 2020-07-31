@@ -1,10 +1,10 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Paper, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   body: {
-    padding: '0 1.5rem 0 1.5rem'
+    padding: '0 1.5rem 0 1.5rem',
   },
   header: {
     margin: '1rem 0 0 0',
@@ -18,29 +18,36 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main
   },
   headerMenu: {
-    alignItems: 'flex-end'
+    display: 'flex',
+    alignItems: 'flex-end',
   },
   headerMenuItem: {
-    display: 'flex',
-    padding: '0 1rem 0 1rem'
+    padding: '0 1rem 0 1rem',
+    alignSelf: 'flex-start'
+  },
+  column: {
+    padding: "1rem",
+  },
+  plenary: {
+    backgroundColor: "white",
+    height: '100%',
+    width: '100%',
   },
   firstRow: {
-    height: '40vh',
-    backgroundColor: "blue",
-  },
-  firstRowLeftColumn: {
-    backgroundColor: "green",
-  },
-  firstRowRightColumn: {
-    backgroundColor: "red",
+    height: '100%',
+    margin: '0 0 2rem 0',
   },
   secondRow: {
     height: '30vh',
-    backgroundColor: "yellow"
+    backgroundColor: "white",
+    borderRadius: '5px',
+    margin: '1rem 0 1rem 0',
   },
   thirdRow: {
-    backgroundColor: "green",
-    height: '30vh',
+    backgroundColor: "white",
+    height: '50vh',
+    borderRadius: '5px',
+    margin: '0 0 1rem 0',
   }
 }));
 
@@ -53,17 +60,24 @@ export default function Content() {
           <Typography variant="h3" className={classes.title}>Conteúdos</Typography>
         </Grid>
         <Grid item className={classes.headerMenu}>
-          <a href="/"><Typography variant="h5" className={classes.headerMenuItem}> Sincronizar </Typography></a>
-          <a href="/"><Typography variant="h5" className={classes.headerMenuItem}> Ver Acompanhe </Typography></a>
+          <Typography variant="h5" className={classes.headerMenuItem}> Sincronizar </Typography>
+          <Typography variant="h5" className={classes.headerMenuItem}> Ver Acompanhe </Typography>
         </Grid>
       </Grid>
-      <Grid container className={classes.firstRow}>
-        <Grid item md={6} className={classes.firstRowLeftColumn}>
+      <Grid container className={classes.firstRow} spacing={2}>
+        <Grid item md={6}>
+        <Typography variant="h5" style={{margin: '0 0 1rem 0'}}> Transmissão </Typography>
+          <Paper elevation={0} className={classes.plenary}>
+          <img src="../../img/video_placeholder.png" style={{maxHeight: "110%", maxWidth: '100%'}} />
+          </Paper>
         </Grid>
-        <Grid item md={6} className={classes.firstRowRightColumn}>
+        <Grid item md={6}>
+          <Typography variant="h5" style={{margin: '0 0 1rem 0'}}> Plenário </Typography>
+          <Paper elevation={0} className={classes.plenary}> </Paper>
         </Grid>
-      </Grid>
+        </Grid>
       <Grid container className={classes.secondRow}>
+        <Typography variant="h5" style={{margin: '1rem 0 1rem 1rem'}}> Trechos </Typography>
       </Grid>
       <Grid container className={classes.thirdRow}>
       </Grid>
