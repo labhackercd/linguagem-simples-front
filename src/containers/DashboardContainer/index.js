@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Dashboard/sidebar';
 import Timeline from '../../components/Dashboard/timeline';
+import Content from '../../components/Dashboard/content';
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -49,6 +50,7 @@ export default function Dashboard() {
           <Timeline></Timeline>
 				</Grid>
 				<Grid item md={7} className={classes.content}>
+          <Content></Content>
 				</Grid>
 			</Grid>
 		)

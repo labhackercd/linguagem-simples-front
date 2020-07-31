@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   	flexDirection: 'column',
   	justifyContent: 'space-between',
   	height: '100vh',
-  }, 
+  },
   user: {
   	display: 'flex',
   	alignSelf: 'center',
@@ -17,10 +17,10 @@ const useStyles = makeStyles((theme) => ({
   },
   middleSection: {
   	display: 'flex',
-  	flexDirection: 'column', 
+  	flexDirection: 'column',
   	justifyContent: 'space-around',
   	alignItems: 'center',
-  }, 
+  },
   middleIcon: {
   	padding: '1rem 0 0 0'
   },

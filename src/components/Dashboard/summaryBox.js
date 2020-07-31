@@ -42,8 +42,7 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex'
 	},
 	button: {
-		display: 'flex',
-		justifyContent: 'flex-end'
+		height: '70%',
 	}
 }));
 
@@ -66,7 +65,7 @@ export default function SummaryBox(){
 									<TextField
 					          id="outlined-multiline-static"
 					          multiline
-					          rows={8}
+					          rows={4}
 					          variant="outlined"
 										className={classes.textField}
 										bgcolor="white"
@@ -82,7 +81,7 @@ export default function SummaryBox(){
 						<Grid container style={{display: 'flex'}}>
 							<Grid item xs={8} style={{display: 'flex', justifyContent: 'flex-start'}}></Grid>
 							<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
-								<Button variant="contained" color="#C4C4C4" disableElevation>
+								<Button className={classes.button} variant="contained" color="#C4C4C4" disableElevation>
 									Atualizar
 								</Button>
 							</Grid>

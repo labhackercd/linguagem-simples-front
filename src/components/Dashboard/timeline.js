@@ -7,13 +7,13 @@ import NewUpdate from './newUpdate';
 
 const useStyles = makeStyles((theme) => ({
   summaryBox: {
-  	height: '40vh',
+  	height: '30vh',
   },
   newUpdateBox: {
-  	height: '40vh',
+  	height: '30vh',
   },
   postsTimeline: {
-  	height: '50vh',
+  	height: '40vh',
   	backgroundColor: 'purple'
   }
 }));

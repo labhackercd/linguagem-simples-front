@@ -42,8 +42,7 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex'
 	},
 	button: {
-		display: 'flex',
-		justifyContent: 'flex-end'
+		height: '70%',
 	},
   time: {
     color: theme.palette.primary.main
@@ -77,7 +76,7 @@ export default function NewUpdate(){
 									<TextField
 					          id="outlined-multiline-static"
 					          multiline
-					          rows={8}
+					          rows={4}
 					          variant="outlined"
 										className={classes.textField}
 										bgcolor="white"
@@ -97,7 +96,7 @@ export default function NewUpdate(){
 								<a href="/"><img src="../../img/picture_upload.svg" /></a>
               </Grid>
 							<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
-								<Button variant="contained" color="#C4C4C4" disableElevation>
+								<Button className={classes.button} variant="contained" color="#C4C4C4" disableElevation>
 									Atualizar
 								</Button>
 							</Grid>
