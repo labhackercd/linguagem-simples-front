@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   	display: 'flex',
   	flexDirection: 'column',
   	justifyContent: 'space-between',
-  	height: '100vh',
+  	height: '100%',
   },
   user: {
   	display: 'flex',
@@ -26,10 +26,13 @@ const useStyles = makeStyles((theme) => ({
   },
   exit: {
   	display: 'flex',
-  	flexDirection: 'column',
   	alignSelf: 'center',
-  	justifyContent: 'flex-end',
-  	paddingBottom: '1rem'
+    alignContent: 'flex-end',
+  },
+  exitIcon: {
+    display: 'flex',
+    alignSelf: 'flex-end',
+    margin: '0 0 1rem 0'
   }
 }));
 
@@ -49,7 +52,9 @@ export default function Sidebar() {
 				</Grid>
 			</Grid>
 			<Grid item md={3} className={classes.exit}>
-				<a href="/"><img src="../../img/Exit.svg" alt="Exit icon"/></a>
+        <div className={classes.exitIcon}>
+				    <a href="/"><img src="../../img/Exit.svg" alt="Exit icon"/></a>
+        </div>
 			</Grid>
 		</Grid>
   )
