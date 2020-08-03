@@ -9,12 +9,9 @@ const useStyles = makeStyles((theme) => ({
   summaryBox: {
   	height: '30vh',
   },
-  newUpdateBox: {
-  	height: '30vh',
+  updateSection: {
+  	height: '70vh',
   },
-  postsTimeline: {
-  	height: '40vh',
-  }
 }));
 
 export default function Timeline() {
@@ -28,10 +25,8 @@ export default function Timeline() {
 			<Grid container className={classes.summaryBox}>
 				<SummaryBox></SummaryBox>
 			</Grid>
-			<Grid container className={classes.newUpdateBox}>
+			<Grid container className={classes.updateSection}>
         <NewUpdate></NewUpdate>
-			</Grid>
-			<Grid container className={classes.postsTimeline}>
 			</Grid>
 		</Grid>
 	)

@@ -1,24 +1,28 @@
-import React from 'react';
-import {Button, Grid, Typography, Paper, Box} from '@material-ui/core';
+import React, {useState} from 'react';
+import {Button, Grid, Typography, Paper, Box, ListItemText, List, ListItem, Divider} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextareaAutosize, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
+	body: {
+		width: '100%',
+		padding: '0 1rem 0 1rem',
+	},
+	summaryBox: {
+		display: 'flex',
+		flexDirection: 'row',
+		height: '30vh',
+	},
+	summaryHeader: {
+  	display: 'flex',
+  	height: '2vh',
+  },
 	notchedOutline: {
 		border: '2px solid #F2F2F2',
 		borderWidthBottom: '0px',
 		color: theme.palette.secondary,
 		borderRadius: '0 0 0 0',
 	},
-	summaryBox: {
-		margin: '0 1rem 1rem 1rem',
-		display: 'flex',
-		flexDirection: 'row',
-	},
-  summaryHeader: {
-  	display: 'flex',
-  	height: '2vh',
-  },
 	textArea: {
 		height: '100%',
 		margin: '0rem 0 0 0',
@@ -44,9 +48,6 @@ const useStyles = makeStyles((theme) => ({
 	button: {
 		height: '70%',
 	},
-  time: {
-    color: theme.palette.primary.main
-  },
 	divider: {
 		color: theme.palette.cinza2
 	},
@@ -55,55 +56,131 @@ const useStyles = makeStyles((theme) => ({
 		margin: '0.1rem 0 0 0',
 		justifyContent: 'flex-start',
 		padding: '0 1rem 0 1rem',
-	}
+	},
+	updatesArea: {
+		overflow: 'auto',
+		display: 'flex',
+		height: '70vh',
+	},
+	updateItem: {
+		width: '100%',
+		height: 'auto',
+		padding: '1rem 0 1rem 0',
+		alignItems: 'flex-start',
+		display: 'flex',
+	},
+	updateItemBody: {
+		color: theme.palette.grey
+	},
+	title: {
+		color: theme.palette.primary.main
+	},
+	itemHeader: {
+		display: 'flex',
+		justifyContent: 'space-between',
+	},
 }));
 
 export default function NewUpdate(){
 	const classes = useStyles();
+	const [updates, setUpdates] = useState([
+		{id: 1,
+		 time: '17:17',
+		 title: 'Sessão iniciada',
+		 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ',
+	 	 media: ''},
+		{id: 2,
+		 time: '17:15',
+		 title: '',
+		 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis, maecenas fusce. Adipiscing bibendum at sed sit facilisis venenatis pellentesque vel.',
+		 media: '',
+		 },
+		{id: 3,
+		 time: '17:13',
+		 title: '',
+		 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis',
+	   media: {type: 'img', src: '../../img/timeline_media.png'}},
+		 {id: 4,
+ 		 time: '17:19',
+ 		 title: 'Meu bebe',
+ 		 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis, maecenas fusce. Adipiscing bibendum at sed sit facilisis venenatis pellentesque vel.',
+ 		 media: '',
+ 		 },
+	]);
 	return (
 		<React.Fragment>
-			<Grid container className={classes.summaryBox}>
-				<Grid container className={classes.summaryHeader}>
-					<Grid item md={6} style={{display:'flex', justifyContent: 'flex-start'}}>
-						<Typography variant="h5"> Nova atualização </Typography>
-					</Grid>
-					<Grid item md={6} style={{display:'flex', justifyContent: 'flex-end'}}>
-					</Grid>
-				</Grid>
-				<Grid item md={12}>
-						<Grid container >
-						    <form className={classes.textArea} noValidate autoComplete="off">
-									<TextField
-					          id="outlined-multiline-static"
-					          multiline
-					          rows={4}
-					          variant="outlined"
-										className={classes.textField}
-										bgcolor="white"
-										InputProps={{
-											classes: {
-												notchedOutline: classes.notchedOutline
-											},
-										}}
-					        />
-						    </form>
+			<div className={classes.body}>
+				<Grid container className={classes.summaryBox}>
+					<Grid container className={classes.summaryHeader}>
+						<Grid item md={6} style={{display:'flex', justifyContent: 'flex-start'}}>
+							<Typography variant="h5"> Nova atualização </Typography>
 						</Grid>
-						<Box borderTop={1} color="#F2F2F2" borderRadius="0 0 10px 25px" bgcolor="#F2F2F2" height="18%">
-						<Grid container style={{display: 'flex', padding: '0rem 0 0 1rem'}}>
-							<Grid item xs={8} className={classes.submenu}>
-                <Typography className={classes.time} variant="h6"> 18:00 </Typography>
-								<img src="../../img/divider.svg" />
-								<a href="/"><img src="../../img/picture_upload.svg" /></a>
-              </Grid>
-							<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
-								<Button className={classes.button} variant="contained" color="#C4C4C4" disableElevation>
-									Atualizar
-								</Button>
+						<Grid item md={6} style={{display:'flex', justifyContent: 'flex-end'}}>
+						</Grid>
+					</Grid>
+					<Grid item md={12}>
+							<Grid container >
+							    <form className={classes.textArea} noValidate autoComplete="off">
+										<TextField
+						          id="outlined-multiline-static"
+						          multiline
+						          rows={4}
+						          variant="outlined"
+											className={classes.textField}
+											bgcolor="white"
+											InputProps={{
+												classes: {
+													notchedOutline: classes.notchedOutline
+												},
+											}}
+						        />
+							    </form>
 							</Grid>
-						</Grid>
-					</Box>
+							<Box borderTop={1} color="#F2F2F2" borderRadius="0 0 10px 25px" bgcolor="#F2F2F2" height="18%">
+							<Grid container style={{display: 'flex', padding: '0rem 0 0 1rem'}}>
+								<Grid item xs={8} className={classes.submenu}>
+	                <Typography className={classes.time} variant="h6"> 18:00 </Typography>
+									<img src="../../img/divider.svg" />
+									<a href="/"><img src="../../img/picture_upload.svg" /></a>
+	              </Grid>
+								<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
+									<Button className={classes.button} variant="contained" color="#C4C4C4" disableElevation>
+										Atualizar
+									</Button>
+								</Grid>
+							</Grid>
+						</Box>
+					</Grid>
 				</Grid>
-			</Grid>
+				<Grid container className={classes.updatesArea}>
+					<List>
+							{updates.map(update =>
+								<ListItem divider>
+									<Grid container className={classes.updateItem}>
+										<Grid item xs={3}>
+											<Typography variant="h6">
+												{update.time}
+											</Typography>
+										</Grid>
+										<Grid item xs={9}>
+											<Grid container className={classes.itemHeader}>
+												<Typography variant="h5" className={classes.title}>
+													{update.title}
+												</Typography>
+												<Grid item>
+													<img src="../../img/more_options_icon.svg" alt="more options icon"/>
+												</Grid>
+											</Grid>
+											<Grid container className={classes.updateItem}>
+												<Typography style={{color: '#666'}} variant="body1">{update.body}</Typography>
+											</Grid>
+										</Grid>
+									</Grid>
+								</ListItem>
+							)}
+					</List>
+				</Grid>
+			</div>
 		</React.Fragment>
 	)
 }
