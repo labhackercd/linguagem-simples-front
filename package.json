@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
     "date-fns": "^2.15.0",
     "file-loader": "^6.0.0",
     "react": "^16.13.1",
@@ -19,6 +20,7 @@
     "react-test-render": "^1.1.2",
     "react-test-renderer": "^16.13.1"
   },
+  "proxy": "http://localhost:8000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
