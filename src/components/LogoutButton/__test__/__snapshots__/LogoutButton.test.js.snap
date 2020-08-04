@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test if LogoutButton snapshot matches 1`] = `
+<a
+  aria-disabled={false}
+  className="MuiButtonBase-root MuiButton-root makeStyles-inputTextColor-5 MuiButton-text"
+  href="/"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={0}
+>
+  <span
+    className="MuiButton-label makeStyles-label-6"
+  >
+    sair
+  </span>
+</a>
+`;
