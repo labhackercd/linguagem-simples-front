@@ -88,9 +88,7 @@ function App() {
   return (
     <div className="App">
        <ThemeProvider theme={theme}>
-          <Router>
             <AppRouter theme={theme}></AppRouter>
-          </Router>
       </ThemeProvider>
     </div>
   );

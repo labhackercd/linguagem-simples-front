@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Redirect } from "react-router-dom";
 
 import { Grid, TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import axios from 'axios'
 import axiosInstance from './../../auth/axiosApi.js'
 
 

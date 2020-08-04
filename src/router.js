@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import EstudioAcompanhePageContainer from './containers/EstudioAcompanhePageContainer'
 import LoginScreen from "./containers/LoginScreenContainer"
 import axiosInstance from './auth/axiosApi'
@@ -65,6 +65,7 @@ class PrivateRouteAuth extends Component{
 
 
 const AppRouter = (props) => (
+    <Router>
     <Switch>
         <Route exact path="/">
             <LoginScreen theme={props.theme}></LoginScreen>
@@ -77,6 +78,7 @@ const AppRouter = (props) => (
             </Route>
         </PrivateRouteAuth>
     </Switch>
+    </Router>
 );
 
 export default AppRouter
