@@ -49,9 +49,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 	submenu: {
 		display: 'flex',
-		margin: '0.1rem 0 0 0',
-		justifyContent: 'flex-start',
-		padding: '0 1rem 0 1rem',
+	},
+	subMenuItem: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		margin: '0 0.5rem 0 1rem',
 	},
 	updatesArea: {
 		overflow: 'auto',
@@ -75,6 +78,9 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		justifyContent: 'space-between',
 	},
+	time: {
+		color: theme.palette.primary.main
+	}
 }));
 
 export default function NewUpdate(){
@@ -178,10 +184,16 @@ export default function NewUpdate(){
 							<Box borderTop={1} color="#F2F2F2" borderRadius="0 0 10px 25px" bgcolor="#F2F2F2">
 								<Grid container>
 									<Grid item xs={8} className={classes.submenu}>
-		                <Typography className={classes.time} variant="h6"> 18:00 </Typography>
-										<img src="../../img/divider.svg" />
-										<a href="/"><img src="../../img/picture_upload.svg" /></a>
-		              </Grid>
+										<div className={classes.subMenuItem}>
+		                	<Typography className={classes.time} variant="h6"> 18:00 </Typography>
+										</div>
+										<div className={classes.subMenuItem}>
+											<img src="../../img/divider.svg" />
+										</div>
+										<div className={classes.subMenuItem}>
+											<a href="/"><img src="../../img/picture_upload.svg" /></a>
+										</div>
+									</Grid>
 									<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
 										<Button className={classes.button} variant="contained" disableElevation>
 											Atualizar
