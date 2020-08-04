@@ -34,7 +34,7 @@ export default function LogoutButton() {
 
     return (
         <Button
-        onClick={handleLogout()}
+        onClick={() => { handleLogout() }}
         classes={{
             root: classes.inputTextColor, // class name, e.g. `classes-nesting-root-x`
             label: classes.label, // class name, e.g. `classes-nesting-label-x`
