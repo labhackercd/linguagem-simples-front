@@ -1,32 +1,9 @@
 import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { useEffect, useState } from "react";
-
 import EstudioAcompanhePageContainer from './containers/EstudioAcompanhePageContainer'
 import LoginScreen from "./containers/LoginScreenContainer"
 import axiosInstance from './auth/axiosApi'
 
-
- function checkIfUserIsAuthenticated(callback){
-    console.log("Checking user authorized")
-
-    try{
-        const response =   axiosInstance.post('/token/verify/', {
-            token: localStorage.getItem('access_token')
-        });
-        console.log(response)
-        if(response.status === 200){
-            return true;
-        }else{
-            return false;
-        }
-    }catch(error){
-        console.log("entrou erro")
-        return false;
-    }
-
-
-};
 
 class PrivateRouteAuth extends Component{
     constructor(props){
@@ -38,24 +15,19 @@ class PrivateRouteAuth extends Component{
         this.checkIfUserIsAuthenticated = this.checkIfUserIsAuthenticated.bind(this);
     }
 
-    async checkIfUserIsAuthenticated(callback){
-        console.log("Checking user authorized")
-    
+    async checkIfUserIsAuthenticated(callback){    
         try{
             const response = await axiosInstance.post('/token/verify/', {
                 token: localStorage.getItem('access_token')
             });
             
             if(response.status === 200){
-                console.log("response status == 200")
                 this.setState({isAuthenticaded:true})
             }else{
-                console.log("response status != 200")
                 this.setState({isAuthenticaded:false});
             }
             callback()
         }catch(error){
-            console.log("entrou erro")
             callback();
         }
     };
@@ -65,10 +37,7 @@ class PrivateRouteAuth extends Component{
         if(this._isMounted){
 
             this.checkIfUserIsAuthenticated( () => {
-                console.log("voltou callback")
                 this.setState({isLoadingPage:false})
-                console.log("IsAuthenticaded: "+this.state.isAuthenticaded)
-                console.log("PageIsLoading: "+this.state.isLoadingPage)
               });
         }
     }
