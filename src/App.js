@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import OpenSansSemiBold from './fonts/OpenSans-SemiBold.ttf'
-import EstudioAcompanhePageContainer from './containers/EstudioAcompanhePageContainer'
-import LoginScreen from "./containers/LoginScreenContainer";
+import OpenSansSemiBold from './fonts/OpenSans-SemiBold.ttf';
+
+import AppRouter from './router'
 
 const openSansSemiBold = {
   fontFamily: 'OpenSans',
@@ -89,14 +89,7 @@ function App() {
     <div className="App">
        <ThemeProvider theme={theme}>
           <Router>
-            <Switch>
-              <Route exact path="/">
-                <LoginScreen theme={theme}></LoginScreen>
-              </Route>
-              <Route exact path="/estudio">
-                <EstudioAcompanhePageContainer></EstudioAcompanhePageContainer>
-              </Route>
-            </Switch>
+            <AppRouter theme={theme}></AppRouter>
           </Router>
       </ThemeProvider>
     </div>
