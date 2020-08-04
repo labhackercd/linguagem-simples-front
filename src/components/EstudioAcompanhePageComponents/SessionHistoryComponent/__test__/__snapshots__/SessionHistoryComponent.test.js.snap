@@ -36,11 +36,12 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
               className="MuiFormControl-root MuiTextField-root"
             >
               <div
-                className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
+                className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
                 onClick={[Function]}
               >
                 <input
-                  aria-invalid={false}
+                  aria-describedby="date-picker-search-helper-text"
+                  aria-invalid={true}
                   autoFocus={false}
                   className="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedEnd"
                   disabled={false}
@@ -51,7 +52,6 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                   onFocus={[Function]}
                   required={false}
                   type="text"
-                  value="30/07/2020"
                 />
                 <div
                   className="MuiInputAdornment-root MuiInputAdornment-positionEnd"
@@ -95,7 +95,12 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                   </button>
                 </div>
               </div>
-              
+              <p
+                className="MuiFormHelperText-root Mui-error"
+                id="date-picker-search-helper-text"
+              >
+                Invalid Date Format
+              </p>
             </div>
           </div>
         </div>

@@ -1,8 +1,13 @@
 import React from 'react';
-import { Grid, TextField, Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import {Redirect } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
+import { Grid, TextField, Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import axiosInstance from './../../auth/axiosApi.js'
+
+
+const useStyles = theme => ({
   body: {
     backgroundColor: "#00AF82",
     height: '100vh',
@@ -68,49 +73,110 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     margin: '5rem 0 -10rem 0'
   }
-}));
+});
 
-export default function LoginScreen () {
-  	const classes = useStyles();
-		return (
-      <Grid container className={classes.body}>
-      <div className={classes.loginArea}>
-        <Grid item xs={12} sm={6} md={6} className={classes.loginBox}>
-            <Grid container item xs={6} sm={6} md={6} style={{display: 'flex', justifyContent: 'space-between'}}>
-              <div className="formItems">
-                <Grid item>
-                  <img src="../../img/estudio_acompanhe_logo.svg" alt="Estudio Acompanhe logo"/>
-                </Grid>
-                <Grid item className={classes.loginForm}>
-                  <TextField className={classes.textField} variant="outlined" placeholder="email" id="username" type="email" fullWidth autoFocus required />
-                  <TextField className={classes.textField} variant="outlined" placeholder="senha" id="password" type="password" fullWidth required />
-                </Grid>
-                <Grid container className={classes.buttonArea}>
-                  <Grid item>
-                    <Button className={classes.loginButton} variant="contained">Acessar</Button>
-                  </Grid>
-                  <Grid item>
-                    <a href="/" className={classes.forgotPassword}>Esqueci a senha </a>
-                  </Grid>
+class LoginScreen extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = { 
+      errorMessage: "", 
+      successMessage: "",
+      username:"",
+      password:"" ,
+      succesfullLogin:false
+    };
+    this.loginMethod = this.loginMethod.bind(this);
+  }
+
+  loginMethod(event){
+    event.preventDefault();
+
+    axiosInstance.post('/token/obtain/', {
+            username: this.state.username,
+            password: this.state.password
+        }).then(
+            result => {
+              console.log(result)
+                axiosInstance.defaults.headers['Authorization'] = "JWT " + result.data.access;
+                localStorage.setItem('access_token', result.data.access);
+                localStorage.setItem('refresh_token', result.data.refresh);
+                this.setState({succesfullLogin:true})
+            }
+    ).catch (error => {
+        throw error;
+    })
+    
+  }
+
+  handleEmailFormChange = (e) =>
+  {
+    this.setState({username: e.target.value});
+    console.log(this.state.username)
+  };
+
+  handlePasswordFormChange = (e) =>
+  {
+    this.setState({password: e.target.value});
+    console.log(this.state.password)
+  };
+
+
+  render(){
+    const { classes } = this.props;
+
+      return (
+        <div>
+          {this.state.succesfullLogin ? 
+            <Redirect to={"/estudio"} /> 
+            : 
+            <Grid container className={classes.body}>
+              <div className={classes.loginArea}>
+                <Grid item xs={12} sm={6} md={6} className={classes.loginBox}>
+                    <Grid container item xs={6} sm={6} md={6} style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <div className="formItems">
+                        <Grid item>
+                          <img src="../../img/estudio_acompanhe_logo.svg" alt="Estudio Acompanhe logo"/>
+                        </Grid>
+                        <Grid item className={classes.loginForm}>
+                          <TextField className={classes.textField} variant="outlined" placeholder="email" id="username" type="email" onChange={(e)=>{this.handleEmailFormChange(e)}} fullWidth autoFocus required />
+                          <TextField className={classes.textField} variant="outlined" placeholder="senha" id="password" type="password" onChange={(e)=>{this.handlePasswordFormChange(e)}} fullWidth required />
+                        </Grid>
+                        <Grid container className={classes.buttonArea}>
+                          <Grid item>
+                            <Button className={classes.loginButton} onClick={this.loginMethod} variant="contained">Acessar</Button>
+                          </Grid>
+                          <Grid item>
+                            <a href="/" className={classes.forgotPassword}>Esqueci a senha </a>
+                          </Grid>
+                        </Grid>
+                      </div>
+                      <div className="camaraLogo">
+                        <Grid item className={classes.camaraLogo}>
+                          <img src="../../img/camara_logo.svg" alt="Câmara dos Deputados Logo"/>
+                        </Grid>
+                      </div>
+                    </Grid>
                 </Grid>
               </div>
-              <div className="camaraLogo">
-                <Grid item className={classes.camaraLogo}>
-                  <img src="../../img/camara_logo.svg" alt="Câmara dos Deputados Logo"/>
-                </Grid>
-              </div>
+              <Grid item xs={12} sm={5} md={5}>
+                <div className={classes.prototipoArea}>
+                  <div style={{margin: '10rem 0 0 0'}}>
+                    <img src="../../img/interacao_prototipo.png" alt="Imagem ilustrativa da interação do protótipo"/>
+                  </div>
+                </div>
+              </Grid>
+              <Grid item xs={12} sm={1} md={1} className={classes.sidebar}></Grid>
             </Grid>
-        </Grid>
+        }
         </div>
-        <Grid item xs={12} sm={5} md={5}>
-          <div className={classes.prototipoArea}>
-            <div style={{margin: '10rem 0 0 0'}}>
-              <img src="../../img/interacao_prototipo.png" alt="Imagem ilustrativa da interação do protótipo"/>
-            </div>
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={1} md={1} className={classes.sidebar}>
-        </Grid>
-      </Grid>
-		)
-	}
+        
+      )
+    }
+
+  }
+  
+  LoginScreen.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+  
+export default withStyles(useStyles)(LoginScreen);

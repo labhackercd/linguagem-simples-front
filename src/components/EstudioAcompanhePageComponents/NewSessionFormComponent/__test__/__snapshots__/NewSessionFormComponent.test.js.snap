@@ -192,11 +192,12 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
               className="MuiFormControl-root MuiTextField-root"
             >
               <div
-                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+                className="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd MuiInputBase-marginDense MuiOutlinedInput-marginDense"
                 onClick={[Function]}
               >
                 <input
-                  aria-invalid={false}
+                  aria-describedby="sessionDate-helper-text"
+                  aria-invalid={true}
                   autoFocus={false}
                   className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
                   disabled={false}
@@ -207,7 +208,6 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                   onFocus={[Function]}
                   required={false}
                   type="text"
-                  value="30/07/2020"
                 />
                 <div
                   className="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-marginDense"
@@ -277,7 +277,12 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                   </legend>
                 </fieldset>
               </div>
-              
+              <p
+                className="MuiFormHelperText-root MuiFormHelperText-contained Mui-error MuiFormHelperText-marginDense"
+                id="sessionDate-helper-text"
+              >
+                Invalid Date Format
+              </p>
             </div>
           </div>
         </div>

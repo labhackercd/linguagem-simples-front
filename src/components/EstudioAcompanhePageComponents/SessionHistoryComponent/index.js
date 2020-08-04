@@ -82,6 +82,7 @@ export default function SessionHistoryComponent(){
                                     <KeyboardDatePicker
                                         disableToolbar
                                         variant="inline"
+                                        value=""
                                         format="dd/MM/yyyy"
                                         id="date-picker-search"
                                         InputLabelProps={{
