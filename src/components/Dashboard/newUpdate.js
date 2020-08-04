@@ -11,11 +11,10 @@ const useStyles = makeStyles((theme) => ({
 	summaryBox: {
 		display: 'flex',
 		flexDirection: 'row',
-		height: '30vh',
 	},
 	summaryHeader: {
   	display: 'flex',
-  	height: '2vh',
+		margin: '1rem 0 1rem 0',
   },
 	notchedOutline: {
 		border: '2px solid #F2F2F2',
@@ -38,15 +37,12 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: theme.palette.cinza1,
 		height: '1vh',
 	},
-	box: {
-		background: theme.palette.cinza1,
-		height: '5vh'
-	},
 	buttonRow: {
 		display: 'flex'
 	},
 	button: {
 		height: '70%',
+		alignSelf: 'flex-end',
 	},
 	divider: {
 		color: theme.palette.cinza2
@@ -110,6 +106,49 @@ export default function NewUpdate(){
 	return (
 		<React.Fragment>
 			<div className={classes.body}>
+
+			{/* Summary box */}
+			<Grid container className={classes.summaryBox}>
+				<Grid container className={classes.summaryHeader}>
+					<Grid item md={6} style={{display:'flex', justifyContent: 'flex-start'}}>
+						<Typography variant="h5"> Resumo </Typography>
+					</Grid>
+					<Grid item md={6} style={{display:'flex', justifyContent: 'flex-end'}}>
+						<a href="/"><img src="../../img/down-arrow.svg" /></a>
+					</Grid>
+				</Grid>
+			</Grid>
+			<Grid item md={12}>
+					<Grid container >
+							<form className={classes.textArea} noValidate autoComplete="off">
+								<TextField
+									id="outlined-multiline-static"
+									multiline
+									rows={4}
+									variant="outlined"
+									className={classes.textField}
+									bgcolor="white"
+									InputProps={{
+										classes: {
+											notchedOutline: classes.notchedOutline
+										},
+									}}
+								/>
+							</form>
+					</Grid>
+					<Box borderTop={1} color="#F2F2F2" borderRadius="0 0 10px 25px" bgcolor="#F2F2F2">
+						<Grid container>
+							<Grid item xs={8} style={{display: 'flex', justifyContent: 'flex-start'}}></Grid>
+							<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
+								<Button className={classes.button} variant="contained" disableElevation>
+									Atualizar
+								</Button>
+							</Grid>
+						</Grid>
+					</Box>
+			</Grid>
+
+			{/* New update box */}
 				<Grid container className={classes.summaryBox}>
 					<Grid container className={classes.summaryHeader}>
 						<Grid item md={6} style={{display:'flex', justifyContent: 'flex-start'}}>
@@ -136,20 +175,20 @@ export default function NewUpdate(){
 						        />
 							    </form>
 							</Grid>
-							<Box borderTop={1} color="#F2F2F2" borderRadius="0 0 10px 25px" bgcolor="#F2F2F2" height="18%">
-							<Grid container style={{display: 'flex', padding: '0rem 0 0 1rem'}}>
-								<Grid item xs={8} className={classes.submenu}>
-	                <Typography className={classes.time} variant="h6"> 18:00 </Typography>
-									<img src="../../img/divider.svg" />
-									<a href="/"><img src="../../img/picture_upload.svg" /></a>
-	              </Grid>
-								<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
-									<Button className={classes.button} variant="contained" color="#C4C4C4" disableElevation>
-										Atualizar
-									</Button>
+							<Box borderTop={1} color="#F2F2F2" borderRadius="0 0 10px 25px" bgcolor="#F2F2F2">
+								<Grid container>
+									<Grid item xs={8} className={classes.submenu}>
+		                <Typography className={classes.time} variant="h6"> 18:00 </Typography>
+										<img src="../../img/divider.svg" />
+										<a href="/"><img src="../../img/picture_upload.svg" /></a>
+		              </Grid>
+									<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
+										<Button className={classes.button} variant="contained" disableElevation>
+											Atualizar
+										</Button>
+									</Grid>
 								</Grid>
-							</Grid>
-						</Box>
+							</Box>
 					</Grid>
 				</Grid>
 				<Grid container className={classes.updatesArea}>

@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
   body: {
     backgroundColor: "#F2F2F2",
     border: 0,
-    height: '100vh',
     width: '100%',
     position: 'relative',
     display: 'flex',

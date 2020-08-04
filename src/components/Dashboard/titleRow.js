@@ -4,11 +4,13 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles((theme) => ({
+  body: {
+    width: '100%',
+    margin: '1rem 0 -2rem 1rem',
+  },
   titleRow: {
   	display: 'flex',
   	justifyContent: 'space-between',
-  	height: '10vh',
-  	margin: '1rem 0 0 1rem',
   },
 	title: {
 		whiteSpace: 'nowrap',
@@ -16,8 +18,14 @@ const useStyles = makeStyles((theme) => ({
 		color: theme.palette.primary.main,
     justifyContent: 'flex-start',
 	},
-  button: {
+  buttonContainer: {
+    display: 'flex',
     justifyContent: 'flex-end',
+    margin: '0.3rem 0 0 0',
+    padding: '0 1rem 0 0',
+  },
+  button: {
+    alignSelf: 'flex-start',
   	height: '30%',
   	color: 'default',
   	backgroundColor: '#00AF82',
@@ -27,20 +35,22 @@ const useStyles = makeStyles((theme) => ({
 export default function TitleRow(){
 	const classes = useStyles();
 	return (
-		<Grid container className={classes.titleRow}>
-			<Grid item md={6} >
-        <Typography variant="h3" className={classes.title}>Linha do Tempo </Typography>
-			</Grid>
-			<Grid item md={6} style={{paddingLeft: '2rem'}}>
-	      <Button
-	        variant="contained"
-	        color="secondary"
-	        disableElevation
-	        className={classes.button}
-	        startIcon={<img src="../../img/init_stream_button_icon.svg" />}>
-	        <h6>Iniciar transmissão</h6>
-	      </Button>
-			</Grid>
-		</Grid>
+    <div className={classes.body}>
+  		<Grid container className={classes.titleRow}>
+  			<Grid item md={6} >
+          <Typography variant="h3" className={classes.title}>Linha do Tempo </Typography>
+  			</Grid>
+  			<Grid item md={6} className={classes.buttonContainer}>
+  	      <Button
+  	        variant="contained"
+  	        color="secondary"
+  	        disableElevation
+  	        className={classes.button}
+  	        startIcon={<img src="../../img/init_stream_button_icon.svg" />}>
+  	        <h6>Iniciar transmissão</h6>
+  	      </Button>
+  			</Grid>
+  		</Grid>
+    </div>
 	)
 }
