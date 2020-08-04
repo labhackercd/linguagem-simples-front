@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -28,49 +28,72 @@ import axiosInstance from './auth/axiosApi'
 
 };
 
-const RequireAuth = ({ children }) => {
-  const [auth, setAuth] = useState('');
-  
-  const checkAuthenticationToken = async () => {
-    try{
-       
-
-        const response = await axiosInstance.post('/token/verify/', {
-            token: localStorage.getItem('access_token')
-        });
-        console.log(response)
-        if(response.status === 200){
-            setAuth (true);
-        }else{
-            setAuth (false);
-        }
-    }catch(error){
-        console.log("entrou erro")
-        setAuth(false);
+class PrivateRouteAuth extends Component{
+    constructor(props){
+        super(props);
+        this.state = { 
+          isAuthenticaded: false,
+          isLoadingPage:"true"
+        };
+        this.checkIfUserIsAuthenticated = this.checkIfUserIsAuthenticated.bind(this);
     }
 
-    console.log(auth)
-  };
-  /*
-  Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
-    in RequireAuth (at router.js:85)
-  */
-
-  useEffect(() => {
-    let isSubscribed = true;
+    async checkIfUserIsAuthenticated(callback){
+        console.log("Checking user authorized")
     
-    if (!auth) {
-        checkAuthenticationToken();
-    }
-    return () => (isSubscribed = false)
-  });
+        try{
+            const response = await axiosInstance.post('/token/verify/', {
+                token: localStorage.getItem('access_token')
+            });
+            
+            if(response.status === 200){
+                console.log("response status == 200")
+                this.setState({isAuthenticaded:true})
+            }else{
+                console.log("response status != 200")
+                this.setState({isAuthenticaded:false});
+            }
+            callback()
+        }catch(error){
+            console.log("entrou erro")
+            callback();
+        }
+    };
 
-  return(
-    <div>
-    {auth ? {children} : <Redirect to={"/"} />}
-    </div>
-  );
-};
+    componentDidMount(){
+        this._isMounted = true;
+        if(this._isMounted){
+
+            this.checkIfUserIsAuthenticated( () => {
+                console.log("voltou callback")
+                this.setState({isLoadingPage:false})
+                console.log("IsAuthenticaded: "+this.state.isAuthenticaded)
+                console.log("PageIsLoading: "+this.state.isLoadingPage)
+              });
+        }
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
+    render(){
+        const children = this.props.children;
+
+        //Wait until all informations be fetch until continue
+        if(this.state.isLoadingPage) {
+            return null;
+        }
+
+        return(
+            <div>
+                {this.state.isAuthenticaded ? children : <Redirect to={"/"} /> }
+            </div>
+          );
+    }
+
+}
+
 
 const AppRouter = (props) => (
     <Switch>
@@ -79,11 +102,11 @@ const AppRouter = (props) => (
         </Route>
 
         {/*Authenticated routes */}
-        {/*<RequireAuth>*/}
+        <PrivateRouteAuth>
             <Route exact path="/estudio">
                 <EstudioAcompanhePageContainer></EstudioAcompanhePageContainer>
             </Route>
-        {/*</RequireAuth>*/}
+        </PrivateRouteAuth>
     </Switch>
 );
 
