@@ -86,6 +86,7 @@ export default function NewSessionFormComponent(){
                                         disableToolbar
                                         variant="inline"
                                         format="dd/MM/yyyy"
+                                        value=""
                                         id="sessionDate"
                                         InputLabelProps={{
                                             shrink: true,

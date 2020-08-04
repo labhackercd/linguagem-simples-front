@@ -93,9 +93,6 @@ class LoginScreen extends React.Component {
   loginMethod(event){
     event.preventDefault();
 
-    console.log(this.state.username);
-    console.log(this.state.password);
-
     axiosInstance.post('/token/obtain/', {
             username: this.state.username,
             password: this.state.password
