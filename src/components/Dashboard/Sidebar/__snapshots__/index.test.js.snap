@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the content section 1`] = `
+<WithStyles(ForwardRef(Grid))
+  className="makeStyles-sidebar-1"
+  container={true}
+>
+  <WithStyles(ForwardRef(Grid))
+    className="makeStyles-user-2"
+    item={true}
+    md={3}
+  >
+    <a
+      href="/"
+    >
+      <img
+        alt="user icon"
+        src="../../img/User.svg"
+      />
+    </a>
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    className="makeStyles-middleSection-3"
+    container={true}
+  >
+    <WithStyles(ForwardRef(Grid))
+      className="makeStyles-middleIcon-4"
+      item={true}
+      md={6}
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt="home icon"
+          src="../../img/Home.svg"
+        />
+      </a>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      className="makeStyles-middleIcon-4"
+      item={true}
+      md={6}
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt="AC icon"
+          src="../../img/AC.svg"
+        />
+      </a>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    className="makeStyles-exit-5"
+    item={true}
+    md={3}
+  >
+    <div
+      className="makeStyles-exitIcon-6"
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt="Exit icon"
+          src="../../img/Exit.svg"
+        />
+      </a>
+    </div>
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Grid))>
+`;

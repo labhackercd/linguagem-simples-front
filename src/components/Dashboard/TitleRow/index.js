@@ -2,7 +2,6 @@ import React from 'react';
 import {Button, Grid, Typography} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-
 const useStyles = makeStyles((theme) => ({
   body: {
     width: '100%',
@@ -46,7 +45,7 @@ export default function TitleRow(){
   	        color="secondary"
   	        disableElevation
   	        className={classes.button}
-  	        startIcon={<img src="../../img/init_stream_button_icon.svg" />}>
+  	        startIcon={<img src="../../img/init_stream_button_icon.svg" alt="button to init stream"/>}>
   	        <h6>Iniciar transmissão</h6>
   	      </Button>
   			</Grid>

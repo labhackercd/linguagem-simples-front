@@ -1,8 +1,6 @@
 import React from 'react';
 import { Grid, Typography, Button } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import SaveIcon from '@material-ui/icons/Save';
-
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -52,7 +50,7 @@ export default function ExternalContentPanel() {
           variant="contained"
           size="large"
           className={classes.button}
-          startIcon={<img src="../../img/flag_icon.svg"/>}
+          startIcon={<img src="../../img/flag_icon.svg" alt="flag icon"/>}
           disableElevation
           >
           <Typography variant="body1">Conteúdos salvos</Typography>
@@ -61,7 +59,7 @@ export default function ExternalContentPanel() {
           variant="contained"
           size="large"
           className={classes.button}
-          startIcon={<img src="../../img/paper_sheet_icon.svg"/>}
+          startIcon={<img src="../../img/paper_sheet_icon.svg" alt="paper sheet icon"/>}
           disableElevation
           >
           <Typography variant="body1">Agência Câmara</Typography>
@@ -71,7 +69,7 @@ export default function ExternalContentPanel() {
           color="default"
           size="large"
           className={classes.button}
-          startIcon={<SaveIcon/>}
+          startIcon={<img src="../../img/tv_icon.svg" alt="tv icon"/>}
           disableElevation
           >
           <Typography variant="body1"> Tv Câmara </Typography>
@@ -81,7 +79,7 @@ export default function ExternalContentPanel() {
           color="default"
           size="large"
           className={classes.button}
-          startIcon={<img src="../../img/radio_icon.svg"/>}
+          startIcon={<img src="../../img/radio_icon.svg" alt="radio icon"/>}
           disableElevation
           >
           <Typography variant="body1">Rádio Câmara</Typography>
@@ -91,7 +89,7 @@ export default function ExternalContentPanel() {
           color="default"
           size="large"
           className={classes.button}
-          startIcon={<img src="../../img/twitter_icon.svg"/>}
+          startIcon={<img src="../../img/twitter_icon.svg" alt="twitter icon"/>}
           disableElevation
           >
           <Typography variant="body1">Twitter</Typography>
@@ -100,7 +98,7 @@ export default function ExternalContentPanel() {
           variant="contained"
           size="large"
           className={classes.button}
-          startIcon={<img src="../../img/glossary_icon.svg"/>}
+          startIcon={<img src="../../img/glossary_icon.svg" alt="glossary icon"/>}
           disableElevation
           >
           <Typography variant="body1">Glossário</Typography>

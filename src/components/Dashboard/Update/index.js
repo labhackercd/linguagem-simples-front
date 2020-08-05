@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {Button, Grid, Typography, Paper, Box, ListItemText, List, ListItem, Divider} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { TextareaAutosize, TextField } from '@material-ui/core';
+import {Button, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
+import {TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
 	body: {
@@ -83,9 +83,9 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-export default function NewUpdate(){
+export default function Update(){
 	const classes = useStyles();
-	const [updates, setUpdates] = useState([
+	const [updates] = useState([
 		{id: 1,
 		 time: '17:17',
 		 title: 'Sessão iniciada',
@@ -120,7 +120,7 @@ export default function NewUpdate(){
 						<Typography variant="h5"> Resumo </Typography>
 					</Grid>
 					<Grid item md={6} style={{display:'flex', justifyContent: 'flex-end'}}>
-						<a href="/"><img src="../../img/down-arrow.svg" /></a>
+						<a href="/"><img src="../../img/down-arrow.svg" alt="up arrow icon"/></a>
 					</Grid>
 				</Grid>
 			</Grid>
@@ -188,10 +188,10 @@ export default function NewUpdate(){
 		                	<Typography className={classes.time} variant="h6"> 18:00 </Typography>
 										</div>
 										<div className={classes.subMenuItem}>
-											<img src="../../img/divider.svg" />
+											<img src="../../img/divider.svg" alt="divider icon"/>
 										</div>
 										<div className={classes.subMenuItem}>
-											<a href="/"><img src="../../img/picture_upload.svg" /></a>
+											<a href="/"><img src="../../img/picture_upload.svg" alt="upload icon"/></a>
 										</div>
 									</Grid>
 									<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
@@ -206,7 +206,7 @@ export default function NewUpdate(){
 				<Grid container className={classes.updatesArea}>
 					<List>
 							{updates.map(update =>
-								<ListItem divider>
+								<ListItem divider key={update.id}>
 									<Grid container className={classes.updateItem}>
 										<Grid item xs={3}>
 											<Typography variant="h6">

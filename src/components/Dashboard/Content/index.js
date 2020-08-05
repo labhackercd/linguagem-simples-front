@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Paper, Box } from '@material-ui/core';
+import { Grid, Typography, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ExternalContentPanel from './externalContentPanel';
 
@@ -68,7 +68,7 @@ export default function Content() {
         <Grid item md={6}>
           <Typography variant="h5"> Transmissão </Typography>
           <Paper elevation={0} className={classes.card}>
-            <img src="../../img/video_placeholder.png" style={{maxHeight: "100%", maxWidth: '100%'}} />
+            <img src="../../img/video_placeholder.png" alt="video placeholder" style={{maxHeight: "100%", maxWidth: '100%'}} />
           </Paper>
         </Grid>
         <Grid item md={6}>

@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the content section 1`] = `
+<WithStyles(ForwardRef(Grid))
+  className="makeStyles-body-1"
+  container={true}
+>
+  <WithStyles(ForwardRef(Grid))
+    className="makeStyles-header-2"
+    container={true}
+  >
+    <WithStyles(ForwardRef(Grid))
+      className="makeStyles-headerTitle-3"
+      item={true}
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="h3"
+      >
+        Conteúdos
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      className="makeStyles-headerMenu-4"
+      item={true}
+    >
+      <WithStyles(ForwardRef(Typography))
+        className="makeStyles-headerMenuItem-5"
+        variant="h5"
+      >
+         Sincronizar 
+      </WithStyles(ForwardRef(Typography))>
+      <WithStyles(ForwardRef(Typography))
+        className="makeStyles-headerMenuItem-5"
+        variant="h5"
+      >
+         Ver Acompanhe 
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    className="makeStyles-firstRow-7"
+    container={true}
+    spacing={2}
+  >
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      md={6}
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="h5"
+      >
+         Transmissão 
+      </WithStyles(ForwardRef(Typography))>
+      <WithStyles(ForwardRef(Paper))
+        className="makeStyles-card-8"
+        elevation={0}
+      >
+        <img
+          src="../../img/video_placeholder.png"
+          style={
+            Object {
+              "maxHeight": "100%",
+              "maxWidth": "100%",
+            }
+          }
+        />
+      </WithStyles(ForwardRef(Paper))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      md={6}
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="h5"
+      >
+         Plenário 
+      </WithStyles(ForwardRef(Typography))>
+      <WithStyles(ForwardRef(Paper))
+        className="makeStyles-card-8"
+        elevation={0}
+      >
+         
+      </WithStyles(ForwardRef(Paper))>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    className="makeStyles-secondRow-9"
+    container={true}
+  >
+    <WithStyles(ForwardRef(Typography))
+      style={
+        Object {
+          "margin": "1rem 0 1rem 1rem",
+        }
+      }
+      variant="h5"
+    >
+       Trechos 
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    className="makeStyles-thirdRow-10"
+    container={true}
+  >
+    <ExternalContentPanel />
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Grid))>
+`;
