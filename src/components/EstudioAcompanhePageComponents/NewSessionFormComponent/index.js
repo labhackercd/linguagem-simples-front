@@ -9,7 +9,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField'
 import MenuItem from '@material-ui/core/MenuItem';
 import SendIcon from '@material-ui/icons/Send';
-
+import * as moment from 'moment'
+    
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
@@ -46,8 +47,8 @@ class NewSessionFormComponent extends React.Component {
         this.state = { 
             sessionPlace: "Plenário", 
             comission: "",
-            sessionDate:new Date(),
-            sessionType:"" ,
+            sessionDate: new Date(),
+            sessionType:"virtual" ,
             acompanheTransmissionChannel:true,
             twitterTransmissionChannel:false
         };
@@ -60,7 +61,7 @@ class NewSessionFormComponent extends React.Component {
 
     handleSessionDateChange = (e) =>
     {
-      this.setState({sessionDate: e.target.value});
+      this.setState({sessionDate: e});
       console.log(this.state.sessionDate)
     };
     
@@ -86,16 +87,22 @@ class NewSessionFormComponent extends React.Component {
     {
         event.preventDefault();
 
-        axiosInstance.post('/token/obtain/', {
-                username: this.state.username,
-                password: this.state.password
+        axiosInstance.post('/sessions/', {
+                location: "plenary",
+                date: (moment(this.state.sessionDate).format('YYYY-MM-DD')),
+                type_session: this.state.sessionType,
+                situation_session:"pre_session",
+                resume: "Resumo"
             }).then(
                 result => {
-                  console.log(result)
-                    axiosInstance.defaults.headers['Authorization'] = "JWT " + result.data.access;
-                    localStorage.setItem('access_token', result.data.access);
-                    localStorage.setItem('refresh_token', result.data.refresh);
-                    this.setState({succesfullLogin:true})
+                    console.log(result)
+                    if(result.status===201){
+                        window.location.reload(false);
+                        alert("Sessão criada com sucesso")
+                    }else{
+                        alert("Erro ao criar sessão")
+                    }
+                  
                 }
         ).catch (error => {
             throw error;
@@ -137,8 +144,6 @@ class NewSessionFormComponent extends React.Component {
                             <div><Typography variant="h6" color="textSecondary"> Comissão </Typography></div>
                             <TextField id="selectComission" value="" variant="outlined" size="small" fullWidth={true} disabled select>
                                 <MenuItem value="">Selecione</MenuItem>
-                                <MenuItem value="Virtual">Virtual</MenuItem>
-                                <MenuItem value="Presencial">Presencial</MenuItem>
                             </TextField>
                         </Box>
 
@@ -168,8 +173,9 @@ class NewSessionFormComponent extends React.Component {
                     <Grid item xs={7}>
                         <Box display="block" justifyContent="flex-start" >
                             <div><Typography variant="h6"> Tipo de Sessão </Typography></div>
-                            <TextField id="sessionType" value="1" variant="outlined" size="small" fullWidth={true} select onChange={(e)=>{this.handleSessionTypeChange(e)}}>
-                                <MenuItem value="1">Sessão Deliberativa Extraordinária</MenuItem>
+                            <TextField id="sessionType" value={this.state.sessionType} variant="outlined" size="small" fullWidth={true} select onChange={(e)=>{this.handleSessionTypeChange(e)}}>
+                                <MenuItem value="virtual">Virtual</MenuItem>
+                                <MenuItem value="presential">Presencial</MenuItem>
                             </TextField>
                         </Box>
                     </Grid>
@@ -211,7 +217,7 @@ class NewSessionFormComponent extends React.Component {
                 color="primary"
                 className={classes.button}
                 startIcon={<SendIcon />}
-                onClick={() => { this.submitCreateSessionForm() }}
+                onClick={(e) => { this.submitCreateSessionForm(e) }}
             >
                 Iniciar Sessão
             </Button>
