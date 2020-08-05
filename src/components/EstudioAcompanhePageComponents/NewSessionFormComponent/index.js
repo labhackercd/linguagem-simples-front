@@ -62,25 +62,21 @@ class NewSessionFormComponent extends React.Component {
     handleSessionDateChange = (e) =>
     {
       this.setState({sessionDate: e});
-      console.log(this.state.sessionDate)
     };
     
     handleSessionTypeChange = (e) =>
     {
       this.setState({sessionType: e.target.value});
-      console.log(this.state.sessionType)
     };
 
     handleAcompanheTransmissionChannelChange = (e) =>
     {
       this.setState({acompanheTransmissionChannel: e.target.checked});
-      console.log(this.state.acompanheTransmissionChannel)
     };
 
     handleTwitterTransmissionChannelChange = (e) =>
     {
       this.setState({twitterTransmissionChannel: e.target.checked});
-      console.log(this.state.twitterTransmissionChannel)
     };
 
     submitCreateSessionForm = (event) =>
@@ -95,7 +91,6 @@ class NewSessionFormComponent extends React.Component {
                 resume: "Resumo"
             }).then(
                 result => {
-                    console.log(result)
                     if(result.status===201){
                         window.location.reload(false);
                         alert("Sessão criada com sucesso")
