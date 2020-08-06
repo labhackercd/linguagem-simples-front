@@ -1,10 +1,7 @@
 import axiosInstance from './../../auth/axiosApi.js'
-import React, { Component } from 'react';
-import {Redirect } from "react-router-dom";
+import React from 'react';
 
 import Button from '@material-ui/core/Button'
-import SvgIcon from '@material-ui/core/SvgIcon';
-import LogoutIcon from './assets/logout_icon.svg'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -17,10 +14,10 @@ const useStyles = makeStyles({
   });
 
 
-  
+
 export default function LogoutButton() {
     const classes = useStyles();
-    
+
     function handleLogout() {
         try {
             localStorage.removeItem('access_token');
@@ -44,5 +41,4 @@ export default function LogoutButton() {
         sair
         </Button>
     );
-  }  
-
+  }
