@@ -104,7 +104,7 @@ export default function Update(){
 	   media: {type: 'img', src: '../../img/timeline_media.png'}},
 		 {id: 4,
  		 time: '17:19',
- 		 title: 'Meu bebe',
+ 		 title: '',
  		 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis, maecenas fusce. Adipiscing bibendum at sed sit facilisis venenatis pellentesque vel.',
  		 media: '',
  		 },
