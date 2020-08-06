@@ -457,9 +457,7 @@ exports[`should render the content section 1`] = `
                 <WithStyles(ForwardRef(Typography))
                   className="makeStyles-title-16"
                   variant="h5"
-                >
-                  Meu bebe
-                </WithStyles(ForwardRef(Typography))>
+                />
                 <WithStyles(ForwardRef(Grid))
                   item={true}
                 >
