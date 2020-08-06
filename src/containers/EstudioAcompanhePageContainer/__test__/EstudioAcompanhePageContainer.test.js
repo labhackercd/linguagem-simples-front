@@ -34,12 +34,6 @@ test('Test if SessionHistoryComponent renders without crash', () => {
     ReactDOM.unmountComponentAtNode(div)
 });
 
-test('Test if SessionHistoryComponent renders local text properly', () => {
-    const { getByText } = render(<EstudioAcompanhePageContainer />);
-    const linkElement = getByText(/Histórico/i);
-    expect(linkElement).toBeInTheDocument();
-});
-
 test('Test if NewSessionFormComponent renders local text properly', () => {
     const { getByText } = render(<EstudioAcompanhePageContainer />);
     const linkElement = getByText(/Local/i);
