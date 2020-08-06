@@ -96,7 +96,6 @@ class LoginScreen extends React.Component {
             password: this.state.password
         }).then(
             result => {
-              console.log(result)
                 axiosInstance.defaults.headers['Authorization'] = "JWT " + result.data.access;
                 localStorage.setItem('access_token', result.data.access);
                 localStorage.setItem('refresh_token', result.data.refresh);
@@ -111,13 +110,11 @@ class LoginScreen extends React.Component {
   handleEmailFormChange = (e) =>
   {
     this.setState({username: e.target.value});
-    console.log(this.state.username)
   };
 
   handlePasswordFormChange = (e) =>
   {
     this.setState({password: e.target.value});
-    console.log(this.state.password)
   };
 
 
