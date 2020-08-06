@@ -28,7 +28,7 @@ export default function LogoutButton() {
             axiosInstance.defaults.headers['Authorization'] = null;
         }
         catch (e) {
-            console.log(e);
+            //console.log(e);
         }
     };
 

@@ -11,11 +11,11 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
       className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
     >
       <div
-        className="MuiBox-root MuiBox-root-316"
+        className="MuiBox-root MuiBox-root-331"
       >
         <a
           aria-disabled={false}
-          className="MuiButtonBase-root MuiButton-root makeStyles-inputTextColor-317 MuiButton-text"
+          className="MuiButtonBase-root MuiButton-root makeStyles-inputTextColor-332 MuiButton-text"
           href="/"
           onBlur={[Function]}
           onClick={[Function]}
@@ -32,7 +32,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
           tabIndex={0}
         >
           <span
-            className="MuiButton-label makeStyles-label-318"
+            className="MuiButton-label makeStyles-label-333"
           >
             sair
           </span>
@@ -43,10 +43,10 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
       className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
     >
       <div
-        className="MuiBox-root MuiBox-root-319 makeStyles-box-3"
+        className="MuiBox-root MuiBox-root-334 makeStyles-box-3"
       >
         <div
-          className="MuiBox-root MuiBox-root-320 makeStyles-logo-4"
+          className="MuiBox-root MuiBox-root-335 makeStyles-logo-4"
         >
           <img
             alt="Logo Estudio Acompanhe"
@@ -58,7 +58,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
           className="MuiPaper-root makeStyles-paper-2 MuiPaper-elevation10 MuiPaper-rounded"
         >
           <div
-            className="MuiBox-root MuiBox-root-321"
+            className="MuiBox-root MuiBox-root-336"
           >
             <div
               className="MuiGrid-root MuiGrid-container"
@@ -67,7 +67,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                 className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
               >
                 <div
-                  className="MuiBox-root MuiBox-root-322"
+                  className="MuiBox-root MuiBox-root-337"
                 >
                   <h3
                     className="MuiTypography-root MuiTypography-h3"
@@ -80,10 +80,10 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                 className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-5"
               >
                 <div
-                  className="MuiBox-root MuiBox-root-323"
+                  className="MuiBox-root MuiBox-root-338"
                 >
                   <div
-                    className="MuiBox-root MuiBox-root-327"
+                    className="MuiBox-root MuiBox-root-345"
                   >
                     <div
                       className="MuiGrid-root MuiGrid-container"
@@ -92,7 +92,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
                       >
                         <div
-                          className="MuiBox-root MuiBox-root-328"
+                          className="MuiBox-root MuiBox-root-346"
                         >
                           <h4
                             className="MuiTypography-root MuiTypography-h4 MuiTypography-colorTextSecondary"
@@ -111,7 +111,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                             className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-5"
                           >
                             <div
-                              className="MuiBox-root MuiBox-root-329"
+                              className="MuiBox-root MuiBox-root-347"
                             >
                               <div>
                                 <h6
@@ -121,10 +121,10 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                 </h6>
                               </div>
                               <div
-                                className="MuiFormControl-root MuiTextField-root makeStyles-inputBorderColor-325"
+                                className="MuiFormControl-root MuiTextField-root NewSessionFormComponent-inputBorderColor-343"
                               >
                                 <div
-                                  className="MuiInputBase-root MuiOutlinedInput-root makeStyles-inputTextColor-326 MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+                                  className="MuiInputBase-root MuiOutlinedInput-root NewSessionFormComponent-inputTextColor-344 MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
                                   onClick={[Function]}
                                 >
                                   <input
@@ -143,7 +143,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                   />
                                   <fieldset
                                     aria-hidden={true}
-                                    className="PrivateNotchedOutline-root-330 MuiOutlinedInput-notchedOutline"
+                                    className="PrivateNotchedOutline-root-348 MuiOutlinedInput-notchedOutline"
                                     style={
                                       Object {
                                         "paddingLeft": 8,
@@ -151,7 +151,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                     }
                                   >
                                     <legend
-                                      className="PrivateNotchedOutline-legend-331"
+                                      className="PrivateNotchedOutline-legend-349"
                                       style={
                                         Object {
                                           "width": 0.01,
@@ -175,7 +175,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                             className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-7"
                           >
                             <div
-                              className="MuiBox-root MuiBox-root-334"
+                              className="MuiBox-root MuiBox-root-352"
                             >
                               <div>
                                 <h6
@@ -204,7 +204,13 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                     role="button"
                                     tabIndex={null}
                                   >
-                                    Selecione
+                                    <span
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "&#8203;",
+                                        }
+                                      }
+                                    />
                                   </div>
                                   <input
                                     aria-hidden={true}
@@ -214,7 +220,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                     onChange={[Function]}
                                     required={false}
                                     tabIndex={-1}
-                                    value="1"
+                                    value=""
                                   />
                                   <svg
                                     aria-hidden={true}
@@ -228,7 +234,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                   </svg>
                                   <fieldset
                                     aria-hidden={true}
-                                    className="PrivateNotchedOutline-root-330 MuiOutlinedInput-notchedOutline"
+                                    className="PrivateNotchedOutline-root-348 MuiOutlinedInput-notchedOutline"
                                     style={
                                       Object {
                                         "paddingLeft": 8,
@@ -236,7 +242,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                     }
                                   >
                                     <legend
-                                      className="PrivateNotchedOutline-legend-331"
+                                      className="PrivateNotchedOutline-legend-349"
                                       style={
                                         Object {
                                           "width": 0.01,
@@ -260,7 +266,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                             className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-5"
                           >
                             <div
-                              className="MuiBox-root MuiBox-root-335"
+                              className="MuiBox-root MuiBox-root-353"
                             >
                               <div>
                                 <h6
@@ -273,12 +279,11 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                 className="MuiFormControl-root MuiTextField-root"
                               >
                                 <div
-                                  className="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+                                  className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd MuiInputBase-marginDense MuiOutlinedInput-marginDense"
                                   onClick={[Function]}
                                 >
                                   <input
-                                    aria-describedby="sessionDate-helper-text"
-                                    aria-invalid={true}
+                                    aria-invalid={false}
                                     autoFocus={false}
                                     className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
                                     disabled={false}
@@ -289,6 +294,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                     onFocus={[Function]}
                                     required={false}
                                     type="text"
+                                    value="05/08/2020"
                                   />
                                   <div
                                     className="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-marginDense"
@@ -333,7 +339,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                   </div>
                                   <fieldset
                                     aria-hidden={true}
-                                    className="PrivateNotchedOutline-root-330 MuiOutlinedInput-notchedOutline"
+                                    className="PrivateNotchedOutline-root-348 MuiOutlinedInput-notchedOutline"
                                     style={
                                       Object {
                                         "paddingLeft": 8,
@@ -341,7 +347,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                     }
                                   >
                                     <legend
-                                      className="PrivateNotchedOutline-legend-331"
+                                      className="PrivateNotchedOutline-legend-349"
                                       style={
                                         Object {
                                           "width": 0.01,
@@ -358,12 +364,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                     </legend>
                                   </fieldset>
                                 </div>
-                                <p
-                                  className="MuiFormHelperText-root MuiFormHelperText-contained Mui-error MuiFormHelperText-marginDense"
-                                  id="sessionDate-helper-text"
-                                >
-                                  Invalid Date Format
-                                </p>
+                                
                               </div>
                             </div>
                           </div>
@@ -371,7 +372,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                             className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-7"
                           >
                             <div
-                              className="MuiBox-root MuiBox-root-336"
+                              className="MuiBox-root MuiBox-root-354"
                             >
                               <div>
                                 <h6
@@ -399,7 +400,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                     role="button"
                                     tabIndex={0}
                                   >
-                                    Selecione
+                                    Virtual
                                   </div>
                                   <input
                                     aria-hidden={true}
@@ -409,7 +410,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                     onChange={[Function]}
                                     required={false}
                                     tabIndex={-1}
-                                    value="1"
+                                    value="virtual"
                                   />
                                   <svg
                                     aria-hidden={true}
@@ -423,7 +424,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                   </svg>
                                   <fieldset
                                     aria-hidden={true}
-                                    className="PrivateNotchedOutline-root-330 MuiOutlinedInput-notchedOutline"
+                                    className="PrivateNotchedOutline-root-348 MuiOutlinedInput-notchedOutline"
                                     style={
                                       Object {
                                         "paddingLeft": 8,
@@ -431,7 +432,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                     }
                                   >
                                     <legend
-                                      className="PrivateNotchedOutline-legend-331"
+                                      className="PrivateNotchedOutline-legend-349"
                                       style={
                                         Object {
                                           "width": 0.01,
@@ -455,7 +456,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                             className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
                           >
                             <div
-                              className="MuiBox-root MuiBox-root-337"
+                              className="MuiBox-root MuiBox-root-355"
                             >
                               <div>
                                 <h6
@@ -469,12 +470,12 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                 className="MuiFormGroup-root MuiFormGroup-row"
                               >
                                 <label
-                                  className="MuiFormControlLabel-root makeStyles-inputBorderColor-325"
+                                  className="MuiFormControlLabel-root NewSessionFormComponent-inputBorderColor-343"
                                   id="acompanheTransmissionChannel"
                                 >
                                   <span
                                     aria-disabled={false}
-                                    className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-338 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-339 Mui-checked MuiIconButton-colorPrimary"
+                                    className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-356 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-357 Mui-checked MuiIconButton-colorPrimary"
                                     onBlur={[Function]}
                                     onDragLeave={[Function]}
                                     onFocus={[Function]}
@@ -493,12 +494,11 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                     >
                                       <input
                                         checked={true}
-                                        className="PrivateSwitchBase-input-341"
+                                        className="PrivateSwitchBase-input-359"
                                         data-indeterminate={false}
-                                        name="checkedB"
+                                        name="checkedAcompanheTransmissionChannel"
                                         onChange={[Function]}
                                         type="checkbox"
-                                        value="true"
                                       />
                                       <svg
                                         aria-hidden={true}
@@ -524,7 +524,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                 >
                                   <span
                                     aria-disabled={false}
-                                    className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-338 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+                                    className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-356 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
                                     onBlur={[Function]}
                                     onDragLeave={[Function]}
                                     onFocus={[Function]}
@@ -542,11 +542,12 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                       className="MuiIconButton-label"
                                     >
                                       <input
-                                        className="PrivateSwitchBase-input-341"
+                                        checked={false}
+                                        className="PrivateSwitchBase-input-359"
                                         data-indeterminate={false}
+                                        name="checkedTwitterTransmissionChannel"
                                         onChange={[Function]}
                                         type="checkbox"
-                                        value="Twitter"
                                       />
                                       <svg
                                         aria-hidden={true}
@@ -573,12 +574,13 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                       </div>
                     </div>
                     <div
-                      className="MuiBox-root MuiBox-root-342"
+                      className="MuiBox-root MuiBox-root-360"
                     >
                       <button
                         className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
                         disabled={false}
                         onBlur={[Function]}
+                        onClick={[Function]}
                         onDragLeave={[Function]}
                         onFocus={[Function]}
                         onKeyDown={[Function]}
@@ -623,10 +625,10 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                 className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4"
               >
                 <div
-                  className="MuiBox-root MuiBox-root-343"
+                  className="MuiBox-root MuiBox-root-361"
                 >
                   <div
-                    className="MuiBox-root MuiBox-root-352"
+                    className="MuiBox-root MuiBox-root-370"
                   >
                     <div
                       className="MuiGrid-root MuiGrid-container"
@@ -641,7 +643,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                             className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
                           >
                             <div
-                              className="MuiBox-root MuiBox-root-353"
+                              className="MuiBox-root MuiBox-root-371"
                             >
                               <h4
                                 className="MuiTypography-root MuiTypography-h4 MuiTypography-colorTextSecondary"
@@ -654,7 +656,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                             className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
                           >
                             <div
-                              className="MuiBox-root MuiBox-root-354"
+                              className="MuiBox-root MuiBox-root-372"
                             >
                               <div
                                 className="MuiFormControl-root MuiTextField-root"
@@ -734,7 +736,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
                       >
                         <div
-                          className="MuiBox-root MuiBox-root-355"
+                          className="MuiBox-root MuiBox-root-373"
                         >
                           <img
                             alt="Uma sessão em andamento"
@@ -742,14 +744,14 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                           />
                         </div>
                         <ul
-                          className="MuiList-root makeStyles-sessionList-345 MuiList-dense"
+                          className="MuiList-root makeStyles-sessionList-363 MuiList-dense"
                         >
                           <li
                             className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
                             disabled={false}
                           >
                             <div
-                              className="MuiPaper-root makeStyles-currentSessionHistoryCard-348 MuiPaper-elevation0 MuiPaper-rounded"
+                              className="MuiPaper-root makeStyles-currentSessionHistoryCard-366 MuiPaper-elevation0 MuiPaper-rounded"
                             >
                               <div
                                 className="MuiGrid-root MuiGrid-container"
@@ -758,10 +760,10 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                   className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
                                 >
                                   <div
-                                    className="MuiPaper-root makeStyles-iconCurrentSessionHistoryCard-349 MuiPaper-elevation0 MuiPaper-rounded"
+                                    className="MuiPaper-root makeStyles-iconCurrentSessionHistoryCard-367 MuiPaper-elevation0 MuiPaper-rounded"
                                   >
                                     <div
-                                      className="MuiBox-root MuiBox-root-356 makeStyles-boxPaper-351"
+                                      className="MuiBox-root MuiBox-root-374 makeStyles-boxPaper-369"
                                     >
                                       <svg
                                         aria-hidden={true}
@@ -777,517 +779,6 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                         <path
                                           d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5 5.5 6.83 5.5 6 4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5 1.5-.68 1.5-1.5-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"
                                         />
-                                      </svg>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div
-                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
-                                >
-                                  <div
-                                    className="MuiBox-root MuiBox-root-357"
-                                  >
-                                    <div
-                                      className="MuiGrid-root MuiGrid-container"
-                                    >
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-                                      >
-                                        <p
-                                          className="MuiTypography-root MuiTypography-body1"
-                                        >
-                                          17/07
-                                        </p>
-                                      </div>
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-                                      >
-                                        <div
-                                          className="MuiBox-root MuiBox-root-358"
-                                        >
-                                          <img
-                                            alt="Status sessão agendada"
-                                            src="session_started.svg"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-                                      >
-                                        <h6
-                                          className="MuiTypography-root MuiTypography-h6"
-                                        >
-                                          Sessão Deliberativa Extraordinária
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                          <li
-                            className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
-                            disabled={false}
-                          >
-                            <div
-                              className="MuiPaper-root makeStyles-sessionHistoryCard-347 MuiPaper-elevation0 MuiPaper-rounded"
-                            >
-                              <div
-                                className="MuiGrid-root MuiGrid-container"
-                              >
-                                <div
-                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
-                                >
-                                  <div
-                                    className="MuiPaper-root makeStyles-iconSessionHistoryCard-350 MuiPaper-elevation0 MuiPaper-rounded"
-                                  >
-                                    <div
-                                      className="MuiBox-root MuiBox-root-359 makeStyles-boxPaper-351"
-                                    >
-                                      <svg
-                                        aria-hidden={true}
-                                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-                                        focusable="false"
-                                        style={
-                                          Object {
-                                            "color": "FAC915",
-                                          }
-                                        }
-                                        viewBox="0 0 24 24"
-                                      >
-                                        <path
-                                          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                                        />
-                                        <path
-                                          d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
-                                        />
-                                      </svg>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div
-                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
-                                >
-                                  <div
-                                    className="MuiBox-root MuiBox-root-360"
-                                  >
-                                    <div
-                                      className="MuiGrid-root MuiGrid-container"
-                                    >
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-                                      >
-                                        <p
-                                          className="MuiTypography-root MuiTypography-body1"
-                                        >
-                                          17/07
-                                        </p>
-                                      </div>
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-                                      >
-                                        <div
-                                          className="MuiBox-root MuiBox-root-361"
-                                        >
-                                          <img
-                                            alt="Status sessão agendada"
-                                            src="schedule_session.svg"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-                                      >
-                                        <h6
-                                          className="MuiTypography-root MuiTypography-h6"
-                                          style={
-                                            Object {
-                                              "color": "grey",
-                                            }
-                                          }
-                                        >
-                                          Sessão Deliberativa Extraordinária
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                          <li
-                            className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
-                            disabled={false}
-                          >
-                            <div
-                              className="MuiPaper-root makeStyles-sessionHistoryCard-347 MuiPaper-elevation0 MuiPaper-rounded"
-                            >
-                              <div
-                                className="MuiGrid-root MuiGrid-container"
-                              >
-                                <div
-                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
-                                >
-                                  <div
-                                    className="MuiPaper-root makeStyles-iconSessionHistoryCard-350 MuiPaper-elevation0 MuiPaper-rounded"
-                                  >
-                                    <div
-                                      className="MuiBox-root MuiBox-root-362 makeStyles-boxPaper-351"
-                                    >
-                                      <svg
-                                        aria-hidden={true}
-                                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-                                        focusable="false"
-                                        style={
-                                          Object {
-                                            "color": "FAC915",
-                                          }
-                                        }
-                                        viewBox="0 0 24 24"
-                                      >
-                                        <path
-                                          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                                        />
-                                        <path
-                                          d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
-                                        />
-                                      </svg>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div
-                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
-                                >
-                                  <div
-                                    className="MuiBox-root MuiBox-root-363"
-                                  >
-                                    <div
-                                      className="MuiGrid-root MuiGrid-container"
-                                    >
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-                                      >
-                                        <p
-                                          className="MuiTypography-root MuiTypography-body1"
-                                        >
-                                          17/07
-                                        </p>
-                                      </div>
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-                                      >
-                                        <div
-                                          className="MuiBox-root MuiBox-root-364"
-                                        >
-                                          <img
-                                            alt="Status sessão agendada"
-                                            src="schedule_session.svg"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-                                      >
-                                        <h6
-                                          className="MuiTypography-root MuiTypography-h6"
-                                          style={
-                                            Object {
-                                              "color": "grey",
-                                            }
-                                          }
-                                        >
-                                          Sessão Deliberativa Extraordinária
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                          <li
-                            className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
-                            disabled={false}
-                          >
-                            <div
-                              className="MuiPaper-root makeStyles-sessionHistoryCard-347 MuiPaper-elevation0 MuiPaper-rounded"
-                            >
-                              <div
-                                className="MuiGrid-root MuiGrid-container"
-                              >
-                                <div
-                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
-                                >
-                                  <div
-                                    className="MuiPaper-root makeStyles-iconSessionHistoryCard-350 MuiPaper-elevation0 MuiPaper-rounded"
-                                  >
-                                    <div
-                                      className="MuiBox-root MuiBox-root-365 makeStyles-boxPaper-351"
-                                    >
-                                      <svg
-                                        aria-hidden={true}
-                                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-                                        focusable="false"
-                                        style={
-                                          Object {
-                                            "color": "FAC915",
-                                          }
-                                        }
-                                        viewBox="0 0 24 24"
-                                      >
-                                        <path
-                                          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                                        />
-                                        <path
-                                          d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
-                                        />
-                                      </svg>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div
-                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
-                                >
-                                  <div
-                                    className="MuiBox-root MuiBox-root-366"
-                                  >
-                                    <div
-                                      className="MuiGrid-root MuiGrid-container"
-                                    >
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-                                      >
-                                        <p
-                                          className="MuiTypography-root MuiTypography-body1"
-                                        >
-                                          17/07
-                                        </p>
-                                      </div>
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-                                      >
-                                        <div
-                                          className="MuiBox-root MuiBox-root-367"
-                                        >
-                                          <img
-                                            alt="Status sessão agendada"
-                                            src="schedule_session.svg"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-                                      >
-                                        <h6
-                                          className="MuiTypography-root MuiTypography-h6"
-                                          style={
-                                            Object {
-                                              "color": "grey",
-                                            }
-                                          }
-                                        >
-                                          Sessão Deliberativa Extraordinária
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                          <li
-                            className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
-                            disabled={false}
-                          >
-                            <div
-                              className="MuiPaper-root makeStyles-sessionHistoryCard-347 MuiPaper-elevation0 MuiPaper-rounded"
-                            >
-                              <div
-                                className="MuiGrid-root MuiGrid-container"
-                              >
-                                <div
-                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
-                                >
-                                  <div
-                                    className="MuiPaper-root makeStyles-iconSessionHistoryCard-350 MuiPaper-elevation0 MuiPaper-rounded"
-                                  >
-                                    <div
-                                      className="MuiBox-root MuiBox-root-368 makeStyles-boxPaper-351"
-                                    >
-                                      <svg
-                                        aria-hidden={true}
-                                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-                                        focusable="false"
-                                        viewBox="0 0 24 24"
-                                      >
-                                        <svg>
-                                          document_icon.svg
-                                        </svg>
-                                      </svg>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div
-                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
-                                >
-                                  <div
-                                    className="MuiBox-root MuiBox-root-369"
-                                  >
-                                    <div
-                                      className="MuiGrid-root MuiGrid-container"
-                                    >
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-                                      >
-                                        <p
-                                          className="MuiTypography-root MuiTypography-body1"
-                                        >
-                                          17/07
-                                        </p>
-                                      </div>
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-                                      >
-                                        <div
-                                          className="MuiBox-root MuiBox-root-370"
-                                        >
-                                          <img
-                                            alt="Status sessão encerrada"
-                                            src="finished_session.svg"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-                                      >
-                                        <h6
-                                          className="MuiTypography-root MuiTypography-h6"
-                                          style={
-                                            Object {
-                                              "color": "grey",
-                                            }
-                                          }
-                                        >
-                                          Sessão Deliberativa Extraordinária
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                          <li
-                            className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
-                            disabled={false}
-                          >
-                            <div
-                              className="MuiPaper-root makeStyles-sessionHistoryCard-347 MuiPaper-elevation0 MuiPaper-rounded"
-                            >
-                              <div
-                                className="MuiGrid-root MuiGrid-container"
-                              >
-                                <div
-                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
-                                >
-                                  <div
-                                    className="MuiPaper-root makeStyles-iconSessionHistoryCard-350 MuiPaper-elevation0 MuiPaper-rounded"
-                                  >
-                                    <div
-                                      className="MuiBox-root MuiBox-root-371 makeStyles-boxPaper-351"
-                                    >
-                                      <svg
-                                        aria-hidden={true}
-                                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-                                        focusable="false"
-                                        viewBox="0 0 24 24"
-                                      >
-                                        <svg>
-                                          document_icon.svg
-                                        </svg>
-                                      </svg>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div
-                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
-                                >
-                                  <div
-                                    className="MuiBox-root MuiBox-root-372"
-                                  >
-                                    <div
-                                      className="MuiGrid-root MuiGrid-container"
-                                    >
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-                                      >
-                                        <p
-                                          className="MuiTypography-root MuiTypography-body1"
-                                        >
-                                          17/07
-                                        </p>
-                                      </div>
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
-                                      >
-                                        <div
-                                          className="MuiBox-root MuiBox-root-373"
-                                        >
-                                          <img
-                                            alt="Status sessão encerrada"
-                                            src="finished_session.svg"
-                                          />
-                                        </div>
-                                      </div>
-                                      <div
-                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-                                      >
-                                        <h6
-                                          className="MuiTypography-root MuiTypography-h6"
-                                          style={
-                                            Object {
-                                              "color": "grey",
-                                            }
-                                          }
-                                        >
-                                          Sessão Deliberativa Extraordinária
-                                        </h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                          <li
-                            className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
-                            disabled={false}
-                          >
-                            <div
-                              className="MuiPaper-root makeStyles-sessionHistoryCard-347 MuiPaper-elevation0 MuiPaper-rounded"
-                            >
-                              <div
-                                className="MuiGrid-root MuiGrid-container"
-                              >
-                                <div
-                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
-                                >
-                                  <div
-                                    className="MuiPaper-root makeStyles-iconSessionHistoryCard-350 MuiPaper-elevation0 MuiPaper-rounded"
-                                  >
-                                    <div
-                                      className="MuiBox-root MuiBox-root-374 makeStyles-boxPaper-351"
-                                    >
-                                      <svg
-                                        aria-hidden={true}
-                                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
-                                        focusable="false"
-                                        viewBox="0 0 24 24"
-                                      >
-                                        <svg>
-                                          document_icon.svg
-                                        </svg>
                                       </svg>
                                     </div>
                                   </div>
@@ -1315,6 +806,517 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                       >
                                         <div
                                           className="MuiBox-root MuiBox-root-376"
+                                        >
+                                          <img
+                                            alt="Status sessão agendada"
+                                            src="session_started.svg"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+                                      >
+                                        <h6
+                                          className="MuiTypography-root MuiTypography-h6"
+                                        >
+                                          Sessão Deliberativa Extraordinária
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li
+                            className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
+                            disabled={false}
+                          >
+                            <div
+                              className="MuiPaper-root makeStyles-sessionHistoryCard-365 MuiPaper-elevation0 MuiPaper-rounded"
+                            >
+                              <div
+                                className="MuiGrid-root MuiGrid-container"
+                              >
+                                <div
+                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+                                >
+                                  <div
+                                    className="MuiPaper-root makeStyles-iconSessionHistoryCard-368 MuiPaper-elevation0 MuiPaper-rounded"
+                                  >
+                                    <div
+                                      className="MuiBox-root MuiBox-root-377 makeStyles-boxPaper-369"
+                                    >
+                                      <svg
+                                        aria-hidden={true}
+                                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                                        focusable="false"
+                                        style={
+                                          Object {
+                                            "color": "FAC915",
+                                          }
+                                        }
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                        />
+                                        <path
+                                          d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+                                        />
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
+                                >
+                                  <div
+                                    className="MuiBox-root MuiBox-root-378"
+                                  >
+                                    <div
+                                      className="MuiGrid-root MuiGrid-container"
+                                    >
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+                                      >
+                                        <p
+                                          className="MuiTypography-root MuiTypography-body1"
+                                        >
+                                          17/07
+                                        </p>
+                                      </div>
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+                                      >
+                                        <div
+                                          className="MuiBox-root MuiBox-root-379"
+                                        >
+                                          <img
+                                            alt="Status sessão agendada"
+                                            src="schedule_session.svg"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+                                      >
+                                        <h6
+                                          className="MuiTypography-root MuiTypography-h6"
+                                          style={
+                                            Object {
+                                              "color": "grey",
+                                            }
+                                          }
+                                        >
+                                          Sessão Deliberativa Extraordinária
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li
+                            className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
+                            disabled={false}
+                          >
+                            <div
+                              className="MuiPaper-root makeStyles-sessionHistoryCard-365 MuiPaper-elevation0 MuiPaper-rounded"
+                            >
+                              <div
+                                className="MuiGrid-root MuiGrid-container"
+                              >
+                                <div
+                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+                                >
+                                  <div
+                                    className="MuiPaper-root makeStyles-iconSessionHistoryCard-368 MuiPaper-elevation0 MuiPaper-rounded"
+                                  >
+                                    <div
+                                      className="MuiBox-root MuiBox-root-380 makeStyles-boxPaper-369"
+                                    >
+                                      <svg
+                                        aria-hidden={true}
+                                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                                        focusable="false"
+                                        style={
+                                          Object {
+                                            "color": "FAC915",
+                                          }
+                                        }
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                        />
+                                        <path
+                                          d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+                                        />
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
+                                >
+                                  <div
+                                    className="MuiBox-root MuiBox-root-381"
+                                  >
+                                    <div
+                                      className="MuiGrid-root MuiGrid-container"
+                                    >
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+                                      >
+                                        <p
+                                          className="MuiTypography-root MuiTypography-body1"
+                                        >
+                                          17/07
+                                        </p>
+                                      </div>
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+                                      >
+                                        <div
+                                          className="MuiBox-root MuiBox-root-382"
+                                        >
+                                          <img
+                                            alt="Status sessão agendada"
+                                            src="schedule_session.svg"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+                                      >
+                                        <h6
+                                          className="MuiTypography-root MuiTypography-h6"
+                                          style={
+                                            Object {
+                                              "color": "grey",
+                                            }
+                                          }
+                                        >
+                                          Sessão Deliberativa Extraordinária
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li
+                            className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
+                            disabled={false}
+                          >
+                            <div
+                              className="MuiPaper-root makeStyles-sessionHistoryCard-365 MuiPaper-elevation0 MuiPaper-rounded"
+                            >
+                              <div
+                                className="MuiGrid-root MuiGrid-container"
+                              >
+                                <div
+                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+                                >
+                                  <div
+                                    className="MuiPaper-root makeStyles-iconSessionHistoryCard-368 MuiPaper-elevation0 MuiPaper-rounded"
+                                  >
+                                    <div
+                                      className="MuiBox-root MuiBox-root-383 makeStyles-boxPaper-369"
+                                    >
+                                      <svg
+                                        aria-hidden={true}
+                                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                                        focusable="false"
+                                        style={
+                                          Object {
+                                            "color": "FAC915",
+                                          }
+                                        }
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                        />
+                                        <path
+                                          d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+                                        />
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
+                                >
+                                  <div
+                                    className="MuiBox-root MuiBox-root-384"
+                                  >
+                                    <div
+                                      className="MuiGrid-root MuiGrid-container"
+                                    >
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+                                      >
+                                        <p
+                                          className="MuiTypography-root MuiTypography-body1"
+                                        >
+                                          17/07
+                                        </p>
+                                      </div>
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+                                      >
+                                        <div
+                                          className="MuiBox-root MuiBox-root-385"
+                                        >
+                                          <img
+                                            alt="Status sessão agendada"
+                                            src="schedule_session.svg"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+                                      >
+                                        <h6
+                                          className="MuiTypography-root MuiTypography-h6"
+                                          style={
+                                            Object {
+                                              "color": "grey",
+                                            }
+                                          }
+                                        >
+                                          Sessão Deliberativa Extraordinária
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li
+                            className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
+                            disabled={false}
+                          >
+                            <div
+                              className="MuiPaper-root makeStyles-sessionHistoryCard-365 MuiPaper-elevation0 MuiPaper-rounded"
+                            >
+                              <div
+                                className="MuiGrid-root MuiGrid-container"
+                              >
+                                <div
+                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+                                >
+                                  <div
+                                    className="MuiPaper-root makeStyles-iconSessionHistoryCard-368 MuiPaper-elevation0 MuiPaper-rounded"
+                                  >
+                                    <div
+                                      className="MuiBox-root MuiBox-root-386 makeStyles-boxPaper-369"
+                                    >
+                                      <svg
+                                        aria-hidden={true}
+                                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <svg>
+                                          document_icon.svg
+                                        </svg>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
+                                >
+                                  <div
+                                    className="MuiBox-root MuiBox-root-387"
+                                  >
+                                    <div
+                                      className="MuiGrid-root MuiGrid-container"
+                                    >
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+                                      >
+                                        <p
+                                          className="MuiTypography-root MuiTypography-body1"
+                                        >
+                                          17/07
+                                        </p>
+                                      </div>
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+                                      >
+                                        <div
+                                          className="MuiBox-root MuiBox-root-388"
+                                        >
+                                          <img
+                                            alt="Status sessão encerrada"
+                                            src="finished_session.svg"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+                                      >
+                                        <h6
+                                          className="MuiTypography-root MuiTypography-h6"
+                                          style={
+                                            Object {
+                                              "color": "grey",
+                                            }
+                                          }
+                                        >
+                                          Sessão Deliberativa Extraordinária
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li
+                            className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
+                            disabled={false}
+                          >
+                            <div
+                              className="MuiPaper-root makeStyles-sessionHistoryCard-365 MuiPaper-elevation0 MuiPaper-rounded"
+                            >
+                              <div
+                                className="MuiGrid-root MuiGrid-container"
+                              >
+                                <div
+                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+                                >
+                                  <div
+                                    className="MuiPaper-root makeStyles-iconSessionHistoryCard-368 MuiPaper-elevation0 MuiPaper-rounded"
+                                  >
+                                    <div
+                                      className="MuiBox-root MuiBox-root-389 makeStyles-boxPaper-369"
+                                    >
+                                      <svg
+                                        aria-hidden={true}
+                                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <svg>
+                                          document_icon.svg
+                                        </svg>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
+                                >
+                                  <div
+                                    className="MuiBox-root MuiBox-root-390"
+                                  >
+                                    <div
+                                      className="MuiGrid-root MuiGrid-container"
+                                    >
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+                                      >
+                                        <p
+                                          className="MuiTypography-root MuiTypography-body1"
+                                        >
+                                          17/07
+                                        </p>
+                                      </div>
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+                                      >
+                                        <div
+                                          className="MuiBox-root MuiBox-root-391"
+                                        >
+                                          <img
+                                            alt="Status sessão encerrada"
+                                            src="finished_session.svg"
+                                          />
+                                        </div>
+                                      </div>
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+                                      >
+                                        <h6
+                                          className="MuiTypography-root MuiTypography-h6"
+                                          style={
+                                            Object {
+                                              "color": "grey",
+                                            }
+                                          }
+                                        >
+                                          Sessão Deliberativa Extraordinária
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li
+                            className="MuiListItem-root MuiListItem-dense MuiListItem-gutters"
+                            disabled={false}
+                          >
+                            <div
+                              className="MuiPaper-root makeStyles-sessionHistoryCard-365 MuiPaper-elevation0 MuiPaper-rounded"
+                            >
+                              <div
+                                className="MuiGrid-root MuiGrid-container"
+                              >
+                                <div
+                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+                                >
+                                  <div
+                                    className="MuiPaper-root makeStyles-iconSessionHistoryCard-368 MuiPaper-elevation0 MuiPaper-rounded"
+                                  >
+                                    <div
+                                      className="MuiBox-root MuiBox-root-392 makeStyles-boxPaper-369"
+                                    >
+                                      <svg
+                                        aria-hidden={true}
+                                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <svg>
+                                          document_icon.svg
+                                        </svg>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
+                                >
+                                  <div
+                                    className="MuiBox-root MuiBox-root-393"
+                                  >
+                                    <div
+                                      className="MuiGrid-root MuiGrid-container"
+                                    >
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+                                      >
+                                        <p
+                                          className="MuiTypography-root MuiTypography-body1"
+                                        >
+                                          17/07
+                                        </p>
+                                      </div>
+                                      <div
+                                        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+                                      >
+                                        <div
+                                          className="MuiBox-root MuiBox-root-394"
                                         >
                                           <img
                                             alt="Status sessão encerrada"
@@ -1346,7 +1348,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                       </div>
                     </div>
                     <div
-                      className="MuiBox-root MuiBox-root-377"
+                      className="MuiBox-root MuiBox-root-395"
                     />
                   </div>
                 </div>

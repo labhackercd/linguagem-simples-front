@@ -2,7 +2,7 @@
 
 exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-61"
+  className="MuiBox-root MuiBox-root-73"
 >
   <div
     className="MuiGrid-root MuiGrid-container"
@@ -11,7 +11,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
       className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
     >
       <div
-        className="MuiBox-root MuiBox-root-62"
+        className="MuiBox-root MuiBox-root-74"
       >
         <h4
           className="MuiTypography-root MuiTypography-h4 MuiTypography-colorTextSecondary"
@@ -30,7 +30,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-5"
         >
           <div
-            className="MuiBox-root MuiBox-root-63"
+            className="MuiBox-root MuiBox-root-75"
           >
             <div>
               <h6
@@ -40,10 +40,10 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
               </h6>
             </div>
             <div
-              className="MuiFormControl-root MuiTextField-root makeStyles-inputBorderColor-59"
+              className="MuiFormControl-root MuiTextField-root NewSessionFormComponent-inputBorderColor-71"
             >
               <div
-                className="MuiInputBase-root MuiOutlinedInput-root makeStyles-inputTextColor-60 MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+                className="MuiInputBase-root MuiOutlinedInput-root NewSessionFormComponent-inputTextColor-72 MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
                 onClick={[Function]}
               >
                 <input
@@ -62,7 +62,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                 />
                 <fieldset
                   aria-hidden={true}
-                  className="PrivateNotchedOutline-root-64 MuiOutlinedInput-notchedOutline"
+                  className="PrivateNotchedOutline-root-76 MuiOutlinedInput-notchedOutline"
                   style={
                     Object {
                       "paddingLeft": 8,
@@ -70,7 +70,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                   }
                 >
                   <legend
-                    className="PrivateNotchedOutline-legend-65"
+                    className="PrivateNotchedOutline-legend-77"
                     style={
                       Object {
                         "width": 0.01,
@@ -94,7 +94,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-7"
         >
           <div
-            className="MuiBox-root MuiBox-root-68"
+            className="MuiBox-root MuiBox-root-80"
           >
             <div>
               <h6
@@ -123,7 +123,13 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                   role="button"
                   tabIndex={null}
                 >
-                  Selecione
+                  <span
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "&#8203;",
+                      }
+                    }
+                  />
                 </div>
                 <input
                   aria-hidden={true}
@@ -133,7 +139,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                   onChange={[Function]}
                   required={false}
                   tabIndex={-1}
-                  value="1"
+                  value=""
                 />
                 <svg
                   aria-hidden={true}
@@ -147,7 +153,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                 </svg>
                 <fieldset
                   aria-hidden={true}
-                  className="PrivateNotchedOutline-root-64 MuiOutlinedInput-notchedOutline"
+                  className="PrivateNotchedOutline-root-76 MuiOutlinedInput-notchedOutline"
                   style={
                     Object {
                       "paddingLeft": 8,
@@ -155,7 +161,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                   }
                 >
                   <legend
-                    className="PrivateNotchedOutline-legend-65"
+                    className="PrivateNotchedOutline-legend-77"
                     style={
                       Object {
                         "width": 0.01,
@@ -179,7 +185,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-5"
         >
           <div
-            className="MuiBox-root MuiBox-root-69"
+            className="MuiBox-root MuiBox-root-81"
           >
             <div>
               <h6
@@ -192,12 +198,11 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
               className="MuiFormControl-root MuiTextField-root"
             >
               <div
-                className="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd MuiInputBase-marginDense MuiOutlinedInput-marginDense"
                 onClick={[Function]}
               >
                 <input
-                  aria-describedby="sessionDate-helper-text"
-                  aria-invalid={true}
+                  aria-invalid={false}
                   autoFocus={false}
                   className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
                   disabled={false}
@@ -208,6 +213,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                   onFocus={[Function]}
                   required={false}
                   type="text"
+                  value="05/08/2020"
                 />
                 <div
                   className="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-marginDense"
@@ -252,7 +258,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                 </div>
                 <fieldset
                   aria-hidden={true}
-                  className="PrivateNotchedOutline-root-64 MuiOutlinedInput-notchedOutline"
+                  className="PrivateNotchedOutline-root-76 MuiOutlinedInput-notchedOutline"
                   style={
                     Object {
                       "paddingLeft": 8,
@@ -260,7 +266,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                   }
                 >
                   <legend
-                    className="PrivateNotchedOutline-legend-65"
+                    className="PrivateNotchedOutline-legend-77"
                     style={
                       Object {
                         "width": 0.01,
@@ -277,12 +283,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                   </legend>
                 </fieldset>
               </div>
-              <p
-                className="MuiFormHelperText-root MuiFormHelperText-contained Mui-error MuiFormHelperText-marginDense"
-                id="sessionDate-helper-text"
-              >
-                Invalid Date Format
-              </p>
+              
             </div>
           </div>
         </div>
@@ -290,7 +291,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-7"
         >
           <div
-            className="MuiBox-root MuiBox-root-70"
+            className="MuiBox-root MuiBox-root-82"
           >
             <div>
               <h6
@@ -318,7 +319,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                   role="button"
                   tabIndex={0}
                 >
-                  Selecione
+                  Virtual
                 </div>
                 <input
                   aria-hidden={true}
@@ -328,7 +329,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                   onChange={[Function]}
                   required={false}
                   tabIndex={-1}
-                  value="1"
+                  value="virtual"
                 />
                 <svg
                   aria-hidden={true}
@@ -342,7 +343,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                 </svg>
                 <fieldset
                   aria-hidden={true}
-                  className="PrivateNotchedOutline-root-64 MuiOutlinedInput-notchedOutline"
+                  className="PrivateNotchedOutline-root-76 MuiOutlinedInput-notchedOutline"
                   style={
                     Object {
                       "paddingLeft": 8,
@@ -350,7 +351,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                   }
                 >
                   <legend
-                    className="PrivateNotchedOutline-legend-65"
+                    className="PrivateNotchedOutline-legend-77"
                     style={
                       Object {
                         "width": 0.01,
@@ -374,7 +375,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
         >
           <div
-            className="MuiBox-root MuiBox-root-71"
+            className="MuiBox-root MuiBox-root-83"
           >
             <div>
               <h6
@@ -388,12 +389,12 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
               className="MuiFormGroup-root MuiFormGroup-row"
             >
               <label
-                className="MuiFormControlLabel-root makeStyles-inputBorderColor-59"
+                className="MuiFormControlLabel-root NewSessionFormComponent-inputBorderColor-71"
                 id="acompanheTransmissionChannel"
               >
                 <span
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-72 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-73 Mui-checked MuiIconButton-colorPrimary"
+                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-84 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-85 Mui-checked MuiIconButton-colorPrimary"
                   onBlur={[Function]}
                   onDragLeave={[Function]}
                   onFocus={[Function]}
@@ -412,12 +413,11 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                   >
                     <input
                       checked={true}
-                      className="PrivateSwitchBase-input-75"
+                      className="PrivateSwitchBase-input-87"
                       data-indeterminate={false}
-                      name="checkedB"
+                      name="checkedAcompanheTransmissionChannel"
                       onChange={[Function]}
                       type="checkbox"
-                      value="true"
                     />
                     <svg
                       aria-hidden={true}
@@ -443,7 +443,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
               >
                 <span
                   aria-disabled={false}
-                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-72 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
+                  className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-84 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary"
                   onBlur={[Function]}
                   onDragLeave={[Function]}
                   onFocus={[Function]}
@@ -461,11 +461,12 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                     className="MuiIconButton-label"
                   >
                     <input
-                      className="PrivateSwitchBase-input-75"
+                      checked={false}
+                      className="PrivateSwitchBase-input-87"
                       data-indeterminate={false}
+                      name="checkedTwitterTransmissionChannel"
                       onChange={[Function]}
                       type="checkbox"
-                      value="Twitter"
                     />
                     <svg
                       aria-hidden={true}
@@ -492,12 +493,13 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
     </div>
   </div>
   <div
-    className="MuiBox-root MuiBox-root-76"
+    className="MuiBox-root MuiBox-root-88"
   >
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
       disabled={false}
       onBlur={[Function]}
+      onClick={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
