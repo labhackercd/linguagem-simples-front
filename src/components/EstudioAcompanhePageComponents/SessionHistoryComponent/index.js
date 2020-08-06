@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@material-ui/core/Box";
 import Grid  from "@material-ui/core/Grid";
 import Typography  from "@material-ui/core/Typography";
@@ -22,6 +22,8 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker,
 } from '@material-ui/pickers';
 import ptBrLocale from "date-fns/locale/pt-BR";
+
+import axiosInstance from '../../../auth/axiosApi.js'
 
 
 const useStyles = makeStyles({
@@ -65,6 +67,31 @@ const useStyles = makeStyles({
 export default function SessionHistoryComponent(){
   const classes = useStyles();
 
+    useEffect(() => {
+        loadSessions();
+    });
+
+    function loadSessions(){
+        axiosInstance.get('/sessions/', {
+        }).then(
+            result => {
+                console.log(result)
+                /*
+                if(result.status===201){
+                    window.location.reload(false);
+                    alert("Sessão criada com sucesso")
+                }else{
+                    alert("Erro ao criar sessão")
+                }
+                */
+              
+            }
+        ).catch (error => {
+            throw error;
+        })
+    }
+
+
     return (
 
         <Box>
@@ -100,7 +127,6 @@ export default function SessionHistoryComponent(){
                     <img src={SessionHappening} alt="Uma sessão em andamento"></img>
                     </Box>
 
-                    
                     <List className={classes.sessionList} disablePadding dense={true}>
                         <ListItem><CurrentSessionHistoryCard></CurrentSessionHistoryCard></ListItem>
                         <ListItem><ScheduleOrFinishedSessionHistoryCard status="agendada"></ScheduleOrFinishedSessionHistoryCard></ListItem>
