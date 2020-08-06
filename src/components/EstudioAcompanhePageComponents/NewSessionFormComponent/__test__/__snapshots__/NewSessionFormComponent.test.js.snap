@@ -213,7 +213,7 @@ exports[`Test if NewSessionFormComponent snapshot matches 1`] = `
                   onFocus={[Function]}
                   required={false}
                   type="text"
-                  value="05/08/2020"
+                  value="06/08/2020"
                 />
                 <div
                   className="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-marginDense"

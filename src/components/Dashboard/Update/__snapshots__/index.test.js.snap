@@ -43,6 +43,7 @@ exports[`should render the content section 1`] = `
             href="/"
           >
             <img
+              alt="up arrow icon"
               src="../../img/down-arrow.svg"
             />
           </a>
@@ -210,6 +211,7 @@ exports[`should render the content section 1`] = `
                 className="makeStyles-subMenuItem-12"
               >
                 <img
+                  alt="divider icon"
                   src="../../img/divider.svg"
                 />
               </div>
@@ -220,6 +222,7 @@ exports[`should render the content section 1`] = `
                   href="/"
                 >
                   <img
+                    alt="upload icon"
                     src="../../img/picture_upload.svg"
                   />
                 </a>

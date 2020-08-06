@@ -56,6 +56,7 @@ exports[`should render the content section 1`] = `
         elevation={0}
       >
         <img
+          alt="video placeholder"
           src="../../img/video_placeholder.png"
           style={
             Object {

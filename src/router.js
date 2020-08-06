@@ -1,26 +1,27 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import EstudioAcompanhePageContainer from './containers/EstudioAcompanhePageContainer'
-import LoginScreen from "./containers/LoginScreenContainer"
-import axiosInstance from './auth/axiosApi'
+import EstudioAcompanhePageContainer from './containers/EstudioAcompanhePageContainer';
+import LoginScreen from "./containers/LoginScreenContainer";
+import Dashboard from "./containers/DashboardContainer";
+import axiosInstance from './auth/axiosApi';
 
 
 class PrivateRouteAuth extends Component{
     constructor(props){
         super(props);
-        this.state = { 
+        this.state = {
           isAuthenticaded: false,
           isLoadingPage:"true"
         };
         this.checkIfUserIsAuthenticated = this.checkIfUserIsAuthenticated.bind(this);
     }
 
-    async checkIfUserIsAuthenticated(callback){    
+    async checkIfUserIsAuthenticated(callback){
         try{
             const response = await axiosInstance.post('/token/verify/', {
                 token: localStorage.getItem('access_token')
             });
-            
+
             if(response.status === 200){
                 this.setState({isAuthenticaded:true})
             }else{
@@ -63,14 +64,15 @@ class PrivateRouteAuth extends Component{
 
 }
 
-
 const AppRouter = (props) => (
     <Router>
     <Switch>
         <Route exact path="/">
             <LoginScreen theme={props.theme}></LoginScreen>
         </Route>
-
+        <Route exact path="/dashboard">
+            <Dashboard></Dashboard>
+        </Route>
         {/*Authenticated routes */}
         <PrivateRouteAuth>
             <Route exact path="/estudio">

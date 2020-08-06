@@ -72,7 +72,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                   <h3
                     className="MuiTypography-root MuiTypography-h3"
                   >
-                    Bem vindo, editor
+                    Bem vindo, editor 
                   </h3>
                 </div>
               </div>
@@ -117,7 +117,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                 <h6
                                   className="MuiTypography-root MuiTypography-h6"
                                 >
-                                   Local
+                                   Local 
                                 </h6>
                               </div>
                               <div
@@ -181,7 +181,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                 <h6
                                   className="MuiTypography-root MuiTypography-h6 MuiTypography-colorTextSecondary"
                                 >
-                                   Comissão
+                                   Comissão 
                                 </h6>
                               </div>
                               <div
@@ -272,7 +272,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                 <h6
                                   className="MuiTypography-root MuiTypography-h6"
                                 >
-                                   Data
+                                   Data 
                                 </h6>
                               </div>
                               <div
@@ -294,7 +294,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                     onFocus={[Function]}
                                     required={false}
                                     type="text"
-                                    value="05/08/2020"
+                                    value="06/08/2020"
                                   />
                                   <div
                                     className="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-marginDense"
@@ -364,7 +364,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                     </legend>
                                   </fieldset>
                                 </div>
-
+                                
                               </div>
                             </div>
                           </div>
@@ -378,7 +378,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                 <h6
                                   className="MuiTypography-root MuiTypography-h6"
                                 >
-                                   Tipo de Sessão
+                                   Tipo de Sessão 
                                 </h6>
                               </div>
                               <div
@@ -462,7 +462,7 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
                                 <h6
                                   className="MuiTypography-root MuiTypography-h6"
                                 >
-                                   Canais de transmissão
+                                   Canais de transmissão 
                                 </h6>
                               </div>
                               <div

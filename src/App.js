@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import OpenSansSemiBold from './fonts/OpenSans-SemiBold.ttf';

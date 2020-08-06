@@ -30,6 +30,7 @@ exports[`should render the Title Row section 1`] = `
         disableElevation={true}
         startIcon={
           <img
+            alt="button to init stream"
             src="../../img/init_stream_button_icon.svg"
           />
         }
