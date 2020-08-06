@@ -1,0 +1,492 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the content section 1`] = `
+<Fragment>
+  <div
+    className="makeStyles-body-1"
+  >
+    <WithStyles(ForwardRef(Grid))
+      className="makeStyles-summaryBox-2"
+      container={true}
+    >
+      <WithStyles(ForwardRef(Grid))
+        className="makeStyles-summaryHeader-3"
+        container={true}
+      >
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          md={6}
+          style={
+            Object {
+              "display": "flex",
+              "justifyContent": "flex-start",
+            }
+          }
+        >
+          <WithStyles(ForwardRef(Typography))
+            variant="h5"
+          >
+             Resumo 
+          </WithStyles(ForwardRef(Typography))>
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          md={6}
+          style={
+            Object {
+              "display": "flex",
+              "justifyContent": "flex-end",
+            }
+          }
+        >
+          <a
+            href="/"
+          >
+            <img
+              alt="up arrow icon"
+              src="../../img/down-arrow.svg"
+            />
+          </a>
+        </WithStyles(ForwardRef(Grid))>
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      md={12}
+    >
+      <WithStyles(ForwardRef(Grid))
+        container={true}
+      >
+        <form
+          autoComplete="off"
+          className="makeStyles-textArea-5"
+          noValidate={true}
+        >
+          <WithStyles(ForwardRef(TextField))
+            InputProps={
+              Object {
+                "classes": Object {
+                  "notchedOutline": "makeStyles-notchedOutline-4",
+                },
+              }
+            }
+            bgcolor="white"
+            className="makeStyles-textField-6"
+            id="outlined-multiline-static"
+            multiline={true}
+            rows={4}
+            variant="outlined"
+          />
+        </form>
+      </WithStyles(ForwardRef(Grid))>
+      <Styled(MuiBox)
+        bgcolor="#F2F2F2"
+        borderRadius="0 0 10px 25px"
+        borderTop={1}
+        color="#F2F2F2"
+      >
+        <WithStyles(ForwardRef(Grid))
+          container={true}
+        >
+          <WithStyles(ForwardRef(Grid))
+            item={true}
+            style={
+              Object {
+                "display": "flex",
+                "justifyContent": "flex-start",
+              }
+            }
+            xs={8}
+          />
+          <WithStyles(ForwardRef(Grid))
+            item={true}
+            style={
+              Object {
+                "display": "flex",
+                "justifyContent": "flex-end",
+              }
+            }
+            xs={4}
+          >
+            <WithStyles(ForwardRef(Button))
+              className="makeStyles-button-9"
+              disableElevation={true}
+              variant="contained"
+            >
+              Atualizar
+            </WithStyles(ForwardRef(Button))>
+          </WithStyles(ForwardRef(Grid))>
+        </WithStyles(ForwardRef(Grid))>
+      </Styled(MuiBox)>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      className="makeStyles-summaryBox-2"
+      container={true}
+    >
+      <WithStyles(ForwardRef(Grid))
+        className="makeStyles-summaryHeader-3"
+        container={true}
+      >
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          md={6}
+          style={
+            Object {
+              "display": "flex",
+              "justifyContent": "flex-start",
+            }
+          }
+        >
+          <WithStyles(ForwardRef(Typography))
+            variant="h5"
+          >
+             Nova atualização 
+          </WithStyles(ForwardRef(Typography))>
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          md={6}
+          style={
+            Object {
+              "display": "flex",
+              "justifyContent": "flex-end",
+            }
+          }
+        />
+      </WithStyles(ForwardRef(Grid))>
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+        md={12}
+      >
+        <WithStyles(ForwardRef(Grid))
+          container={true}
+        >
+          <form
+            autoComplete="off"
+            className="makeStyles-textArea-5"
+            noValidate={true}
+          >
+            <WithStyles(ForwardRef(TextField))
+              InputProps={
+                Object {
+                  "classes": Object {
+                    "notchedOutline": "makeStyles-notchedOutline-4",
+                  },
+                }
+              }
+              bgcolor="white"
+              className="makeStyles-textField-6"
+              id="outlined-multiline-static"
+              multiline={true}
+              rows={4}
+              variant="outlined"
+            />
+          </form>
+        </WithStyles(ForwardRef(Grid))>
+        <Styled(MuiBox)
+          bgcolor="#F2F2F2"
+          borderRadius="0 0 10px 25px"
+          borderTop={1}
+          color="#F2F2F2"
+        >
+          <WithStyles(ForwardRef(Grid))
+            container={true}
+          >
+            <WithStyles(ForwardRef(Grid))
+              className="makeStyles-submenu-11"
+              item={true}
+              xs={8}
+            >
+              <div
+                className="makeStyles-subMenuItem-12"
+              >
+                <WithStyles(ForwardRef(Typography))
+                  className="makeStyles-time-18"
+                  variant="h6"
+                >
+                   18:00 
+                </WithStyles(ForwardRef(Typography))>
+              </div>
+              <div
+                className="makeStyles-subMenuItem-12"
+              >
+                <img
+                  alt="divider icon"
+                  src="../../img/divider.svg"
+                />
+              </div>
+              <div
+                className="makeStyles-subMenuItem-12"
+              >
+                <a
+                  href="/"
+                >
+                  <img
+                    alt="upload icon"
+                    src="../../img/picture_upload.svg"
+                  />
+                </a>
+              </div>
+            </WithStyles(ForwardRef(Grid))>
+            <WithStyles(ForwardRef(Grid))
+              item={true}
+              style={
+                Object {
+                  "display": "flex",
+                  "justifyContent": "flex-end",
+                }
+              }
+              xs={4}
+            >
+              <WithStyles(ForwardRef(Button))
+                className="makeStyles-button-9"
+                disableElevation={true}
+                variant="contained"
+              >
+                Atualizar
+              </WithStyles(ForwardRef(Button))>
+            </WithStyles(ForwardRef(Grid))>
+          </WithStyles(ForwardRef(Grid))>
+        </Styled(MuiBox)>
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      className="makeStyles-updatesArea-13"
+      container={true}
+    >
+      <WithStyles(ForwardRef(List))>
+        <WithStyles(ForwardRef(ListItem))
+          divider={true}
+          key="1"
+        >
+          <WithStyles(ForwardRef(Grid))
+            className="makeStyles-updateItem-14"
+            container={true}
+          >
+            <WithStyles(ForwardRef(Grid))
+              item={true}
+              xs={3}
+            >
+              <WithStyles(ForwardRef(Typography))
+                variant="h6"
+              >
+                17:17
+              </WithStyles(ForwardRef(Typography))>
+            </WithStyles(ForwardRef(Grid))>
+            <WithStyles(ForwardRef(Grid))
+              item={true}
+              xs={9}
+            >
+              <WithStyles(ForwardRef(Grid))
+                className="makeStyles-itemHeader-17"
+                container={true}
+              >
+                <WithStyles(ForwardRef(Typography))
+                  className="makeStyles-title-16"
+                  variant="h5"
+                >
+                  Sessão iniciada
+                </WithStyles(ForwardRef(Typography))>
+                <WithStyles(ForwardRef(Grid))
+                  item={true}
+                >
+                  <img
+                    alt="more options icon"
+                    src="../../img/more_options_icon.svg"
+                  />
+                </WithStyles(ForwardRef(Grid))>
+              </WithStyles(ForwardRef(Grid))>
+              <WithStyles(ForwardRef(Grid))
+                className="makeStyles-updateItem-14"
+                container={true}
+              >
+                <WithStyles(ForwardRef(Typography))
+                  style={
+                    Object {
+                      "color": "#666",
+                    }
+                  }
+                  variant="body1"
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                </WithStyles(ForwardRef(Typography))>
+              </WithStyles(ForwardRef(Grid))>
+            </WithStyles(ForwardRef(Grid))>
+          </WithStyles(ForwardRef(Grid))>
+        </WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItem))
+          divider={true}
+          key="2"
+        >
+          <WithStyles(ForwardRef(Grid))
+            className="makeStyles-updateItem-14"
+            container={true}
+          >
+            <WithStyles(ForwardRef(Grid))
+              item={true}
+              xs={3}
+            >
+              <WithStyles(ForwardRef(Typography))
+                variant="h6"
+              >
+                17:15
+              </WithStyles(ForwardRef(Typography))>
+            </WithStyles(ForwardRef(Grid))>
+            <WithStyles(ForwardRef(Grid))
+              item={true}
+              xs={9}
+            >
+              <WithStyles(ForwardRef(Grid))
+                className="makeStyles-itemHeader-17"
+                container={true}
+              >
+                <WithStyles(ForwardRef(Typography))
+                  className="makeStyles-title-16"
+                  variant="h5"
+                />
+                <WithStyles(ForwardRef(Grid))
+                  item={true}
+                >
+                  <img
+                    alt="more options icon"
+                    src="../../img/more_options_icon.svg"
+                  />
+                </WithStyles(ForwardRef(Grid))>
+              </WithStyles(ForwardRef(Grid))>
+              <WithStyles(ForwardRef(Grid))
+                className="makeStyles-updateItem-14"
+                container={true}
+              >
+                <WithStyles(ForwardRef(Typography))
+                  style={
+                    Object {
+                      "color": "#666",
+                    }
+                  }
+                  variant="body1"
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis, maecenas fusce. Adipiscing bibendum at sed sit facilisis venenatis pellentesque vel.
+                </WithStyles(ForwardRef(Typography))>
+              </WithStyles(ForwardRef(Grid))>
+            </WithStyles(ForwardRef(Grid))>
+          </WithStyles(ForwardRef(Grid))>
+        </WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItem))
+          divider={true}
+          key="3"
+        >
+          <WithStyles(ForwardRef(Grid))
+            className="makeStyles-updateItem-14"
+            container={true}
+          >
+            <WithStyles(ForwardRef(Grid))
+              item={true}
+              xs={3}
+            >
+              <WithStyles(ForwardRef(Typography))
+                variant="h6"
+              >
+                17:13
+              </WithStyles(ForwardRef(Typography))>
+            </WithStyles(ForwardRef(Grid))>
+            <WithStyles(ForwardRef(Grid))
+              item={true}
+              xs={9}
+            >
+              <WithStyles(ForwardRef(Grid))
+                className="makeStyles-itemHeader-17"
+                container={true}
+              >
+                <WithStyles(ForwardRef(Typography))
+                  className="makeStyles-title-16"
+                  variant="h5"
+                />
+                <WithStyles(ForwardRef(Grid))
+                  item={true}
+                >
+                  <img
+                    alt="more options icon"
+                    src="../../img/more_options_icon.svg"
+                  />
+                </WithStyles(ForwardRef(Grid))>
+              </WithStyles(ForwardRef(Grid))>
+              <WithStyles(ForwardRef(Grid))
+                className="makeStyles-updateItem-14"
+                container={true}
+              >
+                <WithStyles(ForwardRef(Typography))
+                  style={
+                    Object {
+                      "color": "#666",
+                    }
+                  }
+                  variant="body1"
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis
+                </WithStyles(ForwardRef(Typography))>
+              </WithStyles(ForwardRef(Grid))>
+            </WithStyles(ForwardRef(Grid))>
+          </WithStyles(ForwardRef(Grid))>
+        </WithStyles(ForwardRef(ListItem))>
+        <WithStyles(ForwardRef(ListItem))
+          divider={true}
+          key="4"
+        >
+          <WithStyles(ForwardRef(Grid))
+            className="makeStyles-updateItem-14"
+            container={true}
+          >
+            <WithStyles(ForwardRef(Grid))
+              item={true}
+              xs={3}
+            >
+              <WithStyles(ForwardRef(Typography))
+                variant="h6"
+              >
+                17:19
+              </WithStyles(ForwardRef(Typography))>
+            </WithStyles(ForwardRef(Grid))>
+            <WithStyles(ForwardRef(Grid))
+              item={true}
+              xs={9}
+            >
+              <WithStyles(ForwardRef(Grid))
+                className="makeStyles-itemHeader-17"
+                container={true}
+              >
+                <WithStyles(ForwardRef(Typography))
+                  className="makeStyles-title-16"
+                  variant="h5"
+                />
+                <WithStyles(ForwardRef(Grid))
+                  item={true}
+                >
+                  <img
+                    alt="more options icon"
+                    src="../../img/more_options_icon.svg"
+                  />
+                </WithStyles(ForwardRef(Grid))>
+              </WithStyles(ForwardRef(Grid))>
+              <WithStyles(ForwardRef(Grid))
+                className="makeStyles-updateItem-14"
+                container={true}
+              >
+                <WithStyles(ForwardRef(Typography))
+                  style={
+                    Object {
+                      "color": "#666",
+                    }
+                  }
+                  variant="body1"
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis, maecenas fusce. Adipiscing bibendum at sed sit facilisis venenatis pellentesque vel.
+                </WithStyles(ForwardRef(Typography))>
+              </WithStyles(ForwardRef(Grid))>
+            </WithStyles(ForwardRef(Grid))>
+          </WithStyles(ForwardRef(Grid))>
+        </WithStyles(ForwardRef(ListItem))>
+      </WithStyles(ForwardRef(List))>
+    </WithStyles(ForwardRef(Grid))>
+  </div>
+</Fragment>
+`;
