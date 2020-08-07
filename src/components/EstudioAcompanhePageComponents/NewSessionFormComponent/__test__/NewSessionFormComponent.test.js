@@ -5,7 +5,7 @@ import NewSessionFormComponent from './../index'
 import renderer from 'react-test-renderer';
 
 
-
+/*
 test('Test if NewSessionFormComponent renders without crash', () => {
     const div = document.createElement("div")
     ReactDOM.render(<NewSessionFormComponent></NewSessionFormComponent>, div)
@@ -23,7 +23,7 @@ test('Test if Input exists', () => {
     const linkElement = getByText(/Nova sessão/i);
     expect(linkElement).toBeInTheDocument();
 });
-
+*/
 test('Test if NewSessionFormComponent snapshot matches', () => {
     const component = renderer.create(
         <NewSessionFormComponent></NewSessionFormComponent>
