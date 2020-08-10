@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Update(){
 	const classes = useStyles();
-	const [updates] = useState([
+	const [updates, setUpdates] = useState([
 		{id: 1,
 		 time: '17:17',
 		 title: 'Sessão iniciada',
@@ -97,22 +97,36 @@ export default function Update(){
 		 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis, maecenas fusce. Adipiscing bibendum at sed sit facilisis venenatis pellentesque vel.',
 		 media: '',
 		 },
-		{id: 3,
-		 time: '17:13',
-		 title: '',
-		 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis',
-	   media: {type: 'img', src: '../../img/timeline_media.png'}},
-		 {id: 4,
- 		 time: '17:19',
- 		 title: '',
- 		 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis, maecenas fusce. Adipiscing bibendum at sed sit facilisis venenatis pellentesque vel.',
- 		 media: '',
- 		 },
+		// {id: 3,
+		//  time: '17:13',
+		//  title: '',
+		//  body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis',
+	  //  media: {type: 'img', src: '../../img/timeline_media.png'}},
+		//  {id: 4,
+ 		//  time: '17:19',
+ 		//  title: '',
+ 		//  body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis, maecenas fusce. Adipiscing bibendum at sed sit facilisis venenatis pellentesque vel.',
+ 		//  media: '',
+ 		//  },
 	]);
+	const [updateTextArea, setUpdateTextArea] = useState("")
+	function handleClick() {
+		let today = new Date()
+		let time = today.getHours() + ':' + ('0'+ today.getMinutes()).slice(-2) // reference: https://stackoverflow.com/questions/8935414/getminutes-0-9-how-to-display-two-digit-numbers
+		let currUpdate = { id: 99, title: '', time: time, body: updateTextArea, media: '' }
+		let prevUpdates = [...updates]
+		prevUpdates.push(currUpdate)
+		prevUpdates.sort((a, b) => (a.id < b.id) ? 1 : -1) // sorts in descending order based on update.id 
+		setUpdates(prevUpdates)
+	}
+
+	function handleChange(e) {
+		setUpdateTextArea(e.target.value)
+	}
+
 	return (
 		<React.Fragment>
 			<div className={classes.body}>
-
 			{/* Summary box */}
 			<Grid container className={classes.summaryBox}>
 				<Grid container className={classes.summaryHeader}>
@@ -153,7 +167,6 @@ export default function Update(){
 						</Grid>
 					</Box>
 			</Grid>
-
 			{/* New update box */}
 				<Grid container className={classes.summaryBox}>
 					<Grid container className={classes.summaryHeader}>
@@ -173,6 +186,8 @@ export default function Update(){
 						          variant="outlined"
 											className={classes.textField}
 											bgcolor="white"
+											name = "updateText"
+											onChange = {handleChange}
 											InputProps={{
 												classes: {
 													notchedOutline: classes.notchedOutline
@@ -195,7 +210,7 @@ export default function Update(){
 										</div>
 									</Grid>
 									<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
-										<Button className={classes.button} variant="contained" disableElevation>
+										<Button className={classes.button} onClick={handleClick} variant="contained" disableElevation>
 											Atualizar
 										</Button>
 									</Grid>
