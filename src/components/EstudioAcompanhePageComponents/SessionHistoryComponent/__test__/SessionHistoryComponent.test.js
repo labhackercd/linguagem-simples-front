@@ -12,13 +12,6 @@ test('Test if SessionHistoryComponent renders without crash', () => {
     ReactDOM.unmountComponentAtNode(div)
 });
 
-test('Test if SessionHistoryComponent renders local text properly', () => {
-    const { getByText } = render(<SessionHistoryComponent />);
-    const linkElement = getByText(/Histórico/i);
-    expect(linkElement).toBeInTheDocument();
-});
-
-
 test('Test if SessionHistoryComponent snapshot matches', () => {
     const component = renderer.create(
         <SessionHistoryComponent></SessionHistoryComponent>
