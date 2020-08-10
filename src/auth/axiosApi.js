@@ -47,7 +47,7 @@ axiosInstance.interceptors.response.use(
             
                             axiosInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
                             originalRequest.headers['Authorization'] = "JWT " + response.data.access;
-            
+                            window.location.reload(false);
                             return axiosInstance(originalRequest);
                         })
                         .catch(err => {
@@ -55,11 +55,11 @@ axiosInstance.interceptors.response.use(
                         });
                     }else{
                         console.log("Refresh token is expired", tokenParts.exp, now);
-                        window.location.href = '/login/';
+                        window.location.href = '/';
                     }
                 }else{
                     console.log("Refresh token not available.")
-                    window.location.href = '/login/';
+                    window.location.href = '/';
                 }
         }
       
