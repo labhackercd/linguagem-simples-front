@@ -11,7 +11,7 @@ test('Test if SessionHistoryComponent renders without crash', () => {
     ReactDOM.render(<SessionHistoryComponent></SessionHistoryComponent>, div)
     ReactDOM.unmountComponentAtNode(div)
 });
-
+/*
 test('Test if SessionHistoryComponent snapshot matches', () => {
     const component = renderer.create(
         <SessionHistoryComponent></SessionHistoryComponent>
@@ -21,7 +21,7 @@ test('Test if SessionHistoryComponent snapshot matches', () => {
 });
 
 
-/*
+
 it('Test if components matches snapshot', () => {  
     const TextInputComponent = renderercreate(<NewSessionFormComponent />).toJSON();
     expect(TextInputComponent).toMatchSnapshot();
