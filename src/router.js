@@ -70,10 +70,10 @@ const AppRouter = (props) => (
         <Route exact path="/">
             <LoginScreen theme={props.theme}></LoginScreen>
         </Route>
+        {/*Authenticated routes */}
         <Route exact path="/dashboard">
             <Dashboard></Dashboard>
         </Route>
-        {/*Authenticated routes */}
         <PrivateRouteAuth>
             <Route exact path="/estudio">
                 <EstudioAcompanhePageContainer></EstudioAcompanhePageContainer>
