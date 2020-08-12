@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Button, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import {TextField } from '@material-ui/core';
 import axiosInstance from '../../../auth/axiosApi.js';
-import * as moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
 	body: {
@@ -89,8 +88,8 @@ export default function Update(){
 	const classes = useStyles();
 	const [updates, setUpdates] = useState([]);
 	const [updateTextArea, setUpdateTextArea] = useState("");
-	const [tweetURL, setTweetURL] = useState('');
-	const [image, setImage] = useState(''); // will probably suffer modifications
+	const [tweetURL] = useState('');
+	const [image] = useState(''); // will probably suffer modifications
 
 	function handleClick() {
 		axiosInstance.post('/publications/', {
