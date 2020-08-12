@@ -46,6 +46,7 @@ describe('Test FetchData function requisitions', () => {
         let request = moxios.requests.mostRecent()
         request.respondWith({
           status: 400,
+          response: null
         })
       })
 
@@ -59,3 +60,4 @@ describe('Test FetchData function requisitions', () => {
   });
 
 });
+

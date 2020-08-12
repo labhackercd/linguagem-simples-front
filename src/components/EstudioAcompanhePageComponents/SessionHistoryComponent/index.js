@@ -24,7 +24,7 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker,
 import ptBrLocale from "date-fns/locale/pt-BR";
 
 import fetchData from './fetchData'
-
+import FormatStringData from './utils'
 
 
 const useStyles = makeStyles({
@@ -64,14 +64,7 @@ const useStyles = makeStyles({
   }
 });
 
-function FormatStringData(data) {
-    var day  = data.split("-")[2];
-    var month  = data.split("-")[1];
-    //var year  = data.split("-")[0];
-  
-    return ("0"+day).slice(-2) +  '/' + ("0"+month).slice(-2) ;
-    // Utilizo o .slice(-2) para garantir o formato com 2 digitos.
-  }
+
 
 function ScheduleOrFinishedSessionHistoryCard(props){
     const classes = useStyles();
