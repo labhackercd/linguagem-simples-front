@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Button, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import {TextField } from '@material-ui/core';
+import axiosInstance from '../../../auth/axiosApi.js';
 
 const useStyles = makeStyles((theme) => ({
 	body: {
@@ -85,34 +86,47 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Update(){
 	const classes = useStyles();
-	const [updates] = useState([
-		{id: 1,
-		 time: '17:17',
-		 title: 'Sessão iniciada',
-		 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ',
-	 	 media: ''},
-		{id: 2,
-		 time: '17:15',
-		 title: '',
-		 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis, maecenas fusce. Adipiscing bibendum at sed sit facilisis venenatis pellentesque vel.',
-		 media: '',
-		 },
-		{id: 3,
-		 time: '17:13',
-		 title: '',
-		 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis',
-	   media: {type: 'img', src: '../../img/timeline_media.png'}},
-		 {id: 4,
- 		 time: '17:19',
- 		 title: '',
- 		 body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum facilisis non semper faucibus justo cursus sagittis, maecenas fusce. Adipiscing bibendum at sed sit facilisis venenatis pellentesque vel.',
- 		 media: '',
- 		 },
-	]);
+	const [updates, setUpdates] = useState([]);
+	const [updateTextArea, setUpdateTextArea] = useState("");
+	const [tweetURL] = useState('');
+	const [image] = useState(''); // will probably suffer modifications
+
+	function handleClick() {
+		axiosInstance.post('/publications/', {
+						state: 'published',
+						content: updateTextArea,
+						session: 1,
+						tweet_url:  tweetURL,
+						image: image,
+				}).then(
+						result => {
+								if(result.status===201){
+										let date = new Date(result.data.created)
+										let formatDate = date.getHours() + ':' + ('0'+ date.getMinutes()).slice(-2) // reference: https://stackoverflow.com/questions/8935414/getminutes-0-9-how-to-display-two-digit-numbers
+										let responseData = result.data;
+										let newUpdate = {
+											id: responseData.id,
+											content: responseData.content,
+											time: formatDate,
+										}
+										setUpdates(prevUpdates => [...prevUpdates, newUpdate])
+								}else{
+										alert("Erro ao criar o post")
+								}
+
+						}
+		).catch (error => {
+				throw error;
+		})
+	}
+
+	function handleChange(e) {
+		setUpdateTextArea(e.target.value)
+	}
+
 	return (
 		<React.Fragment>
 			<div className={classes.body}>
-
 			{/* Summary box */}
 			<Grid container className={classes.summaryBox}>
 				<Grid container className={classes.summaryHeader}>
@@ -153,7 +167,6 @@ export default function Update(){
 						</Grid>
 					</Box>
 			</Grid>
-
 			{/* New update box */}
 				<Grid container className={classes.summaryBox}>
 					<Grid container className={classes.summaryHeader}>
@@ -173,6 +186,8 @@ export default function Update(){
 						          variant="outlined"
 											className={classes.textField}
 											bgcolor="white"
+											name = "updateText"
+											onChange = {handleChange}
 											InputProps={{
 												classes: {
 													notchedOutline: classes.notchedOutline
@@ -195,7 +210,7 @@ export default function Update(){
 										</div>
 									</Grid>
 									<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
-										<Button className={classes.button} variant="contained" disableElevation>
+										<Button className={classes.button} onClick={handleClick} variant="contained" disableElevation>
 											Atualizar
 										</Button>
 									</Grid>
@@ -205,7 +220,7 @@ export default function Update(){
 				</Grid>
 				<Grid container className={classes.updatesArea}>
 					<List>
-							{updates.map(update =>
+							{updates.slice(0).reverse().map(update =>  //creates a shallow copy of the array and reverses it
 								<ListItem divider key={update.id}>
 									<Grid container className={classes.updateItem}>
 										<Grid item xs={3}>
@@ -223,7 +238,7 @@ export default function Update(){
 												</Grid>
 											</Grid>
 											<Grid container className={classes.updateItem}>
-												<Typography style={{color: '#666'}} variant="body1">{update.body}</Typography>
+												<Typography style={{color: '#666'}} variant="body1">{update.content}</Typography>
 											</Grid>
 										</Grid>
 									</Grid>
