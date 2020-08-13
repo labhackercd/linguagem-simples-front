@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Dashboard/Sidebar';
 import Timeline from '../../components/Dashboard/Timeline';
 import Content from '../../components/Dashboard/Content';
+import { useParams } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -25,8 +26,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   	const classes = useStyles();
+    let { sessionID } = useParams();
 		return (
 			<Grid container className={classes.body}>
 				<Grid item md={1} className={classes.sidebar}>
