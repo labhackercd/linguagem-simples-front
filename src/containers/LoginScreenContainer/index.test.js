@@ -60,7 +60,7 @@ describe('Test Login function requisitions', () => {
 
   it("Test if login function get called ", async () => {
      
-     try{
+     try{/*
       moxios.wait(function () {
         let request = moxios.requests.mostRecent()
         request.respondWith({
@@ -69,7 +69,7 @@ describe('Test Login function requisitions', () => {
         })
       })
       jest.spyOn(window.localStorage.__proto__, 'setItem');
-
+*/
 
       const  wrapper = mount(<LoginScreen />);
       const usernameField = wrapper.find("input").at(0);
