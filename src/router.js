@@ -72,12 +72,12 @@ const AppRouter = (props) => (
         </Route>
         {/*Authenticated routes */}
         <PrivateRouteAuth>
-          <Route exact path="/dashboard">
-              <Dashboard></Dashboard>
-          </Route>
-          <Route exact path="/estudio">
-              <EstudioAcompanhePageContainer></EstudioAcompanhePageContainer>
-          </Route>
+            <Route exact path="/dashboard/:sessionID">
+                <Dashboard></Dashboard>
+            </Route>
+            <Route exact path="/estudio">
+                <EstudioAcompanhePageContainer></EstudioAcompanhePageContainer>
+            </Route>
         </PrivateRouteAuth>
     </Switch>
     </Router>
