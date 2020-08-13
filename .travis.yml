@@ -10,7 +10,10 @@ services:
 notifications:
 
 env:
-- DOCKER_COMPOSE_VERSION=1.25.5
+  global:
+    - CC_TEST_REPORTER_ID=89f438a803a265aba44550a6485bcee827739763792822868bee15b592794dbb
+    - DOCKER_COMPOSE_VERSION=1.25.5
+
 
 before_install:
 - sudo rm /usr/local/bin/docker-compose
@@ -18,6 +21,9 @@ before_install:
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
 
+before_script:
+  - bash codeclimate.sh
+  - ./cc-test-reporter before-build
 
 script:
   - docker-compose up --build -d dev
@@ -25,6 +31,11 @@ script:
   - docker-compose exec dev /bin/bash -c "bash codeclimate.sh"
   - docker-compose exec dev /bin/bash -c "npm run test -- --coverage --watchAll=false"
   - docker-compose exec dev /bin/bash -c "cat coverage/lcov.info" 
+  - docker ps -a
+
    
 after_success:
+  - npm install
+  - npm run test -- --coverage --watchAll=false
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
   - docker-compose exec dev /bin/bash -c "./cc-test-reporter after-build -r 89f438a803a265aba44550a6485bcee827739763792822868bee15b592794dbb --exit-code $TRAVIS_TEST_RESULT" 
