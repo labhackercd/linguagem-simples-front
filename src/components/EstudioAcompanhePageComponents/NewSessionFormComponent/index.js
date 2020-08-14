@@ -197,7 +197,7 @@ class NewSessionFormComponent extends React.Component {
                                                name="checkedTwitterTransmissionChannel"/>
                                 }
                                 label="Twitter"
-                                onChange={(e)=>{this.handleTwitterTransmissionChannelChange(e)}}
+
                                 />
                             </FormGroup>
                         </Box>

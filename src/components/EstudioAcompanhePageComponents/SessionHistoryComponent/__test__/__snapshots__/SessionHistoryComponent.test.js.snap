@@ -29,5 +29,6 @@ exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
       />
     </svg>
   </div>
+  Loading
 </div>
 `;

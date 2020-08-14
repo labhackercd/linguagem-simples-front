@@ -96,6 +96,7 @@ class LoginScreen extends React.Component {
             password: this.state.password
         }).then(
             result => {
+              console.log(result)
                 axiosInstance.defaults.headers['Authorization'] = "JWT " + result.data.access;
                 localStorage.setItem('access_token', result.data.access);
                 localStorage.setItem('refresh_token', result.data.refresh);
@@ -135,8 +136,8 @@ class LoginScreen extends React.Component {
                           <img src="../../img/estudio_acompanhe_logo.svg" alt="Estudio Acompanhe logo"/>
                         </Grid>
                         <Grid item className={classes.loginForm}>
-                          <TextField className={classes.textField} variant="outlined" placeholder="email" id="username" type="email" onChange={(e)=>{this.handleEmailFormChange(e)}} fullWidth autoFocus required />
-                          <TextField className={classes.textField} variant="outlined" placeholder="senha" id="password" type="password" onChange={(e)=>{this.handlePasswordFormChange(e)}} fullWidth required />
+                          <TextField className={classes.textField} variant="outlined" value={this.state.username} placeholder="email" id="username" type="email" onChange={(e)=>{this.handleEmailFormChange(e)}} fullWidth autoFocus required />
+                          <TextField className={classes.textField} variant="outlined" value={this.state.password} placeholder="senha" id="password" type="password" onChange={(e)=>{this.handlePasswordFormChange(e)}} fullWidth required />
                         </Grid>
                         <Grid container className={classes.buttonArea}>
                           <Grid item>

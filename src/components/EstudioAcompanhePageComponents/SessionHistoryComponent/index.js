@@ -23,7 +23,8 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker,
 } from '@material-ui/pickers';
 import ptBrLocale from "date-fns/locale/pt-BR";
 
-import axiosInstance from '../../../auth/axiosApi.js'
+import fetchData from './fetchData'
+import FormatStringData from './utils'
 
 
 const useStyles = makeStyles({
@@ -63,14 +64,7 @@ const useStyles = makeStyles({
   }
 });
 
-function FormatStringData(data) {
-    var day  = data.split("-")[2];
-    var month  = data.split("-")[1];
-    //var year  = data.split("-")[0];
-  
-    return ("0"+day).slice(-2) +  '/' + ("0"+month).slice(-2) ;
-    // Utilizo o .slice(-2) para garantir o formato com 2 digitos.
-  }
+
 
 function ScheduleOrFinishedSessionHistoryCard(props){
     const classes = useStyles();
@@ -165,32 +159,22 @@ class SessionHistoryComponent extends React.Component {
         };
     }
 
-    loadSessions(callback){
-        axiosInstance.get('/sessions/', {
-        }).then(
-            result => {
-                console.log(result)
-                console.log(result.data)
-                if(result.status===200){
-                    this.setState({sessionsList:result.data})
-                }else{
-                    alert("Erro ao recuperar sessões");
-                }
-                callback()
-            } 
-        ).catch (error => {
+
+    fetchSessionsList = async term => {
+        try {
+          const data = await fetchData();
+          this.setState({sessionsList:data})
+          this.setState({dataLoaded:true});
+        } catch (error) {
             throw error;
-        })
-    }
+        }
+      };
 
     componentDidMount(){
         this._isMounted = true;
 
         if(this._isMounted){
-            this.loadSessions(() => {
-                console.log("Data:" + this.state.sessionsList)
-                this.setState({dataLoaded:true});
-            });
+            this.fetchSessionsList();
         }
     }
 
@@ -206,6 +190,7 @@ class SessionHistoryComponent extends React.Component {
         if(!this.state.dataLoaded){
             return (<Box display="flex" justifyContent="center" alignItems="center">
                         <CircularProgress></CircularProgress>
+                        Loading
                     </Box>)
         }
 
