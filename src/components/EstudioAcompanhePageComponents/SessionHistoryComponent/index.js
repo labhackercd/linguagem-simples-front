@@ -231,7 +231,7 @@ class SessionHistoryComponent extends React.Component {
 
                         <List className={classes.sessionList} disablePadding dense={true}>
                         {this.state.sessionsList.map((session) =>
-                            <ListItem key={session.id} value={session} button onClick={this.handleClick} component={this.customListLink}>
+                            <ListItem key={session.id} value={session} button component={this.customListLink}>
                                 { (session.situation_session === "pre_session" || session.situation_session === "closed_session") ?
                                     <ScheduleOrFinishedSessionHistoryCard infoSession={session}></ScheduleOrFinishedSessionHistoryCard> :
                                     <CurrentSessionHistoryCard infoSession={session}></CurrentSessionHistoryCard>
