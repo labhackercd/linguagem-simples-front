@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import {Button, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
+import {Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
-import {TextField } from '@material-ui/core';
 import axiosInstance from '../../../auth/axiosApi.js';
 
 const useStyles = makeStyles((theme) => ({
@@ -92,8 +91,9 @@ export default function Update(){
 	const classes = useStyles();
 	const [updates, setUpdates] = useState([]);
 	const [updateTextArea, setUpdateTextArea] = useState("");
-	const [tweetURL] = useState('');
+	const [tweetURL, setTweetURL] = useState('');
 	const [image] = useState(''); // will probably suffer modifications
+	const [open, setOpen] = useState(false);
 
 	function handleClick() {
 		axiosInstance.post('/publications/', {
@@ -122,6 +122,18 @@ export default function Update(){
 		).catch (error => {
 				throw error;
 		})
+	}
+
+	function submitTweetURL() {
+		console.log(tweetURL)
+	}
+
+	function handleTwitterDialogOpen() {
+		setOpen(true)
+	}
+
+	function handleTwitterDialogClose() {
+		setOpen(false)
 	}
 
 	function handleChange(e) {
@@ -184,7 +196,7 @@ export default function Update(){
 							<Grid container >
 							    <form className={classes.textArea} noValidate autoComplete="off">
 										<TextField
-						          id="outlined-multiline-static"
+						          id="twitter-textfield"
 						          multiline
 						          rows={4}
 						          variant="outlined"
@@ -213,6 +225,9 @@ export default function Update(){
 										<div className={classes.subMenuItem}>
 											<a href="/"><img src="../../img/picture_upload.svg" alt="upload icon"/></a>
 										</div>
+										<div className={classes.subMenuItem}>
+											<img src="../../img/twitter_icon.svg" alt="incorporate tweet icon" onClick={handleTwitterDialogOpen}/>
+										</div>
 									</Grid>
 									<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
 										<Button className={classes.button} onClick={handleClick} variant="contained" disableElevation>
@@ -223,6 +238,36 @@ export default function Update(){
 							</Box>
 					</Grid>
 				</Grid>
+
+				{/* Twitter URL input dialog */}
+					<Dialog open={open} onClose={handleTwitterDialogClose}>
+					 <DialogTitle id="form-dialog-title">Link para o tweet</DialogTitle>
+					 <DialogContent>
+						 <DialogContentText>
+							 Insira no campo abaixo o link para o tweet desejado
+						 </DialogContentText>
+						 <TextField
+							 autoFocus
+							 name="tweetURL"
+							 onChange={(e) => setTweetURL(e.target.value)}
+							 margin="dense"
+							 id="name"
+							 label="Link para o tweet"
+							 type="text"
+							 fullWidth
+						 />
+					 </DialogContent>
+					 <DialogActions>
+						 <Button onClick={handleTwitterDialogClose} color="primary">
+							 Cancelar
+						 </Button>
+						 <Button onClick={submitTweetURL} color="primary">
+							 Incorporar tweet
+						 </Button>
+					 </DialogActions>
+				 </Dialog>
+				{/* End of Twitter URL input dialog */}
+
 				<Grid container className={classes.updatesArea}>
 					<List style={{width: '100%'}}>
 							{updates.slice(0).reverse().map(update =>  //creates a shallow copy of the array and reverses it
