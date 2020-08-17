@@ -257,7 +257,13 @@ exports[`should render the content section 1`] = `
       className="makeStyles-updatesArea-13"
       container={true}
     >
-      <WithStyles(ForwardRef(List)) />
+      <WithStyles(ForwardRef(List))
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      />
     </WithStyles(ForwardRef(Grid))>
   </div>
 </Fragment>
