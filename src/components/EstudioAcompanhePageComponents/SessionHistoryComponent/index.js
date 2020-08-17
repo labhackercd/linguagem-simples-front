@@ -70,18 +70,18 @@ function ScheduleOrFinishedSessionHistoryCard(props){
     const classes = useStyles();
     const sessionStatus = props.infoSession.situation_session;
     console.log(sessionStatus)
-    const sessionDate = FormatStringData(props.infoSession.date); 
-    
+    const sessionDate = FormatStringData(props.infoSession.date);
+
 
     return (
         <Paper elevation={0} className={classes.sessionHistoryCard}>
             <Grid container>
                 <Grid item xs={2}>
                     <Paper elevation={0} className={classes.iconSessionHistoryCard}>
-                        <Box display="flex" alignItems="center" justifyContent="center" className={classes.boxPaper}>                           
-                            {sessionStatus === "pre_session" ? 
+                        <Box display="flex" alignItems="center" justifyContent="center" className={classes.boxPaper}>
+                            {sessionStatus === "pre_session" ?
                                 <AccessTimeIcon fontSize="large" style={{ color: "FAC915" }}></AccessTimeIcon>
-                                : 
+                                :
                                 <SvgIcon fontSize="large"><DocumentIcon></DocumentIcon></SvgIcon>
                             }
                         </Box>
@@ -95,11 +95,11 @@ function ScheduleOrFinishedSessionHistoryCard(props){
                             </Grid>
                             <Grid item xs={6}>
                                 <Box display="flex" justifyContent="flex-end">
-                                {sessionStatus === "pre_session" ? 
+                                {sessionStatus === "pre_session" ?
                                     <img src={ScheduleIcon} alt="Status sessão agendada"></img>
-                                    : 
+                                    :
                                     <img src={FinishedIcon} alt="Status sessão encerrada"></img>
-                                }             
+                                }
                                 </Box>
                             </Grid>
                             <Grid item xs={12}>
@@ -115,14 +115,14 @@ function ScheduleOrFinishedSessionHistoryCard(props){
 
 function CurrentSessionHistoryCard(props){
     const classes = useStyles();
-    const sessionDate = FormatStringData(props.infoSession.date); 
+    const sessionDate = FormatStringData(props.infoSession.date);
 
     return (
         <Paper elevation={0} className={classes.currentSessionHistoryCard}>
             <Grid container>
                 <Grid item xs={2}>
                     <Paper elevation={0} className={classes.iconCurrentSessionHistoryCard}>
-                        <Box display="flex" alignItems="center" justifyContent="center" className={classes.boxPaper}>                           
+                        <Box display="flex" alignItems="center" justifyContent="center" className={classes.boxPaper}>
                             <FormatListBulletedIcon fontSize="large" style={{ color: "#FFFFFF" }}></FormatListBulletedIcon>
                         </Box>
                     </Paper>
@@ -179,13 +179,15 @@ class SessionHistoryComponent extends React.Component {
     }
 
     customListLink(props){
+        let sessionId = props.value.id
+        let outgoingURL = "/Dashboard/" + sessionId
         return(
-            <Link href="/dashboard" {...props} />
+            <Link href={outgoingURL}  {...props} />
         )
     }
 
     render(){
-        const { classes } = this.props;  
+        const { classes } = this.props;
 
         if(!this.state.dataLoaded){
             return (<Box display="flex" justifyContent="center" alignItems="center">
@@ -215,7 +217,7 @@ class SessionHistoryComponent extends React.Component {
                                             id="date-picker-search"
                                             InputLabelProps={{
                                                 shrink: true,
-                                            }}   
+                                            }}
                                             />
                                         </MuiPickersUtilsProvider>
                                     </Box>
@@ -229,7 +231,7 @@ class SessionHistoryComponent extends React.Component {
 
                         <List className={classes.sessionList} disablePadding dense={true}>
                         {this.state.sessionsList.map((session) =>
-                            <ListItem key={session.id} value={session} button component={this.customListLink}> 
+                            <ListItem key={session.id} value={session} button component={this.customListLink}>
                                 { (session.situation_session === "pre_session" || session.situation_session === "closed_session") ?
                                     <ScheduleOrFinishedSessionHistoryCard infoSession={session}></ScheduleOrFinishedSessionHistoryCard> :
                                     <CurrentSessionHistoryCard infoSession={session}></CurrentSessionHistoryCard>
@@ -241,7 +243,7 @@ class SessionHistoryComponent extends React.Component {
                     </Grid>
                 </Grid>
                 <Box pt={2}>
-                    
+
                 </Box>
             </Box>
         )
