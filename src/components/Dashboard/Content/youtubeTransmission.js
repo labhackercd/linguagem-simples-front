@@ -1,5 +1,4 @@
 import React from 'react';
-import YouTube from 'react-youtube';
  
 export default function Youtube(youtubeId){
   return (
