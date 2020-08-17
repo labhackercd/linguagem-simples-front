@@ -32,16 +32,16 @@ const useStyles = makeStyles((theme) => ({
     padding: "1rem",
   },
   firstRow: {
-    margin: '0 0 2rem 0',
+    margin: '0 0 0.5rem 0',
   },
   card: {
     backgroundColor: "white",
-    height: '100%',
-    width: '100%',
+    height: 'auto',
+    width: 'auto',
     margin: '1rem 0 0 0',
   },
   secondRow: {
-    height: '30vh',
+    height: '15vh',
     backgroundColor: "white",
     borderRadius: '5px',
     margin: '0.5rem',
@@ -59,9 +59,14 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-export default function Content() {
+export default function Content(props) {
   //<YoutubeTransmission videoId="splJnSIoe8I"></YoutubeTransmission>
+  //const videoID = props.videoID;
+  const videoID = "YUNat3PN8n8";
+
   const classes = useStyles();
+
+  
   return (
 		<Grid container className={classes.body}>
       <Grid container className={classes.header}>
@@ -74,15 +79,23 @@ export default function Content() {
         </Grid>
       </Grid>
       <Grid container className={classes.firstRow} spacing={2}>
-          <Grid item md={6}>
+          <Grid item md={7}>
             <Typography variant="h5"> Transmissão </Typography>
             <div className={classes.card}>
-              {Youtube("splJnSIoe8I")}
+                {videoID ? 
+                  Youtube(videoID) :
+                  <Box width={1} height={1} display="flex" alignContent="center" justifyContent="center">
+                      <Typography variant="h5" style={{ color: "grey" }}> Transmissão não disponível</Typography>
+                  </Box>
+                }
+              
             </div>   
           </Grid>
-          <Grid item md={6}>
+          <Grid item md={5}>
             <Typography variant="h5"> Plenário </Typography>
-            <Paper elevation={0} className={classes.card}> </Paper>
+            <Paper elevation={0} className={classes.card}> 
+              
+            </Paper>
           </Grid>
       </Grid>
       <Grid container className={classes.secondRow}>
