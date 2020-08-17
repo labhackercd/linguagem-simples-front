@@ -2,6 +2,9 @@ import React from 'react';
 import { Grid, Typography, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ExternalContentPanel from './externalContentPanel';
+import Box from '@material-ui/core/Box'
+import Youtube from './youtubeTransmission'
+import { palette } from '@material-ui/system';
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -48,10 +51,16 @@ const useStyles = makeStyles((theme) => ({
     height: '50vh',
     borderRadius: '5px',
     margin: '0.5rem',
+  },
+  videoWrapper:{
+    margin: '1rem 0 0 0',
+
   }
+  
 }));
 
 export default function Content() {
+  //<YoutubeTransmission videoId="splJnSIoe8I"></YoutubeTransmission>
   const classes = useStyles();
   return (
 		<Grid container className={classes.body}>
@@ -65,17 +74,17 @@ export default function Content() {
         </Grid>
       </Grid>
       <Grid container className={classes.firstRow} spacing={2}>
-        <Grid item md={6}>
-          <Typography variant="h5"> Transmissão </Typography>
-          <Paper elevation={0} className={classes.card}>
-            <img src="../../img/video_placeholder.png" alt="video placeholder" style={{maxHeight: "100%", maxWidth: '100%'}} />
-          </Paper>
-        </Grid>
-        <Grid item md={6}>
-          <Typography variant="h5"> Plenário </Typography>
-          <Paper elevation={0} className={classes.card}> </Paper>
-        </Grid>
-        </Grid>
+          <Grid item md={6}>
+            <Typography variant="h5"> Transmissão </Typography>
+            <div className={classes.card}>
+              {Youtube("splJnSIoe8I")}
+            </div>   
+          </Grid>
+          <Grid item md={6}>
+            <Typography variant="h5"> Plenário </Typography>
+            <Paper elevation={0} className={classes.card}> </Paper>
+          </Grid>
+      </Grid>
       <Grid container className={classes.secondRow}>
         <Typography variant="h5" style={{margin: '1rem 0 1rem 1rem'}}> Trechos </Typography>
       </Grid>
