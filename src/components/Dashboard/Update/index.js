@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
 	summaryBox: {
 		display: 'flex',
 		flexDirection: 'row',
+		width: '100%',
 	},
 	summaryHeader: {
   	display: 'flex',
@@ -58,16 +59,19 @@ const useStyles = makeStyles((theme) => ({
 		margin: '0 0.5rem 0 1rem',
 	},
 	updatesArea: {
+		margin: '1rem 0 0 0',
 		overflow: 'auto',
 		display: 'flex',
 		height: '70vh',
+		width: '100%',
 	},
 	updateItem: {
+		overflow: 'auto',
 		width: '100%',
-		height: 'auto',
-		padding: '1rem 0 1rem 0',
+		height: '10vh',
 		alignItems: 'flex-start',
 		display: 'flex',
+		margin: '1rem 0',
 	},
 	updateItemBody: {
 		color: theme.palette.grey
@@ -219,16 +223,16 @@ export default function Update(){
 					</Grid>
 				</Grid>
 				<Grid container className={classes.updatesArea}>
-					<List>
+					<List style={{width: '100%'}}>
 							{updates.slice(0).reverse().map(update =>  //creates a shallow copy of the array and reverses it
 								<ListItem divider key={update.id}>
-									<Grid container className={classes.updateItem}>
-										<Grid item xs={3}>
+									<Grid container>
+										<Grid item xs={2}>
 											<Typography variant="h6">
 												{update.time}
 											</Typography>
 										</Grid>
-										<Grid item xs={9}>
+										<Grid item xs={10}>
 											<Grid container className={classes.itemHeader}>
 												<Typography variant="h5" className={classes.title}>
 													{update.title}
