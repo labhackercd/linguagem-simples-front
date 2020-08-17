@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import EstudioAcompanhePageContainer from './containers/EstudioAcompanhePageContainer';
 import LoginScreen from "./containers/LoginScreenContainer";
 import Dashboard from "./containers/DashboardContainer";
@@ -72,12 +72,10 @@ const AppRouter = (props) => (
         </Route>
         {/*Authenticated routes */}
         <PrivateRouteAuth>
-          <Route exact path="/dashboard">
-              <Dashboard></Dashboard>
-          </Route>
-          <Route exact path="/estudio">
-              <EstudioAcompanhePageContainer></EstudioAcompanhePageContainer>
-          </Route>
+            <Route exact path="/dashboard/:sessionID" children={<Dashboard />} />
+            <Route exact path="/estudio">
+                <EstudioAcompanhePageContainer></EstudioAcompanhePageContainer>
+            </Route>
         </PrivateRouteAuth>
     </Switch>
     </Router>
