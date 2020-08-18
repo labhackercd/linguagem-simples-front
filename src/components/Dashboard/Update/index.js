@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
+import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import axiosInstance from '../../../auth/axiosApi.js';
+import {TwitterTweetEmbed} from 'react-twitter-embed';
 
 const useStyles = makeStyles((theme) => ({
 	body: {
@@ -85,8 +86,18 @@ const useStyles = makeStyles((theme) => ({
 	time: {
 		color: theme.palette.primary.main
 	},
-	previewModal: {
-	}
+	previewModalSubmitButton: {
+		color: '#FFF',
+		alignSelf: 'flex-end',
+		backgroundColor: '#00AF82',
+		borderRadius: '0 0 5px 5px'
+	},
+	previewModalSubMenu: {
+		padding: '0',
+		margin: '0 0 0 1rem',
+		display: 'flex',
+		justifyContent: 'space-between'
+	},
 }));
 
 export default function Update(){
@@ -284,29 +295,31 @@ export default function Update(){
 					open={previewModalOpen}
 					onClose={handlePreviewModalClose}>
 				 <DialogTitle id="preview-modal-title">Nova atualização</DialogTitle>
-					 <DialogContent class={classes.previewModal}>
-						 <TextField
-							 id="textfield"
-							 multiline
-							 rows={4}
-							 variant="outlined"
-							 className={classes.textField}
-							 bgcolor="white"
-							 name = "updateText"
-							 onChange = {handleChange}
-							 InputProps={{
-								 classes: {
-									 notchedOutline: classes.notchedOutline
-								 },
-							 }}
-						 />
+				 	<Paper style={{backgroundColor: 'white', padding: '1rem', borderRadius: '15px'}} elevation={0}>
+					 <DialogContent className={classes.previewModal}>
+							 <TextField
+								 id="textfield"
+								 multiline
+								 rows={4}
+								 bgcolor="white"
+								 name="previewModalUpdateText"
+								 placeholder="Inserir nota"
+								 onChange = {handleChange}
+								 elevation={0}
+								 InputProps={{ disableUnderline: true }}
+							 />
+							 <TwitterTweetEmbed
+								style={{alignSelf: 'center'}}
+								tweetId={'933354946111705097'}
+							/>
+						 {/*
+							 */}
 					 </DialogContent>
-					 <DialogActions>
-						 <Button onClick={handlePreviewModalClose} color="primary">
-							 Cancelar
-						 </Button>
-						 <Button onClick={handlePreviewModalClose} color="primary">
-							 Incorporar tweet
+				 </Paper>
+					 <DialogActions className={classes.previewModalSubMenu}>
+						 <Typography className={classes.time} style={{alignSelf: 'flex-start'}} variant="h6"> 18:00 </Typography>
+						 <Button onClick={handlePreviewModalClose} variant="contained" className={classes.previewModalSubmitButton}>
+							 Publicar
 						 </Button>
 					 </DialogActions>
 				 </Dialog>
