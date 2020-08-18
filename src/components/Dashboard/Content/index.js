@@ -2,6 +2,9 @@ import React from 'react';
 import { Grid, Typography, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ExternalContentPanel from './externalContentPanel';
+import Box from '@material-ui/core/Box'
+import Youtube from './youtubeTransmission'
+import { palette } from '@material-ui/system';
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -29,16 +32,16 @@ const useStyles = makeStyles((theme) => ({
     padding: "1rem",
   },
   firstRow: {
-    margin: '0 0 2rem 0',
+    margin: '0 0 0.5rem 0',
   },
   card: {
     backgroundColor: "white",
-    height: '100%',
-    width: '100%',
+    height: 'auto',
+    width: 'auto',
     margin: '1rem 0 0 0',
   },
   secondRow: {
-    height: '30vh',
+    height: '15vh',
     backgroundColor: "white",
     borderRadius: '5px',
     margin: '0.5rem',
@@ -48,11 +51,22 @@ const useStyles = makeStyles((theme) => ({
     height: '50vh',
     borderRadius: '5px',
     margin: '0.5rem',
+  },
+  videoWrapper:{
+    margin: '1rem 0 0 0',
+
   }
+  
 }));
 
-export default function Content() {
+export default function Content(props) {
+  //<YoutubeTransmission videoId="splJnSIoe8I"></YoutubeTransmission>
+  //const videoID = props.videoID;
+  const videoID = "YUNat3PN8n8";
+
   const classes = useStyles();
+
+  
   return (
 		<Grid container className={classes.body}>
       <Grid container className={classes.header}>
@@ -65,17 +79,25 @@ export default function Content() {
         </Grid>
       </Grid>
       <Grid container className={classes.firstRow} spacing={2}>
-        <Grid item md={6}>
-          <Typography variant="h5"> Transmissão </Typography>
-          <Paper elevation={0} className={classes.card}>
-            <img src="../../img/video_placeholder.png" alt="video placeholder" style={{maxHeight: "100%", maxWidth: '100%'}} />
-          </Paper>
-        </Grid>
-        <Grid item md={6}>
-          <Typography variant="h5"> Plenário </Typography>
-          <Paper elevation={0} className={classes.card}> </Paper>
-        </Grid>
-        </Grid>
+          <Grid item md={7}>
+            <Typography variant="h5"> Transmissão </Typography>
+            <div className={classes.card}>
+                {videoID ? 
+                  Youtube(videoID) :
+                  <Box width={1} height={1} display="flex" alignContent="center" justifyContent="center">
+                      <Typography variant="h5" style={{ color: "grey" }}> Transmissão não disponível</Typography>
+                  </Box>
+                }
+              
+            </div>   
+          </Grid>
+          <Grid item md={5}>
+            <Typography variant="h5"> Plenário </Typography>
+            <Paper elevation={0} className={classes.card}> 
+              
+            </Paper>
+          </Grid>
+      </Grid>
       <Grid container className={classes.secondRow}>
         <Typography variant="h5" style={{margin: '1rem 0 1rem 1rem'}}> Trechos </Typography>
       </Grid>

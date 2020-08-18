@@ -6,11 +6,141 @@ exports[`should render the content section 1`] = `
   container={true}
 >
   <WithStyles(ForwardRef(Grid))
-    className="makeStyles-header-2"
+    className="makeStyles-menu-2"
+    item={true}
+    md={4}
+  >
+    <WithStyles(WithStyles(ForwardRef(Button)))
+      className="makeStyles-button-3"
+      disableElevation={true}
+      size="large"
+      startIcon={
+        <img
+          alt="flag icon"
+          src="../../img/flag_icon.svg"
+        />
+      }
+      variant="contained"
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="body1"
+      >
+        Conteúdos salvos
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(WithStyles(ForwardRef(Button)))>
+    <WithStyles(WithStyles(ForwardRef(Button)))
+      className="makeStyles-button-3"
+      disableElevation={true}
+      size="large"
+      startIcon={
+        <img
+          alt="paper sheet icon"
+          src="../../img/paper_sheet_icon.svg"
+        />
+      }
+      variant="contained"
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="body1"
+      >
+        Agência Câmara
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(WithStyles(ForwardRef(Button)))>
+    <WithStyles(WithStyles(ForwardRef(Button)))
+      className="makeStyles-button-3"
+      color="default"
+      disableElevation={true}
+      size="large"
+      startIcon={
+        <img
+          alt="tv icon"
+          src="../../img/tv_icon.svg"
+        />
+      }
+      variant="contained"
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="body1"
+      >
+         Tv Câmara 
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(WithStyles(ForwardRef(Button)))>
+    <WithStyles(WithStyles(ForwardRef(Button)))
+      className="makeStyles-button-3"
+      color="default"
+      disableElevation={true}
+      size="large"
+      startIcon={
+        <img
+          alt="radio icon"
+          src="../../img/radio_icon.svg"
+        />
+      }
+      variant="contained"
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="body1"
+      >
+        Rádio Câmara
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(WithStyles(ForwardRef(Button)))>
+    <WithStyles(WithStyles(ForwardRef(Button)))
+      className="makeStyles-button-3"
+      color="default"
+      disableElevation={true}
+      size="large"
+      startIcon={
+        <img
+          alt="twitter icon"
+          src="../../img/twitter_icon.svg"
+        />
+      }
+      variant="contained"
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="body1"
+      >
+        Twitter
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(WithStyles(ForwardRef(Button)))>
+    <WithStyles(WithStyles(ForwardRef(Button)))
+      className="makeStyles-button-3"
+      disableElevation={true}
+      size="large"
+      startIcon={
+        <img
+          alt="glossary icon"
+          src="../../img/glossary_icon.svg"
+        />
+      }
+      variant="contained"
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="body1"
+      >
+        Glossário
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(WithStyles(ForwardRef(Button)))>
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    className="makeStyles-content-4"
+    item={true}
+    md={8}
+  />
+</WithStyles(ForwardRef(Grid))>
+`;
+
+exports[`should render the external content section 1`] = `
+<WithStyles(ForwardRef(Grid))
+  className="makeStyles-body-5"
+  container={true}
+>
+  <WithStyles(ForwardRef(Grid))
+    className="makeStyles-header-6"
     container={true}
   >
     <WithStyles(ForwardRef(Grid))
-      className="makeStyles-headerTitle-3"
+      className="makeStyles-headerTitle-7"
       item={true}
     >
       <WithStyles(ForwardRef(Typography))
@@ -20,17 +150,17 @@ exports[`should render the content section 1`] = `
       </WithStyles(ForwardRef(Typography))>
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
-      className="makeStyles-headerMenu-4"
+      className="makeStyles-headerMenu-8"
       item={true}
     >
       <WithStyles(ForwardRef(Typography))
-        className="makeStyles-headerMenuItem-5"
+        className="makeStyles-headerMenuItem-9"
         variant="h5"
       >
          Sincronizar 
       </WithStyles(ForwardRef(Typography))>
       <WithStyles(ForwardRef(Typography))
-        className="makeStyles-headerMenuItem-5"
+        className="makeStyles-headerMenuItem-9"
         variant="h5"
       >
          Ver Acompanhe 
@@ -38,38 +168,53 @@ exports[`should render the content section 1`] = `
     </WithStyles(ForwardRef(Grid))>
   </WithStyles(ForwardRef(Grid))>
   <WithStyles(ForwardRef(Grid))
-    className="makeStyles-firstRow-7"
+    className="makeStyles-firstRow-11"
     container={true}
     spacing={2}
   >
     <WithStyles(ForwardRef(Grid))
       item={true}
-      md={6}
+      md={7}
     >
       <WithStyles(ForwardRef(Typography))
         variant="h5"
       >
          Transmissão 
       </WithStyles(ForwardRef(Typography))>
-      <WithStyles(ForwardRef(Paper))
-        className="makeStyles-card-8"
-        elevation={0}
+      <div
+        className="makeStyles-card-12"
       >
-        <img
-          alt="video placeholder"
-          src="../../img/video_placeholder.png"
+        <div
+          className="video"
           style={
             Object {
-              "maxHeight": "100%",
-              "maxWidth": "100%",
+              "height": 0,
+              "paddingBottom": "56.25%",
+              "paddingTop": 25,
+              "position": "relative",
             }
           }
-        />
-      </WithStyles(ForwardRef(Paper))>
+        >
+          <iframe
+            frameBorder="0"
+            src="https://www.youtube.com/embed/YUNat3PN8n8"
+            style={
+              Object {
+                "height": "100%",
+                "left": 0,
+                "position": "absolute",
+                "top": 0,
+                "width": "100%",
+              }
+            }
+            title="sd"
+          />
+        </div>
+      </div>
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
       item={true}
-      md={6}
+      md={5}
     >
       <WithStyles(ForwardRef(Typography))
         variant="h5"
@@ -77,15 +222,13 @@ exports[`should render the content section 1`] = `
          Plenário 
       </WithStyles(ForwardRef(Typography))>
       <WithStyles(ForwardRef(Paper))
-        className="makeStyles-card-8"
+        className="makeStyles-card-12"
         elevation={0}
-      >
-         
-      </WithStyles(ForwardRef(Paper))>
+      />
     </WithStyles(ForwardRef(Grid))>
   </WithStyles(ForwardRef(Grid))>
   <WithStyles(ForwardRef(Grid))
-    className="makeStyles-secondRow-9"
+    className="makeStyles-secondRow-13"
     container={true}
   >
     <WithStyles(ForwardRef(Typography))
@@ -100,7 +243,7 @@ exports[`should render the content section 1`] = `
     </WithStyles(ForwardRef(Typography))>
   </WithStyles(ForwardRef(Grid))>
   <WithStyles(ForwardRef(Grid))
-    className="makeStyles-thirdRow-10"
+    className="makeStyles-thirdRow-14"
     container={true}
   >
     <ExternalContentPanel />
