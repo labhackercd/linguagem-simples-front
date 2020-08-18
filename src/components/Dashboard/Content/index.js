@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   thirdRow: {
     backgroundColor: "white",
-    height: '50vh',
+    
     borderRadius: '5px',
     margin: '0.5rem',
   },
