@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#F2F2F2",
     border: 0,
     width: '100%',
+    minHeight:'100vh',
     position: 'relative',
     display: 'flex',
     fontFamily: 'Open sans',

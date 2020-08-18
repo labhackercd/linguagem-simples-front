@@ -12,7 +12,7 @@ import AgenciaCamaraContent from './AgenciaCamara/agenciaCamara'
 const useStyles = makeStyles((theme) => ({
   body: {
     padding: '1rem',
-    height: '100%',
+    height: 'auto',
     overflow: 'auto',
   },
   menu: {
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: '#007E5A',
     display: 'flex',
-    height: 224,
+   
   },
   tabs: {
     borderRight: `2px solid ${theme.palette.divider}`,
@@ -131,11 +131,10 @@ export default function ExternalContentPanel() {
             <Grid item xs={12}>Search</Grid>
             <Grid item xs={12}>
               <TabPanel value={value} index={0}>
-              <AgenciaCamaraContent></AgenciaCamaraContent>
-        
+              Item one
               </TabPanel>
               <TabPanel value={value} index={1}>
-                Item Two
+                <AgenciaCamaraContent></AgenciaCamaraContent>
               </TabPanel>
               <TabPanel value={value} index={2}>
                 Item Three

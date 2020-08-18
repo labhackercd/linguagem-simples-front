@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 		margin: '1rem 0 0 0',
 		overflow: 'auto',
 		display: 'flex',
-		height: '70vh',
+		height: '100%',
 		width: '100%',
 	},
 	updateItem: {

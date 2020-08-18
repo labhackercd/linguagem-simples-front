@@ -73,41 +73,37 @@ const useStyles = makeStyles((theme) => ({
   
 function NewsCard(props){
     const classes = useStyles();
+
     return (
         <Box width="95%" >
             <Paper elevation={0} className={classes.newsCard}>
                 <Grid container>
                     <Grid item xs={12}>
-                    <Box m={1}>
+                        <Box m={1}>
                             <Grid container>
                                 <Grid item xs={10}>
                                     <Typography style={{ color: "gray" }} variant="body">Notícia</Typography>
                                 </Grid>
                                 <Grid item xs={2}>
-                                    <Box display="flex" justifyContent="flex-end">
-                                    <IconButton aria-label="delete" className={classes.margin} size="small">
-                                        <AddCircleOutlineIcon fontSize="inherit" />
-                                        <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} /> 
-                                    </IconButton>
+                                        <Box display="flex" justifyContent="flex-end">
+                                        <IconButton aria-label="delete" className={classes.margin} size="small">
+                                            <AddCircleOutlineIcon fontSize="inherit" />
+                                            <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} /> 
+                                        </IconButton>
                                     </Box>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <Typography variant="h6" style={{ color: "#007E5A" }}>
-                                        <Box fontWeight="fontWeightRegular" >
-                                            Deputados aprovam alguma coisa
-                                        </Box>
+                                        <Box fontWeight="fontWeightRegular" >{props.title}</Box>
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <Typography style={{ color: "gray" }}>
-                                        <Box fontSize={11} >
-                                        18/08/1997 11:45
-                                        </Box>
+                                        <Box fontSize={11} >{props.dateAndHour}</Box>
                                     </Typography>
                                 </Grid>
                             </Grid>
                         </Box>
-
                     </Grid>
                 </Grid>
             </Paper>
@@ -118,16 +114,12 @@ function NewsCard(props){
 
 export default function AgenciaCamaraContent() {
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
-  
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
-    };
-  
+    const newsList = [0, 1, 2, 3,4]
+
     return (
         <div>
-            <List style={{maxHeight: '100%', overflow: 'auto'}}>            
-                {[0, 1, 2, 3, 4].map((sectionId) => (
+            <List style={{maxHeight: '200px', overflow: 'auto'}}>            
+                {newsList.map((sectionId) => (
                     <li key={`section-${sectionId}`}>
                         <Box my={0.5}><NewsCard></NewsCard></Box>
                     </li>

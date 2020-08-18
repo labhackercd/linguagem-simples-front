@@ -40,6 +40,12 @@ const useStyles = makeStyles((theme) => ({
     width: 'auto',
     margin: '1rem 0 0 0',
   },
+  cardVideo: {
+    backgroundColor: "white",
+    height: '18vh',
+    width: '32vh',
+    margin: '1rem 0 0 0',
+  },
   secondRow: {
     height: '15vh',
     backgroundColor: "white",
@@ -48,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
   thirdRow: {
     backgroundColor: "white",
-    
+    height:'100%',
     borderRadius: '5px',
     margin: '0.5rem',
   },
