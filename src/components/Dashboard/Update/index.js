@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: '#00AF82',
 		borderRadius: '0 0 5px 5px'
 	},
-	previewModalSubMenu: {
+	previewModalFooter: {
 		padding: '0',
 		margin: '0 0 0 1rem',
 		display: 'flex',
@@ -105,11 +105,12 @@ export default function Update(){
 	const [updates, setUpdates] = useState([]);
 	const [updateTextArea, setUpdateTextArea] = useState("");
 	const [tweetURL, setTweetURL] = useState('');
+	const [tweetID, setTweetID] = useState('');
 	const [image] = useState(''); // will probably suffer modifications
 	const [open, setOpen] = useState(false);
 	const [previewModalOpen, setPreviewModalOpen] = useState(false);
 
-	function handleClick() {
+	function dispatchPayload() {
 		axiosInstance.post('/publications/', {
 						state: 'published',
 						content: updateTextArea,
@@ -138,17 +139,27 @@ export default function Update(){
 		})
 	}
 
+	function handleClick() {
+		dispatchPayload()
+	}
+
 	function handleTwitterDialogOpen() {
 		setOpen(true)
 	}
 	function handleTwitterDialogClose() {
 		setOpen(false)
+		let parseURL = tweetURL.split('/')
+		let path = parseURL[parseURL.length-1]
+		{/* removes suplemental information after the tweet's id */}
+		let id = path.split('?')[0]
+		setTweetID(id)
 		setPreviewModalOpen(true)
 	}
 	function handlePreviewModalOpen() {
 		setPreviewModalOpen(true)
 	}
 	function handlePreviewModalClose() {
+		dispatchPayload()
 		setPreviewModalOpen(false)
 	}
 	function handleChange(e) {
@@ -198,6 +209,7 @@ export default function Update(){
 						</Grid>
 					</Box>
 			</Grid>
+
 			{/* New update box */}
 				<Grid container className={classes.summaryBox}>
 					<Grid container className={classes.summaryHeader}>
@@ -302,6 +314,7 @@ export default function Update(){
 								 multiline
 								 rows={4}
 								 bgcolor="white"
+								 onChange={(e) => setUpdateTextArea(e.target.value)}
 								 name="previewModalUpdateText"
 								 placeholder="Inserir nota"
 								 onChange = {handleChange}
@@ -310,13 +323,13 @@ export default function Update(){
 							 />
 							 <TwitterTweetEmbed
 								style={{alignSelf: 'center'}}
-								tweetId={'933354946111705097'}
+								tweetId={tweetID}
 							/>
 						 {/*
 							 */}
 					 </DialogContent>
 				 </Paper>
-					 <DialogActions className={classes.previewModalSubMenu}>
+					 <DialogActions className={classes.previewModalFooter}>
 						 <Typography className={classes.time} style={{alignSelf: 'flex-start'}} variant="h6"> 18:00 </Typography>
 						 <Button onClick={handlePreviewModalClose} variant="contained" className={classes.previewModalSubmitButton}>
 							 Publicar
