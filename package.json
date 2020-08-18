@@ -50,7 +50,8 @@
       "src/**/*.{js,jsx}",
       "!src/index.js",
       "!src/serviceWorker.js",
-      "!src/auth/"
+      "!src/auth/axiosApi.js",
+      "!src/router.js"
     ]
   },
   "devDependencies": {
