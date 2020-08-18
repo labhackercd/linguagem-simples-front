@@ -84,6 +84,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 	time: {
 		color: theme.palette.primary.main
+	},
+	previewModal: {
 	}
 }));
 
@@ -94,6 +96,7 @@ export default function Update(){
 	const [tweetURL, setTweetURL] = useState('');
 	const [image] = useState(''); // will probably suffer modifications
 	const [open, setOpen] = useState(false);
+	const [previewModalOpen, setPreviewModalOpen] = useState(false);
 
 	function handleClick() {
 		axiosInstance.post('/publications/', {
@@ -124,18 +127,19 @@ export default function Update(){
 		})
 	}
 
-	function submitTweetURL() {
-		console.log(tweetURL)
-	}
-
 	function handleTwitterDialogOpen() {
 		setOpen(true)
 	}
-
 	function handleTwitterDialogClose() {
 		setOpen(false)
+		setPreviewModalOpen(true)
 	}
-
+	function handlePreviewModalOpen() {
+		setPreviewModalOpen(true)
+	}
+	function handlePreviewModalClose() {
+		setPreviewModalOpen(false)
+	}
 	function handleChange(e) {
 		setUpdateTextArea(e.target.value)
 	}
@@ -196,7 +200,7 @@ export default function Update(){
 							<Grid container >
 							    <form className={classes.textArea} noValidate autoComplete="off">
 										<TextField
-						          id="twitter-textfield"
+						          id="textfield"
 						          multiline
 						          rows={4}
 						          variant="outlined"
@@ -261,12 +265,53 @@ export default function Update(){
 						 <Button onClick={handleTwitterDialogClose} color="primary">
 							 Cancelar
 						 </Button>
-						 <Button onClick={submitTweetURL} color="primary">
+						 <Button onClick={handleTwitterDialogClose} color="primary">
 							 Incorporar tweet
 						 </Button>
 					 </DialogActions>
 				 </Dialog>
 				{/* End of Twitter URL input dialog */}
+
+				{/* Preview Modal dialog */}
+				<Dialog
+					fullWidth={true}
+					maxWidth={'sm'}
+					PaperProps={{
+						style: {
+							backgroundColor: '#F2F2F2',
+						},
+					}}
+					open={previewModalOpen}
+					onClose={handlePreviewModalClose}>
+				 <DialogTitle id="preview-modal-title">Nova atualização</DialogTitle>
+					 <DialogContent class={classes.previewModal}>
+						 <TextField
+							 id="textfield"
+							 multiline
+							 rows={4}
+							 variant="outlined"
+							 className={classes.textField}
+							 bgcolor="white"
+							 name = "updateText"
+							 onChange = {handleChange}
+							 InputProps={{
+								 classes: {
+									 notchedOutline: classes.notchedOutline
+								 },
+							 }}
+						 />
+					 </DialogContent>
+					 <DialogActions>
+						 <Button onClick={handlePreviewModalClose} color="primary">
+							 Cancelar
+						 </Button>
+						 <Button onClick={handlePreviewModalClose} color="primary">
+							 Incorporar tweet
+						 </Button>
+					 </DialogActions>
+				 </Dialog>
+				{/* End of Preview Modal Dialog */}
+
 
 				<Grid container className={classes.updatesArea}>
 					<List style={{width: '100%'}}>
