@@ -1,17 +1,17 @@
 import React from 'react';
-import { Grid, Typography, Button } from '@material-ui/core';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { Grid, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper'
 import List from '@material-ui/core/List'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
+
+import {newsMockData} from './newsMockData'
+import moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
     body: {
@@ -69,20 +69,20 @@ const useStyles = makeStyles((theme) => ({
       newsCard:{
         background:'#F4F4F4',
       },
-  }));
-  
+}));
+
 function NewsCard(props){
     const classes = useStyles();
 
     return (
-        <Box width="95%" >
+        <Box width="97%" >
             <Paper elevation={0} className={classes.newsCard}>
                 <Grid container>
                     <Grid item xs={12}>
                         <Box m={1}>
                             <Grid container>
                                 <Grid item xs={10}>
-                                    <Typography style={{ color: "gray" }} variant="body">Notícia</Typography>
+                                    <Typography style={{ color: "gray" }} variant="body1">Notícia</Typography>
                                 </Grid>
                                 <Grid item xs={2}>
                                         <Box display="flex" justifyContent="flex-end">
@@ -93,14 +93,18 @@ function NewsCard(props){
                                     </Box>
                                 </Grid>
                                 <Grid item xs={12}>
+                                  <Box fontWeight="fontWeightRegular">
                                     <Typography variant="h6" style={{ color: "#007E5A" }}>
-                                        <Box fontWeight="fontWeightRegular" >{props.title}</Box>
+                                        {props.info.titulo}
                                     </Typography>
+                                  </Box>
                                 </Grid>
                                 <Grid item xs={12}>
+                                  <Box fontSize={11}>
                                     <Typography style={{ color: "gray" }}>
-                                        <Box fontSize={11} >{props.dateAndHour}</Box>
+                                         {moment(new Date(props.info.data)).format("DD/MM/YYYY HH:mm")}
                                     </Typography>
+                                    </Box>
                                 </Grid>
                             </Grid>
                         </Box>
@@ -111,22 +115,53 @@ function NewsCard(props){
     );
 }
 
+export default class AgenciaCamaraContent extends React.Component {
+    
+  constructor(props){
+    super(props);
+    this.state = { 
+        news: newsMockData.hits.hits, 
+        dataLoaded: false
+    };
+  }
 
-export default function AgenciaCamaraContent() {
-    const classes = useStyles();
-    const newsList = [0, 1, 2, 3,4]
+  fetchSessionsList = async term => {
+    try {
+      //const data = await fetchData();
+      //this.setState({sessionsList:data})
+      this.setState({dataLoaded:true});
+
+    } catch (error) {
+        throw error;
+    }
+  };
+
+  componentDidMount(){
+      this._isMounted = true;
+
+      if(this._isMounted){
+          this.fetchSessionsList();
+      }
+  }
+
+  render(){
+    console.log(this.state.news)
+    if(!this.state.dataLoaded){
+      return (<Box display="flex" justifyContent="center" alignItems="center">
+                  <CircularProgress></CircularProgress>
+              </Box>)
+    }
 
     return (
-        <div>
-            <List style={{maxHeight: '200px', overflow: 'auto'}}>            
-                {newsList.map((sectionId) => (
-                    <li key={`section-${sectionId}`}>
-                        <Box my={0.5}><NewsCard></NewsCard></Box>
-                    </li>
-                ))}
-            </List>
-
-        </div>
+      <div>
+          <List style={{maxHeight: '200px', overflow: 'auto'}}>            
+              {this.state.news.map((sectionId) => (
+                  <li key={`section-${sectionId._id}`}>
+                      <Box my={0.5}><NewsCard info={sectionId._source} ></NewsCard></Box>
+                  </li>
+              ))}
+          </List>
+      </div>
     )
   }
-  
+}

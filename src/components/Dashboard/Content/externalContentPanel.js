@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Typography, Button } from '@material-ui/core';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { Grid } from '@material-ui/core';
+import { makeStyles} from '@material-ui/core/styles';
 
 import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/*
 const MenuButton = withStyles((theme) => ({
   root: {
     color: "#666666",
@@ -60,7 +61,7 @@ const MenuButton = withStyles((theme) => ({
   },
 }))(Button);
 
-
+*/
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import ExternalContentPanel from './externalContentPanel';
 import Box from '@material-ui/core/Box'
 import Youtube from './youtubeTransmission'
-import { palette } from '@material-ui/system';
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -94,7 +93,6 @@ export default function Content(props) {
                       <Typography variant="h5" style={{ color: "grey" }}> Transmissão não disponível</Typography>
                   </Box>
                 }
-              
             </div>   
           </Grid>
           <Grid item md={5}>
