@@ -7,7 +7,7 @@ export default function Youtube(youtubeId){
       style={{
         position: "relative",
         paddingBottom: "56.25%" /* 16:9 */,
-        paddingTop: 25,
+        paddingTop: 0,
         height: 0
       }}
     >
@@ -21,7 +21,7 @@ export default function Youtube(youtubeId){
         }}
         src={`https://www.youtube.com/embed/${youtubeId}`}
         frameBorder="0"
-        title="sd"
+        title="Trasmissão da Sessão Plenária"
       />
     </div>
   );
