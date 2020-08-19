@@ -145,7 +145,7 @@ export default class AgenciaCamaraContent extends React.Component {
   }
 
   render(){
-    console.log(this.state.news)
+    //console.log(this.state.news)
     if(!this.state.dataLoaded){
       return (<Box display="flex" justifyContent="center" alignItems="center">
                   <CircularProgress></CircularProgress>
