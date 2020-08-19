@@ -3,8 +3,8 @@ import './App.css';
 import {ThemeProvider } from '@material-ui/core/styles';
 import AppRouter from './router'
 import {customTheme} from './theme'
-{/*import { StylesProvider } from '@material-ui/core/styles';*/}
-{/*const generateClassName = (rule, styleSheet) => `${styleSheet.options.classNamePrefix}-${rule.key}`;*/}
+/*import { StylesProvider } from '@material-ui/core/styles';*/
+/*const generateClassName = (rule, styleSheet) => `${styleSheet.options.classNamePrefix}-${rule.key}`;*/
 
 function App() {
   return (

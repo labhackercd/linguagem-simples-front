@@ -62,13 +62,13 @@ const useStyles = makeStyles((theme) => ({
 		margin: '1rem 0 0 0',
 		overflow: 'auto',
 		display: 'flex',
-		height: '70vh',
+		height: '100%',
 		width: '100%',
 	},
 	updateItem: {
 		overflow: 'auto',
 		width: '100%',
-		height: '10vh',
+		height: 'auto',
 		alignItems: 'flex-start',
 		display: 'flex',
 		margin: '1rem 0',
@@ -101,7 +101,6 @@ export default function Update(){
 						content: updateTextArea,
 						session: 1,
 						tweet_url:  tweetURL,
-						image: image,
 				}).then(
 						result => {
 								if(result.status===201){
@@ -114,6 +113,7 @@ export default function Update(){
 											time: formatDate,
 										}
 										setUpdates(prevUpdates => [...prevUpdates, newUpdate])
+										setUpdateTextArea("")
 								}else{
 										alert("Erro ao criar o post")
 								}
@@ -191,6 +191,7 @@ export default function Update(){
 											className={classes.textField}
 											bgcolor="white"
 											name = "updateText"
+											value={updateTextArea}
 											onChange = {handleChange}
 											InputProps={{
 												classes: {

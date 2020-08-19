@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import ExternalContentPanel from './externalContentPanel';
 import Box from '@material-ui/core/Box'
 import Youtube from './youtubeTransmission'
-import { palette } from '@material-ui/system';
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -40,6 +39,12 @@ const useStyles = makeStyles((theme) => ({
     width: 'auto',
     margin: '1rem 0 0 0',
   },
+  cardVideo: {
+    backgroundColor: "white",
+    height: '18vh',
+    width: '32vh',
+    margin: '1rem 0 0 0',
+  },
   secondRow: {
     height: '15vh',
     backgroundColor: "white",
@@ -48,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
   thirdRow: {
     backgroundColor: "white",
-    height: '50vh',
+    height:'100%',
     borderRadius: '5px',
     margin: '0.5rem',
   },
@@ -88,7 +93,6 @@ export default function Content(props) {
                       <Typography variant="h5" style={{ color: "grey" }}> Transmissão não disponível</Typography>
                   </Box>
                 }
-              
             </div>   
           </Grid>
           <Grid item md={5}>

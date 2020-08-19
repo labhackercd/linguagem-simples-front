@@ -181,6 +181,7 @@ exports[`should render the content section 1`] = `
               name="updateText"
               onChange={[Function]}
               rows={4}
+              value=""
               variant="outlined"
             />
           </form>
