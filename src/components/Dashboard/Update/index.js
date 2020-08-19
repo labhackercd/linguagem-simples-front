@@ -115,16 +115,18 @@ export default function Update(){
 						state: 'published',
 						content: updateTextArea,
 						session: 1,
-						tweet_url:  tweetURL,
+						tweet_url: "http://12345",
 				}).then(
 						result => {
 								if(result.status===201){
 										let date = new Date(result.data.created)
 										let formatDate = date.getHours() + ':' + ('0'+ date.getMinutes()).slice(-2) // reference: https://stackoverflow.com/questions/8935414/getminutes-0-9-how-to-display-two-digit-numbers
 										let responseData = result.data;
+										console.log(responseData)
 										let newUpdate = {
 											id: responseData.id,
 											content: responseData.content,
+											tweet_url: responseData.tweet_url,
 											time: formatDate,
 										}
 										setUpdates(prevUpdates => [...prevUpdates, newUpdate])
@@ -359,6 +361,11 @@ export default function Update(){
 												</Grid>
 											</Grid>
 											<Grid container className={classes.updateItem}>
+												{update.tweet_url ?
+													<TwitterTweetEmbed
+																				style={{alignSelf: 'center'}}
+																				tweetId={update.tweet_url}
+																			/> : '' }
 												<Typography style={{color: '#666'}} variant="body1">{update.content}</Typography>
 											</Grid>
 										</Grid>
