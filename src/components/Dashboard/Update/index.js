@@ -68,9 +68,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 	timelinePost: {
 		overflow: 'auto',
-		width: '100%',
 		display: 'flex',
 		margin: '1rem 0',
+		maxHeight: '25vh',
 	},
 	updateItemBody: {
 		color: theme.palette.grey
@@ -97,6 +97,14 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		justifyContent: 'space-between'
 	},
+	imageUploadButton: {
+		padding: '5px 15px',
+		borderRadius: '5px',
+		backgroundColor: '#00AF82',
+		fontWeight: '300',
+		color: 'white',
+		margin: '10px 0',
+	}
 }));
 
 export default function Update(){
@@ -123,6 +131,7 @@ export default function Update(){
 		}).then(result => {
 			if(result.status===201) {
 					let data = result.data
+					console.log(data)
 					let newUpdate = {
 						id: data.id,
 						content: data.content,
@@ -130,6 +139,9 @@ export default function Update(){
 					}
 					if(data.tweet_id.length > 0) {
 						newUpdate['tweet_id'] = data.tweet_id
+					}
+					if(data.image){
+						newUpdate['image'] = data.image
 					}
 					setUpdates([...updates, newUpdate])
 			}
@@ -279,7 +291,7 @@ export default function Update(){
 									</Grid>
 									<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
 										<Button className={classes.button} onClick={handleClick} variant="contained" disableElevation>
-											Inserir atualização
+											Inserir
 										</Button>
 									</Grid>
 								</Grid>
@@ -289,7 +301,6 @@ export default function Update(){
 
 				{/* Twitter URL input dialog */}
 					<Dialog open={open} onClose={handleTwitterDialogClose}>
-					 <DialogTitle id="form-dialog-title">Link para o tweet</DialogTitle>
 					 <DialogContent>
 						 <DialogContentText>
 							 Insira no campo abaixo o link para o tweet desejado
@@ -317,12 +328,21 @@ export default function Update(){
 				{/* End of Twitter URL input dialog */}
 
 				{/* Image Upload Dialog */}
-					<Dialog open={imageUploadModalOpen} onClose={handleImageUploadDialogClose}>
-					 <DialogTitle id="form-dialog-title">Link para o tweet</DialogTitle>
-					 <DialogContent>
-						 <DialogContentText>
-							 Faça upload da Imagem
-						 </DialogContentText>
+				<Dialog fullWidth={true}
+									maxWidth={'sm'}
+									PaperProps={{
+											style: {
+												backgroundColor: '#F2F2F2',
+											},
+										}}
+									open={imageUploadModalOpen}
+									onClose={handleImageUploadDialogClose}>
+					<div style={{display: 'flex', justifyContent: 'space-between'}}>
+						 <DialogTitle id="form-dialog-title">Nova atualizacao com imagem</DialogTitle>
+						 <img src="../../img/exit_icon.svg" style={{margin: '0 1rem 0 0'}} onClick={() => setImageUploadModalOpen(false)} />
+					 </div>
+					 <Paper style={{backgroundColor: 'white', padding: '1rem', borderRadius: '15px'}} elevation={0}>
+				 		<DialogContent>
 						 <TextField
 							 id="textfield"
 							 multiline
@@ -342,13 +362,18 @@ export default function Update(){
 								maxFileSize={5242880}
 								withPreview={true}
 								singleImage={true}
+								buttonText="Escolher imagens"
+								buttonStyles={{backgroundColor: '#00AF82',
+									 						 borderRadius: '5px',
+														   fontWeight: '600'}}
+								style={{backgroundColor: '#F4F4F4'}}
+								label="Tamanho máximo: 5mbs"
 							/>
 					 </DialogContent>
-					 <DialogActions>
-						 <Button onClick={() => setImageUploadModalOpen(false)} color="primary">
-							 Cancelar
-						 </Button>
-						 <Button onClick={handleImageUploadDialogClose} color="primary">
+				 </Paper>
+					 <DialogActions className={classes.previewModalFooter}>
+						 <Typography className={classes.time} style={{alignSelf: 'flex-start'}} variant="h6"> 18:00 </Typography>
+						 <Button onClick={handleImageUploadDialogClose} className={classes.previewModalSubmitButton} variant="contained">
 							 Fazer upload da imagem
 						 </Button>
 					 </DialogActions>
@@ -366,8 +391,11 @@ export default function Update(){
 					}}
 					open={previewModalOpen}
 					onClose={handlePreviewModalClose}>
-				 <DialogTitle id="preview-modal-title">Nova atualização</DialogTitle>
-				 	<Paper style={{backgroundColor: 'white', padding: '1rem', borderRadius: '15px'}} elevation={0}>
+					<div style={{display: 'flex', justifyContent: 'space-between'}}>
+						 <DialogTitle id="form-dialog-title">Nova atualizacao do Twitter</DialogTitle>
+						 <img src="../../img/exit_icon.svg" style={{margin: '0 1rem 0 0'}} onClick={() => setPreviewModalOpen(false)} />
+					 </div>
+					 <Paper style={{backgroundColor: 'white', padding: '1rem', borderRadius: '15px'}} elevation={0}>
 					 <DialogContent className={classes.previewModal}>
 							 <TextField
 								 id="textfield"
@@ -424,6 +452,8 @@ export default function Update(){
 															style={{width: '100%', margin: '0 0 1rem 0'}}
 															tweetId={update.tweet_id}
 														/> : '' }
+													{update.image ?
+													 <img src={update.image}  style={{maxWidth: '100%', maxHeight: '30vh'}} alt="timeline post picture"/> : '' }
 												</section>
 											</Grid>
 										</Grid>
