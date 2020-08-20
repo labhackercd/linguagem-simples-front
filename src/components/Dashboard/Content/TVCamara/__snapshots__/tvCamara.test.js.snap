@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render the RadioCamaraContent section 1`] = `
+exports[`should render the TVCamaraContent section 1`] = `
 <div>
   <WithStyles(ForwardRef(List))
     style={
@@ -16,7 +16,7 @@ exports[`should render the RadioCamaraContent section 1`] = `
       <Styled(MuiBox)
         my={0.5}
       >
-        <RadioCard
+        <TVCard
           info={
             Object {
               "ano": 2020,
@@ -113,7 +113,7 @@ exports[`should render the RadioCamaraContent section 1`] = `
       <Styled(MuiBox)
         my={0.5}
       >
-        <RadioCard
+        <TVCard
           info={
             Object {
               "ano": 2020,
@@ -231,7 +231,7 @@ exports[`should render the RadioCamaraContent section 1`] = `
       <Styled(MuiBox)
         my={0.5}
       >
-        <RadioCard
+        <TVCard
           info={
             Object {
               "ano": 2019,
@@ -282,7 +282,7 @@ exports[`should render the RadioCamaraContent section 1`] = `
       <Styled(MuiBox)
         my={0.5}
       >
-        <RadioCard
+        <TVCard
           info={
             Object {
               "ano": 2019,
@@ -405,7 +405,7 @@ exports[`should render the RadioCamaraContent section 1`] = `
       <Styled(MuiBox)
         my={0.5}
       >
-        <RadioCard
+        <TVCard
           info={
             Object {
               "ano": 2019,
@@ -490,7 +490,7 @@ exports[`should render the RadioCamaraContent section 1`] = `
       <Styled(MuiBox)
         my={0.5}
       >
-        <RadioCard
+        <TVCard
           info={
             Object {
               "ano": 2019,
@@ -580,7 +580,7 @@ exports[`should render the RadioCamaraContent section 1`] = `
       <Styled(MuiBox)
         my={0.5}
       >
-        <RadioCard
+        <TVCard
           info={
             Object {
               "ano": 2019,
@@ -645,7 +645,7 @@ exports[`should render the RadioCamaraContent section 1`] = `
       <Styled(MuiBox)
         my={0.5}
       >
-        <RadioCard
+        <TVCard
           info={
             Object {
               "ano": 2019,
@@ -712,7 +712,7 @@ exports[`should render the RadioCamaraContent section 1`] = `
       <Styled(MuiBox)
         my={0.5}
       >
-        <RadioCard
+        <TVCard
           info={
             Object {
               "ano": 2019,
@@ -778,7 +778,7 @@ exports[`should render the RadioCamaraContent section 1`] = `
       <Styled(MuiBox)
         my={0.5}
       >
-        <RadioCard
+        <TVCard
           info={
             Object {
               "ano": 2019,

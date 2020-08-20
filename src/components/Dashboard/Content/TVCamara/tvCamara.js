@@ -8,9 +8,9 @@ import List from '@material-ui/core/List'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
-import {newsMockData} from './radioMockData'
+import {tvMockData} from './tvMockData'
 import moment from 'moment';
-import {fetchDataRadioCamara} from './fetchRadioCamara'
+import {fetchTVRCamara} from './fetchTvCamara'
 import PlayIcon from './assets/play_image.svg'
 
 
@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
       }
 }));
 
-function RadioCard(props){
+function TVCard(props){
     const classes = useStyles();
 
     return (
@@ -88,7 +88,7 @@ function RadioCard(props){
                           <Grid item xs={10}>
                             <Grid container>
                               <Grid item xs={11}>
-                                <Typography style={{ color: "gray" }} variant="body1">Áudio</Typography>
+                                <Typography style={{ color: "gray" }} variant="body1">Vídeo</Typography>
                               </Grid>
                               <Grid item xs={1}>
                                 <IconButton aria-label="delete" className={classes.margin} size="small">
@@ -123,19 +123,19 @@ function RadioCard(props){
   );
 }
 
-export default class RadioCamaraContent extends React.Component {
+export default class TvCamaraContent extends React.Component {
     
   constructor(props){
     super(props);
     this.state = { 
-        news: newsMockData.hits.hits, 
+        news: tvMockData.hits.hits, 
         dataLoaded: false
     };
   }
 
   fetchSessionsList = async term => {
     try {
-      //const data = await fetchDataRadioCamara();
+      //const data = await fetchTVRCamara();
       //this.setState({sessionsList:data})
       this.setState({dataLoaded:true});
 
@@ -165,7 +165,7 @@ export default class RadioCamaraContent extends React.Component {
           <List style={{maxHeight: '200px', overflow: 'auto'}}>        
               {this.state.news.map((sectionId) => (
                   <li key={`section-${sectionId._id}`}>
-                      <Box my={0.5}><RadioCard info={sectionId._source} ></RadioCard></Box>
+                      <Box my={0.5}><TVCard info={sectionId._source} ></TVCard></Box>
                   </li>
               ))}
           </List>

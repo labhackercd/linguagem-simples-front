@@ -13,6 +13,10 @@ import BookmarkIcon from '@material-ui/icons/Bookmark';
 import {newsMockData} from './newsMockData'
 import moment from 'moment';
 import {fetchDataAgenciaCamara} from './fetchDataAgenciaCamara'
+import InputAdornment from '@material-ui/core/InputAdornment';
+import SearchIcon from '@material-ui/icons/Search';
+import TextField from '@material-ui/core/TextField';
+import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 
 const useStyles = makeStyles((theme) => ({
     body: {
@@ -95,9 +99,11 @@ function NewsCard(props){
                                 </Grid>
                                 <Grid item xs={12}>
                                   <Box fontWeight="fontWeightRegular">
-                                    <Typography variant="h6" style={{ color: "#007E5A" }}>
-                                        {props.info.titulo}
-                                    </Typography>
+                                  <a rel={'external noopener noreferrer'} target="_blank" href={"https://"+props.info.url} style={{textDecoration: "none"}}>
+                                      <Typography variant="h6" style={{ color: "#007E5A" }}>
+                                          {props.info.titulo}
+                                      </Typography>
+                                    </a>
                                   </Box>
                                 </Grid>
                                 <Grid item xs={12}>
@@ -114,6 +120,30 @@ function NewsCard(props){
             </Paper>
         </Box>
     );
+}
+
+function topBarAgenciaCamaraBar(props){
+  return(
+    <React.Fragment>
+      <Grid item xs={8}>
+        <Typography variant="h6" style={{ color: "#007E5A" }}>Mais recentes </Typography>
+      </Grid>
+      <Grid item xs={1}>
+        <IconButton color="primary" aria-label="folder picture" component="span" style={{padding:0}}>
+          <CreateNewFolderIcon />
+        </IconButton>
+      </Grid>
+      <Grid item xs={3}>
+        <TextField
+          id="input-search-agencia"
+          size="small"
+          InputProps={{
+            endAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),
+          }}
+        />
+      </Grid>
+    </React.Fragment>
+  );
 }
 
 export default class AgenciaCamaraContent extends React.Component {
@@ -148,20 +178,25 @@ export default class AgenciaCamaraContent extends React.Component {
   render(){
     //console.log(this.state.news)
     if(!this.state.dataLoaded){
-      return (<Box display="flex" justifyContent="center" alignItems="center">
-                  <CircularProgress></CircularProgress>
-              </Box>)
+      return (<Box display="flex" justifyContent="center" alignItems="center"><CircularProgress></CircularProgress></Box>)
     }
 
     return (
       <div>
-          <List style={{maxHeight: '200px', overflow: 'auto'}}>            
-              {this.state.news.map((sectionId) => (
-                  <li key={`section-${sectionId._id}`}>
-                      <Box my={0.5}><NewsCard info={sectionId._source} ></NewsCard></Box>
-                  </li>
-              ))}
-          </List>
+        <Grid container>
+          {topBarAgenciaCamaraBar()}
+          <Grid item xs={12}>
+            <Box paddingTop={3}>
+              <List style={{maxHeight: '200px', overflow: 'auto'}}>            
+                {this.state.news.map((sectionId) => (
+                    <li key={`section-${sectionId._id}`}>
+                        <Box my={0.5}><NewsCard info={sectionId._source} ></NewsCard></Box>
+                    </li>
+                ))}
+              </List>
+            </Box>
+          </Grid>
+        </Grid>
       </div>
     )
   }
