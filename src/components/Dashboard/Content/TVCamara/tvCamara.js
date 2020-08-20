@@ -11,7 +11,7 @@ import BookmarkIcon from '@material-ui/icons/Bookmark';
 import {tvMockData} from './tvMockData'
 import moment from 'moment';
 import {fetchTVCamara} from './fetchTvCamara'
-import PlayIcon from './assets/play_image.svg'
+import TVIcon from './assets/tv_image.svg'
 
 
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -113,7 +113,7 @@ function TVCard(props){
                       <Box my={1} mr={1}>
                         <Grid container  alignItems="center" justify="center">
                           <Grid item xs={2} align="center" alignItems="center">                         
-                            <img src={PlayIcon} alt="Ícone de play audio"></img>  
+                            <img src={TVIcon} alt="Ícone de Televisão"></img>  
                           </Grid>
                           <Grid item xs={10}>
                             <Grid container>
