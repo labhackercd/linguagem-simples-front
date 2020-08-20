@@ -3,6 +3,7 @@ import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogCon
 import {makeStyles} from '@material-ui/core/styles';
 import axiosInstance from '../../../auth/axiosApi.js';
 import {TwitterTweetEmbed} from 'react-twitter-embed';
+import ImageUploader from 'react-images-upload';
 
 const useStyles = makeStyles((theme) => ({
 	body: {
@@ -106,45 +107,28 @@ export default function Update(){
 	const [updateTextArea, setUpdateTextArea] = useState("");
 	const [tweetURL, setTweetURL] = useState('');
 	const [tweetID, setTweetID] = useState('');
-	const [image] = useState(''); // will probably suffer modifications
 	const [open, setOpen] = useState(false);
 	const [previewModalOpen, setPreviewModalOpen] = useState(false);
+	const [imageUploadModalOpen, setImageUploadModalOpen] = useState(false);
+	const [picture, setPicture] = useState([]);
 
 	function dispatchPayload() {
-		axiosInstance.post('/publications/', {
-						state: 'published',
-						content: updateTextArea,
-						session: 1,
-						tweet_url: "http://12345",
-				}).then(
-						result => {
-								if(result.status===201){
-										let date = new Date(result.data.created)
-										let formatDate = date.getHours() + ':' + ('0'+ date.getMinutes()).slice(-2) // reference: https://stackoverflow.com/questions/8935414/getminutes-0-9-how-to-display-two-digit-numbers
-										let responseData = result.data;
-										console.log(responseData)
-										let newUpdate = {
-											id: responseData.id,
-											content: responseData.content,
-											tweet_url: responseData.tweet_url,
-											time: formatDate,
-										}
-										setUpdates(prevUpdates => [...prevUpdates, newUpdate])
-										setUpdateTextArea("")
-								}else{
-										alert("Erro ao criar o post")
-								}
-
-						}
-		).catch (error => {
-				throw error;
+		const formData = new FormData()
+		formData.append('image', picture, picture.name)
+		formData.append('content', updateTextArea)
+		formData.append('session', 1)
+		formData.append('tweet_id', tweetID)
+		axiosInstance.post('/publications/', formData, {
+			headers: { 'Content-Type': 'multipart/form-data'},
+		}).then(result => {
+			console.log(result)
+		}).catch(err => {
+			console.log(err)
 		})
 	}
-
 	function handleClick() {
 		dispatchPayload()
 	}
-
 	function handleTwitterDialogOpen() {
 		setOpen(true)
 	}
@@ -157,15 +141,32 @@ export default function Update(){
 		setTweetID(id)
 		setPreviewModalOpen(true)
 	}
-	function handlePreviewModalOpen() {
+	function garbageCollection() {
+		setTweetID('')
+		setPicture([])
+	}
+	function handleImageUploadDialogOpen(e){
+		e.preventDefault()
+		setImageUploadModalOpen(true)
+	}
+	function handleImageUploadDialogClose() {
+		setImageUploadModalOpen(false)
+		dispatchPayload()
+		garbageCollection()
+	}
+ 	function handlePreviewModalOpen() {
 		setPreviewModalOpen(true)
 	}
 	function handlePreviewModalClose() {
 		dispatchPayload()
 		setPreviewModalOpen(false)
+		garbageCollection()
 	}
 	function handleChange(e) {
 		setUpdateTextArea(e.target.value)
+	}
+	function onImageDrop(picture) {
+		setPicture(picture[0])
 	}
 
 	return (
@@ -252,7 +253,7 @@ export default function Update(){
 											<img src="../../img/divider.svg" alt="divider icon"/>
 										</div>
 										<div className={classes.subMenuItem}>
-											<a href="/"><img src="../../img/picture_upload.svg" alt="upload icon"/></a>
+											<a href="/"><img src="../../img/picture_upload.svg" alt="upload icon" onClick={handleImageUploadDialogOpen}/></a>
 										</div>
 										<div className={classes.subMenuItem}>
 											<img src="../../img/twitter_icon.svg" alt="incorporate tweet icon" onClick={handleTwitterDialogOpen}/>
@@ -296,6 +297,42 @@ export default function Update(){
 					 </DialogActions>
 				 </Dialog>
 				{/* End of Twitter URL input dialog */}
+
+				{/* Image Upload Dialog */}
+					<Dialog open={imageUploadModalOpen} onClose={handleImageUploadDialogClose}>
+					 <DialogTitle id="form-dialog-title">Link para o tweet</DialogTitle>
+					 <DialogContent>
+						 <DialogContentText>
+							 Faça upload da Imagem
+						 </DialogContentText>
+						 <TextField
+							 id="textfield"
+							 multiline
+							 rows={4}
+							 bgcolor="white"
+							 onChange={(e) => setUpdateTextArea(e.target.value)}
+							 name="previewModalUpdateText"
+							 placeholder="Inserir nota"
+							 onChange = {handleChange}
+							 elevation={0}
+							 InputProps={{ disableUnderline: true }}
+						 />
+						 <ImageUploader
+								withIcon={true}
+								onChange={onImageDrop}
+								imgExtension={[".jpg", ".png", ".jpeg"]}
+								maxFileSize={5242880}
+								withPreview={true}
+								singleImage={true}
+							/>
+					 </DialogContent>
+					 <DialogActions>
+						 <Button onClick={(e) => console.log(picture.length > 0 ? 'picture exists' : 'picture doesnt exist')} color="primary">
+							 Fazer Upload da Imagem
+						 </Button>
+					 </DialogActions>
+				 </Dialog>
+				{/* End of Image Upload Dialog */}
 
 				{/* Preview Modal dialog */}
 				<Dialog
