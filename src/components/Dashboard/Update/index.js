@@ -66,11 +66,9 @@ const useStyles = makeStyles((theme) => ({
 		height: '100%',
 		width: '100%',
 	},
-	updateItem: {
+	timelinePost: {
 		overflow: 'auto',
 		width: '100%',
-		height: 'auto',
-		alignItems: 'flex-start',
 		display: 'flex',
 		margin: '1rem 0',
 	},
@@ -114,17 +112,33 @@ export default function Update(){
 
 	function dispatchPayload() {
 		const formData = new FormData()
-		formData.append('image', picture, picture.name)
+		if(!(picture instanceof Array)) {
+			formData.append('image', picture, picture.name)
+		}
 		formData.append('content', updateTextArea)
 		formData.append('session', 1)
 		formData.append('tweet_id', tweetID)
 		axiosInstance.post('/publications/', formData, {
 			headers: { 'Content-Type': 'multipart/form-data'},
 		}).then(result => {
-			console.log(result)
+			if(result.status===201) {
+					let data = result.data
+					let newUpdate = {
+						id: data.id,
+						content: data.content,
+						time: parseHourMinute(new Date(data.created))
+					}
+					if(data.tweet_id.length > 0) {
+						newUpdate['tweet_id'] = data.tweet_id
+					}
+					setUpdates([...updates, newUpdate])
+			}
 		}).catch(err => {
 			console.log(err)
 		})
+	}
+	function parseHourMinute(date) {
+		return date.getHours() + ':' + ('0'+ date.getMinutes()).slice(-2)
 	}
 	function handleClick() {
 		dispatchPayload()
@@ -265,7 +279,7 @@ export default function Update(){
 									</Grid>
 									<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
 										<Button className={classes.button} onClick={handleClick} variant="contained" disableElevation>
-											Atualizar
+											Inserir atualização
 										</Button>
 									</Grid>
 								</Grid>
@@ -331,6 +345,9 @@ export default function Update(){
 							/>
 					 </DialogContent>
 					 <DialogActions>
+						 <Button onClick={() => setImageUploadModalOpen(false)} color="primary">
+							 Cancelar
+						 </Button>
 						 <Button onClick={handleImageUploadDialogClose} color="primary">
 							 Fazer upload da imagem
 						 </Button>
@@ -359,7 +376,7 @@ export default function Update(){
 								 bgcolor="white"
 								 onChange={(e) => setUpdateTextArea(e.target.value)}
 								 name="previewModalUpdateText"
-								 placeholder="Inserir nota"
+								 placeholder={"Inserir nota"}
 								 onChange = {handleChange}
 								 elevation={0}
 								 InputProps={{ disableUnderline: true }}
@@ -368,8 +385,6 @@ export default function Update(){
 								style={{alignSelf: 'center'}}
 								tweetId={tweetID}
 							/>
-						 {/*
-							 */}
 					 </DialogContent>
 				 </Paper>
 					 <DialogActions className={classes.previewModalFooter}>
@@ -381,7 +396,7 @@ export default function Update(){
 				 </Dialog>
 				{/* End of Preview Modal Dialog */}
 
-
+				{/* timeline */}
 				<Grid container className={classes.updatesArea}>
 					<List style={{width: '100%'}}>
 							{updates.slice(0).reverse().map(update =>  //creates a shallow copy of the array and reverses it
@@ -401,13 +416,15 @@ export default function Update(){
 													<img src="../../img/more_options_icon.svg" alt="more options icon"/>
 												</Grid>
 											</Grid>
-											<Grid container className={classes.updateItem}>
-												{update.tweet_url ?
-													<TwitterTweetEmbed
-																				style={{alignSelf: 'center'}}
-																				tweetId={update.tweet_url}
-																			/> : '' }
-												<Typography style={{color: '#666'}} variant="body1">{update.content}</Typography>
+											<Grid container className={classes.timelinePost}>
+												<Typography style={{color: '#666', alignSelf: 'flex-start', width: '100%'}} variant="body1">{update.content}</Typography>
+												<section style={{width: '100%'}}>
+													{update.tweet_id ?
+														<TwitterTweetEmbed
+															style={{width: '100%', margin: '0 0 1rem 0'}}
+															tweetId={update.tweet_id}
+														/> : '' }
+												</section>
 											</Grid>
 										</Grid>
 									</Grid>
@@ -415,6 +432,7 @@ export default function Update(){
 							)}
 					</List>
 				</Grid>
+				{/* end of timeline */}
 			</div>
 		</React.Fragment>
 	)
