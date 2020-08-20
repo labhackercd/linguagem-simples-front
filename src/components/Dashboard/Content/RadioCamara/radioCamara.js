@@ -6,13 +6,13 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper'
 import List from '@material-ui/core/List'
 import CircularProgress from '@material-ui/core/CircularProgress';
-
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
-
-import {newsMockData} from './newsMockData'
+import {newsMockData} from './radioMockData'
 import moment from 'moment';
-import {fetchDataAgenciaCamara} from './fetchDataAgenciaCamara'
+import {fetchDataRadioCamara} from './fetchRadioCamara'
+import PlayIcon from './assets/play_image.svg'
+
 
 const useStyles = makeStyles((theme) => ({
     body: {
@@ -69,54 +69,59 @@ const useStyles = makeStyles((theme) => ({
       },
       newsCard:{
         background:'#F4F4F4',
-      },
+      }
 }));
 
-function NewsCard(props){
+function RadioCard(props){
     const classes = useStyles();
 
     return (
-        <Box width="97%" >
-            <Paper elevation={0} className={classes.newsCard}>
-                <Grid container>
-                    <Grid item xs={12}>
-                        <Box m={1}>
+      <Box width="97%" height="100%" >
+          <Paper elevation={0} className={classes.newsCard}>
+              <Grid container>
+                  <Grid item xs={12}>
+                      <Box my={1} mr={1}>
+                        <Grid container  alignItems="center" justify="center">
+                          <Grid item xs={2} align="center" alignItems="center">                         
+                            <img src={PlayIcon} alt="Ícone de play audio"></img>  
+                          </Grid>
+                          <Grid item xs={10}>
                             <Grid container>
-                                <Grid item xs={10}>
-                                    <Typography style={{ color: "gray" }} variant="body1">Notícia</Typography>
-                                </Grid>
-                                <Grid item xs={2}>
-                                        <Box display="flex" justifyContent="flex-end">
-                                        <IconButton aria-label="delete" className={classes.margin} size="small">
-                                            <AddCircleOutlineIcon fontSize="inherit" />
-                                            <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} /> 
-                                        </IconButton>
-                                    </Box>
-                                </Grid>
-                                <Grid item xs={12}>
-                                  <Box fontWeight="fontWeightRegular">
+                              <Grid item xs={11}>
+                                <Typography style={{ color: "gray" }} variant="body1">Áudio</Typography>
+                              </Grid>
+                              <Grid item xs={1}>
+                                <IconButton aria-label="delete" className={classes.margin} size="small">
+                                    <AddCircleOutlineIcon fontSize="inherit" />
+                                    <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} /> 
+                                </IconButton>
+                              </Grid>
+                              <Grid item xs={12}>
+                                <Box fontWeight="fontWeightRegular">
                                     <Typography variant="h6" style={{ color: "#007E5A" }}>
-                                        {props.info.titulo}
+                                      {props.info.titulo}                   
                                     </Typography>
-                                  </Box>
-                                </Grid>
-                                <Grid item xs={12}>
-                                  <Box fontSize={11}>
-                                    <Typography style={{ color: "gray" }}>
-                                         {moment(new Date(props.info.data)).format("DD/MM/YYYY HH:mm")}
-                                    </Typography>
-                                    </Box>
-                                </Grid>
+                                </Box>
+                              </Grid>
+                              <Grid item xs={12}>
+                                <Box fontSize={11}>
+                                  <Typography style={{ color: "gray" }}>
+                                      {moment(new Date(props.info.data)).format("DD/MM/YYYY HH:mm")}
+                                  </Typography>
+                                </Box>
+                              </Grid>
                             </Grid>
-                        </Box>
-                    </Grid>
-                </Grid>
-            </Paper>
-        </Box>
-    );
+                          </Grid>
+                        </Grid>
+                      </Box>
+                  </Grid>
+              </Grid>
+          </Paper>
+      </Box>
+  );
 }
 
-export default class AgenciaCamaraContent extends React.Component {
+export default class RadioCamaraContent extends React.Component {
     
   constructor(props){
     super(props);
@@ -128,7 +133,7 @@ export default class AgenciaCamaraContent extends React.Component {
 
   fetchSessionsList = async term => {
     try {
-      //const data = await fetchDataAgenciaCamara();
+      //const data = await fetchDataRadioCamara();
       //this.setState({sessionsList:data})
       this.setState({dataLoaded:true});
 
@@ -155,10 +160,10 @@ export default class AgenciaCamaraContent extends React.Component {
 
     return (
       <div>
-          <List style={{maxHeight: '200px', overflow: 'auto'}}>            
+          <List style={{maxHeight: '200px', overflow: 'auto'}}>        
               {this.state.news.map((sectionId) => (
                   <li key={`section-${sectionId._id}`}>
-                      <Box my={0.5}><NewsCard info={sectionId._source} ></NewsCard></Box>
+                      <Box my={0.5}><RadioCard info={sectionId._source} ></RadioCard></Box>
                   </li>
               ))}
           </List>
