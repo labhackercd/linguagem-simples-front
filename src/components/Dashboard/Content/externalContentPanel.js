@@ -8,6 +8,7 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 
 import AgenciaCamaraContent from './AgenciaCamara/agenciaCamara'
+import RadioCamaraContent from './RadioCamara/radioCamara'
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -132,22 +133,22 @@ export default function ExternalContentPanel() {
             <Grid item xs={12}>Search</Grid>
             <Grid item xs={12}>
               <TabPanel value={value} index={0}>
-              Item one
+                Conteúdos Salvos
               </TabPanel>
               <TabPanel value={value} index={1}>
                 <AgenciaCamaraContent></AgenciaCamaraContent>
               </TabPanel>
               <TabPanel value={value} index={2}>
-                Item Three
+                TV Câmara
               </TabPanel>
               <TabPanel value={value} index={3}>
-                Item Four
+                <RadioCamaraContent></RadioCamaraContent>
               </TabPanel>
               <TabPanel value={value} index={4}>
-                Item Five
+                Twitter
               </TabPanel>
               <TabPanel value={value} index={5}>
-                Item Six
+                Glossário
               </TabPanel>
             </Grid>
         </Grid>
