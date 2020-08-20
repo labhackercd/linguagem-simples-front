@@ -150,9 +150,13 @@ export default function Update(){
 		setImageUploadModalOpen(true)
 	}
 	function handleImageUploadDialogClose() {
-		setImageUploadModalOpen(false)
-		dispatchPayload()
-		garbageCollection()
+		if(picture instanceof Array) {
+			alert("Imagem nao foi carregada")
+		} else {
+			setImageUploadModalOpen(false)
+			dispatchPayload()
+			garbageCollection()
+		}
 	}
  	function handlePreviewModalOpen() {
 		setPreviewModalOpen(true)
@@ -327,8 +331,8 @@ export default function Update(){
 							/>
 					 </DialogContent>
 					 <DialogActions>
-						 <Button onClick={(e) => console.log(picture.length > 0 ? 'picture exists' : 'picture doesnt exist')} color="primary">
-							 Fazer Upload da Imagem
+						 <Button onClick={handleImageUploadDialogClose} color="primary">
+							 Fazer upload da imagem
 						 </Button>
 					 </DialogActions>
 				 </Dialog>
