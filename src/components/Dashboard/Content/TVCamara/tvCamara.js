@@ -10,8 +10,14 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import {tvMockData} from './tvMockData'
 import moment from 'moment';
-import {fetchTVRCamara} from './fetchTvCamara'
+import {fetchTVCamara} from './fetchTvCamara'
 import PlayIcon from './assets/play_image.svg'
+
+
+import InputAdornment from '@material-ui/core/InputAdornment';
+import SearchIcon from '@material-ui/icons/Search';
+import TextField from '@material-ui/core/TextField';
+import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -71,6 +77,30 @@ const useStyles = makeStyles((theme) => ({
         background:'#F4F4F4',
       }
 }));
+
+function topBarTVCamara(props){
+  return(
+    <React.Fragment>
+      <Grid item xs={8}>
+        <Typography variant="h6" style={{ color: "#007E5A" }}>Mais recentes </Typography>
+      </Grid>
+      <Grid item xs={1}>
+        <IconButton color="primary" aria-label="folder picture" component="span" style={{padding:0}}>
+          <CreateNewFolderIcon />
+        </IconButton>
+      </Grid>
+      <Grid item xs={3}>
+        <TextField
+          id="input-search-agencia"
+          size="small"
+          InputProps={{
+            endAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),
+          }}
+        />
+      </Grid>
+    </React.Fragment>
+  );
+}
 
 function TVCard(props){
     const classes = useStyles();
@@ -162,13 +192,20 @@ export default class TvCamaraContent extends React.Component {
 
     return (
       <div>
-          <List style={{maxHeight: '200px', overflow: 'auto'}}>        
-              {this.state.news.map((sectionId) => (
+        <Grid container>
+          {topBarTVCamara()}
+          <Grid item xs={12}>
+            <Box paddingTop={3}>
+              <List style={{maxHeight: '200px', overflow: 'auto'}}>            
+                {this.state.news.map((sectionId) => (
                   <li key={`section-${sectionId._id}`}>
                       <Box my={0.5}><TVCard info={sectionId._source} ></TVCard></Box>
                   </li>
-              ))}
-          </List>
+                ))}
+              </List>
+            </Box>
+          </Grid>
+        </Grid>
       </div>
     )
   }
