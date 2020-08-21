@@ -9,6 +9,7 @@ import Box from '@material-ui/core/Box';
 
 import AgenciaCamaraContent from './AgenciaCamara/agenciaCamara'
 import RadioCamaraContent from './RadioCamara/radioCamara'
+import TvCamaraContent from './TVCamara/tvCamara'
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -76,7 +77,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box ml={1}>
           {children}
         </Box>
       )}
@@ -128,30 +129,25 @@ export default function ExternalContentPanel() {
             <Tab label="Glossário" {...a11yProps(5)} />
           </Tabs>
       </Grid>
-      <Grid item md={9} className={classes.content}>
-        <Grid container>
-            <Grid item xs={12}>Search</Grid>
-            <Grid item xs={12}>
-              <TabPanel value={value} index={0}>
-                Conteúdos Salvos
-              </TabPanel>
-              <TabPanel value={value} index={1}>
-                <AgenciaCamaraContent></AgenciaCamaraContent>
-              </TabPanel>
-              <TabPanel value={value} index={2}>
-                TV Câmara
-              </TabPanel>
-              <TabPanel value={value} index={3}>
-                <RadioCamaraContent></RadioCamaraContent>
-              </TabPanel>
-              <TabPanel value={value} index={4}>
-                Twitter
-              </TabPanel>
-              <TabPanel value={value} index={5}>
-                Glossário
-              </TabPanel>
-            </Grid>
-        </Grid>
+      <Grid item md={9}>
+                <TabPanel value={value} index={0}>
+                  Conteúdos Salvos
+                </TabPanel>
+                <TabPanel value={value} index={1} style={{paddingTop:0}}>
+                  <AgenciaCamaraContent></AgenciaCamaraContent>
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                  <TvCamaraContent></TvCamaraContent>
+                </TabPanel>
+                <TabPanel value={value} index={3}>
+                  <RadioCamaraContent></RadioCamaraContent>
+                </TabPanel>
+                <TabPanel value={value} index={4}>
+                  Twitter
+                </TabPanel>
+                <TabPanel value={value} index={5}>
+                  Glossário
+                </TabPanel>     
       </Grid>
     </Grid>
   )

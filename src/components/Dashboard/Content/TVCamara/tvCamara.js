@@ -6,18 +6,19 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper'
 import List from '@material-ui/core/List'
 import CircularProgress from '@material-ui/core/CircularProgress';
-
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
-
-import {newsMockData} from './newsMockData'
+import {tvMockData} from './tvMockData'
 import moment from 'moment';
-import {fetchDataAgenciaCamara} from './fetchDataAgenciaCamara'
+import {fetchTVCamara} from './fetchTvCamara'
+import TVIcon from './assets/tv_image.svg'
+
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
+
 
 const useStyles = makeStyles((theme) => ({
     body: {
@@ -74,56 +75,10 @@ const useStyles = makeStyles((theme) => ({
       },
       newsCard:{
         background:'#F4F4F4',
-      },
+      }
 }));
 
-function NewsCard(props){
-    const classes = useStyles();
-
-    return (
-        <Box width="97%" >
-            <Paper elevation={0} className={classes.newsCard}>
-                <Grid container>
-                    <Grid item xs={12}>
-                        <Box m={1}>
-                            <Grid container>
-                                <Grid item xs={10}>
-                                    <Typography style={{ color: "gray" }} variant="body1">Notícia</Typography>
-                                </Grid>
-                                <Grid item xs={2}>
-                                        <Box display="flex" justifyContent="flex-end">
-                                        <IconButton aria-label="delete" className={classes.margin} size="small">
-                                            <AddCircleOutlineIcon fontSize="inherit" />
-                                            <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} /> 
-                                        </IconButton>
-                                    </Box>
-                                </Grid>
-                                <Grid item xs={12}>
-                                  <Box fontWeight="fontWeightRegular">
-                                  <a rel={'external noopener noreferrer'} target="_blank" href={"https://"+props.info.url} style={{textDecoration: "none"}}>
-                                      <Typography variant="h6" style={{ color: "#007E5A" }}>
-                                          {props.info.titulo}
-                                      </Typography>
-                                    </a>
-                                  </Box>
-                                </Grid>
-                                <Grid item xs={12}>
-                                  <Box fontSize={11}>
-                                    <Typography style={{ color: "gray" }}>
-                                         {moment(new Date(props.info.data)).format("DD/MM/YYYY HH:mm")}
-                                    </Typography>
-                                    </Box>
-                                </Grid>
-                            </Grid>
-                        </Box>
-                    </Grid>
-                </Grid>
-            </Paper>
-        </Box>
-    );
-}
-
-function topBarAgenciaCamaraBar(props){
+function topBarTVCamara(props){
   return(
     <React.Fragment>
       <Grid item xs={8}>
@@ -147,19 +102,70 @@ function topBarAgenciaCamaraBar(props){
   );
 }
 
-export default class AgenciaCamaraContent extends React.Component {
+function TVCard(props){
+    const classes = useStyles();
+
+    return (
+      <Box width="97%" height="100%" >
+          <Paper elevation={0} className={classes.newsCard}>
+              <Grid container>
+                  <Grid item xs={12}>
+                      <Box my={1} mr={1}>
+                        <Grid container  alignItems="center" justify="center">
+                          <Grid item xs={2} align="center" alignItems="center">                         
+                            <img src={TVIcon} alt="Ícone de Televisão"></img>  
+                          </Grid>
+                          <Grid item xs={10}>
+                            <Grid container>
+                              <Grid item xs={11}>
+                                <Typography style={{ color: "gray" }} variant="body1">Vídeo</Typography>
+                              </Grid>
+                              <Grid item xs={1}>
+                                <IconButton aria-label="delete" className={classes.margin} size="small">
+                                    <AddCircleOutlineIcon fontSize="inherit" />
+                                    <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} /> 
+                                </IconButton>
+                              </Grid>
+                              <Grid item xs={12}>
+                                <Box fontWeight="fontWeightRegular">
+                                   <a rel={'external noopener noreferrer'} target="_blank" href={"https://"+props.info.url} style={{textDecoration: "none"}}>
+                                      <Typography variant="h6" style={{ color: "#007E5A" }}>
+                                          {props.info.titulo}
+                                      </Typography>
+                                    </a>
+                                </Box>
+                              </Grid>
+                              <Grid item xs={12}>
+                                <Box fontSize={11}>
+                                  <Typography style={{ color: "gray" }}>
+                                      {moment(new Date(props.info.data)).format("DD/MM/YYYY HH:mm")}
+                                  </Typography>
+                                </Box>
+                              </Grid>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      </Box>
+                  </Grid>
+              </Grid>
+          </Paper>
+      </Box>
+  );
+}
+
+export default class TvCamaraContent extends React.Component {
     
   constructor(props){
     super(props);
     this.state = { 
-        news: newsMockData.hits.hits, 
+        news: tvMockData.hits.hits, 
         dataLoaded: false
     };
   }
 
   fetchSessionsList = async term => {
     try {
-      //const data = await fetchDataAgenciaCamara();
+      //const data = await fetchTVRCamara();
       //this.setState({sessionsList:data})
       this.setState({dataLoaded:true});
 
@@ -179,20 +185,22 @@ export default class AgenciaCamaraContent extends React.Component {
   render(){
     //console.log(this.state.news)
     if(!this.state.dataLoaded){
-      return (<Box display="flex" justifyContent="center" alignItems="center"><CircularProgress></CircularProgress></Box>)
+      return (<Box display="flex" justifyContent="center" alignItems="center">
+                  <CircularProgress></CircularProgress>
+              </Box>)
     }
 
     return (
       <div>
         <Grid container>
-          {topBarAgenciaCamaraBar()}
+          {topBarTVCamara()}
           <Grid item xs={12}>
             <Box paddingTop={3}>
               <List style={{maxHeight: '200px', overflow: 'auto'}}>            
                 {this.state.news.map((sectionId) => (
-                    <li key={`section-${sectionId._id}`}>
-                        <Box my={0.5}><NewsCard info={sectionId._source} ></NewsCard></Box>
-                    </li>
+                  <li key={`section-${sectionId._id}`}>
+                      <Box my={0.5}><TVCard info={sectionId._source} ></TVCard></Box>
+                  </li>
                 ))}
               </List>
             </Box>

@@ -13,6 +13,10 @@ import moment from 'moment';
 import {fetchDataRadioCamara} from './fetchRadioCamara'
 import PlayIcon from './assets/play_image.svg'
 
+import InputAdornment from '@material-ui/core/InputAdornment';
+import SearchIcon from '@material-ui/icons/Search';
+import TextField from '@material-ui/core/TextField';
+import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 
 const useStyles = makeStyles((theme) => ({
     body: {
@@ -98,9 +102,11 @@ function RadioCard(props){
                               </Grid>
                               <Grid item xs={12}>
                                 <Box fontWeight="fontWeightRegular">
-                                    <Typography variant="h6" style={{ color: "#007E5A" }}>
-                                      {props.info.titulo}                   
-                                    </Typography>
+                                   <a rel={'external noopener noreferrer'} target="_blank" href={"https://"+props.info.url} style={{textDecoration: "none"}}>
+                                      <Typography variant="h6" style={{ color: "#007E5A" }}>
+                                          {props.info.titulo}
+                                      </Typography>
+                                    </a>
                                 </Box>
                               </Grid>
                               <Grid item xs={12}>
@@ -118,6 +124,30 @@ function RadioCard(props){
               </Grid>
           </Paper>
       </Box>
+  );
+}
+
+function topBarRadioCamaraBar(props){
+  return(
+    <React.Fragment>
+      <Grid item xs={8}>
+        <Typography variant="h6" style={{ color: "#007E5A" }}>Mais recentes </Typography>
+      </Grid>
+      <Grid item xs={1}>
+        <IconButton color="primary" aria-label="folder picture" component="span" style={{padding:0}}>
+          <CreateNewFolderIcon />
+        </IconButton>
+      </Grid>
+      <Grid item xs={3}>
+        <TextField
+          id="input-search-agencia"
+          size="small"
+          InputProps={{
+            endAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),
+          }}
+        />
+      </Grid>
+    </React.Fragment>
   );
 }
 
@@ -160,13 +190,20 @@ export default class RadioCamaraContent extends React.Component {
 
     return (
       <div>
-          <List style={{maxHeight: '200px', overflow: 'auto'}}>        
-              {this.state.news.map((sectionId) => (
-                  <li key={`section-${sectionId._id}`}>
-                      <Box my={0.5}><RadioCard info={sectionId._source} ></RadioCard></Box>
-                  </li>
-              ))}
-          </List>
+        <Grid container>
+          {topBarRadioCamaraBar()}
+          <Grid item xs={12}>
+            <Box paddingTop={3}>
+              <List style={{maxHeight: '200px', overflow: 'auto'}}>            
+                {this.state.news.map((sectionId) => (
+                    <li key={`section-${sectionId._id}`}>
+                        <Box my={0.5}><RadioCard info={sectionId._source} ></RadioCard></Box>
+                    </li>
+                ))}
+              </List>
+            </Box>
+          </Grid>
+        </Grid>
       </div>
     )
   }
