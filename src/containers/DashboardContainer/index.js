@@ -36,7 +36,7 @@ export default function Dashboard() {
 					<Sidebar></Sidebar>
 				</Grid>
 				<Grid item md={4} className={classes.timeline}>
-          <Timeline></Timeline>
+          <Timeline sessionID={sessionID}></Timeline>
 				</Grid>
 				<Grid item md={7} className={classes.content}>
           <Content sessionID={sessionID}></Content>

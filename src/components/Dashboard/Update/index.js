@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
-import {Button, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
+import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
-import {TextField } from '@material-ui/core';
 import axiosInstance from '../../../auth/axiosApi.js';
+import {TwitterTweetEmbed} from 'react-twitter-embed';
+import ImageUploader from 'react-images-upload';
 
 const useStyles = makeStyles((theme) => ({
 	body: {
 		width: '100%',
 		padding: '0 1rem 0 1rem',
+		overflow: 'auto',
 	},
 	summaryBox: {
 		display: 'flex',
@@ -59,19 +61,16 @@ const useStyles = makeStyles((theme) => ({
 		margin: '0 0.5rem 0 1rem',
 	},
 	updatesArea: {
-		margin: '1rem 0 0 0',
 		overflow: 'auto',
 		display: 'flex',
-		height: '100%',
 		width: '100%',
 	},
-	updateItem: {
+	timelinePost: {
 		overflow: 'auto',
-		width: '100%',
-		height: 'auto',
-		alignItems: 'flex-start',
+		overflowWrap: 'break-word',
 		display: 'flex',
 		margin: '1rem 0',
+		maxHeight: '25vh',
 	},
 	updateItemBody: {
 		color: theme.palette.grey
@@ -85,47 +84,117 @@ const useStyles = makeStyles((theme) => ({
 	},
 	time: {
 		color: theme.palette.primary.main
+	},
+	previewModalSubmitButton: {
+		color: '#FFF',
+		alignSelf: 'flex-end',
+		backgroundColor: '#00AF82',
+		borderRadius: '0 0 5px 5px'
+	},
+	previewModalFooter: {
+		padding: '0',
+		margin: '0 0 0 1rem',
+		display: 'flex',
+		justifyContent: 'space-between'
+	},
+	imageUploadButton: {
+		padding: '5px 15px',
+		borderRadius: '5px',
+		backgroundColor: '#00AF82',
+		fontWeight: '300',
+		color: 'white',
+		margin: '10px 0',
 	}
 }));
 
-export default function Update(){
+export default function Update(props){
 	const classes = useStyles();
+	const sessionID = props.sessionID
 	const [updates, setUpdates] = useState([]);
 	const [updateTextArea, setUpdateTextArea] = useState("");
-	const [tweetURL] = useState('');
-	const [image] = useState(''); // will probably suffer modifications
+	const [tweetURL, setTweetURL] = useState('');
+	const [tweetID, setTweetID] = useState('');
+	const [open, setOpen] = useState(false);
+	const [previewModalOpen, setPreviewModalOpen] = useState(false);
+	const [imageUploadModalOpen, setImageUploadModalOpen] = useState(false);
+	const [picture, setPicture] = useState([]);
 
-	function handleClick() {
-		axiosInstance.post('/publications/', {
-						state: 'published',
-						content: updateTextArea,
-						session: 1,
-						tweet_url:  tweetURL,
-				}).then(
-						result => {
-								if(result.status===201){
-										let date = new Date(result.data.created)
-										let formatDate = date.getHours() + ':' + ('0'+ date.getMinutes()).slice(-2) // reference: https://stackoverflow.com/questions/8935414/getminutes-0-9-how-to-display-two-digit-numbers
-										let responseData = result.data;
-										let newUpdate = {
-											id: responseData.id,
-											content: responseData.content,
-											time: formatDate,
-										}
-										setUpdates(prevUpdates => [...prevUpdates, newUpdate])
-										setUpdateTextArea("")
-								}else{
-										alert("Erro ao criar o post")
-								}
-
-						}
-		).catch (error => {
-				throw error;
+	function dispatchPayload() {
+		const formData = new FormData()
+		if(!(picture instanceof Array)) {
+			formData.append('image', picture, picture.name)
+		}
+		formData.append('content', updateTextArea)
+		formData.append('session', 1)
+		formData.append('tweet_id', tweetID)
+		axiosInstance.post('/publications/', formData, {
+			headers: { 'Content-Type': 'multipart/form-data'},
+		}).then(result => {
+			if(result.status===201) {
+					let data = result.data
+					console.log(data)
+					let newUpdate = {
+						id: data.id,
+						content: data.content,
+						time: parseHourMinute(new Date(data.created))
+					}
+					if(data.tweet_id.length > 0) {
+						newUpdate['tweet_id'] = data.tweet_id
+					}
+					if(data.image){
+						newUpdate['image'] = data.image
+					}
+					setUpdates([...updates, newUpdate])
+			}
+		}).catch(err => {
+			console.log(err)
 		})
 	}
-
+	function parseHourMinute(date) {
+		return date.getHours() + ':' + ('0'+ date.getMinutes()).slice(-2)
+	}
+	function handleClick() {
+		dispatchPayload()
+	}
+	function handleTwitterDialogOpen() {
+		setOpen(true)
+	}
+	function handleTwitterDialogClose() {
+		setOpen(false)
+		let parseURL = tweetURL.split('/')
+		let path = parseURL[parseURL.length-1]
+		{/* removes suplemental information after the tweet's id */}
+		let id = path.split('?')[0]
+		setTweetID(id)
+		setPreviewModalOpen(true)
+	}
+	function garbageCollection() {
+		setTweetID('')
+		setPicture([])
+	}
+	function handleImageUploadDialogOpen(e){
+		e.preventDefault()
+		setImageUploadModalOpen(true)
+	}
+	function handleImageUploadDialogClose() {
+		if(picture instanceof Array) {
+			alert("Imagem nao foi carregada")
+		} else {
+			setImageUploadModalOpen(false)
+			dispatchPayload()
+			garbageCollection()
+		}
+	}
+	function handlePreviewModalClose() {
+		dispatchPayload()
+		setPreviewModalOpen(false)
+		garbageCollection()
+	}
 	function handleChange(e) {
 		setUpdateTextArea(e.target.value)
+	}
+	function onImageDrop(picture) {
+		setPicture(picture[0])
 	}
 
 	return (
@@ -171,6 +240,7 @@ export default function Update(){
 						</Grid>
 					</Box>
 			</Grid>
+
 			{/* New update box */}
 				<Grid container className={classes.summaryBox}>
 					<Grid container className={classes.summaryHeader}>
@@ -184,7 +254,7 @@ export default function Update(){
 							<Grid container >
 							    <form className={classes.textArea} noValidate autoComplete="off">
 										<TextField
-						          id="outlined-multiline-static"
+						          id="textfield"
 						          multiline
 						          rows={4}
 						          variant="outlined"
@@ -211,18 +281,150 @@ export default function Update(){
 											<img src="../../img/divider.svg" alt="divider icon"/>
 										</div>
 										<div className={classes.subMenuItem}>
-											<a href="/"><img src="../../img/picture_upload.svg" alt="upload icon"/></a>
+											<a href="/"><img src="../../img/picture_upload.svg" alt="upload icon" onClick={handleImageUploadDialogOpen}/></a>
+										</div>
+										<div className={classes.subMenuItem}>
+											<img src="../../img/twitter_icon.svg" alt="incorporate tweet icon" onClick={handleTwitterDialogOpen}/>
 										</div>
 									</Grid>
 									<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
 										<Button className={classes.button} onClick={handleClick} variant="contained" disableElevation>
-											Atualizar
+											Inserir
 										</Button>
 									</Grid>
 								</Grid>
 							</Box>
 					</Grid>
 				</Grid>
+
+				{/* Twitter URL input dialog */}
+					<Dialog open={open} onClose={handleTwitterDialogClose}>
+					 <DialogContent>
+						 <DialogContentText>
+							 Insira no campo abaixo o link para o tweet desejado
+						 </DialogContentText>
+						 <TextField
+							 autoFocus
+							 name="tweetURL"
+							 onChange={(e) => setTweetURL(e.target.value)}
+							 margin="dense"
+							 id="name"
+							 label="Link para o tweet"
+							 type="text"
+							 fullWidth
+						 />
+					 </DialogContent>
+					 <DialogActions>
+						 <Button onClick={handleTwitterDialogClose} color="primary">
+							 Cancelar
+						 </Button>
+						 <Button onClick={handleTwitterDialogClose} color="primary">
+							 Incorporar tweet
+						 </Button>
+					 </DialogActions>
+				 </Dialog>
+				{/* End of Twitter URL input dialog */}
+
+				{/* Image Upload Dialog */}
+				<Dialog fullWidth={true}
+									maxWidth={'sm'}
+									PaperProps={{
+											style: {
+												backgroundColor: '#F2F2F2',
+											},
+										}}
+									open={imageUploadModalOpen}
+									onClose={handleImageUploadDialogClose}>
+					<div style={{display: 'flex', justifyContent: 'space-between'}}>
+						 <DialogTitle id="form-dialog-title">Nova atualizacao com imagem</DialogTitle>
+						 <img src="../../img/exit_icon.svg" style={{margin: '0 1rem 0 0'}} onClick={() => setImageUploadModalOpen(false)} />
+					 </div>
+					 <Paper style={{backgroundColor: 'white', padding: '1rem', borderRadius: '15px'}} elevation={0}>
+				 		<DialogContent>
+						 <TextField
+							 id="textfield"
+							 multiline
+							 rows={4}
+							 bgcolor="white"
+							 onChange={(e) => setUpdateTextArea(e.target.value)}
+							 name="previewModalUpdateText"
+							 placeholder="Inserir nota"
+							 onChange = {handleChange}
+							 elevation={0}
+							 InputProps={{ disableUnderline: true }}
+						 />
+						 <ImageUploader
+								withIcon={true}
+								onChange={onImageDrop}
+								imgExtension={[".jpg", ".png", ".jpeg"]}
+								maxFileSize={5242880}
+								withPreview={true}
+								singleImage={true}
+								buttonText="Escolher imagens"
+								buttonStyles={{backgroundColor: '#00AF82',
+									 						 borderRadius: '5px',
+														   fontWeight: '600'}}
+								style={{backgroundColor: '#F4F4F4'}}
+								label="Tamanho máximo: 5mbs"
+								alt="Image upload form"
+							/>
+					 </DialogContent>
+				 </Paper>
+					 <DialogActions className={classes.previewModalFooter}>
+						 <Typography className={classes.time} style={{alignSelf: 'flex-start'}} variant="h6"> 18:00 </Typography>
+						 <Button onClick={handleImageUploadDialogClose} className={classes.previewModalSubmitButton} variant="contained">
+							 Fazer upload da imagem
+						 </Button>
+					 </DialogActions>
+				 </Dialog>
+				{/* End of Image Upload Dialog */}
+
+				{/* Preview Modal dialog */}
+				<Dialog
+					fullWidth={true}
+					maxWidth={'sm'}
+					PaperProps={{
+						style: {
+							backgroundColor: '#F2F2F2',
+						},
+					}}
+					open={previewModalOpen}
+					onClose={handlePreviewModalClose}>
+					<div style={{display: 'flex', justifyContent: 'space-between'}}>
+						 <DialogTitle id="form-dialog-title">Nova atualizacao do Twitter</DialogTitle>
+						 <img src="../../img/exit_icon.svg" style={{margin: '0 1rem 0 0'}} onClick={() => setPreviewModalOpen(false)} />
+					 </div>
+					 <Paper style={{backgroundColor: 'white', padding: '1rem', borderRadius: '15px'}} elevation={0}>
+					 <DialogContent className={classes.previewModal}>
+							 <TextField
+								 id="textfield"
+								 multiline
+								 rows={4}
+								 bgcolor="white"
+								 onChange={(e) => setUpdateTextArea(e.target.value)}
+								 name="previewModalUpdateText"
+								 placeholder={"Inserir nota"}
+								 onChange = {handleChange}
+								 elevation={0}
+								 InputProps={{ disableUnderline: true }}
+								 style={{width: '100%'}}
+							 />
+							 <TwitterTweetEmbed
+								style={{alignSelf: 'center'}}
+								tweetId={tweetID}
+							/>
+					 </DialogContent>
+				 </Paper>
+					 <DialogActions className={classes.previewModalFooter}>
+						 <Typography className={classes.time} style={{alignSelf: 'flex-start'}} variant="h6"> 18:00 </Typography>
+						 <Button onClick={handlePreviewModalClose} variant="contained" className={classes.previewModalSubmitButton}>
+							 Publicar
+						 </Button>
+					 </DialogActions>
+				 </Dialog>
+				{/* End of Preview Modal Dialog */}
+
+				{/* timeline */}
 				<Grid container className={classes.updatesArea}>
 					<List style={{width: '100%'}}>
 							{updates.slice(0).reverse().map(update =>  //creates a shallow copy of the array and reverses it
@@ -242,8 +444,19 @@ export default function Update(){
 													<img src="../../img/more_options_icon.svg" alt="more options icon"/>
 												</Grid>
 											</Grid>
-											<Grid container className={classes.updateItem}>
-												<Typography style={{color: '#666'}} variant="body1">{update.content}</Typography>
+											<Grid container className={classes.timelinePost}>
+												<div style={{width: '100%'}}>
+													<Typography style={{color: '#666', alignSelf: 'flex-start'}} variant="body1">{update.content}</Typography>
+												</div>
+												<section style={{width: '100%'}}>
+													{update.tweet_id ?
+														<TwitterTweetEmbed
+															style={{width: '100%', margin: '0 0 1rem 0'}}
+															tweetId={update.tweet_id}
+														/> : '' }
+													{update.image ?
+													 <img src={update.image}  style={{maxWidth: '100%', maxHeight: '30vh'}} alt="timeline post"/> : '' }
+												</section>
 											</Grid>
 										</Grid>
 									</Grid>
@@ -251,6 +464,7 @@ export default function Update(){
 							)}
 					</List>
 				</Grid>
+				{/* end of timeline */}
 			</div>
 		</React.Fragment>
 	)
