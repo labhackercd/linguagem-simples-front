@@ -176,7 +176,7 @@ exports[`should render the content section 1`] = `
               }
               bgcolor="white"
               className="makeStyles-textField-6"
-              id="outlined-multiline-static"
+              id="textfield"
               multiline={true}
               name="updateText"
               onChange={[Function]}
@@ -226,9 +226,19 @@ exports[`should render the content section 1`] = `
                 >
                   <img
                     alt="upload icon"
+                    onClick={[Function]}
                     src="../../img/picture_upload.svg"
                   />
                 </a>
+              </div>
+              <div
+                className="makeStyles-subMenuItem-12"
+              >
+                <img
+                  alt="incorporate tweet icon"
+                  onClick={[Function]}
+                  src="../../img/twitter_icon.svg"
+                />
               </div>
             </WithStyles(ForwardRef(Grid))>
             <WithStyles(ForwardRef(Grid))
@@ -247,13 +257,277 @@ exports[`should render the content section 1`] = `
                 onClick={[Function]}
                 variant="contained"
               >
-                Atualizar
+                Inserir
               </WithStyles(ForwardRef(Button))>
             </WithStyles(ForwardRef(Grid))>
           </WithStyles(ForwardRef(Grid))>
         </Styled(MuiBox)>
       </WithStyles(ForwardRef(Grid))>
     </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Dialog))
+      onClose={[Function]}
+      open={false}
+    >
+      <WithStyles(ForwardRef(DialogContent))>
+        <WithStyles(ForwardRef(DialogContentText))>
+          Insira no campo abaixo o link para o tweet desejado
+        </WithStyles(ForwardRef(DialogContentText))>
+        <WithStyles(ForwardRef(TextField))
+          autoFocus={true}
+          fullWidth={true}
+          id="name"
+          label="Link para o tweet"
+          margin="dense"
+          name="tweetURL"
+          onChange={[Function]}
+          type="text"
+        />
+      </WithStyles(ForwardRef(DialogContent))>
+      <WithStyles(ForwardRef(DialogActions))>
+        <WithStyles(ForwardRef(Button))
+          color="primary"
+          onClick={[Function]}
+        >
+          Cancelar
+        </WithStyles(ForwardRef(Button))>
+        <WithStyles(ForwardRef(Button))
+          color="primary"
+          onClick={[Function]}
+        >
+          Incorporar tweet
+        </WithStyles(ForwardRef(Button))>
+      </WithStyles(ForwardRef(DialogActions))>
+    </WithStyles(ForwardRef(Dialog))>
+    <WithStyles(ForwardRef(Dialog))
+      PaperProps={
+        Object {
+          "style": Object {
+            "backgroundColor": "#F2F2F2",
+          },
+        }
+      }
+      fullWidth={true}
+      maxWidth="sm"
+      onClose={[Function]}
+      open={false}
+    >
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <WithStyles(ForwardRef(DialogTitle))
+          id="form-dialog-title"
+        >
+          Nova atualizacao com imagem
+        </WithStyles(ForwardRef(DialogTitle))>
+        <img
+          onClick={[Function]}
+          src="../../img/exit_icon.svg"
+          style={
+            Object {
+              "margin": "0 1rem 0 0",
+            }
+          }
+        />
+      </div>
+      <WithStyles(ForwardRef(Paper))
+        elevation={0}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderRadius": "15px",
+            "padding": "1rem",
+          }
+        }
+      >
+        <WithStyles(ForwardRef(DialogContent))>
+          <WithStyles(ForwardRef(TextField))
+            InputProps={
+              Object {
+                "disableUnderline": true,
+              }
+            }
+            bgcolor="white"
+            elevation={0}
+            id="textfield"
+            multiline={true}
+            name="previewModalUpdateText"
+            onChange={[Function]}
+            placeholder="Inserir nota"
+            rows={4}
+          />
+          <ReactImageUploadComponent
+            accept="image/*"
+            alt="Image upload form"
+            buttonClassName=""
+            buttonStyles={
+              Object {
+                "backgroundColor": "#00AF82",
+                "borderRadius": "5px",
+                "fontWeight": "600",
+              }
+            }
+            buttonText="Escolher imagens"
+            buttonType="button"
+            className=""
+            defaultImages={Array []}
+            errorClass=""
+            errorStyle={Object {}}
+            fileContainerStyle={Object {}}
+            fileSizeError=" file size is too big"
+            fileTypeError=" is not a supported file extension"
+            imgExtension={
+              Array [
+                ".jpg",
+                ".png",
+                ".jpeg",
+              ]
+            }
+            label="Tamanho máximo: 5mbs"
+            labelClass=""
+            labelStyles={Object {}}
+            maxFileSize={5242880}
+            name=""
+            onChange={[Function]}
+            singleImage={true}
+            style={
+              Object {
+                "backgroundColor": "#F4F4F4",
+              }
+            }
+            withIcon={true}
+            withLabel={true}
+            withPreview={true}
+          />
+        </WithStyles(ForwardRef(DialogContent))>
+      </WithStyles(ForwardRef(Paper))>
+      <WithStyles(ForwardRef(DialogActions))
+        className="makeStyles-previewModalFooter-20"
+      >
+        <WithStyles(ForwardRef(Typography))
+          className="makeStyles-time-18"
+          style={
+            Object {
+              "alignSelf": "flex-start",
+            }
+          }
+          variant="h6"
+        >
+           18:00 
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Button))
+          className="makeStyles-previewModalSubmitButton-19"
+          onClick={[Function]}
+          variant="contained"
+        >
+          Fazer upload da imagem
+        </WithStyles(ForwardRef(Button))>
+      </WithStyles(ForwardRef(DialogActions))>
+    </WithStyles(ForwardRef(Dialog))>
+    <WithStyles(ForwardRef(Dialog))
+      PaperProps={
+        Object {
+          "style": Object {
+            "backgroundColor": "#F2F2F2",
+          },
+        }
+      }
+      fullWidth={true}
+      maxWidth="sm"
+      onClose={[Function]}
+      open={false}
+    >
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <WithStyles(ForwardRef(DialogTitle))
+          id="form-dialog-title"
+        >
+          Nova atualizacao do Twitter
+        </WithStyles(ForwardRef(DialogTitle))>
+        <img
+          onClick={[Function]}
+          src="../../img/exit_icon.svg"
+          style={
+            Object {
+              "margin": "0 1rem 0 0",
+            }
+          }
+        />
+      </div>
+      <WithStyles(ForwardRef(Paper))
+        elevation={0}
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderRadius": "15px",
+            "padding": "1rem",
+          }
+        }
+      >
+        <WithStyles(ForwardRef(DialogContent))>
+          <WithStyles(ForwardRef(TextField))
+            InputProps={
+              Object {
+                "disableUnderline": true,
+              }
+            }
+            bgcolor="white"
+            elevation={0}
+            id="textfield"
+            multiline={true}
+            name="previewModalUpdateText"
+            onChange={[Function]}
+            placeholder="Inserir nota"
+            rows={4}
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+          />
+          <TwitterTweetEmbed
+            style={
+              Object {
+                "alignSelf": "center",
+              }
+            }
+            tweetId=""
+          />
+        </WithStyles(ForwardRef(DialogContent))>
+      </WithStyles(ForwardRef(Paper))>
+      <WithStyles(ForwardRef(DialogActions))
+        className="makeStyles-previewModalFooter-20"
+      >
+        <WithStyles(ForwardRef(Typography))
+          className="makeStyles-time-18"
+          style={
+            Object {
+              "alignSelf": "flex-start",
+            }
+          }
+          variant="h6"
+        >
+           18:00 
+        </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Button))
+          className="makeStyles-previewModalSubmitButton-19"
+          onClick={[Function]}
+          variant="contained"
+        >
+          Publicar
+        </WithStyles(ForwardRef(Button))>
+      </WithStyles(ForwardRef(DialogActions))>
+    </WithStyles(ForwardRef(Dialog))>
     <WithStyles(ForwardRef(Grid))
       className="makeStyles-updatesArea-13"
       container={true}
