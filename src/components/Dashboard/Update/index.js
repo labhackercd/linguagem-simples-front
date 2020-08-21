@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
 	body: {
 		width: '100%',
 		padding: '0 1rem 0 1rem',
+		overflow: 'auto',
 	},
 	summaryBox: {
 		display: 'flex',
@@ -60,14 +61,13 @@ const useStyles = makeStyles((theme) => ({
 		margin: '0 0.5rem 0 1rem',
 	},
 	updatesArea: {
-		margin: '1rem 0 0 0',
 		overflow: 'auto',
 		display: 'flex',
-		height: '100%',
 		width: '100%',
 	},
 	timelinePost: {
 		overflow: 'auto',
+		overflowWrap: 'break-word',
 		display: 'flex',
 		margin: '1rem 0',
 		maxHeight: '25vh',
@@ -107,8 +107,9 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-export default function Update(){
+export default function Update(props){
 	const classes = useStyles();
+	const sessionID = props.sessionID
 	const [updates, setUpdates] = useState([]);
 	const [updateTextArea, setUpdateTextArea] = useState("");
 	const [tweetURL, setTweetURL] = useState('');
@@ -183,9 +184,6 @@ export default function Update(){
 			dispatchPayload()
 			garbageCollection()
 		}
-	}
- 	function handlePreviewModalOpen() {
-		setPreviewModalOpen(true)
 	}
 	function handlePreviewModalClose() {
 		dispatchPayload()
@@ -368,6 +366,7 @@ export default function Update(){
 														   fontWeight: '600'}}
 								style={{backgroundColor: '#F4F4F4'}}
 								label="Tamanho máximo: 5mbs"
+								alt="Image upload form"
 							/>
 					 </DialogContent>
 				 </Paper>
@@ -408,6 +407,7 @@ export default function Update(){
 								 onChange = {handleChange}
 								 elevation={0}
 								 InputProps={{ disableUnderline: true }}
+								 style={{width: '100%'}}
 							 />
 							 <TwitterTweetEmbed
 								style={{alignSelf: 'center'}}
@@ -445,7 +445,9 @@ export default function Update(){
 												</Grid>
 											</Grid>
 											<Grid container className={classes.timelinePost}>
-												<Typography style={{color: '#666', alignSelf: 'flex-start', width: '100%'}} variant="body1">{update.content}</Typography>
+												<div style={{width: '100%'}}>
+													<Typography style={{color: '#666', alignSelf: 'flex-start'}} variant="body1">{update.content}</Typography>
+												</div>
 												<section style={{width: '100%'}}>
 													{update.tweet_id ?
 														<TwitterTweetEmbed
@@ -453,7 +455,7 @@ export default function Update(){
 															tweetId={update.tweet_id}
 														/> : '' }
 													{update.image ?
-													 <img src={update.image}  style={{maxWidth: '100%', maxHeight: '30vh'}} alt="timeline post picture"/> : '' }
+													 <img src={update.image}  style={{maxWidth: '100%', maxHeight: '30vh'}} alt="timeline post"/> : '' }
 												</section>
 											</Grid>
 										</Grid>
