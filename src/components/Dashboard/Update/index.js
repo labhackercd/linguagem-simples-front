@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
+import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
+	      DialogTitle, Grid, Typography, Box,  List, ListItem, AppBar, Tabs, Tab} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
-import axiosInstance from '../../../auth/axiosApi.js';
 import {TwitterTweetEmbed} from 'react-twitter-embed';
 import ImageUploader from 'react-images-upload';
+import axiosInstance from '../../../auth/axiosApi.js';
 
 const useStyles = makeStyles((theme) => ({
 	body: {
@@ -104,12 +105,15 @@ const useStyles = makeStyles((theme) => ({
 		fontWeight: '300',
 		color: 'white',
 		margin: '10px 0',
-	}
+	},
+	tabs: {
+		minHeight: '0px',
+	},
 }));
 
 export default function Update(props){
 	const classes = useStyles();
-	const sessionID = props.sessionID
+	const sessionID = props.sessionID;
 	const [updates, setUpdates] = useState([]);
 	const [updateTextArea, setUpdateTextArea] = useState("");
 	const [tweetURL, setTweetURL] = useState('');
@@ -118,6 +122,11 @@ export default function Update(props){
 	const [previewModalOpen, setPreviewModalOpen] = useState(false);
 	const [imageUploadModalOpen, setImageUploadModalOpen] = useState(false);
 	const [picture, setPicture] = useState([]);
+	const [value, setValue] = React.useState(0);
+
+  const handleChangeMane = (event, newValue) => {
+    setValue(newValue);
+  };
 
 	function dispatchPayload() {
 		const formData = new FormData()
@@ -196,7 +205,30 @@ export default function Update(props){
 	function onImageDrop(picture) {
 		setPicture(picture[0])
 	}
-
+	function a11yProps(index) {
+	  return {
+	    id: `scrollable-force-tab-${index}`,
+	    'aria-controls': `scrollable-force-tabpanel-${index}`,
+	  };
+	}
+	function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`scrollable-force-tabpanel-${index}`}
+      aria-labelledby={`scrollable-force-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
 	return (
 		<React.Fragment>
 			<div className={classes.body}>
@@ -240,6 +272,31 @@ export default function Update(props){
 						</Grid>
 					</Box>
 			</Grid>
+
+			{/* Status selection component*/}
+			<Grid container className={classes.summaryBox}>
+				<Grid container className={classes.summaryHeader} style={{margin: '1rem 0 0 0'}}>
+					<Grid item md={6} style={{display:'flex', justifyContent: 'flex-start'}}>
+						<Typography variant="h5"> Status </Typography>
+					</Grid>
+					<Grid item md={6} style={{display:'flex', justifyContent: 'flex-end'}}>
+					</Grid>
+				</Grid>
+	        <Tabs
+	          value={value}
+	          onChange={handleChange}
+	          variant="scrollable"
+	          scrollButtons="on"
+						TabScrollButtonProps={{disabled: false}}
+						classes={{root: classes.tabs}}
+						indicatorColor="white"
+						>
+	          <Tab style={{ padding: '0px', margin: '0 0.5rem', backgroundColor: '#F2F2F2', borderRadius: '5px', minHeight: '0px', textTransform: 'capitalize'}} label="Pré-sessão" {...a11yProps(0)} />
+	          <Tab style={{ padding: '0px', margin: '0 0.5rem', backgroundColor: '#F2F2F2', borderRadius: '5px', minHeight: '0px', textTransform: 'capitalize'}} label="Sessão Iniciada" {...a11yProps(1)} />
+	          <Tab style={{ padding: '0px', margin: '0 0.5rem', backgroundColor: '#F2F2F2', borderRadius: '5px', minHeight: '0px', textTransform: 'capitalize'}} label="Votação Iniciada"{...a11yProps(2)} />
+	        </Tabs>
+			</Grid>
+			{/* End of status selection component */}
 
 			{/* New update box */}
 				<Grid container className={classes.summaryBox}>
