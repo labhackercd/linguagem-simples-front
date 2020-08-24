@@ -22,6 +22,7 @@
     "react-test-render": "^1.1.2",
     "react-test-renderer": "^16.13.1",
     "react-twitter-embed": "^3.0.3",
+    "react-window": "^1.8.5",
     "typescript": "^3.9.7"
   },
   "proxy": "http://localhost:8000",
