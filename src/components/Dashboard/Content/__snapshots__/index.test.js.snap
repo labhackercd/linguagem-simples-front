@@ -92,7 +92,7 @@ exports[`should render the content section 1`] = `
       index={4}
       value={0}
     >
-      Twitter
+      <TwitterDeputadosContent />
     </TabPanel>
     <TabPanel
       index={5}
