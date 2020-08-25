@@ -34,7 +34,7 @@ exports[`should render the GlossarioContent section 1`] = `
             </ForwardRef(WithStyles)>,
           }
         }
-        id="input-search-agencia"
+        id="input-search-glossario"
         onChange={[Function]}
         size="small"
       />

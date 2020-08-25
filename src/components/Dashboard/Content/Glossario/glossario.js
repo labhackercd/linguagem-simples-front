@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
 const dialogStyles = (theme) => ({
   root: {
     margin: 0,
-    padding: theme.spacing(2),
   },
   closeButton: {
     position: 'absolute',
@@ -51,7 +50,7 @@ const DialogTitle = withStyles(dialogStyles)((props) => {
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
       <Typography variant="h6">{children}</Typography>
       {onClose ? (
-        <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+        <IconButton aria-label="close" className={classes.closeButton} onClick={onClose} size="small">
           <CloseIcon />
         </IconButton>
       ) : null}
@@ -74,26 +73,29 @@ function GlossarioTermCard(props){
   return (
       <Box width="97%" marginTop={0.5}>   
           <Paper elevation={0} className={classes.termGlossarioCard}>
-              <Grid container>
-                <ButtonBase  onClick={handleOpen} style={{width: "100%", textAlign: "left" }}>
-                  <Grid item xs={12}>
-                      <Box m={1}>
-                          <Typography style={{ color: "gray" }}>{props.data.termo}</Typography>
-                      </Box>
-                  </Grid>
-                  </ButtonBase>
-              </Grid>
+            <Grid container>
+              <ButtonBase  onClick={handleOpen} style={{width: "100%", textAlign: "left" }}>
+                <Grid item xs={12}>
+                    <Box m={1}><Typography style={{ color: "gray" }}>{props.data.termo}</Typography></Box>
+                </Grid>
+              </ButtonBase>
+            </Grid>
           </Paper>
-
           <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-            <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-              {props.data.termo}
-            </DialogTitle>
-            <MuiDialogContent dividers>
-              <Typography gutterBottom>
-                {props.data.descricao}
-              </Typography>
-            </MuiDialogContent>
+            <Paper style={{backgroundColor:"#F2F2F2"}}>
+              <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+                <Typography style={{ color: "gray" }}>{props.data.termo}</Typography>
+              </DialogTitle>
+              <MuiDialogContent style={{paddingTop:"2px"}}>
+                <Paper elevation={0} borderRadius={10}>
+                  <Box padding={1} >
+                    <Typography gutterBottom variant="body1" align="justify">
+                      {props.data.descricao}
+                    </Typography>
+                  </Box>
+                </Paper>
+              </MuiDialogContent>
+            </Paper>
           </Dialog>
       </Box>
   );
@@ -120,23 +122,20 @@ export default class GlossarioContent extends React.Component {
         </Grid>
         <Grid item xs={4}>
           <TextField
-            id="input-search-agencia"
+            id="input-search-glossario"
             size="small"
-            onChange={this.twittersFilterOnChange}
+            onChange={this.glossarioFilterOnChange}
             InputProps={{
               endAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),
-            }}
-          />
+            }}/>
         </Grid>
       </React.Fragment>
     )
   }
 
 
-  fetchSessionsList = async term => {
+  fetchGlossaryList = async term => {
     try {
-      //const data = await fetchDataAgenciaCamara();
-      //this.setState({sessionsList:data})
       this.setState({dataLoaded:true});
 
     } catch (error) {
@@ -156,12 +155,12 @@ export default class GlossarioContent extends React.Component {
       this._isMounted = true;
 
       if(this._isMounted){
-          this.fetchSessionsList();
+          this.fetchGlossaryList();
       }
   }
 
 
-  twittersFilterOnChange = (event) => {
+  glossarioFilterOnChange = (event) => {
     console.log(event.target.value)
     this.setState({
       searchField: event.target.value
@@ -172,9 +171,6 @@ export default class GlossarioContent extends React.Component {
   }
 
   render(){
-    //console.log(this.state.news)
-      
-
     if(!this.state.dataLoaded){
       return (<Box display="flex" justifyContent="center" alignItems="center"><CircularProgress></CircularProgress></Box>)
     }
