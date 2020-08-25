@@ -85,20 +85,20 @@ function TwitterCard(props){
           <Paper elevation={0} className={classes.newsCard}>
               <Grid container>
                   <Grid item xs={12}>
+                  <a rel={'external noopener noreferrer'} target="_blank" href={"https://"+props.data.twitter} style={{textDecoration: "none"}}>
                       <Box m={1}>
                           <Grid container>
                               <Grid item xs={11}>
                                   <Typography style={{ color: "gray" }}>{props.data.nome} ({props.data.partido}-{props.data.uf})</Typography>
                               </Grid>
                               <Grid item xs={1}>                        
-                                    <a rel={'external noopener noreferrer'} target="_blank" href={"https://"+props.data.twitter} style={{textDecoration: "none"}}>
-                                      <IconButton aria-label="Ir para Twitter"  size="small">
-                                        <LaunchIcon  fontSize="inherit" />
-                                      </IconButton>
-                                    </a>
+                                  <IconButton aria-label="Ir para Twitter" size="small">
+                                      <LaunchIcon  fontSize="inherit" />
+                                  </IconButton>     
                               </Grid>
                           </Grid>
                       </Box>
+                      </a>
                   </Grid>
               </Grid>
           </Paper>
@@ -192,7 +192,7 @@ export default class TwitterDeputadosContent extends React.Component {
           {this.renderSearchBarFunction()}
           <Grid item xs={12}>
             <Box paddingTop={3}>
-              <FixedSizeList height={250} itemSize={45} itemCount={this.state.filterTwitters.length}>        
+              <FixedSizeList height={250} itemSize={44} itemCount={this.state.filterTwitters.length}>        
                 {this.renderListItem}
               </FixedSizeList>
             </Box>
