@@ -161,7 +161,6 @@ export default class GlossarioContent extends React.Component {
 
 
   glossarioFilterOnChange = (event) => {
-    console.log(event.target.value)
     this.setState({
       searchField: event.target.value
     })
