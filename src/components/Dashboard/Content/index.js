@@ -38,6 +38,8 @@ const useStyles = makeStyles((theme) => ({
     height: 'auto',
     width: 'auto',
     margin: '1rem 0 0 0',
+    minHeight: '35vh',
+    minWidth: '32vh'
   },
   cardVideo: {
     backgroundColor: "white",
@@ -67,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Content(props) {
   //<YoutubeTransmission videoId="splJnSIoe8I"></YoutubeTransmission>
   //const videoID = props.videoID;
-  const videoID = "YUNat3PN8n8";
+  const videoID = "stgBjJwcnIw";
 
   const classes = useStyles();
 
@@ -89,7 +91,7 @@ export default function Content(props) {
             <div className={classes.card}>
                 {videoID ? 
                   Youtube(videoID) :
-                  <Box width={1} height={1} display="flex" alignContent="center" justifyContent="center">
+                  <Box width="100%" height="100%" display="flex" alignContent="center" justifyContent="center">
                       <Typography variant="h5" style={{ color: "grey" }}> Transmissão não disponível</Typography>
                   </Box>
                 }
