@@ -10,21 +10,40 @@ import ListItem from '@material-ui/core/ListItem';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
+import ButtonBase from '@material-ui/core/ButtonBase'
 
+import VideoSnippetModal from './VideoSnippetModal/videoSnippetModal'
 
 function SnippetCard(props){
   const deputado = "Rodrigo Maia"
   const siglaPartidaria ="DEM-RJ"
 
+  const [open, setOpen] = React.useState(false);
+
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+  };
+
   return (
-    <Box width="100%" height="100%" margin={0.5}>
-      <img style={{width:"100%", height:"63%"}} id="image" src={props.data.thumbnail} alt="Thumbanail trecho"></img>
-      <Box fontSize={10}>
-        <Typography>{deputado}</Typography>
-      </Box>
-      <Box fontSize={8}>
-        <Typography variant="body2">Deputado {siglaPartidaria}</Typography>
-      </Box>
+    <Box width="100%" height="100%" marginX={0.3} marginTop={0.5}>
+      <ButtonBase  onClick={handleClickOpen}>
+        <div>
+        <img style={{width:"100%", height:"65%"}} id="image" src={props.data.thumbnail} alt="Thumbanail trecho"></img>
+        <Box fontSize={10}>
+          <Typography>{deputado}</Typography>
+        </Box>
+        <Box fontSize={8}>
+          <Typography variant="body2">Deputado {siglaPartidaria}</Typography>
+        </Box>
+        </div>
+        </ButtonBase>
+      <VideoSnippetModal open={open} onClose={handleClose} />
+
     </Box>
   );
 }

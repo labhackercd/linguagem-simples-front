@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '1rem 0 0 0',
   },
   secondRow: {
-    height: '15vh',
+    height: '16vh',
     backgroundColor: "white",
     borderRadius: '5px',
     margin: '0.5rem',
