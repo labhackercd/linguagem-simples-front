@@ -109,6 +109,14 @@ const useStyles = makeStyles((theme) => ({
 	tabs: {
 		minHeight: '0px',
 	},
+	tab: {
+		padding: '0px',
+		margin: '0 0.1rem',
+		backgroundColor: '#F2F2F2',
+		borderRadius: '5px',
+		minHeight: '0px',
+		textTransform: 'capitalize'
+	}
 }));
 
 export default function Update(props){
@@ -123,7 +131,14 @@ export default function Update(props){
 	const [imageUploadModalOpen, setImageUploadModalOpen] = useState(false);
 	const [picture, setPicture] = useState([]);
 	const [value, setValue] = React.useState(0);
-
+	const [postStatus, setPostStatus] = useState('');
+	const [statusArray, setStatusArray] = useState(['Pré-sessão',
+																									'Sessão Iniciada',
+																									'Votação Iniciada',
+																									'Votação Encerrada',
+																									'Próxima Pauta',
+																									'Sessão Encerrada',
+																									'Fim da transmissão'])
   const handleChangeMane = (event, newValue) => {
     setValue(newValue);
   };
@@ -204,6 +219,9 @@ export default function Update(props){
 	}
 	function onImageDrop(picture) {
 		setPicture(picture[0])
+	}
+	function handleStatus(status) {
+		console.log(status)
 	}
 	function a11yProps(index) {
 	  return {
@@ -291,9 +309,9 @@ export default function Update(props){
 						classes={{root: classes.tabs}}
 						indicatorColor="white"
 						>
-	          <Tab style={{ padding: '0px', margin: '0 0.5rem', backgroundColor: '#F2F2F2', borderRadius: '5px', minHeight: '0px', textTransform: 'capitalize'}} label="Pré-sessão" {...a11yProps(0)} />
-	          <Tab style={{ padding: '0px', margin: '0 0.5rem', backgroundColor: '#F2F2F2', borderRadius: '5px', minHeight: '0px', textTransform: 'capitalize'}} label="Sessão Iniciada" {...a11yProps(1)} />
-	          <Tab style={{ padding: '0px', margin: '0 0.5rem', backgroundColor: '#F2F2F2', borderRadius: '5px', minHeight: '0px', textTransform: 'capitalize'}} label="Votação Iniciada"{...a11yProps(2)} />
+						{statusArray.map(function(status, index){
+							return <Tab className={classes.tab} label={status} onClick={() => handleStatus(status)} {...a11yProps(index)} />
+						})}
 	        </Tabs>
 			</Grid>
 			{/* End of status selection component */}
