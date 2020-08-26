@@ -10,6 +10,7 @@ import Box from '@material-ui/core/Box';
 import AgenciaCamaraContent from './AgenciaCamara/agenciaCamara'
 import RadioCamaraContent from './RadioCamara/radioCamara'
 import TvCamaraContent from './TVCamara/tvCamara'
+import GlossarioContent from './Glossario/glossario'
 import TwitterDeputadosContent from './TwitterDeputados/twitterDeputados'
 
 const useStyles = makeStyles((theme) => ({
@@ -147,7 +148,7 @@ export default function ExternalContentPanel() {
                   <TwitterDeputadosContent></TwitterDeputadosContent>
                 </TabPanel>
                 <TabPanel value={value} index={5}>
-                  Glossário
+                  <GlossarioContent></GlossarioContent>
                 </TabPanel>     
       </Grid>
     </Grid>

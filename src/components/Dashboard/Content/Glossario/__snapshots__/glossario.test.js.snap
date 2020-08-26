@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render the TwitterDeputados section 1`] = `
+exports[`should render the GlossarioContent section 1`] = `
 <div>
   <WithStyles(ForwardRef(Grid))
     container={true}
@@ -17,7 +17,7 @@ exports[`should render the TwitterDeputados section 1`] = `
         }
         variant="h6"
       >
-        Mais recentes 
+        A - Z 
       </WithStyles(ForwardRef(Typography))>
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
@@ -34,7 +34,7 @@ exports[`should render the TwitterDeputados section 1`] = `
             </ForwardRef(WithStyles)>,
           }
         }
-        id="input-search-agencia"
+        id="input-search-glossario"
         onChange={[Function]}
         size="small"
       />
@@ -49,8 +49,8 @@ exports[`should render the TwitterDeputados section 1`] = `
         <List
           direction="ltr"
           height={250}
-          itemCount={500}
-          itemSize={44}
+          itemCount={535}
+          itemSize={40}
           layout="vertical"
           overscanCount={2}
           useIsScrolling={false}

@@ -98,7 +98,7 @@ exports[`should render the content section 1`] = `
       index={5}
       value={0}
     >
-      Glossário
+      <GlossarioContent />
     </TabPanel>
   </WithStyles(ForwardRef(Grid))>
 </WithStyles(ForwardRef(Grid))>
