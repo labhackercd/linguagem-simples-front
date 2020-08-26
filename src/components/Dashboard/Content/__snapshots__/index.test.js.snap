@@ -171,7 +171,7 @@ exports[`should render the external content section 1`] = `
         >
           <iframe
             frameBorder="0"
-            src="https://www.youtube.com/embed/YUNat3PN8n8"
+            src="https://www.youtube.com/embed/stgBjJwcnIw"
             style={
               Object {
                 "height": "100%",
@@ -205,16 +205,7 @@ exports[`should render the external content section 1`] = `
     className="makeStyles-secondRow-17"
     container={true}
   >
-    <WithStyles(ForwardRef(Typography))
-      style={
-        Object {
-          "margin": "1rem 0 1rem 1rem",
-        }
-      }
-      variant="h5"
-    >
-       Trechos 
-    </WithStyles(ForwardRef(Typography))>
+    <VideoSnippets />
   </WithStyles(ForwardRef(Grid))>
   <WithStyles(ForwardRef(Grid))
     className="makeStyles-thirdRow-18"

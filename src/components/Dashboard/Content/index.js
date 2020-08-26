@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ExternalContentPanel from './externalContentPanel';
 import Box from '@material-ui/core/Box'
 import Youtube from './youtubeTransmission'
+import VideoSnippets from './VideoSnippets/videoSnippets'
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -105,7 +106,10 @@ export default function Content(props) {
           </Grid>
       </Grid>
       <Grid container className={classes.secondRow}>
-        <Typography variant="h5" style={{margin: '1rem 0 1rem 1rem'}}> Trechos </Typography>
+        {/*<Grid item xs={12}>
+          <Typography variant="h5" style={{margin: '1rem 0 1rem 1rem'}}> Trechos </Typography>
+              </Grid>*/}
+        <VideoSnippets></VideoSnippets>
       </Grid>
       <Grid container className={classes.thirdRow}>
         <ExternalContentPanel></ExternalContentPanel>
