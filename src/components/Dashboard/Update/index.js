@@ -147,9 +147,10 @@ export default function Update(props){
 	const [open, setOpen] = useState(false);
 	const [previewModalOpen, setPreviewModalOpen] = useState(false);
 	const [imageUploadModalOpen, setImageUploadModalOpen] = useState(false);
-	const [picture, setPicture] = useState(false);
-	const [titlesArray] = useState([
-																	'Pré-sessão',
+	const [picture, setPicture] = useState([]);
+	const [value, setValue] = React.useState(0);
+	const [postStatus, setPostStatus] = useState('');
+	const [titlesArray] = useState(['Pré-sessão',
 																	'Sessão Iniciada',
 																	'Votação Iniciada',
 																	'Votação Encerrada',
