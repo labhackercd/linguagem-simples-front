@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
-	      DialogTitle, Grid, Typography, Box,  List, ListItem, AppBar, Tabs, Tab} from '@material-ui/core';
+	      DialogTitle, Grid, Typography, Box,  List, ListItem, Tabs, Tab} from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
 import {makeStyles} from '@material-ui/core/styles';
 import {TwitterTweetEmbed} from 'react-twitter-embed';
 import ImageUploader from 'react-images-upload';
@@ -123,6 +124,7 @@ export default function Update(props){
 	const classes = useStyles();
 	const sessionID = props.sessionID;
 	const [updates, setUpdates] = useState([]);
+	const [updateTitle, setUpdateTitle] = useState('');
 	const [updateTextArea, setUpdateTextArea] = useState("");
 	const [tweetURL, setTweetURL] = useState('');
 	const [tweetID, setTweetID] = useState('');
@@ -132,22 +134,21 @@ export default function Update(props){
 	const [picture, setPicture] = useState([]);
 	const [value, setValue] = React.useState(0);
 	const [postStatus, setPostStatus] = useState('');
-	const [statusArray, setStatusArray] = useState(['Pré-sessão',
-																									'Sessão Iniciada',
-																									'Votação Iniciada',
-																									'Votação Encerrada',
-																									'Próxima Pauta',
-																									'Sessão Encerrada',
-																									'Fim da transmissão'])
-  const handleChangeMane = (event, newValue) => {
-    setValue(newValue);
-  };
+	const [titlesArray] = useState(['Pré-sessão',
+																	'Sessão Iniciada',
+																	'Votação Iniciada',
+																	'Votação Encerrada',
+																	'Próxima Pauta',
+																	'Sessão Encerrada',
+																	'Fim da transmissão'])
 
 	function dispatchPayload() {
+		console.log('updateTitle: ' + updateTitle)
 		const formData = new FormData()
 		if(!(picture instanceof Array)) {
 			formData.append('image', picture, picture.name)
 		}
+		formData.append('title', updateTitle)
 		formData.append('content', updateTextArea)
 		formData.append('session', 1)
 		formData.append('tweet_id', tweetID)
@@ -168,7 +169,13 @@ export default function Update(props){
 					if(data.image){
 						newUpdate['image'] = data.image
 					}
+					if(data.title) {
+						newUpdate['title'] = data.title
+					}
 					setUpdates([...updates, newUpdate])
+			}
+			if (result.status===400) {
+				console.log(result)
 			}
 		}).catch(err => {
 			console.log(err)
@@ -220,33 +227,17 @@ export default function Update(props){
 	function onImageDrop(picture) {
 		setPicture(picture[0])
 	}
-	function handleStatus(status) {
-		console.log(status)
+	function handleUpdateTitle(title) {
+		updateTitle.length > 0 ?
+		setUpdateTitle("") :
+		setUpdateTitle(title)
 	}
 	function a11yProps(index) {
-	  return {
+	 return {
 	    id: `scrollable-force-tab-${index}`,
 	    'aria-controls': `scrollable-force-tabpanel-${index}`,
 	  };
 	}
-	function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`scrollable-force-tabpanel-${index}`}
-      aria-labelledby={`scrollable-force-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
 	return (
 		<React.Fragment>
 			<div className={classes.body}>
@@ -302,15 +293,16 @@ export default function Update(props){
 				</Grid>
 	        <Tabs
 	          value={value}
-	          onChange={handleChange}
 	          variant="scrollable"
 	          scrollButtons="on"
 						TabScrollButtonProps={{disabled: false}}
 						classes={{root: classes.tabs}}
 						indicatorColor="white"
+						aria-label="scrollable auto tabs"
 						>
-						{statusArray.map(function(status, index){
-							return <Tab className={classes.tab} label={status} onClick={() => handleStatus(status)} {...a11yProps(index)} />
+
+						{titlesArray.map(function(title, index){
+							return <Tab className={classes.tab} label={title} onClick={() => handleUpdateTitle(title)} {...a11yProps(index)} />
 						})}
 	        </Tabs>
 			</Grid>
