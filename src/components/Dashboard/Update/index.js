@@ -147,10 +147,10 @@ export default function Update(props){
 	const [open, setOpen] = useState(false);
 	const [previewModalOpen, setPreviewModalOpen] = useState(false);
 	const [imageUploadModalOpen, setImageUploadModalOpen] = useState(false);
-	const [picture, setPicture] = useState([]);
+	const [picture, setPicture] = useState(false);
 	const [value, setValue] = React.useState(0);
-	const [postStatus, setPostStatus] = useState('');
-	const [titlesArray] = useState(['Pré-sessão',
+	const [titlesArray] = useState([
+																	'Pré-sessão',
 																	'Sessão Iniciada',
 																	'Votação Iniciada',
 																	'Votação Encerrada',
@@ -258,6 +258,48 @@ export default function Update(props){
 	return (
 		<React.Fragment>
 			<div className={classes.body}>
+
+			{/* Summary box */}
+			<Grid container className={classes.summaryBox}>
+				<Grid container className={classes.summaryHeader}>
+					<Grid item md={6} style={{display:'flex', justifyContent: 'flex-start'}}>
+						<Typography variant="h5"> Resumo </Typography>
+					</Grid>
+					<Grid item md={6} style={{display:'flex', justifyContent: 'flex-end'}}>
+						<a href="/"><img src="../../img/down-arrow.svg" alt="up arrow icon"/></a>
+					</Grid>
+				</Grid>
+			</Grid>
+			<Grid item md={12}>
+					<Grid container >
+							<form className={classes.textArea} noValidate autoComplete="off">
+								<TextField
+									id="outlined-multiline-static"
+									multiline
+									rows={4}
+									variant="outlined"
+									className={classes.textField}
+									bgcolor="white"
+									InputProps={{
+										classes: {
+											notchedOutline: classes.notchedOutline
+										},
+									}}
+								/>
+							</form>
+					</Grid>
+					<Box borderTop={1} color="#F2F2F2" borderRadius="0 0 10px 25px" bgcolor="#F2F2F2">
+						<Grid container>
+							<Grid item xs={8} style={{display: 'flex', justifyContent: 'flex-start'}}></Grid>
+							<Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
+								<Button className={classes.button} variant="contained" disableElevation>
+									Atualizar
+								</Button>
+							</Grid>
+						</Grid>
+					</Box>
+			</Grid>
+			{/* End of Summary Box */}
 
 			<SummaryBox sessionID={sessionID}></SummaryBox>
 
@@ -384,15 +426,9 @@ export default function Update(props){
 							<Grid style={{display: updateTitle ? 'flex' : 'none' }}
 										container
 										className={classes.sessionTitleAlert}>
-								<Grid item md={1} style={{padding: '0.1rem 0 0 0.5rem'}}>
-									<img src="../../img/alert.svg" alt="alert"/>
-								</Grid>
+								<Grid item md={1} style={{padding: '0.1rem 0 0 0.5rem'}}><img src="../../img/alert.svg"/></Grid>
 								<Grid item md={10}>{updateTitle}</Grid>
-								<Grid item md={1} style={{padding: '0.1rem 0.1rem 0rem 1rem'}}>
-									<img src="../../img/alert_within_dialog_exit_icon.svg"
-											 onClick={() => setUpdateTitle('')}
-											 alt="exit" />
-								</Grid>
+								<Grid item md={1} style={{padding: '0.1rem 0.1rem 0rem 1rem'}}><img src="../../img/alert_within_dialog_exit_icon.svg" onClick={() => setUpdateTitle('')} /></Grid>
 							</Grid>
 						 <TextField
 							 id="textfield"
