@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import {Paper,Button, ButtonGroup, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
-	      DialogTitle, Grid, Typography, Box,  List, ListItem, Tabs, Tab} from '@material-ui/core';
-import AppBar from '@material-ui/core/AppBar';
+import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
+	      DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import {TwitterTweetEmbed} from 'react-twitter-embed';
 import ImageUploader from 'react-images-upload';
@@ -148,7 +147,6 @@ export default function Update(props){
 	const [previewModalOpen, setPreviewModalOpen] = useState(false);
 	const [imageUploadModalOpen, setImageUploadModalOpen] = useState(false);
 	const [picture, setPicture] = useState(false);
-	const [value, setValue] = React.useState(0);
 	const [titlesArray] = useState([
 																	'Pré-sessão',
 																	'Sessão Iniciada',
@@ -168,7 +166,7 @@ export default function Update(props){
 			}
 			formData.append('title', updateTitle)
 			formData.append('content', updateTextArea)
-			formData.append('session', 1)
+			formData.append('session', sessionID)
 			formData.append('tweet_id', tweetID)
 			axiosInstance.post('/publications/', formData, {
 				headers: { 'Content-Type': 'multipart/form-data'},
@@ -200,8 +198,7 @@ export default function Update(props){
 			alert(errorMessages.lacks_payload_content)
 		}
 	}
-	{/* At least one field among content, image and tweet must not be null
-	 before we send a request to the API */}
+	{/* At least one field among content, image and tweet must not be null before we send a request to the API */}
 	function validatePayload() {
 		let contentExists = updateTextArea.length > 0
 		let tweetExists = tweetID.length > 0
@@ -255,12 +252,6 @@ export default function Update(props){
 	}
 	function handleSessionTitle(title) {
 		title.length > 0 ? setUpdateTitle(title) : setUpdateTitle('')
-	}
-	function a11yProps(index) {
-	 return {
-	    id: `scrollable-force-tab-${index}`,
-	    'aria-controls': `scrollable-force-tabpanel-${index}`,
-	  };
 	}
 	return (
 		<React.Fragment>
@@ -319,7 +310,7 @@ export default function Update(props){
 				</Grid>
 				<Grid className={classes.tabs}>
 						{titlesArray.map(function(title, index){
-						return <Button variant="contained" onClick={(e) => startUpdateWithTitleFlow(e, title)} disableElevation className={classes.tab}>{title}</Button>
+						return <Button key={index} uvariant="contained" onClick={(e) => startUpdateWithTitleFlow(e, title)} disableElevation className={classes.tab}>{title}</Button>
 					})}
 				</Grid>
 			</Grid>
@@ -421,16 +412,25 @@ export default function Update(props){
 									onClose={handleImageUploadDialogClose}>
 					<div style={{display: 'flex', justifyContent: 'space-between'}}>
 						 <DialogTitle id="form-dialog-title">Nova atualizacao com imagem</DialogTitle>
-						 <img src="../../img/exit_icon.svg" style={{margin: '0 1rem 0 0'}} onClick={() => setImageUploadModalOpen(false)} />
+						 <img src="../../img/exit_icon.svg"
+							 		style={{margin: '0 1rem 0 0'}}
+									onClick={() => setImageUploadModalOpen(false)}
+									alt="exit" />
 					 </div>
 					 <Paper style={{backgroundColor: 'white', padding: '1rem', borderRadius: '15px'}} elevation={0}>
 				 		<DialogContent>
 							<Grid style={{display: updateTitle ? 'flex' : 'none' }}
 										container
 										className={classes.sessionTitleAlert}>
-								<Grid item md={1} style={{padding: '0.1rem 0 0 0.5rem'}}><img src="../../img/alert.svg"/></Grid>
+								<Grid item md={1} style={{padding: '0.1rem 0 0 0.5rem'}}>
+									<img src="../../img/alert.svg" alt="alert"/>
+								</Grid>
 								<Grid item md={10}>{updateTitle}</Grid>
-								<Grid item md={1} style={{padding: '0.1rem 0.1rem 0rem 1rem'}}><img src="../../img/alert_within_dialog_exit_icon.svg" onClick={() => setUpdateTitle('')} /></Grid>
+								<Grid item md={1} style={{padding: '0.1rem 0.1rem 0rem 1rem'}}>
+									<img src="../../img/alert_within_dialog_exit_icon.svg"
+											 onClick={() => setUpdateTitle('')}
+											 alt="exit" />
+								</Grid>
 							</Grid>
 						 <TextField
 							 id="textfield"
@@ -438,10 +438,9 @@ export default function Update(props){
 							 fullWidth={true}
 							 rows={4}
 							 bgcolor="white"
-							 onChange={(e) => setUpdateTextArea(e.target.value)}
+							 onChange={handleChange}
 							 name="previewModalUpdateText"
 							 placeholder="Inserir nota"
-							 onChange = {handleChange}
 							 elevation={0}
 							 InputProps={{ disableUnderline: true }}
 						 />
@@ -484,7 +483,10 @@ export default function Update(props){
 					onClose={handlePreviewModalClose}>
 					<div style={{display: 'flex', justifyContent: 'space-between'}}>
 						 <DialogTitle id="form-dialog-title">Nova atualizacao do Twitter</DialogTitle>
-						 <img src="../../img/exit_icon.svg" style={{margin: '0 1rem 0 0'}} onClick={() => setPreviewModalOpen(false)} />
+						 <img src="../../img/exit_icon.svg"
+							 		style={{margin: '0 1rem 0 0'}}
+									onClick={() => setPreviewModalOpen(false)}
+									alt="exit" />
 					 </div>
 					 <Paper style={{backgroundColor: 'white', padding: '1rem', borderRadius: '15px'}} elevation={0}>
 					 <DialogContent className={classes.previewModal}>
@@ -493,7 +495,6 @@ export default function Update(props){
 								 multiline
 								 rows={4}
 								 bgcolor="white"
-								 onChange={(e) => setUpdateTextArea(e.target.value)}
 								 name="previewModalUpdateText"
 								 placeholder={"Inserir nota"}
 								 onChange = {handleChange}
