@@ -148,7 +148,6 @@ export default function Update(props){
 	const [previewModalOpen, setPreviewModalOpen] = useState(false);
 	const [imageUploadModalOpen, setImageUploadModalOpen] = useState(false);
 	const [picture, setPicture] = useState(false);
-	const [value, setValue] = React.useState(0);
 	const [titlesArray] = useState([
 																	'Pré-sessão',
 																	'Sessão Iniciada',
@@ -426,9 +425,15 @@ export default function Update(props){
 							<Grid style={{display: updateTitle ? 'flex' : 'none' }}
 										container
 										className={classes.sessionTitleAlert}>
-								<Grid item md={1} style={{padding: '0.1rem 0 0 0.5rem'}}><img src="../../img/alert.svg"/></Grid>
+								<Grid item md={1} style={{padding: '0.1rem 0 0 0.5rem'}}>
+									<img src="../../img/alert.svg" alt="alert"/>
+								</Grid>
 								<Grid item md={10}>{updateTitle}</Grid>
-								<Grid item md={1} style={{padding: '0.1rem 0.1rem 0rem 1rem'}}><img src="../../img/alert_within_dialog_exit_icon.svg" onClick={() => setUpdateTitle('')} /></Grid>
+								<Grid item md={1} style={{padding: '0.1rem 0.1rem 0rem 1rem'}}>
+									<img src="../../img/alert_within_dialog_exit_icon.svg"
+											 onClick={() => setUpdateTitle('')}
+											 alt="exit" />
+								</Grid>
 							</Grid>
 						 <TextField
 							 id="textfield"
