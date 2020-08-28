@@ -257,8 +257,6 @@ export default function Update(props){
 	return (
 		<React.Fragment>
 			<div className={classes.body}>
-
-			{/* Summary box */}
 			<Grid container className={classes.summaryBox}>
 				<Grid container className={classes.summaryHeader}>
 					<Grid item md={6} style={{display:'flex', justifyContent: 'flex-start'}}>
@@ -314,6 +312,25 @@ export default function Update(props){
 				<Grid className={classes.tabs}>
 						{titlesArray.map(function(title, index){
 						return <Button key={index} uvariant="contained" onClick={(e) => startUpdateWithTitleFlow(e, title)} disableElevation className={classes.tab}>{title}</Button>
+					})}
+				</Grid>
+			</Grid>
+			{/* End of status selection component */}
+
+			<SummaryBox sessionID={sessionID}></SummaryBox>
+
+			{/* Status selection component*/}
+			<Grid container className={classes.summaryBox}>
+				<Grid container className={classes.summaryHeader} style={{margin: '1rem 0 0 0'}}>
+					<Grid item md={6} style={{display:'flex', justifyContent: 'flex-start'}}>
+						<Typography variant="h5"> Status </Typography>
+					</Grid>
+					<Grid item md={6} style={{display:'flex', justifyContent: 'flex-end'}}>
+					</Grid>
+				</Grid>
+				<Grid className={classes.tabs}>
+						{titlesArray.map(function(title, index){
+						return <Button keyu={index} uvariant="contained" onClick={(e) => startUpdateWithTitleFlow(e, title)} disableElevation className={classes.tab}>{title}</Button>
 					})}
 				</Grid>
 			</Grid>
