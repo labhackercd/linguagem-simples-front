@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ExternalContentPanel from './externalContentPanel';
 import Box from '@material-ui/core/Box'
 import Youtube from './youtubeTransmission'
+import VideoSnippets from './VideoSnippets/videoSnippets'
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -38,6 +39,8 @@ const useStyles = makeStyles((theme) => ({
     height: 'auto',
     width: 'auto',
     margin: '1rem 0 0 0',
+    minHeight: '35vh',
+    minWidth: '32vh'
   },
   cardVideo: {
     backgroundColor: "white",
@@ -46,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '1rem 0 0 0',
   },
   secondRow: {
-    height: '15vh',
+    height: '16vh',
     backgroundColor: "white",
     borderRadius: '5px',
     margin: '0.5rem',
@@ -67,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Content(props) {
   //<YoutubeTransmission videoId="splJnSIoe8I"></YoutubeTransmission>
   //const videoID = props.videoID;
-  const videoID = "YUNat3PN8n8";
+  const videoID = "stgBjJwcnIw";
 
   const classes = useStyles();
 
@@ -89,7 +92,7 @@ export default function Content(props) {
             <div className={classes.card}>
                 {videoID ? 
                   Youtube(videoID) :
-                  <Box width={1} height={1} display="flex" alignContent="center" justifyContent="center">
+                  <Box width="100%" height="100%" display="flex" alignContent="center" justifyContent="center">
                       <Typography variant="h5" style={{ color: "grey" }}> Transmissão não disponível</Typography>
                   </Box>
                 }
@@ -103,7 +106,10 @@ export default function Content(props) {
           </Grid>
       </Grid>
       <Grid container className={classes.secondRow}>
-        <Typography variant="h5" style={{margin: '1rem 0 1rem 1rem'}}> Trechos </Typography>
+        {/*<Grid item xs={12}>
+          <Typography variant="h5" style={{margin: '1rem 0 1rem 1rem'}}> Trechos </Typography>
+              </Grid>*/}
+        <VideoSnippets></VideoSnippets>
       </Grid>
       <Grid container className={classes.thirdRow}>
         <ExternalContentPanel></ExternalContentPanel>
