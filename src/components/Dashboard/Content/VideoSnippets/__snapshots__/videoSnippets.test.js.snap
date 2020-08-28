@@ -61,8 +61,8 @@ exports[`should render the VideoSnippets section 1`] = `
       >
         <List
           direction="ltr"
-          height="12vh"
-          itemCount={13}
+          height="12.5vh"
+          itemCount={321}
           itemSize={61.44}
           layout="horizontal"
           overscanCount={2}

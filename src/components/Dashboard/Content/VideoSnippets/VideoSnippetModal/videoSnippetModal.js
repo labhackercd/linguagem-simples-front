@@ -41,6 +41,7 @@ export default function VideoSnippetModal(props){
   const [fullHeight, ] = useState(true);
   const [maxWidth, ] = useState('md');
   const [maxHeight, ] = useState('md');
+  const [videoUrl, setVideoUrl] = useState("https://vod2.camara.leg.br/playlist/72d8p-yol8hl_foqsfh30a.mp4");
   
 
   const handleClose = () => {
@@ -59,7 +60,7 @@ export default function VideoSnippetModal(props){
                             width: "100%",
                             height: "500px"
                             }}
-                            src={'https://vod2.camara.leg.br/playlist/fcd6iu1lo4loklhw6lgulw.mp4'}
+                            src={videoUrl}
                             title="Trecho da Sessão Plenária"
                         />
                     </div>

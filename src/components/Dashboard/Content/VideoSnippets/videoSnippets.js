@@ -15,8 +15,8 @@ import ButtonBase from '@material-ui/core/ButtonBase'
 import VideoSnippetModal from './VideoSnippetModal/videoSnippetModal'
 
 function SnippetCard(props){
-  const deputado = "Rodrigo Maia"
-  const siglaPartidaria ="DEM-RJ"
+  const deputado = props.data.author
+  const siglaPartidaria = props.data.legend
 
   const [open, setOpen] = React.useState(false);
 
@@ -33,16 +33,16 @@ function SnippetCard(props){
     <Box width="100%" height="100%" marginX={0.3} marginTop={0.5}>
       <ButtonBase  onClick={handleClickOpen}>
         <div>
-        <img style={{width:"100%", height:"65%"}} id="image" src={props.data.thumbnail} alt="Thumbanail trecho"></img>
+        <img style={{width:"100%", height:"6vh"}} id="image" src={props.data.thumbnail} alt="Thumbanail trecho"></img>
         <Box fontSize={10}>
           <Typography>{deputado}</Typography>
         </Box>
         <Box fontSize={8}>
-          <Typography variant="body2">Deputado {siglaPartidaria}</Typography>
+          <Typography variant="body2">{siglaPartidaria}</Typography>
         </Box>
         </div>
         </ButtonBase>
-      <VideoSnippetModal open={open} onClose={handleClose} />
+      <VideoSnippetModal open={open} onClose={handleClose} data={props.data} />
 
     </Box>
   );
@@ -118,13 +118,13 @@ export default class VideoSnippets extends React.Component {
       searchField: event.target.value
     })
     this.setState({
-      filteredSnippets: this.state.snippets.filter(term => term.description.toLowerCase().includes(this.state.searchField.toLowerCase()))
+      filteredSnippets: this.state.snippets.filter(term => term.author.toLowerCase().includes(this.state.searchField.toLowerCase()))
     })
   }
 
   render(){
-    const widthSnippetsBox = ((window.innerWidth)*0.54)
-    const widthSnippetsItem = (((window.innerWidth)*0.5)*0.12)
+    const widthSnippetsBox = ((window.innerWidth)*0.54);
+    const widthSnippetsItem = (((window.innerWidth)*0.5)*0.12);
 
     if(!this.state.dataLoaded){
       return (<Box display="flex" justifyContent="center" alignItems="center"><CircularProgress></CircularProgress></Box>)
@@ -136,7 +136,7 @@ export default class VideoSnippets extends React.Component {
         {this.renderSearchBarFunction()}
           <Grid item xs={12}>
             <Box marginLeft={1}>
-              <FixedSizeList width={widthSnippetsBox} height={"12vh"} itemSize={widthSnippetsItem} layout="horizontal" itemCount={this.state.filteredSnippets.length}>        
+              <FixedSizeList width={widthSnippetsBox} height={"12.5vh"} itemSize={widthSnippetsItem} layout="horizontal" itemCount={this.state.filteredSnippets.length}>        
                 {this.renderListItem}
               </FixedSizeList>
             </Box>
