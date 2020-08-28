@@ -88,7 +88,8 @@ class NewSessionFormComponent extends React.Component {
                 date: (moment(this.state.sessionDate).format('YYYY-MM-DD')),
                 type_session: this.state.sessionType,
                 situation_session:"pre_session",
-                resume: "Resumo"
+                resume: "Resumo",
+                enable:true
             }).then(
                 result => {
                     if(result.status===201){
