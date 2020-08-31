@@ -1,18 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render the content section 1`] = `
-<WithStyles(ForwardRef(Grid))
-  container={true}
+<div
+  className="makeStyles-body-1"
 >
-  <WithStyles(ForwardRef(Grid))
-    container={true}
-  >
-    <TitleRow />
-  </WithStyles(ForwardRef(Grid))>
-  <WithStyles(ForwardRef(Grid))
-    container={true}
-  >
-    <Update />
-  </WithStyles(ForwardRef(Grid))>
-</WithStyles(ForwardRef(Grid))>
+  <TitleRow />
+  <SummaryBox />
+  <StatusSelection
+    startUpdateWithTitleFlow={[Function]}
+  />
+  <NewUpdate
+    handleChange={[Function]}
+    handleClick={[Function]}
+    handleImageUploadDialogOpen={[Function]}
+    handleTwitterDialogOpen={[Function]}
+    updateTextArea=""
+  />
+  <TwitterDialog
+    handleTwitterDialogClose={[Function]}
+    setTweetURL={[Function]}
+    twitterDialogOpen={false}
+  />
+  <ImageUploadDialog
+    handleChange={[Function]}
+    handleImageUploadDialogClose={[Function]}
+    imageUploadModalOpen={false}
+    onImageDrop={[Function]}
+    setImageUploadModalOpen={[Function]}
+    setUpdateTitle={[Function]}
+    time="18:00"
+    updateTitle=""
+  />
+  <PreviewDialog
+    handleChange={[Function]}
+    handlePreviewModalClose={[Function]}
+    previewModalOpen={false}
+    setPreviewModalOpen={[Function]}
+    time="18:00"
+    tweetID=""
+  />
+  <Feed
+    updates={Array []}
+  />
+</div>
 `;
