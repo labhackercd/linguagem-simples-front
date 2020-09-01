@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render the Title Row section 1`] = `
+exports[`should render the Header section 1`] = `
 <div
   className="makeStyles-body-1"
 >

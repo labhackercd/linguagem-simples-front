@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the status selection section 1`] = `
+<WithStyles(ForwardRef(Grid))
+  className="makeStyles-summaryBox-1"
+  container={true}
+>
+  <WithStyles(ForwardRef(Grid))
+    className="makeStyles-summaryHeader-2"
+    container={true}
+    style={
+      Object {
+        "margin": "1rem 0 0 0",
+      }
+    }
+  >
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      md={6}
+      style={
+        Object {
+          "display": "flex",
+          "justifyContent": "flex-start",
+        }
+      }
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="h5"
+      >
+         Status 
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      md={6}
+      style={
+        Object {
+          "display": "flex",
+          "justifyContent": "flex-end",
+        }
+      }
+    />
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    className="makeStyles-tabs-3"
+  >
+    <WithStyles(ForwardRef(Button))
+      className="makeStyles-tab-4"
+      disableElevation={true}
+      key="0"
+      onClick={[Function]}
+      uvariant="contained"
+    >
+      Pré-sessão
+    </WithStyles(ForwardRef(Button))>
+    <WithStyles(ForwardRef(Button))
+      className="makeStyles-tab-4"
+      disableElevation={true}
+      key="1"
+      onClick={[Function]}
+      uvariant="contained"
+    >
+      Sessão Iniciada
+    </WithStyles(ForwardRef(Button))>
+    <WithStyles(ForwardRef(Button))
+      className="makeStyles-tab-4"
+      disableElevation={true}
+      key="2"
+      onClick={[Function]}
+      uvariant="contained"
+    >
+      Votação Iniciada
+    </WithStyles(ForwardRef(Button))>
+    <WithStyles(ForwardRef(Button))
+      className="makeStyles-tab-4"
+      disableElevation={true}
+      key="3"
+      onClick={[Function]}
+      uvariant="contained"
+    >
+      Votação Encerrada
+    </WithStyles(ForwardRef(Button))>
+    <WithStyles(ForwardRef(Button))
+      className="makeStyles-tab-4"
+      disableElevation={true}
+      key="4"
+      onClick={[Function]}
+      uvariant="contained"
+    >
+      Próxima Pauta
+    </WithStyles(ForwardRef(Button))>
+    <WithStyles(ForwardRef(Button))
+      className="makeStyles-tab-4"
+      disableElevation={true}
+      key="5"
+      onClick={[Function]}
+      uvariant="contained"
+    >
+      Sessão Encerrada
+    </WithStyles(ForwardRef(Button))>
+    <WithStyles(ForwardRef(Button))
+      className="makeStyles-tab-4"
+      disableElevation={true}
+      key="6"
+      onClick={[Function]}
+      uvariant="contained"
+    >
+      Fim da transmissão
+    </WithStyles(ForwardRef(Button))>
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Grid))>
+`;

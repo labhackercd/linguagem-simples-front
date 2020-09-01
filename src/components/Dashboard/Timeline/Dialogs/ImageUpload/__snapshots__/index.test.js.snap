@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the content section 1`] = `
+<WithStyles(ForwardRef(Dialog))
+  PaperProps={
+    Object {
+      "style": Object {
+        "backgroundColor": "#F2F2F2",
+      },
+    }
+  }
+  fullWidth={true}
+  maxWidth="sm"
+>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <WithStyles(ForwardRef(DialogTitle))
+      id="form-dialog-title"
+    >
+      Nova atualizacao com imagem
+    </WithStyles(ForwardRef(DialogTitle))>
+    <img
+      alt="exit"
+      onClick={[Function]}
+      src="../../img/exit_icon.svg"
+      style={
+        Object {
+          "margin": "0 1rem 0 0",
+        }
+      }
+    />
+  </div>
+  <WithStyles(ForwardRef(Paper))
+    elevation={0}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderRadius": "15px",
+        "padding": "1rem",
+      }
+    }
+  >
+    <WithStyles(ForwardRef(DialogContent))>
+      <WithStyles(ForwardRef(Grid))
+        className="makeStyles-sessionTitleAlert-1"
+        container={true}
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          md={1}
+          style={
+            Object {
+              "padding": "0.1rem 0 0 0.5rem",
+            }
+          }
+        >
+          <img
+            alt="alert"
+            src="../../img/alert.svg"
+          />
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          md={10}
+        />
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          md={1}
+          style={
+            Object {
+              "padding": "0.1rem 0.1rem 0rem 1rem",
+            }
+          }
+        >
+          <img
+            alt="exit"
+            onClick={[Function]}
+            src="../../img/alert_within_dialog_exit_icon.svg"
+          />
+        </WithStyles(ForwardRef(Grid))>
+      </WithStyles(ForwardRef(Grid))>
+      <WithStyles(ForwardRef(TextField))
+        InputProps={
+          Object {
+            "disableUnderline": true,
+          }
+        }
+        bgcolor="white"
+        elevation={0}
+        fullWidth={true}
+        id="textfield"
+        multiline={true}
+        name="previewModalUpdateText"
+        placeholder="Inserir nota"
+        rows={4}
+      />
+      <ReactImageUploadComponent
+        accept="image/*"
+        alt="Image upload form"
+        buttonClassName=""
+        buttonStyles={
+          Object {
+            "backgroundColor": "#00AF82",
+            "borderRadius": "5px",
+            "fontWeight": "600",
+          }
+        }
+        buttonText="Escolher imagens"
+        buttonType="button"
+        className=""
+        defaultImages={Array []}
+        errorClass=""
+        errorStyle={Object {}}
+        fileContainerStyle={Object {}}
+        fileSizeError=" file size is too big"
+        fileTypeError=" is not a supported file extension"
+        imgExtension={
+          Array [
+            ".jpg",
+            ".png",
+            ".jpeg",
+          ]
+        }
+        label="Tamanho máximo: 5mbs"
+        labelClass=""
+        labelStyles={Object {}}
+        maxFileSize={5242880}
+        name=""
+        onChange={[Function]}
+        singleImage={true}
+        style={
+          Object {
+            "backgroundColor": "#F4F4F4",
+          }
+        }
+        withIcon={true}
+        withLabel={true}
+        withPreview={true}
+      />
+    </WithStyles(ForwardRef(DialogContent))>
+  </WithStyles(ForwardRef(Paper))>
+  <WithStyles(ForwardRef(DialogActions))
+    className="makeStyles-previewModalFooter-2"
+  >
+    <WithStyles(ForwardRef(Typography))
+      className="makeStyles-time-3"
+      style={
+        Object {
+          "alignSelf": "flex-start",
+        }
+      }
+      variant="h6"
+    />
+    <WithStyles(ForwardRef(Button))
+      className="makeStyles-previewModalSubmitButton-4"
+      variant="contained"
+    >
+      Publicar
+    </WithStyles(ForwardRef(Button))>
+  </WithStyles(ForwardRef(DialogActions))>
+</WithStyles(ForwardRef(Dialog))>
+`;

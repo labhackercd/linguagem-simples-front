@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the new update section 1`] = `
+<WithStyles(ForwardRef(Grid))
+  className="makeStyles-summaryBox-1"
+  container={true}
+>
+  <WithStyles(ForwardRef(Grid))
+    className="makeStyles-summaryHeader-2"
+    container={true}
+  >
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      md={6}
+      style={
+        Object {
+          "display": "flex",
+          "justifyContent": "flex-start",
+        }
+      }
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="h5"
+      >
+         Nova atualização 
+      </WithStyles(ForwardRef(Typography))>
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      md={6}
+      style={
+        Object {
+          "display": "flex",
+          "justifyContent": "flex-end",
+        }
+      }
+    />
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+    md={12}
+  >
+    <WithStyles(ForwardRef(Grid))
+      container={true}
+    >
+      <form
+        autoComplete="off"
+        className="makeStyles-textArea-3"
+        noValidate={true}
+      >
+        <WithStyles(ForwardRef(TextField))
+          InputProps={
+            Object {
+              "classes": Object {
+                "notchedOutline": "makeStyles-notchedOutline-8",
+              },
+            }
+          }
+          bgcolor="white"
+          className="makeStyles-textField-4"
+          id="textfield"
+          multiline={true}
+          name="updateText"
+          rows={4}
+          variant="outlined"
+        />
+      </form>
+    </WithStyles(ForwardRef(Grid))>
+    <Styled(MuiBox)
+      bgcolor="#F2F2F2"
+      borderRadius="0 0 10px 25px"
+      borderTop={1}
+      color="#F2F2F2"
+    >
+      <WithStyles(ForwardRef(Grid))
+        container={true}
+      >
+        <WithStyles(ForwardRef(Grid))
+          className="makeStyles-submenu-5"
+          item={true}
+          xs={8}
+        >
+          <div
+            className="makeStyles-subMenuItem-6"
+          >
+            <WithStyles(ForwardRef(Typography))
+              className="makeStyles-time-9"
+              variant="h6"
+            >
+               18:00 
+            </WithStyles(ForwardRef(Typography))>
+          </div>
+          <div
+            className="makeStyles-subMenuItem-6"
+          >
+            <img
+              alt="divider icon"
+              src="../../img/divider.svg"
+            />
+          </div>
+          <div
+            className="makeStyles-subMenuItem-6"
+          >
+            <a
+              href="/"
+            >
+              <img
+                alt="upload icon"
+                src="../../img/picture_upload.svg"
+              />
+            </a>
+          </div>
+          <div
+            className="makeStyles-subMenuItem-6"
+          >
+            <img
+              alt="incorporate tweet icon"
+              src="../../img/twitter_icon.svg"
+            />
+          </div>
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          style={
+            Object {
+              "display": "flex",
+              "justifyContent": "flex-end",
+            }
+          }
+          xs={4}
+        >
+          <WithStyles(ForwardRef(Button))
+            className="makeStyles-button-7"
+            disableElevation={true}
+            variant="contained"
+          >
+            Inserir
+          </WithStyles(ForwardRef(Button))>
+        </WithStyles(ForwardRef(Grid))>
+      </WithStyles(ForwardRef(Grid))>
+    </Styled(MuiBox)>
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Grid))>
+`;

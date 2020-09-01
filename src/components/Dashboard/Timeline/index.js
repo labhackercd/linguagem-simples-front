@@ -5,7 +5,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import {TwitterTweetEmbed} from 'react-twitter-embed';
 import SummaryBox from './SummaryBox';
 import axiosInstance from '../../../auth/axiosApi.js';
-import TitleRow from './TitleRow';
+import Header from './Header';
 import StatusSelection from './StatusSelection';
 import NewUpdate from './NewUpdate';
 import TwitterDialog from './Dialogs/Twitter';
@@ -16,11 +16,11 @@ import Feed from './Feed';
 const useStyles = makeStyles((theme) => ({
 	body: {
 		padding: '0 1rem 0 1rem',
-		maxHeight: '100vh',
+		height: 'calc(100vh-3px)',
 	}
 }));
 
-export default function Update(props){
+export default function Timeline(props){
 	const classes = useStyles();
 	const sessionID = props.sessionID;
 	const [updates, setUpdates] = useState([]);
@@ -133,7 +133,7 @@ export default function Update(props){
 	}
 	return (
 		<div className={classes.body}>
-			<TitleRow></TitleRow>
+			<Header></Header>
 			<SummaryBox sessionID={sessionID}></SummaryBox>
 			<StatusSelection startUpdateWithTitleFlow={startUpdateWithTitleFlow}></StatusSelection>
 			<NewUpdate handleClick={handleClick}
