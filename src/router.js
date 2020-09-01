@@ -59,7 +59,7 @@ class PrivateRouteAuth extends Component{
             <div>
                 {this.state.isAuthenticaded ? children : <Redirect to={"/"} /> }
             </div>
-          );
+        );
     }
 
 }
@@ -72,7 +72,7 @@ const AppRouter = (props) => (
         </Route>
         {/*Authenticated routes */}
         <PrivateRouteAuth>
-            <Route exact path="/dashboard/:sessionID" children={<Dashboard />} theme={props.theme} />
+            <Route exact path="/dashboard/:dashboardId" children={<Dashboard />} theme={props.theme} />
             <Route exact path="/estudio">
                 <EstudioAcompanhePageContainer></EstudioAcompanhePageContainer>
             </Route>

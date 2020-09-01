@@ -32,25 +32,18 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   	const classes = useStyles();
     let { dashboardId } = useParams();
-    const [sessionIdDadosAbertos, setSessionIdDadosAbertos] = React.useState(null);
+    const [sessionIdDadosAbertos, setSessionIdDadosAbertos] = useState('');
   
-
     async function fetchSessionData(){
       try {
-        const data = await fetchData(dashboardId);
-        //setSessionIdDadosAbertos(data)
-        //this.setState({sessionsList:data})
-        //this.setState({dataLoaded:true});
+        const response = await fetchData(dashboardId);
+        setSessionIdDadosAbertos(response.data.id_session_dados_abertos) 
       } catch (error) {
           throw error;
       }
     };
 
-    useEffect(() => {
-      // Atualiza o titulo do documento usando a API do browser
-      fetchSessionData();
-    });
-
+    useEffect(fetchSessionData, [])
 
 		return (
 			<Grid container className={classes.body}>

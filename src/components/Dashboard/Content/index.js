@@ -62,15 +62,14 @@ const useStyles = makeStyles((theme) => ({
   },
   videoWrapper:{
     margin: '1rem 0 0 0',
-
   }
-  
 }));
 
 export default function Content(props) {
   //<YoutubeTransmission videoId="splJnSIoe8I"></YoutubeTransmission>
   //const videoID = props.videoID;
   const videoID = "stgBjJwcnIw";
+  const sessionIdDadosAbertos = props.sessionIdDadosAbertos
 
   const classes = useStyles();
 
