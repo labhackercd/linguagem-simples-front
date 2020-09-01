@@ -88,16 +88,16 @@ class NewSessionFormComponent extends React.Component {
 
         fetch(url, {
             method: 'GET',
-          }).then((response) => response.json())
-          .then((responseData) => {
+        }).then((response) => response.json())
+        .then((responseData) => {
             if(responseData.dados[0]!==undefined){
                 this.setState({sessionIdDadosAbertos:responseData.dados[0].id})
             }
             callback();
-          })
-          .catch((error) => {
+        })
+        .catch((error) => {
             console.error(error);
-          });
+        });
     }
 
     createSession(callback){
@@ -127,40 +127,11 @@ class NewSessionFormComponent extends React.Component {
     {
         event.preventDefault();
 
-    
         this.checkIfSessionsAlreadyExistsInSILEG(() => {
-
             this.createSession( () => {
                 window.location.reload(false);
             });
-
         });
-     
-        
-    
-        /*
-
-        axiosInstance.post('/sessions/', {
-                location: "plenary",
-                date: (moment(this.state.sessionDate).format('YYYY-MM-DD')),
-                type_session: this.state.sessionType,
-                situation_session:"pre_session",
-                resume: "Resumo",
-                enable:true
-            }).then(
-                result => {
-                    if(result.status===201){
-                        window.location.reload(false);
-                        alert("Sessão criada com sucesso")
-                    }else{
-                        alert("Erro ao criar sessão")
-                    }
-                  
-                }
-        ).catch (error => {
-            throw error;
-        })*/
-
     };
 
     render(){
