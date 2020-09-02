@@ -127,12 +127,12 @@ exports[`should render the external content section 1`] = `
       className="makeStyles-headerMenu-11"
       item={true}
     >
-      <WithStyles(ForwardRef(Typography))
+      <WithStyles(ForwardRef(Button))
         className="makeStyles-headerMenuItem-12"
-        variant="h5"
+        onClick={[Function]}
       >
-         Sincronizar 
-      </WithStyles(ForwardRef(Typography))>
+        Sincronizar
+      </WithStyles(ForwardRef(Button))>
       <WithStyles(ForwardRef(Typography))
         className="makeStyles-headerMenuItem-12"
         variant="h5"

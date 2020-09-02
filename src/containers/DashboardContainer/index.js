@@ -32,18 +32,16 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   	const classes = useStyles();
     let { dashboardId } = useParams();
-    const [sessionIdDadosAbertos, setSessionIdDadosAbertos] = useState('');
+    const [sessionInfo, setSessionInfo] = useState('');
   
-    async function fetchSessionData(){
-      try {
-        const response = await fetchData(dashboardId);
-        setSessionIdDadosAbertos(response.data.id_session_dados_abertos) 
-      } catch (error) {
-          throw error;
-      }
-    };
 
-    useEffect(fetchSessionData, [])
+    useEffect(() => {
+      const fetchSessionData = async () => {
+        const response = await fetchData(dashboardId);
+        setSessionInfo(response.data)
+      };
+      fetchSessionData();
+    },[])
 
 		return (
 			<Grid container className={classes.body}>
@@ -51,10 +49,10 @@ export default function Dashboard() {
 					<Sidebar></Sidebar>
 				</Grid>
 				<Grid item md={4} className={classes.timeline}>
-          <Timeline sessionID={dashboardId} sessionDadosAbertosId={sessionIdDadosAbertos}></Timeline>
+          <Timeline sessionID={dashboardId} sessionInfo={sessionInfo}></Timeline>
 				</Grid>
 				<Grid item md={7} className={classes.content}>
-          <Content sessionID={dashboardId} sessionDadosAbertosId={sessionIdDadosAbertos}></Content>
+          <Content sessionID={dashboardId} sessionInfo={sessionInfo}></Content>
 				</Grid>
 			</Grid>
 		)

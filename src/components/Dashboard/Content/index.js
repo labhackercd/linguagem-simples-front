@@ -2,9 +2,10 @@ import React from 'react';
 import { Grid, Typography, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ExternalContentPanel from './externalContentPanel';
-import Box from '@material-ui/core/Box'
-import Youtube from './youtubeTransmission'
+import Youtube from './Youtube/index'
+import Button from '@material-ui/core/Button';
 import VideoSnippets from './VideoSnippets/videoSnippets'
+import {checkIfSessionsAlreadyExistsInSILEG,updateSession} from './fetchSynchronizeData'
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -66,13 +67,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Content(props) {
-  //<YoutubeTransmission videoId="splJnSIoe8I"></YoutubeTransmission>
-  //const videoID = props.videoID;
-  const videoID = "stgBjJwcnIw";
-  const sessionIdDadosAbertos = props.sessionIdDadosAbertos
+  const sessionInfo = props.sessionInfo
+  const sessionId = props.sessionID;
+
+  if(sessionInfo!== undefined){
+    var sessionIdDadosAbertos = sessionInfo.id_session_dados_abertos;
+  }
+  
 
   const classes = useStyles();
 
+  async function handleSynchronize(){
+    let sessionsScheduleDadosAbertos = await checkIfSessionsAlreadyExistsInSILEG(sessionInfo.date);
+
+    if(sessionsScheduleDadosAbertos.dados[0] ){
+      // Session is registered at sileg, so update the information of dashboard
+      const dashboardInfoUpdated = await updateSession(sessionId,sessionsScheduleDadosAbertos.dados[0].id)
+  
+      if(dashboardInfoUpdated){
+        window.alert("Session ID atualizado com sucesso :D");
+        window.location.reload(false);
+      }else{
+        window.alert("Falhou :(");
+      }
+    }
+  }
   
   return (
 		<Grid container className={classes.body}>
@@ -81,21 +100,16 @@ export default function Content(props) {
           <Typography variant="h3" className={classes.title}>Conteúdos</Typography>
         </Grid>
         <Grid item className={classes.headerMenu}>
-          <Typography variant="h5" className={classes.headerMenuItem}> Sincronizar </Typography>
-          <Typography variant="h5" className={classes.headerMenuItem}> Ver Acompanhe </Typography>
+          {!sessionIdDadosAbertos &&
+            <Button onClick={handleSynchronize} className={classes.headerMenuItem}>Sincronizar</Button>
+          }
+            <Typography variant="h5" className={classes.headerMenuItem}> Ver Acompanhe </Typography>
         </Grid>
       </Grid>
       <Grid container className={classes.firstRow} spacing={2}>
           <Grid item md={7}>
             <Typography variant="h5"> Transmissão </Typography>
-            <div className={classes.card}>
-                {videoID ? 
-                  Youtube(videoID) :
-                  <Box width="100%" height="100%" display="flex" alignContent="center" justifyContent="center">
-                      <Typography variant="h5" style={{ color: "grey" }}> Transmissão não disponível</Typography>
-                  </Box>
-                }
-            </div>   
+            <div className={classes.card}>{Youtube(sessionIdDadosAbertos)}</div>   
           </Grid>
           <Grid item md={5}>
             <Typography variant="h5"> Plenário </Typography>
@@ -105,9 +119,6 @@ export default function Content(props) {
           </Grid>
       </Grid>
       <Grid container className={classes.secondRow}>
-        {/*<Grid item xs={12}>
-          <Typography variant="h5" style={{margin: '1rem 0 1rem 1rem'}}> Trechos </Typography>
-              </Grid>*/}
         <VideoSnippets></VideoSnippets>
       </Grid>
       <Grid container className={classes.thirdRow}>
