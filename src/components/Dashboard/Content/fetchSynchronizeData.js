@@ -1,6 +1,6 @@
 import axiosInstance from './../../../auth/axiosApi'
 import * as moment from 'moment'
-
+import axios from 'axios'
 
 export async function updateSession(sessionId,sessionIdDadosAbertos){
     const response = await axiosInstance.patch(('/sessions/'+sessionId+'/'), {id_session_dados_abertos: sessionIdDadosAbertos})
@@ -13,11 +13,12 @@ export async function updateSession(sessionId,sessionIdDadosAbertos){
 }
 
 export async function checkIfSessionsAlreadyExistsInSILEG(sessionDate) {
-    const date = (moment(sessionDate).format('YYYY-MM-DD'))
-    const url =  new URL("https://dadosabertos.camara.leg.br/api/v2/eventos?codTipoEvento=110&dataInicio="+date+"&dataFim="+date+"&ordem=ASC&ordenarPor=dataHoraInicio");
+    const date = sessionDate
+    //const date = (moment(sessionDate).format('YYYY-MM-DD'))
+    const url =  "https://dadosabertos.camara.leg.br/api/v2/eventos?codTipoEvento=110&dataInicio="+date+"&dataFim="+date+"&ordem=ASC&ordenarPor=dataHoraInicio";
 
-    const response = await fetch(url, {method: 'GET',});
-    return  response.json();
+    const response = await axios.get(url)
+    return  response.data;
 
 
 }

@@ -6,6 +6,7 @@ import Youtube from './Youtube/index'
 import Button from '@material-ui/core/Button';
 import VideoSnippets from './VideoSnippets/videoSnippets'
 import {checkIfSessionsAlreadyExistsInSILEG,updateSession} from './fetchSynchronizeData'
+import moment from 'moment'
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -78,7 +79,7 @@ export default function Content(props) {
   const classes = useStyles();
 
   async function handleSynchronize(){
-    let sessionsScheduleDadosAbertos = await checkIfSessionsAlreadyExistsInSILEG(sessionInfo.date);
+    let sessionsScheduleDadosAbertos = await checkIfSessionsAlreadyExistsInSILEG((moment(sessionInfo.date).format('YYYY-MM-DD')));
 
     if(sessionsScheduleDadosAbertos.dados[0] ){
       // Session is registered at sileg, so update the information of dashboard

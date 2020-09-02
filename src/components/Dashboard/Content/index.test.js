@@ -17,8 +17,8 @@ it("should render the external content section", () => {
 
 
 it("should return iframe of youtube content section", () => {
-    const videoID = "YUNat3PN8n8";
-    const youtubeVideo = Youtube(videoID);
+    const sessionID = 1;
+    const youtubeVideo = Youtube(sessionID);
     expect(youtubeVideo.props.className).toBe("video")
 });
 
