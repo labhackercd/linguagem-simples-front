@@ -7,52 +7,52 @@ import Paper from '@material-ui/core/Paper'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import moment from 'moment';
-import PlayIcon from './assets/play_image.svg'
-
 import postSaveContent from '../FetchFunctions/postSaveContent'
+import TVIcon from './assets/tv_image.svg'
 
 const useStyles = makeStyles((theme) => ({
-      newsCard:{
+      tvCard:{
         background:'#F4F4F4',
       }
 }));
 
-export default function RadioCard(props){
+export default function TVCard(props){
     const classes = useStyles();
 
+        
     async function handleSaveContent(){
-      const hasBeenSaved = await postSaveContent("radio", props.info, props.sessionId);
+        const hasBeenSaved = await postSaveContent("tv", props.info, props.sessionId);
 
-      if(hasBeenSaved){
-          //console.log("Conteúdo radio salvo")
-      }else{
-          //console.log("Conteúdo não salvo")
-      }
+        if(hasBeenSaved){
+            //console.log("Conteúdo da TV salvo")
+        }else{
+            //console.log("Conteúdo da TV não salvo")
+        }
     }
 
     return (
       <Box width="97%" height="100%" >
-          <Paper elevation={0} className={classes.newsCard}>
+          <Paper elevation={0} className={classes.tvCard}>
               <Grid container>
                   <Grid item xs={12}>
                       <Box my={1} mr={1}>
                         <Grid container  alignItems="center" justify="center">
-                          <Grid item xs={2} align="center">                         
-                            <img src={PlayIcon} alt="Ícone de play audio"></img>  
+                          <Grid item xs={2} >                         
+                            <img src={TVIcon} alt="Ícone de Televisão"></img>  
                           </Grid>
                           <Grid item xs={10}>
                             <Grid container>
                               <Grid item xs={11}>
-                                <Typography style={{ color: "gray" }} variant="body1">Áudio</Typography>
+                                <Typography style={{ color: "gray" }} variant="body1">Vídeo</Typography>
                               </Grid>
                               <Grid item xs={1}>
-                                  <IconButton aria-label="delete" className={classes.margin} size="small">
+                                <IconButton aria-label="delete" className={classes.margin} size="small">
                                     <AddCircleOutlineIcon fontSize="inherit" />
-                                  </IconButton>
-                                          
-                                  <IconButton id={"saveButtonRadio"+props.info.id} aria-label="delete" className={classes.margin} size="small" onClick={handleSaveContent}>
+                                </IconButton>
+                                            
+                                <IconButton id={"saveButtonTv"+props.info.id} aria-label="delete" className={classes.margin} size="small" onClick={handleSaveContent}>
                                     <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} /> 
-                                  </IconButton>
+                                </IconButton>
                               </Grid>
                               <Grid item xs={12}>
                                 <Box fontWeight="fontWeightRegular">

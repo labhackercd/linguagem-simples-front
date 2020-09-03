@@ -48,14 +48,14 @@ export default class RadioCamaraContent extends React.Component {
   }
 
   fetchSessionsList = async term => {
-    try {
+    //try {
       //const data = await fetchDataRadioCamara();
       //this.setState({sessionsList:data})
       this.setState({dataLoaded:true});
-
+    /*
     } catch (error) {
         throw error;
-    }
+    }*/
   };
 
   componentDidMount(){
@@ -83,7 +83,7 @@ export default class RadioCamaraContent extends React.Component {
               <List style={{maxHeight: '200px', overflow: 'auto'}}>            
                 {this.state.news.map((sectionId) => (
                     <li key={`section-${sectionId._id}`}>
-                        <Box my={0.5}><RadioCard info={sectionId._source} ></RadioCard></Box>
+                        <Box my={0.5}><RadioCard info={sectionId._source} sessionId={this.props.sessionId} ></RadioCard></Box>
                     </li>
                 ))}
               </List>

@@ -1,26 +1,18 @@
 import React from 'react';
+
 import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
-import Paper from '@material-ui/core/Paper'
 import List from '@material-ui/core/List'
 import CircularProgress from '@material-ui/core/CircularProgress';
-
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import BookmarkIcon from '@material-ui/icons/Bookmark';
-
-import {newsMockData} from './newsMockData'
-import moment from 'moment';
-//import {fetchDataAgenciaCamara} from './fetchDataAgenciaCamara'
-
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 
 import NewsCard from './newsCard'
-
+import {newsMockData} from './newsMockData'
+//import {fetchDataAgenciaCamara} from './fetchDataAgenciaCamara'
 
 function topBarAgenciaCamaraBar(props){
   return(

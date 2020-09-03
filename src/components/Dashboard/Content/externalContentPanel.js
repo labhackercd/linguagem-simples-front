@@ -138,10 +138,10 @@ export default function ExternalContentPanel(props) {
                   <AgenciaCamaraContent sessionId={props.sessionId}></AgenciaCamaraContent>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                  <TvCamaraContent></TvCamaraContent>
+                  <TvCamaraContent sessionId={props.sessionId}></TvCamaraContent>
                 </TabPanel>
                 <TabPanel value={value} index={3}>
-                  <RadioCamaraContent></RadioCamaraContent>
+                  <RadioCamaraContent sessionId={props.sessionId}></RadioCamaraContent>
                 </TabPanel>
                 <TabPanel value={value} index={4}>
                   <TwitterDeputadosContent></TwitterDeputadosContent>
