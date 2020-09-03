@@ -79,7 +79,7 @@ class NewSessionFormComponent extends React.Component {
     {
       this.setState({twitterTransmissionChannel: e.target.checked});
     };
-
+    /*
     checkIfSessionsAlreadyExistsInSILEG(callback) {
         const date = (moment(this.state.sessionDate).format('YYYY-MM-DD'))
         //const date = moment(new Date()).format('YYYY-MM-DD');
@@ -99,11 +99,11 @@ class NewSessionFormComponent extends React.Component {
             console.error(error);
         });
     }
-
+    */
     createSession(callback){
         axiosInstance.post('/sessions/', {
             location: "plenary",
-            date: (moment(this.state.sessionDate).format('YYYY-MM-DD')),
+            date:new Date(this.state.sessionDate).toISOString().slice(0,10),
             type_session: this.state.sessionType,
             situation_session:"pre_session",
             resume: "Resumo",
@@ -111,27 +111,28 @@ class NewSessionFormComponent extends React.Component {
             }).then(
                 result => {
                     if(result.status===201){
-                        alert("Sessão criada com sucesso")
+                        //alert("Sessão criada com sucesso")
+                        console.log("Dashboard criado com sucesso")
                     }else{
-                        alert("Erro ao criar sessão")
+                        console.log("Falha ao criar dashboard")
                     }
-                    callback();
-                }
-            
-        ).catch (error => {
+                    //callback();
+                }   
+        )
+        /*.catch (error => {
             throw error;
-        })
+        })*/
     }
 
     submitCreateSessionForm = (event) =>
     {
         event.preventDefault();
 
-        this.checkIfSessionsAlreadyExistsInSILEG(() => {
+        //this.checkIfSessionsAlreadyExistsInSILEG(() => {
             this.createSession( () => {
                 window.location.reload(false);
             });
-        });
+        //});
     };
 
     render(){
@@ -237,6 +238,7 @@ class NewSessionFormComponent extends React.Component {
         </Grid>
         <Box pt={4} pb={8}>
             <Button
+                id="submitButton"
                 variant="contained"
                 color="primary"
                 className={classes.button}
