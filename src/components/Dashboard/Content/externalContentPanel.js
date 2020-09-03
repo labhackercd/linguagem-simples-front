@@ -7,6 +7,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 
+import SavedContent from './SavedContent/savedContent'
 import AgenciaCamaraContent from './AgenciaCamara/agenciaCamara'
 import RadioCamaraContent from './RadioCamara/radioCamara'
 import TvCamaraContent from './TVCamara/tvCamara'
@@ -132,7 +133,7 @@ export default function ExternalContentPanel(props) {
       </Grid>
       <Grid item md={9}>
                 <TabPanel value={value} index={0}>
-                  Conteúdos Salvos
+                  <SavedContent sessionId={props.sessionId}></SavedContent>
                 </TabPanel>
                 <TabPanel value={value} index={1} style={{paddingTop:0}}>
                   <AgenciaCamaraContent sessionId={props.sessionId}></AgenciaCamaraContent>

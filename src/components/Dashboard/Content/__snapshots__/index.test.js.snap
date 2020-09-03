@@ -63,7 +63,7 @@ exports[`should render the content section 1`] = `
       index={0}
       value={0}
     >
-      Conteúdos Salvos
+      <SavedContent />
     </TabPanel>
     <TabPanel
       index={1}

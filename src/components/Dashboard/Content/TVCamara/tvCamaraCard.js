@@ -37,7 +37,7 @@ export default function TVCard(props){
                   <Grid item xs={12}>
                       <Box my={1} mr={1}>
                         <Grid container  alignItems="center" justify="center">
-                          <Grid item xs={2} >                         
+                          <Grid item xs={2} align="center">                         
                             <img src={TVIcon} alt="Ícone de Televisão"></img>  
                           </Grid>
                           <Grid item xs={10}>

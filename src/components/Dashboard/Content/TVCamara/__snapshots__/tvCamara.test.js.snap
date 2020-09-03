@@ -26,6 +26,7 @@ exports[`should render the NewsCard component and match snapshot  1`] = `
             justify="center"
           >
             <WithStyles(ForwardRef(Grid))
+              align="center"
               item={true}
               xs={2}
             >
