@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Grid, Typography} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import InitStreamIcon from './../../../../assets/init_stream_button_icon.svg';
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -45,7 +46,7 @@ export default function Header(){
   	        color="secondary"
   	        disableElevation
   	        className={classes.button}
-  	        startIcon={<img src="../../img/init_stream_button_icon.svg" alt="button to init stream"/>}>
+  	        startIcon={<img src={InitStreamIcon} alt="button to init stream"/>}>
   	        <h6>Iniciar transmissão</h6>
   	      </Button>
   			</Grid>

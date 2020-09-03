@@ -3,6 +3,9 @@ import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogCon
 	      DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import ImageUploader from 'react-images-upload';
+import ExitIcon from './../../../../../assets/exit_icon.svg';
+import AlertIcon from './../../../../../assets/alert.svg';
+import AlertDialogIcon from './../../../../../assets/alert_within_dialog_exit_icon.svg';
 
 const useStyles = makeStyles((theme) => ({
   sessionTitleAlert: {
@@ -46,7 +49,7 @@ export default function ImageUploadDialog(props) {
               onClose={props.handleImageUploadDialogClose}>
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
          <DialogTitle id="form-dialog-title">Nova atualizacao com imagem</DialogTitle>
-         <img src="../../img/exit_icon.svg"
+         <img src={ExitIcon}
               style={{margin: '0 1rem 0 0'}}
               onClick={() => props.setImageUploadModalOpen(false)}
               alt="exit" />
@@ -57,11 +60,11 @@ export default function ImageUploadDialog(props) {
                 container
                 className={classes.sessionTitleAlert}>
             <Grid item md={1} style={{padding: '0.1rem 0 0 0.5rem'}}>
-              <img src="../../img/alert.svg" alt="alert"/>
+              <img src={AlertIcon} alt="alert"/>
             </Grid>
             <Grid item md={10}>{props.updateTitle}</Grid>
             <Grid item md={1} style={{padding: '0.1rem 0.1rem 0rem 1rem'}}>
-              <img src="../../img/alert_within_dialog_exit_icon.svg"
+              <img src={AlertDialogIcon}
                    onClick={() => props.setUpdateTitle('')}
                    alt="exit" />
             </Grid>

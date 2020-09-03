@@ -3,7 +3,7 @@ import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogCon
 	      DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import {TwitterTweetEmbed} from 'react-twitter-embed';
-
+import ExitIcon from './../../../../../assets/exit_icon.svg';
 const useStyles = makeStyles((theme) => ({
   previewModalSubmitButton: {
     color: '#FFF',
@@ -37,7 +37,7 @@ export default function PreviewDialog(props) {
       onClose={props.handlePreviewModalClose}>
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
          <DialogTitle id="form-dialog-title">Nova atualizacao do Twitter</DialogTitle>
-         <img src="../../img/exit_icon.svg"
+         <img src={ExitIcon}
               style={{margin: '0 1rem 0 0'}}
               onClick={() => props.setPreviewModalOpen(false)}
               alt="exit" />

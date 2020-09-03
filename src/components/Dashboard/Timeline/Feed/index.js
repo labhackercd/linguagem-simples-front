@@ -3,7 +3,7 @@ import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogCon
 	      DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import {TwitterTweetEmbed} from 'react-twitter-embed';
-
+import MoreOptionsIcon from './../../../../assets/more_options_icon.svg';
 const useStyles = makeStyles((theme) => ({
   updatesArea: {
     overflow: 'auto',
@@ -44,7 +44,7 @@ export default function Feed(props) {
                       {update.title}
                     </Typography>
                     <Grid item>
-                      <img src="../../img/more_options_icon.svg" alt="more options icon"/>
+                      <img src={MoreOptionsIcon} alt="more options icon"/>
                     </Grid>
                   </Grid>
                   <Grid container className={classes.timelinePost}>

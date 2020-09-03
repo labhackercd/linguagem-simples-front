@@ -2,6 +2,10 @@ import React from 'react'
 import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
 	      DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
+import DividerIcon from './../../../../assets/divider.svg';
+import PictureUploadIcon from './../../../../assets/picture_upload.svg';
+import TwitterIcon from './../../../../assets/twitter_icon.svg';
+
 const useStyles = makeStyles((theme) => ({
 	summaryBox: {
 		display: 'flex',
@@ -85,13 +89,13 @@ export default function NewUpdate(props) {
                   <Typography className={classes.time} variant="h6"> 18:00 </Typography>
                 </div>
                 <div className={classes.subMenuItem}>
-                  <img src="../../img/divider.svg" alt="divider icon"/>
+                  <img src={DividerIcon} alt="divider icon"/>
                 </div>
                 <div className={classes.subMenuItem}>
-                  <a href="/"><img src="../../img/picture_upload.svg" alt="upload icon" onClick={props.handleImageUploadDialogOpen}/></a>
+                  <a href="/"><img src={PictureUploadIcon} alt="upload icon" onClick={props.handleImageUploadDialogOpen}/></a>
                 </div>
                 <div className={classes.subMenuItem}>
-                  <img src="../../img/twitter_icon.svg" alt="incorporate tweet icon" onClick={props.handleTwitterDialogOpen}/>
+                  <img src={TwitterIcon} alt="incorporate tweet icon" onClick={props.handleTwitterDialogOpen}/>
                 </div>
               </Grid>
               <Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
