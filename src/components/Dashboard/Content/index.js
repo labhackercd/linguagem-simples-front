@@ -5,7 +5,7 @@ import ExternalContentPanel from './externalContentPanel';
 import Youtube from './Youtube/index'
 import Button from '@material-ui/core/Button';
 import VideoSnippets from './VideoSnippets/videoSnippets'
-import {checkIfSessionsAlreadyExistsInSILEG,updateSession} from './fetchSynchronizeData'
+import {checkIfSessionsAlreadyExistsInSILEG,updateSession} from './FetchFunctions/fetchSynchronizeData'
 import moment from 'moment'
 
 const useStyles = makeStyles((theme) => ({
@@ -123,7 +123,7 @@ export default function Content(props) {
         <VideoSnippets></VideoSnippets>
       </Grid>
       <Grid container className={classes.thirdRow}>
-        <ExternalContentPanel></ExternalContentPanel>
+        <ExternalContentPanel sessionId={sessionId}></ExternalContentPanel>
       </Grid>
 		</Grid>
   )

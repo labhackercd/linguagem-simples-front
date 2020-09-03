@@ -100,14 +100,13 @@ function a11yProps(index) {
   };
 }
 
-export default function ExternalContentPanel() {
+export default function ExternalContentPanel(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   return (
     <Grid container className={classes.body}>
       <Grid item md={3} className={classes.menu}>
@@ -136,7 +135,7 @@ export default function ExternalContentPanel() {
                   Conteúdos Salvos
                 </TabPanel>
                 <TabPanel value={value} index={1} style={{paddingTop:0}}>
-                  <AgenciaCamaraContent></AgenciaCamaraContent>
+                  <AgenciaCamaraContent sessionId={props.sessionId}></AgenciaCamaraContent>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                   <TvCamaraContent></TvCamaraContent>
