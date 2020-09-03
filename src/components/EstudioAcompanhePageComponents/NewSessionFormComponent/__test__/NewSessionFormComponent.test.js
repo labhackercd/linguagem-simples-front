@@ -4,7 +4,9 @@ import ReactDOM from 'react-dom'
 import NewSessionFormComponent from './../index'
 import { mount} from 'enzyme';
 
-
+import MockAdapter from "axios-mock-adapter"
+import axios from 'axios'
+import axiosInstance from './../../../../auth/axiosApi'
 
 test('Test if NewSessionFormComponent renders without crash', () => {
     const div = document.createElement("div")
@@ -56,5 +58,52 @@ test('test click on submit button', () => {
     const  wrapper = mount(<NewSessionFormComponent />);
     const button = wrapper.find("button").at(0);
     button.simulate('click')
+
+});
+
+
+describe('Testing lifeclycle ', () => {
+    var response = {
+        data: {
+            "id": 4,
+            "author": {
+              "id": 1,
+              "is_superuser": true,
+              "username": "jpnsoares",
+              "first_name": "",
+              "last_name": "",
+              "email": "jpnsoares@email.com",
+              "profile": "editor"
+            },
+            "location": "plenary",
+            "date": "2020-09-03",
+            "type_session": "virtual",
+            "situation_session": "pre_session",
+            "resume": "string",
+            "enable": true,
+            "id_session_dados_abertos": "string"
+          }, 
+        status: 201, 
+        statusText: "Created", 
+       
+    }; 
+    var mockInstance = new MockAdapter(axiosInstance);
+    
+    test("Test sync lifeclycle", async (done) => {
+        // Return a fixed timestamp when moment().format() is called
+
+        await mockInstance.onPost('/sessions/').reply(200,{response})
+                
+        const  wrapper = mount(<NewSessionFormComponent />);
+        const button = wrapper.find("#submitButton").at(0);
+        button.simulate('click')
+
+        done();
+    });
+
+    afterAll(() => {
+        mockInstance.restore();
+    });
+
 
 });
