@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Dashboard/Sidebar';
 import Timeline from '../../components/Dashboard/Timeline';
 import Content from '../../components/Dashboard/Content';
 import { useParams } from 'react-router-dom';
+
+import fetchData from './fetchData'
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -29,17 +31,28 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   	const classes = useStyles();
-    let { sessionID } = useParams();
+    let { dashboardId } = useParams();
+    const [sessionInfo, setSessionInfo] = useState('');
+  
+
+    useEffect(() => {
+      const fetchSessionData = async () => {
+        const response = await fetchData(dashboardId);
+        setSessionInfo(response.data)
+      };
+      fetchSessionData();
+    },[])
+
 		return (
 			<Grid container className={classes.body}>
 				<Grid item md={1} className={classes.sidebar}>
 					<Sidebar></Sidebar>
 				</Grid>
 				<Grid item md={4} className={classes.timeline}>
-          <Timeline sessionID={sessionID}></Timeline>
+          <Timeline sessionID={dashboardId} sessionInfo={sessionInfo}></Timeline>
 				</Grid>
 				<Grid item md={7} className={classes.content}>
-          <Content sessionID={sessionID}></Content>
+          <Content sessionID={dashboardId} sessionInfo={sessionInfo}></Content>
 				</Grid>
 			</Grid>
 		)

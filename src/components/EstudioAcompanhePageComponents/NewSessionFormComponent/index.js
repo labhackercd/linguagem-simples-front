@@ -50,7 +50,8 @@ class NewSessionFormComponent extends React.Component {
             sessionDate: new Date(),
             sessionType:"virtual" ,
             acompanheTransmissionChannel:true,
-            twitterTransmissionChannel:false
+            twitterTransmissionChannel:false,
+            sessionIdDadosAbertos:""
         };
         this.handleSessionDateChange = this.handleSessionDateChange.bind(this);
         this.handleSessionTypeChange = this.handleSessionTypeChange.bind(this);
@@ -78,32 +79,60 @@ class NewSessionFormComponent extends React.Component {
     {
       this.setState({twitterTransmissionChannel: e.target.checked});
     };
+    /*
+    checkIfSessionsAlreadyExistsInSILEG(callback) {
+        const date = (moment(this.state.sessionDate).format('YYYY-MM-DD'))
+        //const date = moment(new Date()).format('YYYY-MM-DD');
+        //const date = "2020-08-26"
+        const url =  new URL("https://dadosabertos.camara.leg.br/api/v2/eventos?codTipoEvento=110&dataInicio="+date+"&dataFim="+date+"&ordem=ASC&ordenarPor=dataHoraInicio");
+
+        fetch(url, {
+            method: 'GET',
+        }).then((response) => response.json())
+        .then((responseData) => {
+            if(responseData.dados[0]!==undefined){
+                this.setState({sessionIdDadosAbertos:responseData.dados[0].id})
+            }
+            callback();
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }
+    */
+    createSession(callback){
+        axiosInstance.post('/sessions/', {
+            location: "plenary",
+            date:new Date(this.state.sessionDate).toISOString().slice(0,10),
+            type_session: this.state.sessionType,
+            situation_session:"pre_session",
+            resume: "Resumo",
+            enable:true
+            }).then(
+                result => {
+                    if(result.status===201){
+                        //alert("Sessão criada com sucesso")
+                        console.log("Dashboard criado com sucesso")
+                    }else{
+                        console.log("Falha ao criar dashboard")
+                    }
+                    //callback();
+                }   
+        )
+        /*.catch (error => {
+            throw error;
+        })*/
+    }
 
     submitCreateSessionForm = (event) =>
     {
         event.preventDefault();
 
-        axiosInstance.post('/sessions/', {
-                location: "plenary",
-                date: (moment(this.state.sessionDate).format('YYYY-MM-DD')),
-                type_session: this.state.sessionType,
-                situation_session:"pre_session",
-                resume: "Resumo",
-                enable:true
-            }).then(
-                result => {
-                    if(result.status===201){
-                        window.location.reload(false);
-                        alert("Sessão criada com sucesso")
-                    }else{
-                        alert("Erro ao criar sessão")
-                    }
-                  
-                }
-        ).catch (error => {
-            throw error;
-        })
-
+        //this.checkIfSessionsAlreadyExistsInSILEG(() => {
+            this.createSession( () => {
+                window.location.reload(false);
+            });
+        //});
     };
 
     render(){
@@ -209,6 +238,7 @@ class NewSessionFormComponent extends React.Component {
         </Grid>
         <Box pt={4} pb={8}>
             <Button
+                id="submitButton"
                 variant="contained"
                 color="primary"
                 className={classes.button}
