@@ -95,7 +95,7 @@ exports[`snapshot should not have differences 1`] = `
           >
             <img
               alt="divider icon"
-              src="../../img/divider.svg"
+              src="divider.svg"
             />
           </div>
           <div
@@ -106,7 +106,7 @@ exports[`snapshot should not have differences 1`] = `
             >
               <img
                 alt="upload icon"
-                src="../../img/picture_upload.svg"
+                src="picture_upload.svg"
               />
             </a>
           </div>
@@ -115,7 +115,7 @@ exports[`snapshot should not have differences 1`] = `
           >
             <img
               alt="incorporate tweet icon"
-              src="../../img/twitter_icon.svg"
+              src="twitter_icon.svg"
             />
           </div>
         </WithStyles(ForwardRef(Grid))>

@@ -28,7 +28,7 @@ exports[`should render the content section 1`] = `
     <img
       alt="exit"
       onClick={[Function]}
-      src="../../img/exit_icon.svg"
+      src="exit_icon.svg"
       style={
         Object {
           "margin": "0 1rem 0 0",
@@ -67,7 +67,7 @@ exports[`should render the content section 1`] = `
         >
           <img
             alt="alert"
-            src="../../img/alert.svg"
+            src="alert.svg"
           />
         </WithStyles(ForwardRef(Grid))>
         <WithStyles(ForwardRef(Grid))
@@ -86,7 +86,7 @@ exports[`should render the content section 1`] = `
           <img
             alt="exit"
             onClick={[Function]}
-            src="../../img/alert_within_dialog_exit_icon.svg"
+            src="alert_within_dialog_exit_icon.svg"
           />
         </WithStyles(ForwardRef(Grid))>
       </WithStyles(ForwardRef(Grid))>

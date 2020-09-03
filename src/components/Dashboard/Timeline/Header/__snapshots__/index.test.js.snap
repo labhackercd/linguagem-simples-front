@@ -31,7 +31,7 @@ exports[`snapshot should not have differences 1`] = `
         startIcon={
           <img
             alt="button to init stream"
-            src="../../img/init_stream_button_icon.svg"
+            src="init_stream_button_icon.svg"
           />
         }
         variant="contained"

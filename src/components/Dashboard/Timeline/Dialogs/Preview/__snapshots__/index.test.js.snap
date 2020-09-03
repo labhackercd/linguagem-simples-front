@@ -28,7 +28,7 @@ exports[`should render the Preview Dialog 1`] = `
     <img
       alt="exit"
       onClick={[Function]}
-      src="../../img/exit_icon.svg"
+      src="exit_icon.svg"
       style={
         Object {
           "margin": "0 1rem 0 0",

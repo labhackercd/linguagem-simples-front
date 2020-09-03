@@ -46,7 +46,7 @@ exports[`snapshot should match 1`] = `
             >
               <img
                 alt="more options icon"
-                src="../../img/more_options_icon.svg"
+                src="more_options_icon.svg"
               />
             </WithStyles(ForwardRef(Grid))>
           </WithStyles(ForwardRef(Grid))>
