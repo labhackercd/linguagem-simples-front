@@ -5,7 +5,9 @@ import { Grid, TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import axiosInstance from './../../auth/axiosApi.js'
-
+import EstudioAcompanheIcon from './../../assets/estudio_acompanhe_logo.svg';
+import CamaraLogoIcon from './../../assets/camara_logo.svg';
+import PrototipoIcon from './../../assets/interacao_prototipo.png';
 
 const useStyles = theme => ({
   body: {
@@ -78,8 +80,8 @@ const useStyles = theme => ({
 class LoginScreen extends React.Component {
   constructor(props){
     super(props);
-    this.state = { 
-      errorMessage: "", 
+    this.state = {
+      errorMessage: "",
       successMessage: "",
       username:"",
       password:"" ,
@@ -105,7 +107,7 @@ class LoginScreen extends React.Component {
     ).catch (error => {
         throw error;
     })
-    
+
   }
 
   handleEmailFormChange = (e) =>
@@ -124,16 +126,16 @@ class LoginScreen extends React.Component {
 
       return (
         <div>
-          {this.state.succesfullLogin ? 
-            <Redirect to={"/estudio"} /> 
-            : 
+          {this.state.succesfullLogin ?
+            <Redirect to={"/estudio"} />
+            :
             <Grid container className={classes.body}>
               <div className={classes.loginArea}>
                 <Grid item xs={12} sm={6} md={6} className={classes.loginBox}>
                     <Grid container item xs={6} sm={6} md={6} style={{display: 'flex', justifyContent: 'space-between'}}>
                       <div className="formItems">
                         <Grid item>
-                          <img src="../../img/estudio_acompanhe_logo.svg" alt="Estudio Acompanhe logo"/>
+                          <img src={EstudioAcompanheIcon} alt="Estudio Acompanhe logo"/>
                         </Grid>
                         <Grid item className={classes.loginForm}>
                           <TextField className={classes.textField} variant="outlined" value={this.state.username} placeholder="email" id="username" type="email" onChange={(e)=>{this.handleEmailFormChange(e)}} fullWidth autoFocus required />
@@ -150,7 +152,7 @@ class LoginScreen extends React.Component {
                       </div>
                       <div className="camaraLogo">
                         <Grid item className={classes.camaraLogo}>
-                          <img src="../../img/camara_logo.svg" alt="Câmara dos Deputados Logo"/>
+                          <img src={CamaraLogoIcon} alt="Câmara dos Deputados Logo"/>
                         </Grid>
                       </div>
                     </Grid>
@@ -159,7 +161,7 @@ class LoginScreen extends React.Component {
               <Grid item xs={12} sm={5} md={5}>
                 <div className={classes.prototipoArea}>
                   <div style={{margin: '10rem 0 0 0'}}>
-                    <img src="../../img/interacao_prototipo.png" alt="Imagem ilustrativa da interação do protótipo"/>
+                    <img src={PrototipoIcon} alt="Imagem ilustrativa da interação do protótipo"/>
                   </div>
                 </div>
               </Grid>
@@ -167,14 +169,14 @@ class LoginScreen extends React.Component {
             </Grid>
         }
         </div>
-        
+
       )
     }
 
   }
-  
+
   LoginScreen.propTypes = {
     classes: PropTypes.object.isRequired,
   };
-  
+
 export default withStyles(useStyles)(LoginScreen);

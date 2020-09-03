@@ -1,16 +1,21 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import {shallow, render} from "enzyme";
 import Timeline from './index';
-import TitleRow from '../TitleRow';
-import Update from '../Update';
-import {shallow} from "enzyme/build";
+import Header from './Header';
+import StatusSelection from './StatusSelection';
+import NewUpdate from './NewUpdate';
+import Feed from './Feed';
+import SummaryBox from './SummaryBox';
+import ReactDOM from 'react-dom';
 
-it("should render the content section", () => {
+it("snapshot should not have differences", () => {
     const component = shallow(<Timeline/>);
-    const titleRow = component.find(TitleRow);
-    const update = component.find(Update);
-
-    expect(titleRow.exists()).toEqual(true);
-    expect(update.exists()).toEqual(true);
     expect(component).toMatchSnapshot();
+});
+
+test('Test if Timeline renders without crash', () => {
+    const div = document.createElement("div")
+    ReactDOM.render(<Timeline></Timeline>, div)
+    ReactDOM.unmountComponentAtNode(div)
 });

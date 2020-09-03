@@ -15,7 +15,7 @@ exports[`should render the content section 1`] = `
     >
       <img
         alt="user icon"
-        src="../../img/User.svg"
+        src="User.svg"
       />
     </a>
   </WithStyles(ForwardRef(Grid))>
@@ -33,7 +33,7 @@ exports[`should render the content section 1`] = `
       >
         <img
           alt="home icon"
-          src="../../img/Home.svg"
+          src="Home.svg"
         />
       </a>
     </WithStyles(ForwardRef(Grid))>
@@ -47,7 +47,7 @@ exports[`should render the content section 1`] = `
       >
         <img
           alt="AC icon"
-          src="../../img/AC.svg"
+          src="AC.svg"
         />
       </a>
     </WithStyles(ForwardRef(Grid))>
@@ -65,7 +65,7 @@ exports[`should render the content section 1`] = `
       >
         <img
           alt="Exit icon"
-          src="../../img/Exit.svg"
+          src="Exit.svg"
         />
       </a>
     </div>
