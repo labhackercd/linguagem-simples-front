@@ -1,9 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import TwitterDialog from './index';
-import {shallow} from "enzyme/build";
+import {shallow, mount} from "enzyme/build";
+import ReactDOM from "react-dom";
 
-it("should render the Twitter Dialog", () => {
+it("snapshot should not have differences", () => {
     const component = shallow(<TwitterDialog/>);
     expect(component.exists()).toEqual(true);
     expect(component).toMatchSnapshot();

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render the Twitter Dialog 1`] = `
+exports[`snapshot should not have differences 1`] = `
 <WithStyles(ForwardRef(Dialog))>
   <WithStyles(ForwardRef(DialogContent))>
     <WithStyles(ForwardRef(DialogContentText))>

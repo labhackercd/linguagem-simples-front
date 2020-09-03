@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render the Header section 1`] = `
+exports[`snapshot should not have differences 1`] = `
 <div
   className="makeStyles-body-1"
 >

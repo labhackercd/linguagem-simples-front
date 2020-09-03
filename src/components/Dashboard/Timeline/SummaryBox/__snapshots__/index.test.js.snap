@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render the summary box section 1`] = `
+exports[`snapshot should not have differences 1`] = `
 <Fragment>
   <WithStyles(ForwardRef(Grid))
     className="makeStyles-summaryBox-1"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render the status selection section 1`] = `
+exports[`snapshot should not have changes 1`] = `
 <WithStyles(ForwardRef(Grid))
   className="makeStyles-summaryBox-1"
   container={true}

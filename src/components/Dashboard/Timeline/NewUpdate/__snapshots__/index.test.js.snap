@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render the new update section 1`] = `
+exports[`snapshot should not have differences 1`] = `
 <WithStyles(ForwardRef(Grid))
   className="makeStyles-summaryBox-1"
   container={true}

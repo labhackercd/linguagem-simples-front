@@ -138,7 +138,7 @@ class Timeline extends React.Component {
 			const { classes } = this.props;
 
 			return (
-				<div className={classes.body}>
+				<div className={classes.body} testid="timeline">
 					<Header></Header>
 					<SummaryBox sessionID={this.state.sessionID}></SummaryBox>
 					<StatusSelection startUpdateWithTitleFlow={this.startUpdateWithTitleFlow}></StatusSelection>

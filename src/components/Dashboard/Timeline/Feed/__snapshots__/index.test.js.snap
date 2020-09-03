@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render the Feed section 1`] = `
+exports[`snapshot should match 1`] = `
 <WithStyles(ForwardRef(Grid))
   className="makeStyles-updatesArea-1"
   container={true}
