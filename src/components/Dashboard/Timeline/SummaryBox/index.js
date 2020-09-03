@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Grid, Typography, Box, Button, TextField } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import axiosInstance from '../../../../auth/axiosApi.js';
+import DownArrowIcon from './../../../../assets/down-arrow.svg';
 
 const useStyles = makeStyles((theme) => ({
 	summaryBox: {
@@ -63,7 +64,7 @@ export default function SummaryBox(props) {
           <Typography variant="h5"> Resumo </Typography>
         </Grid>
         <Grid item md={6} style={{display:'flex', justifyContent: 'flex-end'}}>
-          <a href="/"><img src="../../img/down-arrow.svg" alt="up arrow icon"/></a>
+          <a href="/"><img src={DownArrowIcon} alt="up arrow icon"/></a>
         </Grid>
       </Grid>
     </Grid>

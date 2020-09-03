@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the Preview Dialog 1`] = `
+<WithStyles(ForwardRef(Dialog))
+  PaperProps={
+    Object {
+      "style": Object {
+        "backgroundColor": "#F2F2F2",
+      },
+    }
+  }
+  fullWidth={true}
+  maxWidth="sm"
+>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <WithStyles(ForwardRef(DialogTitle))
+      id="form-dialog-title"
+    >
+      Nova atualizacao do Twitter
+    </WithStyles(ForwardRef(DialogTitle))>
+    <img
+      alt="exit"
+      onClick={[Function]}
+      src="exit_icon.svg"
+      style={
+        Object {
+          "margin": "0 1rem 0 0",
+        }
+      }
+    />
+  </div>
+  <WithStyles(ForwardRef(Paper))
+    elevation={0}
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderRadius": "15px",
+        "padding": "1rem",
+      }
+    }
+  >
+    <WithStyles(ForwardRef(DialogContent))>
+      <WithStyles(ForwardRef(TextField))
+        InputProps={
+          Object {
+            "disableUnderline": true,
+          }
+        }
+        bgcolor="white"
+        elevation={0}
+        id="textfield"
+        multiline={true}
+        name="previewModalUpdateText"
+        placeholder="Inserir nota"
+        rows={4}
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      />
+      <TwitterTweetEmbed
+        style={
+          Object {
+            "alignSelf": "center",
+          }
+        }
+        tweetId="1300777342864953345"
+      />
+    </WithStyles(ForwardRef(DialogContent))>
+  </WithStyles(ForwardRef(Paper))>
+  <WithStyles(ForwardRef(DialogActions))
+    className="makeStyles-previewModalFooter-2"
+  >
+    <WithStyles(ForwardRef(Typography))
+      className="makeStyles-time-3"
+      style={
+        Object {
+          "alignSelf": "flex-start",
+        }
+      }
+      variant="h6"
+    >
+       
+       
+    </WithStyles(ForwardRef(Typography))>
+    <WithStyles(ForwardRef(Button))
+      className="makeStyles-previewModalSubmitButton-1"
+      variant="contained"
+    >
+      Publicar
+    </WithStyles(ForwardRef(Button))>
+  </WithStyles(ForwardRef(DialogActions))>
+</WithStyles(ForwardRef(Dialog))>
+`;
