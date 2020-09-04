@@ -92,7 +92,7 @@ export default function NewUpdate(props) {
                   <img src={DividerIcon} alt="divider icon"/>
                 </div>
                 <div className={classes.subMenuItem}>
-                  <a href="/"><img src={PictureUploadIcon} alt="upload icon" onClick={props.handleImageUploadDialogOpen}/></a>
+                  <a href="/"><img src={PictureUploadIcon} alt="upload icon" onClick={(e) => props.openImageDialog(e, true)}/></a>
                 </div>
                 <div className={classes.subMenuItem}>
                   <img src={TwitterIcon} alt="incorporate tweet icon" onClick={props.handleTwitterDialogOpen}/>
