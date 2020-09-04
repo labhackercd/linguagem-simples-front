@@ -55,6 +55,7 @@ describe('Test FetchData function requisitions', () => {
 
 
         data = await fetchData(dashboarId);
+        //console.log(data)
         expect(data).not.toBeNull();
         expect(data).not.toBeUndefined();
         expect(data.status).toEqual(200);

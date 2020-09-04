@@ -41,7 +41,7 @@ export default function VideoSnippetModal(props){
   const [fullHeight, ] = useState(true);
   const [maxWidth, ] = useState('md');
   const [maxHeight, ] = useState('md');
-  const [videoUrl, setVideoUrl] = useState("https://vod2.camara.leg.br/playlist/72d8p-yol8hl_foqsfh30a.mp4");
+  const [videoUrl, setVideoUrl] = useState("https://vod2.camara.leg.br/playlist/c5kddtwzrgs1sj8wo2ttiq.mp4");
   
 
   const handleClose = () => {

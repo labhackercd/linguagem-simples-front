@@ -69,21 +69,6 @@ exports[`should render the NewsCard component and match snapshot  1`] = `
                       fontSize="inherit"
                     />
                   </WithStyles(ForwardRef(IconButton))>
-                  <WithStyles(ForwardRef(IconButton))
-                    aria-label="delete"
-                    id="saveButtonTvundefined"
-                    onClick={[Function]}
-                    size="small"
-                  >
-                    <BookmarkIcon
-                      fontSize="inherit"
-                      style={
-                        Object {
-                          "color": "#00AF82",
-                        }
-                      }
-                    />
-                  </WithStyles(ForwardRef(IconButton))>
                 </WithStyles(ForwardRef(Grid))>
                 <WithStyles(ForwardRef(Grid))
                   item={true}

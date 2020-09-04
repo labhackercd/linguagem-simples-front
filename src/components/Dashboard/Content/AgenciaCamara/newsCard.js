@@ -18,8 +18,17 @@ const useStyles = makeStyles((theme) => ({
 export default function NewsCard(props){
     const classes = useStyles();
     
+    // The ternary is necessary to get correctly data from different endpoints and still use the same component
+    const info = {
+        id:props.info.id,
+        url:props.info.url,
+        titulo:props.info.titulo===undefined ? props.info.title : props.info.titulo,
+        data:props.info.data===undefined ? props.info.created : props.info.data
+    }
+    const isDataFromSavedContentsComponent = props.info.titulo===undefined ? false : true;
+
     async function handleSaveContent(){
-        const hasBeenSaved = await postSaveContent("news", props.info, props.sessionId);
+        const hasBeenSaved = await postSaveContent("news", info, props.sessionId);
 
         if(hasBeenSaved){
             //console.log("Conteúdo salvo")
@@ -42,18 +51,19 @@ export default function NewsCard(props){
                                     <Box display="flex" justifyContent="flex-end">
                                         <IconButton aria-label="delete" className={classes.margin} size="small">
                                             <AddCircleOutlineIcon fontSize="inherit" />
-                                        </IconButton>
-                                            
-                                        <IconButton id={"saveButton"+props.info.id} aria-label="delete" className={classes.margin} size="small" onClick={handleSaveContent}>
-                                            <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} /> 
-                                        </IconButton>
+                                        </IconButton>           
+                                        {isDataFromSavedContentsComponent &&
+                                            <IconButton id={"saveButton"+info.id} aria-label="delete" className={classes.margin} size="small" onClick={handleSaveContent}>
+                                                <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} /> 
+                                            </IconButton>      
+                                        }
                                     </Box>
                                 </Grid>
                                 <Grid item xs={12}>
                                   <Box fontWeight="fontWeightRegular">
-                                  <a rel={'external noopener noreferrer'} target="_blank" href={"https://"+props.info.url} style={{textDecoration: "none"}}>
+                                  <a rel={'external noopener noreferrer'} target="_blank" href={"https://"+info.url} style={{textDecoration: "none"}}>
                                       <Typography variant="h6" style={{ color: "#007E5A" }}>
-                                          {props.info.titulo}
+                                          {info.titulo}
                                       </Typography>
                                     </a>
                                   </Box>
@@ -61,7 +71,7 @@ export default function NewsCard(props){
                                 <Grid item xs={12}>
                                   <Box fontSize={11}>
                                     <Typography style={{ color: "gray" }}>
-                                         {moment(new Date(props.info.data)).format("DD/MM/YYYY HH:mm")}
+                                         {moment(new Date(info.data)).format("DD/MM/YYYY HH:mm")}
                                     </Typography>
                                     </Box>
                                 </Grid>
