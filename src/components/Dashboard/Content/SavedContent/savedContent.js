@@ -49,8 +49,10 @@ export default class SavedContent extends React.Component {
   fetchSessionsList = async term => {
     //try {
       const data = await fetchDataSavedContentCamara(this.props.sessionId);
+
       this.setState({savedContent:data})
       this.setState({dataLoaded:true});
+      //console.log(this.state.savedContent)
 
     //} catch (error) {
     //    throw error;
