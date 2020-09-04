@@ -7,6 +7,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 
+import SavedContent from './SavedContent/savedContent'
 import AgenciaCamaraContent from './AgenciaCamara/agenciaCamara'
 import RadioCamaraContent from './RadioCamara/radioCamara'
 import TvCamaraContent from './TVCamara/tvCamara'
@@ -100,14 +101,13 @@ function a11yProps(index) {
   };
 }
 
-export default function ExternalContentPanel() {
+export default function ExternalContentPanel(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   return (
     <Grid container className={classes.body}>
       <Grid item md={3} className={classes.menu}>
@@ -133,16 +133,16 @@ export default function ExternalContentPanel() {
       </Grid>
       <Grid item md={9}>
                 <TabPanel value={value} index={0}>
-                  Conteúdos Salvos
+                  <SavedContent sessionId={props.sessionId}></SavedContent>
                 </TabPanel>
                 <TabPanel value={value} index={1} style={{paddingTop:0}}>
-                  <AgenciaCamaraContent></AgenciaCamaraContent>
+                  <AgenciaCamaraContent sessionId={props.sessionId}></AgenciaCamaraContent>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                  <TvCamaraContent></TvCamaraContent>
+                  <TvCamaraContent sessionId={props.sessionId}></TvCamaraContent>
                 </TabPanel>
                 <TabPanel value={value} index={3}>
-                  <RadioCamaraContent></RadioCamaraContent>
+                  <RadioCamaraContent sessionId={props.sessionId}></RadioCamaraContent>
                 </TabPanel>
                 <TabPanel value={value} index={4}>
                   <TwitterDeputadosContent></TwitterDeputadosContent>

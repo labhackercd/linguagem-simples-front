@@ -1,5 +1,131 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should render the NewsCard component and match snapshot  1`] = `
+<Styled(MuiBox)
+  height="100%"
+  width="97%"
+>
+  <WithStyles(ForwardRef(Paper))
+    className="makeStyles-tvCard-1"
+    elevation={0}
+  >
+    <WithStyles(ForwardRef(Grid))
+      container={true}
+    >
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+        xs={12}
+      >
+        <Styled(MuiBox)
+          mr={1}
+          my={1}
+        >
+          <WithStyles(ForwardRef(Grid))
+            alignItems="center"
+            container={true}
+            justify="center"
+          >
+            <WithStyles(ForwardRef(Grid))
+              align="center"
+              item={true}
+              xs={2}
+            >
+              <img
+                alt="Ícone de Televisão"
+                src="tv_image.svg"
+              />
+            </WithStyles(ForwardRef(Grid))>
+            <WithStyles(ForwardRef(Grid))
+              item={true}
+              xs={10}
+            >
+              <WithStyles(ForwardRef(Grid))
+                container={true}
+              >
+                <WithStyles(ForwardRef(Grid))
+                  item={true}
+                  xs={11}
+                >
+                  <WithStyles(ForwardRef(Typography))
+                    style={
+                      Object {
+                        "color": "gray",
+                      }
+                    }
+                    variant="body1"
+                  >
+                    Vídeo
+                  </WithStyles(ForwardRef(Typography))>
+                </WithStyles(ForwardRef(Grid))>
+                <WithStyles(ForwardRef(Grid))
+                  item={true}
+                  xs={1}
+                >
+                  <WithStyles(ForwardRef(IconButton))
+                    aria-label="delete"
+                    size="small"
+                  >
+                    <AddCircleOutlineIcon
+                      fontSize="inherit"
+                    />
+                  </WithStyles(ForwardRef(IconButton))>
+                </WithStyles(ForwardRef(Grid))>
+                <WithStyles(ForwardRef(Grid))
+                  item={true}
+                  xs={12}
+                >
+                  <Styled(MuiBox)
+                    fontWeight="fontWeightRegular"
+                  >
+                    <a
+                      href="https://undefined"
+                      rel="external noopener noreferrer"
+                      style={
+                        Object {
+                          "textDecoration": "none",
+                        }
+                      }
+                      target="_blank"
+                    >
+                      <WithStyles(ForwardRef(Typography))
+                        style={
+                          Object {
+                            "color": "#007E5A",
+                          }
+                        }
+                        variant="h6"
+                      />
+                    </a>
+                  </Styled(MuiBox)>
+                </WithStyles(ForwardRef(Grid))>
+                <WithStyles(ForwardRef(Grid))
+                  item={true}
+                  xs={12}
+                >
+                  <Styled(MuiBox)
+                    fontSize={11}
+                  >
+                    <WithStyles(ForwardRef(Typography))
+                      style={
+                        Object {
+                          "color": "gray",
+                        }
+                      }
+                    >
+                      Invalid date
+                    </WithStyles(ForwardRef(Typography))>
+                  </Styled(MuiBox)>
+                </WithStyles(ForwardRef(Grid))>
+              </WithStyles(ForwardRef(Grid))>
+            </WithStyles(ForwardRef(Grid))>
+          </WithStyles(ForwardRef(Grid))>
+        </Styled(MuiBox)>
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Paper))>
+</Styled(MuiBox)>
+`;
+
 exports[`should render the TVCamaraContent section 1`] = `
 <div>
   <WithStyles(ForwardRef(Grid))

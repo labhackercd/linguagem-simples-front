@@ -1,7 +1,7 @@
 import axiosInstance from './../../auth/axiosApi'
 
 export default async function fetchData(dashboarId){
-  console.log(dashboarId)
+  //console.log(dashboarId)
   const response = await axiosInstance.get(("/sessions/"+dashboarId+"/"), {});
 
   return response
