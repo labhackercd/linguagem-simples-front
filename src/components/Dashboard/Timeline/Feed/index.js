@@ -4,6 +4,8 @@ import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogCon
 import {makeStyles} from '@material-ui/core/styles';
 import {TwitterTweetEmbed} from 'react-twitter-embed';
 import MoreOptionsIcon from './../../../../assets/more_options_icon.svg';
+import { parseHourMinute } from './../../../Util';
+
 const useStyles = makeStyles((theme) => ({
   updatesArea: {
     overflow: 'auto',
@@ -35,7 +37,7 @@ export default function Feed(props) {
               <Grid container>
                 <Grid item xs={2}>
                   <Typography variant="h6">
-                    {update.time}
+										{parseHourMinute(update.created)}
                   </Typography>
                 </Grid>
                 <Grid item xs={10}>

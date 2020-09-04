@@ -1,8 +1,5 @@
-import React, {useState} from 'react';
-import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
-	      DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
+import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
-import {TwitterTweetEmbed} from 'react-twitter-embed';
 import SummaryBox from './SummaryBox';
 import Header from './Header';
 import StatusSelection from './StatusSelection';
@@ -12,6 +9,8 @@ import ImageUploadDialog from './Dialogs/ImageUpload';
 import PreviewDialog from './Dialogs/Preview';
 import Feed from './Feed';
 import axiosInstance from '../../../auth/axiosApi.js';
+import { fetchFeedUpdates } from './timelineAPIhandler';
+import { parseHourMinute } from './../../Util';
 
 const useStyles = theme => ({
 	body: {
@@ -42,6 +41,10 @@ class Timeline extends React.Component {
 			}
 		}
 
+		async componentDidMount() {
+			let updates = await fetchFeedUpdates(this.state.sessionID)
+			this.setState({updates: updates})
+		}
 		dispatchPayload = () => {
 			let { updates, picture, updateTitle, updateTextArea, sessionID, tweetID } = this.state;
 		  if (this.validatePayload()) {
@@ -58,11 +61,10 @@ class Timeline extends React.Component {
 		    }).then(result => {
 		      if(result.status===201) {
 		          let data = result.data
-		          console.log(data)
 		          let newUpdate = {
 		            id: data.id,
 		            content: data.content,
-		            time: this.parseHourMinute(new Date(data.created))
+		            time: parseHourMinute(data.created)
 		          }
 		          if(data.tweet_id.length > 0) {
 		            newUpdate['tweet_id'] = data.tweet_id
@@ -89,9 +91,7 @@ class Timeline extends React.Component {
 			let tweetExists = this.state.tweetID.length > 0
 			return this.state.picture || contentExists || tweetExists;
 		}
-		parseHourMinute(date) {
-			return date.getHours() + ':' + ('0'+ date.getMinutes()).slice(-2)
-		}
+
 		handleClick = () => {
 			this.dispatchPayload()
 		}
@@ -164,7 +164,8 @@ class Timeline extends React.Component {
 												 handleChange={this.handleChange}
 												 tweetID={this.state.tweetID}
 												 time={this.state.time}></PreviewDialog>
-								<Feed updates={this.state.updates}></Feed>
+								<Feed updates={this.state.updates}
+										  parseHourMinute={this.parseHourMinute}></Feed>
 				</div>
 			)
 		}

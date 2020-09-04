@@ -10,16 +10,16 @@ describe('Test FetchData function requisitions', () => {
       // Passing custom axios instance to be mocked
       moxios.install(axiosInstance)
     })
-  
+
     afterEach(() => {
         //console.log("unistall")
-        moxios.uninstall(axiosInstance); 
+        moxios.uninstall(axiosInstance);
     })
-  
+
     test("Test if FetchData Dashboard function gets correct data with status 200", async (done) => {
       var data = null;
       const dashboarId = 1;
-       
+
        try{
         moxios.stubRequest("/sessions/"+dashboarId+"/", {
             status: 200,
@@ -48,14 +48,13 @@ describe('Test FetchData function requisitions', () => {
     test("Test if FetchData Dashboard function gets correct data with non exis 200 2", async (done) => {
         var data = null;
         const dashboarId = 1;
-        
+
         mock.onGet("/sessions/"+dashboarId+"/").replyOnce(200,{
             info: "Teste response data"
         });
 
 
         data = await fetchData(dashboarId);
-        console.log(data)
         expect(data).not.toBeNull();
         expect(data).not.toBeUndefined();
         expect(data.status).toEqual(200);
