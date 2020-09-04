@@ -64,7 +64,7 @@ class Timeline extends React.Component {
 		          let newUpdate = {
 		            id: data.id,
 		            content: data.content,
-		            time: parseHourMinute(data.created)
+		            created: data.created
 		          }
 		          if(data.tweet_id.length > 0) {
 		            newUpdate['tweet_id'] = data.tweet_id
@@ -148,7 +148,6 @@ class Timeline extends React.Component {
 		}
 		render() {
 			const { classes } = this.props;
-
 			return (
 				<div className={classes.body} testid="timeline">
 					<Header></Header>
@@ -176,8 +175,7 @@ class Timeline extends React.Component {
 							 handleChange={this.handleChange}
 							 tweetID={this.state.tweetID}
 							 time={this.state.time}></PreviewDialog>
-				<Feed updates={this.state.updates}
-						  parseHourMinute={this.parseHourMinute}></Feed>
+				<Feed updates={this.state.updates}></Feed>
 				</div>
 			)
 		}

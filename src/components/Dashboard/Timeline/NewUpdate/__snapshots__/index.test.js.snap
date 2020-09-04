@@ -106,6 +106,7 @@ exports[`snapshot should not have differences 1`] = `
             >
               <img
                 alt="upload icon"
+                onClick={[Function]}
                 src="picture_upload.svg"
               />
             </a>
