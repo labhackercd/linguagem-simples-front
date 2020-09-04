@@ -76,6 +76,7 @@ class Timeline extends React.Component {
 		            newUpdate['title'] = data.title
 		          }
 							this.setState({updates: [...updates, newUpdate]})
+							this.garbageCollection()
 		          return newUpdate
 		      }
 		    }).catch(err => {
@@ -142,6 +143,9 @@ class Timeline extends React.Component {
 			title.length > 0 ? this.setState({updateTitle: title}) : this.setState({updateTitle: ''})
 			this.openImageDialog(e, true)
 		}
+		setUpdateTitle = () => {
+			this.setState({updateTitle: ''})
+		}
 		render() {
 			const { classes } = this.props;
 
@@ -161,7 +165,7 @@ class Timeline extends React.Component {
 				 <ImageUploadDialog imageUploadModalOpen={this.state.imageUploadModalOpen}
 							 closeImageDialogSendPayload={this.closeImageDialogSendPayload}
 							 openImageDialog={this.openImageDialog}
-							 updateTitle={this.updateTitle}
+							 updateTitle={this.state.updateTitle}
 							 setUpdateTitle={this.setUpdateTitle}
 							 handleChange={this.handleChange}
 							 onImageDrop={this.onImageDrop}
