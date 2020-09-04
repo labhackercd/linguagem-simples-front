@@ -2,7 +2,7 @@ import axiosInstance from '../../../../auth/axiosApi'
 
 
 export default async fetchDataAgenciaCamara => {
-
+    /*
     //TODO - Change api call and uncomment line at agenciaCamara.js
     const response = await axiosInstance.get("/sessions/", {
     });
@@ -12,5 +12,5 @@ export default async fetchDataAgenciaCamara => {
     }else{
         return null;
     }
-
+*/
 };
