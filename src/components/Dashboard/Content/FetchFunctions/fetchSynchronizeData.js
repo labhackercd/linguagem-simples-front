@@ -1,5 +1,4 @@
-import axiosInstance from './../../../auth/axiosApi'
-import * as moment from 'moment'
+import axiosInstance from '../../../../auth/axiosApi'
 import axios from 'axios'
 
 export async function updateSession(sessionId,sessionIdDadosAbertos){

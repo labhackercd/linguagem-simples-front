@@ -1,8 +1,6 @@
-import moxios from 'moxios'
-import axiosInstance from './../../../auth/axiosApi'
+import axiosInstance from '../../../../auth/axiosApi'
 import MockAdapter from "axios-mock-adapter"
 import {checkIfSessionsAlreadyExistsInSILEG, updateSession} from './fetchSynchronizeData'
-import moment from 'moment'
 import axios from 'axios'
 
 describe('Test updateSession function requisitions with mock adapter', () => {
