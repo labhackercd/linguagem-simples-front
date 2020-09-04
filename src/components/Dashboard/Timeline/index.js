@@ -114,6 +114,9 @@ class Timeline extends React.Component {
 			this.setState({tweetID: id})
 			this.setState({previewModalOpen: true})
 		}
+		setTweetURL = (url) => {
+			this.setState({tweetURL: url})
+		}
 		/* Image Dialog */
 		openImageDialog = (e, status) => {
 			e.preventDefault()
