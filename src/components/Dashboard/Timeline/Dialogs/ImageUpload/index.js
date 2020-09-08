@@ -46,12 +46,12 @@ export default function ImageUploadDialog(props) {
                   },
                 }}
               open={props.imageUploadModalOpen}
-              onClose={props.handleImageUploadDialogClose}>
+              onClose={(e) => props.openImageDialog(e, false)}>
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
          <DialogTitle id="form-dialog-title">Nova atualizacao com imagem</DialogTitle>
          <img src={ExitIcon}
               style={{margin: '0 1rem 0 0'}}
-              onClick={() => props.setImageUploadModalOpen(false)}
+              onClick={(e) => props.openImageDialog(e, false)}
               alt="exit" />
        </div>
        <Paper style={{backgroundColor: 'white', padding: '1rem', borderRadius: '15px'}} elevation={0}>
@@ -100,7 +100,7 @@ export default function ImageUploadDialog(props) {
      </Paper>
      <DialogActions className={classes.previewModalFooter}>
        <Typography className={classes.time} style={{alignSelf: 'flex-start'}} variant="h6">{props.time}</Typography>
-       <Button onClick={props.handleImageUploadDialogClose} className={classes.previewModalSubmitButton} variant="contained">
+       <Button onClick={(e) => props.closeImageDialogSendPayload(e)} className={classes.previewModalSubmitButton} variant="contained">
          Publicar
        </Button>
      </DialogActions>

@@ -64,7 +64,7 @@ class Timeline extends React.Component {
 		          let newUpdate = {
 		            id: data.id,
 		            content: data.content,
-		            time: parseHourMinute(data.created)
+		            created: data.created
 		          }
 		          if(data.tweet_id.length > 0) {
 		            newUpdate['tweet_id'] = data.tweet_id
@@ -76,6 +76,7 @@ class Timeline extends React.Component {
 		            newUpdate['title'] = data.title
 		          }
 							this.setState({updates: [...updates, newUpdate]})
+							this.garbageCollection()
 		          return newUpdate
 		      }
 		    }).catch(err => {
@@ -95,6 +96,14 @@ class Timeline extends React.Component {
 		handleClick = () => {
 			this.dispatchPayload()
 		}
+
+		garbageCollection = () => {
+			this.setState({tweetID: ''})
+			this.setState({picture: false})
+			this.setState({updateTitle: ''})
+			this.setState({updateTextArea: ''})
+		}
+		/* Twitter Dialog */
 		handleTwitterDialogOpen = () => {
 			this.setState({twitterDialogOpen: true})
 		}
@@ -106,37 +115,39 @@ class Timeline extends React.Component {
 			this.setState({tweetID: id})
 			this.setState({previewModalOpen: true})
 		}
-		garbageCollection = () => {
-			this.setState({tweetID: ''})
-			this.setState({picture: false})
-			this.setState({updateTitle: ''})
-			this.setState({updateTextArea: ''})
+		setTweetURL = (url) => {
+			this.setState({tweetURL: url})
 		}
-		handleImageUploadDialogOpen = (e) => {
+		/* Image Dialog */
+		openImageDialog = (e, status) => {
 			e.preventDefault()
-			this.setState({imageUploadModalOpen: true})
+			this.setState({imageUploadModalOpen: status})
 		}
-		handleImageUploadDialogClose = () => {
-			this.setState({imageUploadModalOpen: false})
+		closeImageDialogSendPayload = (e) => {
+			this.openImageDialog(e, false)
 			this.dispatchPayload()
-		}
-		handlePreviewModalClose = () => {
-			this.dispatchPayload()
-			this.setState({previewModalOpen: false})
-		}
-		handleChange = (e) => {
-			this.setState({updateTextArea: e.target.value})
 		}
 		onImageDrop = (picture) => {
 			picture.length > 0 ?  this.setState({picture: picture[0]}) : this.setState({picture: false})
 		}
+		/* Preview Modal */
+		handlePreviewModalClose = () => {
+			this.dispatchPayload()
+			this.setState({previewModalOpen: false})
+		}
+		/* Text area */
+		handleChange = (e) => {
+			this.setState({updateTextArea: e.target.value})
+		}
 		startUpdateWithTitleFlow = (e,title) => {
 			title.length > 0 ? this.setState({updateTitle: title}) : this.setState({updateTitle: ''})
-			this.handleImageUploadDialogOpen(e)
+			this.openImageDialog(e, true)
+		}
+		setUpdateTitle = () => {
+			this.setState({updateTitle: ''})
 		}
 		render() {
 			const { classes } = this.props;
-
 			return (
 				<div className={classes.body} testid="timeline">
 					<Header></Header>
@@ -144,28 +155,27 @@ class Timeline extends React.Component {
 					<StatusSelection startUpdateWithTitleFlow={this.startUpdateWithTitleFlow}></StatusSelection>
 					<NewUpdate handleClick={this.handleClick}
 										 handleTwitterDialogOpen={this.handleTwitterDialogOpen}
-										 handleImageUploadDialogOpen={this.handleImageUploadDialogOpen}
+										 openImageDialog={this.openImageDialog}
 										 updateTextArea={this.updateTextArea}
 										 handleChange={this.handleChange}></NewUpdate>
-									 <TwitterDialog handleTwitterDialogClose={this.handleTwitterDialogClose}
-												 twitterDialogOpen={this.state.twitterDialogOpen}
-												 setTweetURL={this.setTweetURL}></TwitterDialog>
-											 <ImageUploadDialog imageUploadModalOpen={this.state.imageUploadModalOpen}
-														 handleImageUploadDialogClose={this.handleImageUploadDialogClose}
-														 setImageUploadModalOpen={this.setImageUploadModalOpen}
-														 updateTitle={this.updateTitle}
-														 setUpdateTitle={this.setUpdateTitle}
-														 handleChange={this.handleChange}
-														 onImageDrop={this.onImageDrop}
-														 time={this.state.time}></ImageUploadDialog>
-													 <PreviewDialog previewModalOpen={this.state.previewModalOpen}
-												 handlePreviewModalClose={this.handlePreviewModalClose}
-												 setPreviewModalOpen={this.setPreviewModalOpen}
-												 handleChange={this.handleChange}
-												 tweetID={this.state.tweetID}
-												 time={this.state.time}></PreviewDialog>
-								<Feed updates={this.state.updates}
-										  parseHourMinute={this.parseHourMinute}></Feed>
+				 <TwitterDialog handleTwitterDialogClose={this.handleTwitterDialogClose}
+							 twitterDialogOpen={this.state.twitterDialogOpen}
+							 setTweetURL={this.setTweetURL}></TwitterDialog>
+				 <ImageUploadDialog imageUploadModalOpen={this.state.imageUploadModalOpen}
+							 closeImageDialogSendPayload={this.closeImageDialogSendPayload}
+							 openImageDialog={this.openImageDialog}
+							 updateTitle={this.state.updateTitle}
+							 setUpdateTitle={this.setUpdateTitle}
+							 handleChange={this.handleChange}
+							 onImageDrop={this.onImageDrop}
+							 time={this.state.time}></ImageUploadDialog>
+				<PreviewDialog previewModalOpen={this.state.previewModalOpen}
+							 handlePreviewModalClose={this.handlePreviewModalClose}
+							 setPreviewModalOpen={this.setPreviewModalOpen}
+							 handleChange={this.handleChange}
+							 tweetID={this.state.tweetID}
+							 time={this.state.time}></PreviewDialog>
+				<Feed updates={this.state.updates}></Feed>
 				</div>
 			)
 		}
