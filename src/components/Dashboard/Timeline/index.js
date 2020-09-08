@@ -12,6 +12,8 @@ import axiosInstance from '../../../auth/axiosApi.js';
 import { fetchFeedUpdates } from './timelineAPIhandler';
 import { parseHourMinute } from './../../Util';
 
+const FeedMemo = React.memo(Feed)
+
 const useStyles = theme => ({
 	body: {
 		padding: '0 1rem 0 1rem',
@@ -45,6 +47,7 @@ class Timeline extends React.Component {
 			let updates = await fetchFeedUpdates(this.state.sessionID)
 			this.setState({updates: updates})
 		}
+
 		dispatchPayload = () => {
 			let { updates, picture, updateTitle, updateTextArea, sessionID, tweetID } = this.state;
 		  if (this.validatePayload()) {
@@ -175,7 +178,7 @@ class Timeline extends React.Component {
 							 handleChange={this.handleChange}
 							 tweetID={this.state.tweetID}
 							 time={this.state.time}></PreviewDialog>
-				<Feed updates={this.state.updates}></Feed>
+				<FeedMemo updates={this.state.updates}></FeedMemo>
 				</div>
 			)
 		}
