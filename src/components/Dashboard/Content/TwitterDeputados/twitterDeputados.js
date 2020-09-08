@@ -9,7 +9,6 @@ import {lista_twitter} from './twitterData'
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
-import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 import ListItem from '@material-ui/core/ListItem';
 import { FixedSizeList } from 'react-window';
 import LaunchIcon from '@material-ui/icons/Launch';

@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import VideoSnippets from './VideoSnippets/videoSnippets'
 import {checkIfSessionsAlreadyExistsInSILEG,updateSession} from './FetchFunctions/fetchSynchronizeData'
 import moment from 'moment'
+import PlenaryPanel from './Plenary/index'
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -68,13 +69,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Content(props) {
-  const sessionInfo = props.sessionInfo
+  const sessionInfo = props.sessionInfo;
   const sessionId = props.sessionID;
+  var sessionIdDadosAbertos = null;
 
   if(sessionInfo!== undefined){
-    var sessionIdDadosAbertos = sessionInfo.id_session_dados_abertos;
+     sessionIdDadosAbertos = sessionInfo.id_session_dados_abertos;
   }
-  
+
 
   const classes = useStyles();
 
@@ -93,6 +95,7 @@ export default function Content(props) {
       }
     }
   }
+  
   
   return (
 		<Grid container className={classes.body}>
@@ -114,8 +117,8 @@ export default function Content(props) {
           </Grid>
           <Grid item md={5}>
             <Typography variant="h5"> Plenário </Typography>
-            <Paper elevation={0} className={classes.card}> 
-              
+            <Paper elevation={0} className={classes.card}>
+                <PlenaryPanel sessionIdDadosAbertos={sessionIdDadosAbertos}></PlenaryPanel>
             </Paper>
           </Grid>
       </Grid>
