@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper'
 import Dialog from '@material-ui/core/Dialog';
@@ -7,6 +7,8 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import CloseIcon from '@material-ui/icons/Close';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography'
+
+import getSnippetVideoFromUrl from './fetchVideoSnippetFile'
 
 const dialogStyles = (theme) => ({
     root: {
@@ -38,23 +40,32 @@ const DialogTitle = withStyles(dialogStyles)((props) => {
 export default function VideoSnippetModal(props){
   const { onClose, open } = props;
   const [fullWidth, ] = useState(true);
-  const [fullHeight, ] = useState(true);
   const [maxWidth, ] = useState('md');
-  const [maxHeight, ] = useState('md');
-  const [videoUrl, setVideoUrl] = useState("https://vod2.camara.leg.br/playlist/c5kddtwzrgs1sj8wo2ttiq.mp4");
-  
+  const [videoUrl, setVideoUrl] = useState("");
+
+
+  async function getVideoSnippet(){
+      const videoFile = await getSnippetVideoFromUrl(props.data.url)
+      setVideoUrl(videoFile)
+  }
+
+  useEffect(() => {
+    getVideoSnippet();
+  }, []);
 
   const handleClose = () => {
     onClose();
   };
+
+  //console.log(props.data)
     return (  
-            <Dialog fullWidth={fullWidth} fullHeight={fullHeight} maxHeight={maxHeight} maxWidth={maxWidth} onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+            <Dialog fullWidth={fullWidth}  maxWidth={maxWidth} onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
               <Paper>
                 <DialogTitle id="customized-dialog-title" onClose={handleClose}>
                   <Typography style={{ color: "gray" }}>Trecho da Transmissão</Typography>
                 </DialogTitle>
                 <MuiDialogContent style={{paddingTop:"2px"}}>
-                    <div className="video" style={{align:"center"}}>
+                    <div id="snippetVideo" className="video" style={{align:"center"}}>
                         <iframe
                             style={{
                             width: "100%",
@@ -64,7 +75,7 @@ export default function VideoSnippetModal(props){
                             title="Trecho da Sessão Plenária"
                         />
                     </div>
-                    <Typography variant="h4">Rodrigo Maia(DEM-RJ) - 15:54:52</Typography>
+                    <Typography variant="h4">{props.data.author}({props.data.legend}) - {props.data.schedule}</Typography>
                 </MuiDialogContent>
               </Paper>
             </Dialog>

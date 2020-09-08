@@ -2,7 +2,7 @@ import axiosInstance from '../../../../auth/axiosApi'
 
 
 export default async fetchDataAgenciaCamara => {
-
+     //TODO - remove file from package.json ignore coverage files
     //TODO - Change api call and uncomment line at agenciaCamara.js
     const response = await axiosInstance.get("/sessions/", {
     });
