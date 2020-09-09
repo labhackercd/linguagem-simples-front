@@ -37,7 +37,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ImageUploadDialog(props) {
   const classes = useStyles();
+<<<<<<< HEAD
   //console.log(props)
+=======
+>>>>>>> b61f6c5... #80 Implementing changes to inserting new url to the dashboard
   return (
     <Dialog fullWidth={true}
               maxWidth={'sm'}

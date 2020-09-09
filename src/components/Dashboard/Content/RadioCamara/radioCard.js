@@ -8,15 +8,15 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import moment from 'moment';
 import PlayIcon from './assets/play_image.svg'
-
 import CustomizedSnackbars from '../../../Snackbar/index'
 import postSaveContent from '../FetchFunctions/postSaveContent'
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 
 export default class RadioCard extends React.Component{
   constructor(props){
     super(props);
-    this.state = { 
+    this.state = {
         info : {
           id:this.props.info.id,
           url:this.props.info.url,
@@ -32,7 +32,7 @@ export default class RadioCard extends React.Component{
     };
     this.handleSaveContent=this.handleSaveContent.bind(this);
   }
-  
+
 
   async handleSaveContent(){
     const hasBeenSaved = await postSaveContent("radio", this.state.info, this.props.sessionId);
@@ -46,8 +46,13 @@ export default class RadioCard extends React.Component{
     }
   }
 
+    function copyURLToTimeline(e) {
+      let el = info.url.select()
+      document.execCommand('copy');
+    }
+
   render(){
-  
+
     return (
       <Box width="97%" height="100%" >
           <CustomizedSnackbars open={this.state.snackbar.open} message={this.state.snackbar.message} type={this.state.snackbar.type}></CustomizedSnackbars>
@@ -56,8 +61,8 @@ export default class RadioCard extends React.Component{
                   <Grid item xs={12}>
                       <Box my={1} mr={1}>
                         <Grid container  alignItems="center" justify="center">
-                          <Grid item xs={2} align="center">                         
-                            <img src={PlayIcon} alt="Ícone de play audio"></img>  
+                          <Grid item xs={2} align="center">
+                            <img src={PlayIcon} alt="Ícone de play audio"></img>
                           </Grid>
                           <Grid item xs={10}>
                             <Grid container>
@@ -65,15 +70,17 @@ export default class RadioCard extends React.Component{
                                 <Typography style={{ color: "gray" }} variant="body1">Áudio</Typography>
                               </Grid>
                               <Grid item xs={1}>
-                                  <IconButton aria-label="delete" size="small">
-                                    <AddCircleOutlineIcon fontSize="inherit" />
-                                  </IconButton>
-                                          
+                              <CopyToClipboard text={info.url}>
+                                <IconButton className={classes.margin} size="small">
+                                  <FileCopyTwoToneIcon text={info.url} fontSize="inherit" />
+                                </IconButton>
+                              </CopyToClipboard>
+
+
                                   {this.state.isDataFromSavedContentsComponent &&
                                     <IconButton id={"saveButtonRadio"+this.state.info.id} aria-label="delete" size="small"  onClick={this.handleSaveContent}>
-                                      <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} /> 
-                                    </IconButton>    
-                                  }
+                                      <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} />
+                                    </IconButton>                                      }
                               </Grid>
                               <Grid item xs={12}>
                                 <Box fontWeight="fontWeightRegular">
@@ -101,5 +108,5 @@ export default class RadioCard extends React.Component{
       </Box>
     );
   }
- 
+
 }

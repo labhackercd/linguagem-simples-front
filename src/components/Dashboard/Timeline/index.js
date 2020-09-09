@@ -5,6 +5,7 @@ import Header from './Header';
 import StatusSelection from './StatusSelection';
 import NewUpdate from './NewUpdate';
 import TwitterDialog from './Dialogs/Twitter';
+import URLInputDialog from './Dialogs/URLInput';
 import ImageUploadDialog from './Dialogs/ImageUpload';
 import PreviewDialog from './Dialogs/Preview';
 import Feed from './Feed';
@@ -35,9 +36,11 @@ class Timeline extends React.Component {
 				updateTextArea: '',
 				tweetURL: '',
 				tweetID: '',
+				customURL: '',
 				twitterDialogOpen: false,
 				previewModalOpen: false,
 				imageUploadModalOpen: false,
+				URLInputDialogOpen: false,
 				picture: false,
 				time: '19:00',
 				sessionID: props.sessionID,
@@ -101,6 +104,10 @@ class Timeline extends React.Component {
 			this.dispatchPayload()
 		}
 
+	 listenerExternalContent = (data) => {
+			return true
+		}
+
 		garbageCollection = () => {
 			this.setState({tweetID: ''})
 			this.setState({picture: false})
@@ -108,7 +115,8 @@ class Timeline extends React.Component {
 			this.setState({updateTextArea: ''})
 		}
 		/* Twitter Dialog */
-		handleTwitterDialogOpen = () => {
+		handleTwitterDialogOpen = (e) => {
+			e.preventDefault()
 			this.setState({twitterDialogOpen: true})
 		}
 		handleTwitterDialogClose = () => {
@@ -135,6 +143,23 @@ class Timeline extends React.Component {
 			picture.length > 0 ?  this.setState({picture: picture[0]}) : this.setState({picture: false})
 		}
 		/* Preview Modal */
+		handleDialogStateAction = (e, state, dialog, action) => {
+			e.preventDefault()
+			switch(dialog) {
+				case "previewDialog":
+					this.setState({previewModalOpen: state})
+					break;
+				case "URLInputDialog":
+					this.setState({URLInputDialogOpen: state})
+					break;
+			}
+			switch(action) {
+				case "dispatchPayload":
+					this.dispatchPayload()
+					break;
+			}
+		}
+
 		handlePreviewModalClose = () => {
 			this.dispatchPayload()
 			this.setState({previewModalOpen: false})
@@ -161,7 +186,8 @@ class Timeline extends React.Component {
 										 handleTwitterDialogOpen={this.handleTwitterDialogOpen}
 										 openImageDialog={this.openImageDialog}
 										 updateTextArea={this.updateTextArea}
-										 handleChange={this.handleChange}></NewUpdate>
+										 handleChange={this.handleChange}
+										 handleDialogStateAction={this.handleDialogStateAction}></NewUpdate>
 				 <TwitterDialog handleTwitterDialogClose={this.handleTwitterDialogClose}
 							 twitterDialogOpen={this.state.twitterDialogOpen}
 							 setTweetURL={this.setTweetURL}></TwitterDialog>
@@ -174,12 +200,15 @@ class Timeline extends React.Component {
 							 onImageDrop={this.onImageDrop}
 							 time={this.state.time}></ImageUploadDialog>
 				<PreviewDialog previewModalOpen={this.state.previewModalOpen}
-							 handlePreviewModalClose={this.handlePreviewModalClose}
-							 setPreviewModalOpen={this.setPreviewModalOpen}
+							handleDialogStateAction={this.handleDialogStateAction}
 							 handleChange={this.handleChange}
 							 tweetID={this.state.tweetID}
 							 time={this.state.time}></PreviewDialog>
 				<FeedMemo updates={this.state.updates}></FeedMemo>
+				<URLInputDialog
+							 URLInputDialogOpen={this.state.URLInputDialogOpen}
+							 customURL={this.state.customURL}
+							 handleDialogStateAction={this.handleDialogStateAction}></URLInputDialog>
 				</div>
 			)
 		}
