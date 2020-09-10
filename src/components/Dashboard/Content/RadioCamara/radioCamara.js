@@ -11,6 +11,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 import RadioCard from './radioCard'
+import fetchDataRadioCamara from './fetchRadioCamara'
 
 
 function topBarRadioCamaraBar(props){
@@ -42,15 +43,16 @@ export default class RadioCamaraContent extends React.Component {
   constructor(props){
     super(props);
     this.state = { 
-        news: newsMockData.hits.hits, 
+        radioNews: newsMockData.hits.hits, 
         dataLoaded: false
     };
   }
 
-  fetchSessionsList = async term => {
+  fetchRadioNewsList = async term => {
     //try {
       //const data = await fetchDataRadioCamara();
-      //this.setState({sessionsList:data})
+      //console.log(data)
+      //this.setState({radioNews:data})
       this.setState({dataLoaded:true});
     /*
     } catch (error) {
@@ -62,7 +64,7 @@ export default class RadioCamaraContent extends React.Component {
       this._isMounted = true;
 
       if(this._isMounted){
-          this.fetchSessionsList();
+          this.fetchRadioNewsList();
       }
   }
 
@@ -81,9 +83,9 @@ export default class RadioCamaraContent extends React.Component {
           <Grid item xs={12}>
             <Box paddingTop={3}>
               <List style={{maxHeight: '200px', overflow: 'auto'}}>            
-                {this.state.news.map((sectionId) => (
-                    <li key={`section-${sectionId._id}`}>
-                        <Box my={0.5}><RadioCard info={sectionId._source} sessionId={this.props.sessionId} ></RadioCard></Box>
+                {this.state.radioNews.map((news) => (
+                    <li key={`section-${news._id}`}>
+                        <Box my={0.5}><RadioCard info={news._source} sessionId={this.props.sessionId} ></RadioCard></Box>
                     </li>
                 ))}
               </List>

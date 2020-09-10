@@ -5,15 +5,19 @@ module.exports = Object.freeze({
 
     //APPLICATION URL'S
         APPLICATION_FRONT_BASE_URL: "www.teste.com",  //APPLICATION FRONT BASE URL  
-        APPLICATION_SERVER_API_BASE_URL: 'http://localhost:8000/api/', //APPLICATION API SERVER BASE URL
-
+        //APPLICATION_SERVER_API_BASE_URL: 'http://localhost:8000/api/', //APPLICATION API SERVER BASE URL
+        APPLICATION_SERVER_API_BASE_URL: 'https://acompanhe.camara.leg.br/api',
+        
     //ROUTES
         INITIAL_PAGE_URL: '/', //Application Login and Initial page
         ESTUDIO_PAGE_URL: '/estudio', //Application Estudio Page
         DASHBOARD_PAGE_URL: '/dashboard/:dashboardId', //Application Dashboard page
-        DASHBOARD_BASE_URL: '/Dashboard/',
+        DASHBOARD_BASE_URL: '/dashboard/',
 
-    //API
+    //API'S CAMARA DOS DEPUTADOS
+        API_CD_EVENTOS_PLENARIO: 'https://dadosabertos.camara.leg.br/api/v2/eventos?codTipoEvento=110',// 110 code corresponds to Plenary
+
+    //API'S BACKEND
         //AUTH URL'S
             TOKEN_REFRESH_URL: '/token/refresh/', //Application Api Token REFRESH PATH
             TOKEN_OBTAIN_URL: '/token/obtain/', //Application Api Token PATH
@@ -46,8 +50,4 @@ module.exports = Object.freeze({
         //TV CAMARA
             API_TV_CAMARA_URL:'/tvcamara/',
             API_TV_CAMARA_SEARCH_URL:'/tvcamara-search/',
-            
-
-    //PAUTA PAGED DOCUMENT API URL USED IN TABLE REPORTS 
-    //PAUTA_PAGED_DOCUMENT_API_URL: process.env.REACT_APP_PAUTA_PAGED_DOCUMENT_API_URL
   });

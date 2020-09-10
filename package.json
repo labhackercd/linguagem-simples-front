@@ -55,10 +55,7 @@
       "!src/index.js",
       "!src/serviceWorker.js",
       "!src/auth/axiosApi.js",
-      "!src/router.js",
-      "!src/components/Dashboard/Content/AgenciaCamara/fetchDataAgenciaCamara.js",
-      "!src/components/Dashboard/Content/RadioCamara/fetchRadioCamara.js",
-      "!src/components/Dashboard/Content/TVCamara/fetchTvCamara.js"
+      "!src/router.js"
     ]
   },
   "devDependencies": {

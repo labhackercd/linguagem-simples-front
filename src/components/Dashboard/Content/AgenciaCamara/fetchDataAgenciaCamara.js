@@ -1,12 +1,11 @@
 import axiosInstance from '../../../../auth/axiosApi'
-
+import {API_RADIO_AGENCY_URL} from '../../../../api_urls'
 
 export default async fetchDataAgenciaCamara => {
-     //TODO - remove file from package.json ignore coverage files
-    //TODO - Change api call and uncomment line at agenciaCamara.js
-    const response = await axiosInstance.get("/sessions/", {
+
+    const response = await axiosInstance.get(API_RADIO_AGENCY_URL, {
     });
-    console.log("CODE: " +response.status)
+
     if(response.status===200){
         return response.data;
     }else{
