@@ -1,6 +1,7 @@
 import axiosInstance from '../../../../../auth/axiosApi'
 import MockAdapter from "axios-mock-adapter"
 import getSnippetVideoFromUrl from './fetchVideoSnippetFile'
+import {API_FILE_VIDEO_URL} from '../../../../../api_urls'
 
 
 describe('Test getSnippetVideoFromUrl function requisitions with mock adapter', () => {
@@ -10,7 +11,7 @@ describe('Test getSnippetVideoFromUrl function requisitions with mock adapter', 
         var data = null;
 
         
-        mock.onPost('/file-video/').replyOnce(200,"www.video.com");
+        mock.onPost(API_FILE_VIDEO_URL).replyOnce(200,"www.video.com");
 
 
         data = await getSnippetVideoFromUrl("www.videoToGet.com.br");
@@ -23,7 +24,7 @@ describe('Test getSnippetVideoFromUrl function requisitions with mock adapter', 
     test("Test if getSnippetVideoFromUrl returns false when it has not worked correct", async (done) => {
         var data = null;
         
-        mock.onPost('/file-video/').replyOnce(201,"www.video.com.br");
+        mock.onPost(API_FILE_VIDEO_URL).replyOnce(201,"www.video.com.br");
 
         data = await getSnippetVideoFromUrl("www.videoToGet.com.br");
         expect(data).toBeNull();

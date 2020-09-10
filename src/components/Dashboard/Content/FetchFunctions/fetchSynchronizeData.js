@@ -1,8 +1,9 @@
 import axiosInstance from '../../../../auth/axiosApi'
 import axios from 'axios'
+import {API_SESSIONS_URL} from './../../../../api_urls'
 
 export async function updateSession(sessionId,sessionIdDadosAbertos){
-    const response = await axiosInstance.patch(('/sessions/'+sessionId+'/'), {id_session_dados_abertos: sessionIdDadosAbertos})
+    const response = await axiosInstance.patch((API_SESSIONS_URL+sessionId+'/'), {id_session_dados_abertos: sessionIdDadosAbertos})
     if((parseInt(response.data.id_session_dados_abertos) === parseInt(sessionIdDadosAbertos))){
      //The session was succesfully updated
         return true;

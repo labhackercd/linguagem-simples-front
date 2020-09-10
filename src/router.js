@@ -4,6 +4,7 @@ import EstudioAcompanhePageContainer from './containers/EstudioAcompanhePageCont
 import LoginScreen from "./containers/LoginScreenContainer";
 import Dashboard from "./containers/DashboardContainer";
 import axiosInstance from './auth/axiosApi';
+import {TOKEN_VERIFY_URL, INITIAL_PAGE_URL, ESTUDIO_PAGE_URL, DASHBOARD_PAGE_URL} from './api_urls'
 
 
 class PrivateRouteAuth extends Component{
@@ -18,7 +19,7 @@ class PrivateRouteAuth extends Component{
 
     async checkIfUserIsAuthenticated(callback){
         try{
-            const response = await axiosInstance.post('/token/verify/', {
+            const response = await axiosInstance.post(TOKEN_VERIFY_URL, {
                 token: localStorage.getItem('access_token')
             });
 
@@ -66,18 +67,18 @@ class PrivateRouteAuth extends Component{
 
 const AppRouter = (props) => (
     <Router>
-    <Switch>
-        <Route exact path="/">
-            <LoginScreen theme={props.theme}></LoginScreen>
-        </Route>
-        {/*Authenticated routes */}
-        <PrivateRouteAuth>
-            <Route exact path="/dashboard/:dashboardId" children={<Dashboard />} theme={props.theme} />
-            <Route exact path="/estudio">
-                <EstudioAcompanhePageContainer></EstudioAcompanhePageContainer>
+        <Switch>
+            <Route exact path={INITIAL_PAGE_URL}>
+                <LoginScreen theme={props.theme}></LoginScreen>
             </Route>
-        </PrivateRouteAuth>
-    </Switch>
+            {/*Authenticated routes */}
+            <PrivateRouteAuth>
+                <Route exact path={DASHBOARD_PAGE_URL} children={<Dashboard />} theme={props.theme} />
+                <Route exact path={ESTUDIO_PAGE_URL}>
+                    <EstudioAcompanhePageContainer></EstudioAcompanhePageContainer>
+                </Route>
+            </PrivateRouteAuth>
+        </Switch>
     </Router>
 );
 

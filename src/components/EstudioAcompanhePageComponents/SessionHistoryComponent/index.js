@@ -25,6 +25,7 @@ import ptBrLocale from "date-fns/locale/pt-BR";
 
 import fetchData from './fetchData'
 import FormatStringData from './utils'
+import {DASHBOARD_BASE_URL} from '../../../api_urls'
 
 
 const useStyles = makeStyles({
@@ -179,8 +180,8 @@ class SessionHistoryComponent extends React.Component {
     }
 
     customListLink(props){
-        let sessionId = props.value.id
-        let outgoingURL = "/Dashboard/" + sessionId
+        let sessionId = props.value.id;
+        let outgoingURL = DASHBOARD_BASE_URL + sessionId;
         return(
             <Link href={outgoingURL}  {...props} />
         )

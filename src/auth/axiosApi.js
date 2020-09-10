@@ -1,9 +1,9 @@
 import axios from 'axios'
+import {APPLICATION_SERVER_API_BASE_URL, TOKEN_REFRESH_URL} from './../api_urls'
 
-const baseURL = 'http://localhost:8000/api/'
 
 const axiosInstance = axios.create({
-    baseURL: baseURL,
+    baseURL: APPLICATION_SERVER_API_BASE_URL,
     //timeout: 5000,
     headers: {
         'Authorization': localStorage.getItem('access_token') ? "JWT " + localStorage.getItem('access_token') : null,
@@ -19,8 +19,8 @@ axiosInstance.interceptors.response.use(
         const originalRequest = error.config;
 
         // Prevent infinite loops
-        if (error.response.status === 401 && originalRequest.url === baseURL+'token/refresh/') {
-            window.location.href = '/login/';
+        if (error.response.status === 401 && originalRequest.url === APPLICATION_SERVER_API_BASE_URL+TOKEN_REFRESH_URL) {
+            window.location.href = '/';
             return Promise.reject(error);
         }
 
@@ -39,7 +39,7 @@ axiosInstance.interceptors.response.use(
 
                     if (tokenParts.exp > now) {
                         return axiosInstance
-                        .post('/token/refresh/', {refresh: refreshToken})
+                        .post(TOKEN_REFRESH_URL, {refresh: refreshToken})
                         .then((response) => {
             
                             localStorage.setItem('access_token', response.data.access);
