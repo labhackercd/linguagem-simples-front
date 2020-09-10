@@ -53,7 +53,10 @@ export default function Feed(props) {
                   <Grid container className={classes.timelinePost}>
                     <div style={{width: '100%'}}>
                       <Typography style={{color: '#666', alignSelf: 'flex-start'}} variant="body1">
-												{JSON.parse(update.content).updateTextArea}</Typography>
+												{update.updateTextArea ?
+												 update.updateTextArea :
+												 ''
+												}</Typography>
                     </div>
                     <section style={{width: '100%'}}>
                       {update.tweet_id ?
@@ -63,13 +66,13 @@ export default function Feed(props) {
                         /> : '' }
                       {update.image ?
                        <img src={update.image}  style={{maxWidth: '100%', maxHeight: '30vh'}} alt="timeline post"/> : '' }
-											{JSON.parse(update.content).customURL ?
+											{update.customURL ?
 												<ReactTinyLink
 													cardSize="small"
 													showGraphic={true}
 													maxLine={2}
 													minLine={1}
-													url={JSON.parse(update.content).customURL} /> :
+													url={update.customURL} /> :
 													''}
                     </section>
                   </Grid>

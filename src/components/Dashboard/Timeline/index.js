@@ -50,7 +50,7 @@ class Timeline extends React.Component {
 		async componentDidMount() {
 			let updates = await fetchFeedUpdates(this.state.sessionID)
 			for (let i = 0; i < updates.length; i++) {
-				let content = updates[i].content
+				let content = JSON.parse(updates[i].content)
 				if(content.updateTextArea) {
 					updates[i]['updateTextArea'] = content.updateTextArea
 				}
