@@ -4,6 +4,7 @@ import {Paper,Button, TextField, Dialog, DialogActions, DialogContent,
 import {withStyles} from '@material-ui/core/styles';
 import {TwitterTweetEmbed} from 'react-twitter-embed';
 import ExitIcon from './../../../../../assets/exit_icon.svg';
+import { ReactTinyLink } from 'react-tiny-link';
 
 const useStyles = theme => ({
   previewModalSubmitButton: {
@@ -73,10 +74,19 @@ class PreviewDialog extends React.Component {
 							 InputProps={{ disableUnderline: true }}
 							 style={{width: '100%'}}
 						 />
+					 {this.props.tweetID ?
 						 <TwitterTweetEmbed
-							style={{alignSelf: 'center'}}
-							tweetId={this.props.tweetID}
-						/>
+ 							style={{alignSelf: 'center'}}
+ 							tweetId={this.props.tweetID}
+ 						/> : ''}
+					{this.props.customURL ?
+						<ReactTinyLink
+							cardSize="small"
+							showGraphic={true}
+							maxLine={2}
+							minLine={1}
+							url={this.props.customURL} /> :
+							''}
 				 </DialogContent>
 			 </Paper>
 				 <DialogActions className={classes.previewModalFooter}>

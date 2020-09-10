@@ -49,30 +49,49 @@ class Timeline extends React.Component {
 
 		async componentDidMount() {
 			let updates = await fetchFeedUpdates(this.state.sessionID)
+			for (let i = 0; i < updates.length; i++) {
+				let content = updates[i].content
+				if(content.updateTextArea) {
+					updates[i]['updateTextArea'] = content.updateTextArea
+				}
+				if(content.customURL) {
+					updates[i]['customURL'] = content.customURL
+				}
+			}
 			this.setState({updates: updates})
 		}
 
 		dispatchPayload = () => {
-			let { updates, picture, updateTitle, updateTextArea, sessionID, tweetID } = this.state;
+			let { updates, picture, updateTitle, updateTextArea, sessionID, tweetID, customURL } = this.state;
 		  if (this.validatePayload()) {
 		    const formData = new FormData()
 		    if(picture) {
 		      formData.append('image', picture, picture.name)
 		    }
+				let content = {
+					"updateTextArea": updateTextArea,
+					"customURL": customURL,
+				}
+				formData.append('content', JSON.stringify(content))
 		    formData.append('title', updateTitle)
-		    formData.append('content', updateTextArea)
 		    formData.append('session', sessionID)
 		    formData.append('tweet_id', tweetID)
 		    axiosInstance.post(API_PUBLICATIONS_URL, formData, {
 		      headers: { 'Content-Type': 'multipart/form-data'},
 		    }).then(result => {
 		      if(result.status===201) {
-		          let data = result.data
+							let data = result.data
+							let content = JSON.parse(data.content)
 		          let newUpdate = {
 		            id: data.id,
-		            content: data.content,
 		            created: data.created
 		          }
+							if(content.updateTextArea) {
+								newUpdate['updateTextArea'] = content.updateTextArea
+							}
+							if(content.customURL) {
+								newUpdate['customURL'] = content.customURL
+							}
 		          if(data.tweet_id.length > 0) {
 		            newUpdate['tweet_id'] = data.tweet_id
 		          }
@@ -93,7 +112,6 @@ class Timeline extends React.Component {
 		    alert(errorMessages.lacks_payload_content)
 		  }
 		}
-
 		validatePayload = () => {
 			let contentExists = this.state.updateTextArea.length > 0
 			let tweetExists = this.state.tweetID.length > 0
@@ -113,6 +131,7 @@ class Timeline extends React.Component {
 			this.setState({picture: false})
 			this.setState({updateTitle: ''})
 			this.setState({updateTextArea: ''})
+			this.setState({customURL: ''})
 		}
 		/* Twitter Dialog */
 		handleTwitterDialogOpen = (e) => {
@@ -129,6 +148,9 @@ class Timeline extends React.Component {
 		}
 		setTweetURL = (url) => {
 			this.setState({tweetURL: url})
+		}
+		setCustomURL = (url) => {
+			this.setState({customURL: url})
 		}
 		/* Image Dialog */
 		openImageDialog = (e, status) => {
@@ -156,6 +178,9 @@ class Timeline extends React.Component {
 			switch(action) {
 				case "dispatchPayload":
 					this.dispatchPayload()
+					break;
+				case "previewModalOpen":
+					this.setState({previewModalOpen: true})
 					break;
 			}
 		}
@@ -201,14 +226,16 @@ class Timeline extends React.Component {
 							 time={this.state.time}></ImageUploadDialog>
 				<PreviewDialog previewModalOpen={this.state.previewModalOpen}
 							handleDialogStateAction={this.handleDialogStateAction}
-							 handleChange={this.handleChange}
-							 tweetID={this.state.tweetID}
-							 time={this.state.time}></PreviewDialog>
-				<FeedMemo updates={this.state.updates}></FeedMemo>
+							handleChange={this.handleChange}
+							tweetID={this.state.tweetID}
+							time={this.state.time}
+							customURL={this.state.customURL}></PreviewDialog>
 				<URLInputDialog
 							 URLInputDialogOpen={this.state.URLInputDialogOpen}
 							 customURL={this.state.customURL}
+							 setCustomURL={this.setCustomURL}
 							 handleDialogStateAction={this.handleDialogStateAction}></URLInputDialog>
+			 <FeedMemo updates={this.state.updates}></FeedMemo>
 				</div>
 			)
 		}

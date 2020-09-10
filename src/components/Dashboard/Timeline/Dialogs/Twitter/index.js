@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
 	      DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
 
 export default function TwitterDialog(props) {
+
   return (
     <Dialog open={props.twitterDialogOpen} onClose={props.handleTwitterDialogClose}>
      <DialogContent>
