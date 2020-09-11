@@ -28,7 +28,6 @@ export default function RadioCard(props){
       data:props.info.data===undefined ? props.info.created : props.info.data
     }
     const isDataFromSavedContentsComponent = props.info.titulo===undefined ? false : true;
-
     async function handleSaveContent(){
       const hasBeenSaved = await postSaveContent("radio", info, props.sessionId);
 
