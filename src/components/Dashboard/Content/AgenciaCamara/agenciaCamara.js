@@ -11,7 +11,6 @@ import TextField from '@material-ui/core/TextField';
 import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 
 import NewsCard from './newsCard'
-import {newsMockData} from './test/newsMockData'
 import fetchDataAgenciaCamara from './fetchDataAgenciaCamara'
 
 
@@ -20,7 +19,7 @@ export default class AgenciaCamaraContent extends React.Component {
   constructor(props){
     super(props);
     this.state = { 
-        agenciaNews: newsMockData.hits.hits, 
+        agenciaNews: "", 
         agenciaNewsFiltered: "",
         dataLoaded: false,
         searchField:''
@@ -53,13 +52,11 @@ export default class AgenciaCamaraContent extends React.Component {
   }
 
   fetchNewsList = async term => {
-
       const data = await fetchDataAgenciaCamara();
-      //console.log(data)
+
       this.setState({agenciaNews:data.hits.hits})
       this.setState({agenciaNewsFiltered:data.hits.hits})
       this.setState({dataLoaded:true});
-
   };
 
   componentDidMount(){

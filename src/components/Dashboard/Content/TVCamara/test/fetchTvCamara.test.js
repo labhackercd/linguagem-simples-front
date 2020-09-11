@@ -1,8 +1,8 @@
-import axiosInstance from '../../../../auth/axiosApi'
+import axiosInstance from '../../../../../auth/axiosApi'
 import MockAdapter from "axios-mock-adapter"
 
-import {API_TV_CAMARA_URL} from './../../../../api_urls'
-import fetchTVCamara from './fetchTvCamara'
+import {API_TV_CAMARA_URL} from '../../../../../api_urls'
+import fetchTVCamara from '../fetchTvCamara'
 
 describe('Test Fetch TV Camara function requisitions with mock adapter', () => {
     var mock = new MockAdapter(axiosInstance);

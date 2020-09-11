@@ -1,30 +1,29 @@
 import React from 'react';
 import {shallow} from "enzyme/build";
-import AgenciaCamaraContent from '../agenciaCamara'
-import NewsCard from '../newsCard'
+import TvCamaraContent from '../tvCamara'
+import TVCard from '../tvCamaraCard'
 import { mount} from 'enzyme';
 import MockAdapter from "axios-mock-adapter"
 import axiosInstance from '../../../../../auth/axiosApi'
-import {API_RADIO_AGENCY_URL, API_SAVED_CONTENTS_URL} from '../../../../../api_urls'
+import {API_TV_CAMARA_URL, API_SAVED_CONTENTS_URL} from '../../../../../api_urls'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
-
-it("should render the AgenciaCamaraContent section and match snapshot", () => {
-    const component = shallow(<AgenciaCamaraContent/>);
+it("should render the TVCamaraContent section", () => {
+    const component = shallow(<TvCamaraContent/>);
 
     expect(component.exists()).toEqual(true);
     expect(component).toMatchSnapshot();
 });
 
-describe('Testing News Card', () => {
+describe('Testing TV News Card', () => {
 
   it("should render the NewsCard component and match snapshot ", () => {
     var mockedPropsdata={
       info: {
         retrancas: [ 'Consumidor' ],
         id: 619693,
-        veiculo: 'agencia',
+        veiculo: 'tv',
         ano: 2020,
         data: '2020-04-14T07:00:16-0300',
         titulo: 'Projeto de Lei yyy/2020',
@@ -40,7 +39,7 @@ describe('Testing News Card', () => {
       },
       sessionId: undefined
     }
-    const component = shallow(<NewsCard info={mockedPropsdata} sessionId={1}/>);
+    const component = shallow(<TVCard info={mockedPropsdata} sessionId={1}/>);
 
     expect(component.exists()).toEqual(true);
     expect(component).toMatchSnapshot();
@@ -56,12 +55,12 @@ describe('Testing News Card', () => {
     }
       await mockInstance.onPost(API_SAVED_CONTENTS_URL).replyOnce(200,mockedPropsdata)
               
-      const wrapper = await mount(<NewsCard info={mockedPropsdata} sessionId={1}/>);
+      const wrapper = await mount(<TVCard info={mockedPropsdata} sessionId={1}/>);
     
       setImmediate(() => {
         wrapper.update();
         //console.log(wrapper.debug())
-        const button = wrapper.find("#saveButtonAgencia618134").at(0);
+        const button = wrapper.find("#saveButtonTv618134").at(0);
         //console.log(button.debug());
         button.simulate('click')
         //Add later a expect to check if modal os response has been triggered
@@ -74,11 +73,12 @@ describe('Testing News Card', () => {
 
 });
 
+
 describe('Testing lifeclycle of RadioCamaraComponent content', () => {
 
   test("Test agencia content lifeclycle when data is not loaded", async (done) => {
                  
-      const wrapper = await mount(<AgenciaCamaraContent sessionId={1}/>);
+      const wrapper = await mount(<TvCamaraContent sessionId={1}/>);
 
       setImmediate(() => {
         wrapper.update();
@@ -153,9 +153,9 @@ describe('Testing lifeclycle of RadioCamaraComponent content', () => {
       }
     }
       
-      await mockInstance.onGet(API_RADIO_AGENCY_URL).replyOnce(200,agenciaMockData)
+      await mockInstance.onGet(API_TV_CAMARA_URL).replyOnce(200,agenciaMockData)
               
-      const wrapper = await mount(<AgenciaCamaraContent sessionId={1}/>);
+      const wrapper = await mount(<TvCamaraContent sessionId={1}/>);
 
       setImmediate(() => {
         wrapper.update();
@@ -175,3 +175,64 @@ describe('Testing lifeclycle of RadioCamaraComponent content', () => {
   });
 
 });
+
+/*
+it("should render the NewsCard component and match snapshot ", () => {
+    var mockedPropsdata={
+      info: {
+        retrancas: [ 'Consumidor' ],
+        id: 619693,
+        veiculo: 'agencia',
+        ano: 2020,
+        data: '2020-04-14T07:00:16-0300',
+        titulo: 'Projeto de Lei yyy/2020',
+        resumo: 'Resumo',
+        materia: 'Texto texto texto PEC 300/2008',
+        dataOrdenacao: '2020-04-14T07:00:16-0300',
+        rodape: '',
+        url: 'www.camara.leg.br/noticias/619693-PROJETO-DE-LEI-YYY/2020',
+        temaPortal: [ 'Consumidor' ],
+        temaAutomatico: [ '' ],
+        comissoes: [ [Object], [Object], [Object] ],
+        imagem: [ [Object], [Object] ]
+      },
+      sessionId: undefined
+    }
+    const component = shallow(<TVCard info={mockedPropsdata} sessionId={1}/>);
+
+    expect(component.exists()).toEqual(true);
+    expect(component).toMatchSnapshot();
+});
+
+describe('Testing lifeclycle of TVCamaraComponent content', () => {
+
+    var mockedResponseData = {
+        "id": 1,
+        "created": "2020-09-03T14:19:23.017327-03:00",
+        "content_type": "tv",
+        "title": "Teste",
+        "url": "https://www.camara.leg.br/",
+        "session": 1
+      }
+    var mockInstance = new MockAdapter(axiosInstance);
+    
+    test("Test save tv content lifeclycle", async (done) => {
+        // Return a fixed timestamp when moment().format() is called
+
+        await mockInstance.onPost('/saved-contents/').reply(201,{mockedResponseData})
+                
+        const  wrapper = mount(<TvCamaraContent />);
+        const button = wrapper.find("#saveButtonTv560001").at(0);
+        //console.log(button.debug())
+        button.simulate('click')
+
+        done();
+    });
+
+    afterAll(() => {
+        mockInstance.restore();
+    });
+
+
+});
+*/
