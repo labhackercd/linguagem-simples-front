@@ -5,7 +5,6 @@ import Header from './Header';
 import StatusSelection from './StatusSelection';
 import NewUpdate from './NewUpdate';
 import URLInputDialog from './Dialogs/URLInput';
-import ImageUploadDialog from './Dialogs/ImageUpload';
 import PreviewDialog from './Dialogs/Preview';
 import Feed from './Feed';
 import axiosInstance from '../../../auth/axiosApi.js';
@@ -38,6 +37,7 @@ class Timeline extends React.Component {
 				customURL: '',
 				previewModalOpen: false,
 				imageUploadModalOpen: false,
+				inputIsImage: false,
 				URLInputDialogOpen: false,
 				URLInputIsTwitter: false,
 				picture: false,
@@ -132,6 +132,7 @@ class Timeline extends React.Component {
 			this.setState({updateTitle: ''})
 			this.setState({updateTextArea: ''})
 			this.setState({customURL: ''})
+			this.setState({inputIsImage: false})
 		}
 		extractTweetIDFromURL = () => {
 			let parseURL = this.state.customURL.split('/')
@@ -141,15 +142,6 @@ class Timeline extends React.Component {
 		}
 		setCustomURL = (url) => {
 			this.setState({customURL: url})
-		}
-		/* Image Dialog */
-		openImageDialog = (e, status) => {
-			e.preventDefault()
-			this.setState({imageUploadModalOpen: status})
-		}
-		closeImageDialogSendPayload = (e) => {
-			this.openImageDialog(e, false)
-			this.dispatchPayload()
 		}
 		onImageDrop = (picture) => {
 			picture.length > 0 ?  this.setState({picture: picture[0]}) : this.setState({picture: false})
@@ -163,7 +155,6 @@ class Timeline extends React.Component {
 					this.garbageCollection()
 					break;
 				case "URLInputDialog":
-					console.log("URLInputDialog:" +  state)
 					this.setState({URLInputDialogOpen: state})
 					break;
 			}
@@ -179,8 +170,10 @@ class Timeline extends React.Component {
 					this.setState({previewModalOpen: true})
 					break;
 				case "URLInputIsTwitter":
-					console.log("URLInputIsTwitter:" +  action)
 					this.setState({URLInputIsTwitter: true})
+					break;
+				case "InputImage":
+					this.setState({inputIsImage: true})
 					break;
 			}
 		}
@@ -192,12 +185,16 @@ class Timeline extends React.Component {
 		handleChange = (e) => {
 			this.setState({updateTextArea: e.target.value})
 		}
-		startUpdateWithTitleFlow = (e,title) => {
-			title.length > 0 ? this.setState({updateTitle: title}) : this.setState({updateTitle: ''})
-			this.openImageDialog(e, true)
+		startUpdateWithTitleFlow = (e, title) => {
+			e.preventDefault()
+			this.setState({updateTitle: title}, this.handleDialogStateAction(e, true, "previewDialog", null))
 		}
-		setUpdateTitle = () => {
-			this.setState({updateTitle: ''})
+		setUpdateTitle = (e, title) => {
+			if (!title) {
+				this.setState({updateTitle: ''})
+			} else {
+				this.setState({updateTitle: title})
+			}
 		}
 		render() {
 			const { classes } = this.props;
@@ -205,27 +202,25 @@ class Timeline extends React.Component {
 				<div className={classes.body} testid="timeline">
 					<Header></Header>
 					<SummaryBox sessionID={this.state.sessionID}></SummaryBox>
-					<StatusSelection startUpdateWithTitleFlow={this.startUpdateWithTitleFlow}></StatusSelection>
+					<StatusSelection startUpdateWithTitleFlow={this.startUpdateWithTitleFlow}
+													 setUpdateTitle={this.setUpdateTitle}
+													 handleDialogStateAction={this.handleDialogStateAction}></StatusSelection>
 					<NewUpdate handleClick={this.handleClick}
 										 openImageDialog={this.openImageDialog}
 										 updateTextArea={this.updateTextArea}
 										 handleChange={this.handleChange}
 										 handleDialogStateAction={this.handleDialogStateAction}></NewUpdate>
-				 <ImageUploadDialog imageUploadModalOpen={this.state.imageUploadModalOpen}
-							 closeImageDialogSendPayload={this.closeImageDialogSendPayload}
-							 openImageDialog={this.openImageDialog}
-							 updateTitle={this.state.updateTitle}
-							 setUpdateTitle={this.setUpdateTitle}
-							 handleChange={this.handleChange}
-							 onImageDrop={this.onImageDrop}
-							 time={this.state.time}></ImageUploadDialog>
 				<PreviewDialog previewModalOpen={this.state.previewModalOpen}
 							handleDialogStateAction={this.handleDialogStateAction}
 							handleChange={this.handleChange}
 							tweetID={this.state.tweetID}
 							URLInputIsTwitter={this.state.URLInputIsTwitter}
 							time={this.state.time}
-							customURL={this.state.customURL}></PreviewDialog>
+							customURL={this.state.customURL}
+							onImageDrop={this.onImageDrop}
+							inputIsImage={this.state.inputIsImage}
+							updateTitle={this.state.updateTitle}
+							setUpdateTitle={this.setUpdateTitle}></PreviewDialog>
 				<URLInputDialog
 							 URLInputDialogOpen={this.state.URLInputDialogOpen}
 							 customURL={this.state.customURL}

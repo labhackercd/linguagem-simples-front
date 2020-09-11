@@ -92,13 +92,13 @@ export default function NewUpdate(props) {
                   <img src={DividerIcon} alt="divider icon"/>
                 </div>
                 <div className={classes.subMenuItem}>
-                  <a href="/"><img src={PictureUploadIcon} alt="upload icon" onClick={(e) => props.openImageDialog(e, true)}/></a>
+                  <a href="/"><img src={PictureUploadIcon} alt="upload icon" onClick={(e) => props.handleDialogStateAction(e, true, "previewDialog", "InputImage")}/></a>
                 </div>
 								<div className={classes.subMenuItem}>
 									<a href="/"><img src={TwitterIcon} alt="incorporate twitter icon" onClick={(e) => props.handleDialogStateAction(e, true, "URLInputDialog", "URLInputIsTwitter")}/></a>
 								</div>
 								<div className={classes.subMenuItem}>
-									<a href="/"><img src={LinkIcon} alt="incorporate url icon" onClick={(e) => props.handleDialogStateAction(e, true, "URLInputDialog", null)}/></a>
+									<a href="/"><img src={LinkIcon} alt="incorporate url icon" onClick={(e) => props.handleDialogStateAction(e, true, "URLInputDialog", "noAction")}/></a>
 								</div>
               </Grid>
               <Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>

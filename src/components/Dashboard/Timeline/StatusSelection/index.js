@@ -51,7 +51,10 @@ export default function StatusSelection(props) {
       </Grid>
       <Grid className={classes.tabs}>
           {titlesArray.map(function(title, index){
-          return <Button key={index} uvariant="contained" onClick={(e) => props.startUpdateWithTitleFlow(e, title)} disableElevation className={classes.tab}>{title}</Button>
+          return <Button key={index} uvariant="contained"
+												 onClick={(e) => props.startUpdateWithTitleFlow(e, title)}
+												 disableElevation
+												 className={classes.tab}>{title}</Button>
         })}
       </Grid>
     </Grid>

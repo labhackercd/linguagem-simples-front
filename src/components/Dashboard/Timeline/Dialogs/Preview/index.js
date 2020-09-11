@@ -1,10 +1,13 @@
 import React from 'react';
-import {Paper,Button, TextField, Dialog, DialogActions, DialogContent,
+import {Paper,Grid,Button, TextField, Dialog, DialogActions, DialogContent,
 	      DialogTitle, Typography} from '@material-ui/core';
 import {withStyles} from '@material-ui/core/styles';
 import {TwitterTweetEmbed} from 'react-twitter-embed';
 import ExitIcon from './../../../../../assets/exit_icon.svg';
+import AlertIcon from './../../../../../assets/exit_icon.svg';
+import AlertDialogIcon from './../../../../../assets/exit_icon.svg';
 import { ReactTinyLink } from 'react-tiny-link';
+import ImageUploader from 'react-images-upload';
 
 const useStyles = theme => ({
   previewModalSubmitButton: {
@@ -19,6 +22,16 @@ const useStyles = theme => ({
     display: 'flex',
     justifyContent: 'space-between'
   },
+		sessionTitleAlert: {
+		backgroundColor: '#00AF82',
+		width: '100%',
+		borderRadius: '5px',
+		color: 'white',
+		padding: '0.2rem',
+		fontWeight: '600',
+		fontSize: '13',
+		display: 'flex',
+	},
   time: {
     color: theme.palette.primary.main
   },
@@ -60,6 +73,19 @@ class PreviewDialog extends React.Component {
 				 </div>
 				 <Paper style={{backgroundColor: 'white', padding: '1rem', borderRadius: '15px'}} elevation={0}>
 				 <DialogContent className={classes.previewModal}>
+					<Grid style={{display: this.props.updateTitle ? 'flex' : 'none' }}
+								container
+								className={classes.sessionTitleAlert}>
+						<Grid item md={1} style={{padding: '0.1rem 0 0 0.5rem'}}>
+							<img src={AlertIcon} alt="alert"/>
+						</Grid>
+						<Grid item md={10}>{this.props.updateTitle}</Grid>
+							<Grid item md={1} style={{padding: '0.1rem 0.1rem 0rem 1rem'}}>
+								<img src={AlertDialogIcon}
+										 onClick={() => this.props.setUpdateTitle('')}
+										 alt="exit" />
+							</Grid>
+					</Grid>
 						 <TextField
 							 id="textfield"
 							 multiline
@@ -85,6 +111,22 @@ class PreviewDialog extends React.Component {
 							minLine={1}
 							url={this.props.customURL} /> :
 							''}
+					{this.props.inputIsImage ?
+						<ImageUploader
+	             withIcon={true}
+	             onChange={this.props.onImageDrop}
+	             imgExtension={[".jpg", ".png", ".jpeg"]}
+	             maxFileSize={5242880}
+	             withPreview={true}
+	             singleImage={true}
+	             buttonText="Escolher imagens"
+	             buttonStyles={{backgroundColor: '#00AF82',
+	                            borderRadius: '5px',
+	                            fontWeight: '600'}}
+	             style={{backgroundColor: '#F4F4F4'}}
+	             label="Tamanho máximo: 5mbs"
+	             alt="Image upload form"
+	           /> : ''}
 				 </DialogContent>
 			 </Paper>
 				 <DialogActions className={classes.previewModalFooter}>
