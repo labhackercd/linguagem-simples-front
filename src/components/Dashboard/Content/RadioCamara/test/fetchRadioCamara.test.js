@@ -1,8 +1,9 @@
-import axiosInstance from '../../../../auth/axiosApi'
+import axiosInstance from '../../../../../auth/axiosApi'
 import MockAdapter from "axios-mock-adapter"
 
-import {API_RADIO_CAMARA_URL} from './../../../../api_urls'
-import fetchRadioCamara from './fetchRadioCamara'
+import {API_RADIO_CAMARA_URL} from '../../../../../api_urls'
+
+import fetchRadioCamara from '../fetchRadioCamara'
 
 
 describe('Test Fetch Radio Camara function requisitions with mock adapter', () => {

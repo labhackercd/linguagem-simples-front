@@ -1,12 +1,12 @@
 import React from 'react';
 import {shallow} from "enzyme/build";
-import RadioCamaraContent from './radioCamara'
-import RadioCard from './radioCard'
+import RadioCamaraContent from '../radioCamara'
+import RadioCard from '../radioCard'
 
 import { mount} from 'enzyme';
 import MockAdapter from "axios-mock-adapter"
-import axiosInstance from './../../../../auth/axiosApi'
-import {API_RADIO_CAMARA_URL, API_SAVED_CONTENTS_URL} from './../../../../api_urls'
+import axiosInstance from '../../../../../auth/axiosApi'
+import {API_RADIO_CAMARA_URL, API_SAVED_CONTENTS_URL} from '../../../../../api_urls'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
@@ -62,12 +62,10 @@ describe('Testing Radio Card', () => {
         wrapper.update();
         //console.log(wrapper.debug())
         const button = wrapper.find("#saveButtonRadio618134").at(0);
-        console.log(button.debug());
+        //console.log(button.debug());
         button.simulate('click')
-        //searchField.instance().value = "presential";
-        //searchField.simulate("change");
-        //expect(wrapper.find("input").at(0).prop('value')).toEqual("presential");
-       
+        //Add later a expect to check if modal os response has been triggered
+
         mockInstance.restore();
         done();
      })
