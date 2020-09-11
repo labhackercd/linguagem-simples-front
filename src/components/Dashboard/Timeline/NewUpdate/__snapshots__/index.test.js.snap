@@ -114,10 +114,28 @@ exports[`snapshot should not have differences 1`] = `
           <div
             className="makeStyles-subMenuItem-6"
           >
-            <img
-              alt="incorporate tweet icon"
-              src="twitter_icon.svg"
-            />
+            <a
+              href="/"
+            >
+              <img
+                alt="incorporate twitter icon"
+                onClick={[Function]}
+                src="twitter_icon.svg"
+              />
+            </a>
+          </div>
+          <div
+            className="makeStyles-subMenuItem-6"
+          >
+            <a
+              href="/"
+            >
+              <img
+                alt="incorporate url icon"
+                onClick={[Function]}
+                src="link.svg"
+              />
+            </a>
           </div>
         </WithStyles(ForwardRef(Grid))>
         <WithStyles(ForwardRef(Grid))

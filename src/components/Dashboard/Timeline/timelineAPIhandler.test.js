@@ -22,7 +22,7 @@ describe('Test fetchFeedUpdates function requisitions with mock adapter', () => 
                 email: "mourateogenes@gmail.com",
                 profile: "editor"
             },
-            content: "test content",
+            content: "{\"updateTextArea\":\"teste\",\"customURL\":\"\"}",
             created: "2020-08-31T14:33:24.694684-03:00",
             id: 1,
             image: null,

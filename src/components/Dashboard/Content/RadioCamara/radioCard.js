@@ -4,7 +4,7 @@ import { makeStyles,withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper'
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import FileCopyTwoToneIcon from '@material-ui/icons/FileCopyTwoTone';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import moment from 'moment';
 import PlayIcon from './assets/play_image.svg'
@@ -70,9 +70,9 @@ export default class RadioCard extends React.Component{
                                 <Typography style={{ color: "gray" }} variant="body1">Áudio</Typography>
                               </Grid>
                               <Grid item xs={1}>
-                              <CopyToClipboard text={info.url}>
+                              <CopyToClipboard text={this.state.info.url}>
                                 <IconButton className={classes.margin} size="small">
-                                  <FileCopyTwoToneIcon text={info.url} fontSize="inherit" />
+                                  <FileCopyTwoToneIcon text={this.state.info.url} fontSize="inherit" />
                                 </IconButton>
                               </CopyToClipboard>
 

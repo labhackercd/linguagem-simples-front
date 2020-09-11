@@ -48,16 +48,21 @@ class Timeline extends React.Component {
 
 		async componentDidMount() {
 			let updates = await fetchFeedUpdates(this.state.sessionID)
-			for (let i = 0; i < updates.length; i++) {
-				let content = JSON.parse(updates[i].content)
-				if(content.updateTextArea) {
-					updates[i]['updateTextArea'] = content.updateTextArea
+			console.log(updates)
+			if (updates.length > 0) {
+				for (let i = 0; i < updates.length; i++) {
+					let content = JSON.parse(updates[i].content)
+					if(content.updateTextArea) {
+						updates[i]['updateTextArea'] = content.updateTextArea
+					}
+					if(content.customURL) {
+						updates[i]['customURL'] = content.customURL
+					}
 				}
-				if(content.customURL) {
-					updates[i]['customURL'] = content.customURL
-				}
+				this.setState({updates: updates})
+			} else {
+				this.setState({updates: ''})
 			}
-			this.setState({updates: updates})
 		}
 
 		dispatchPayload = () => {
