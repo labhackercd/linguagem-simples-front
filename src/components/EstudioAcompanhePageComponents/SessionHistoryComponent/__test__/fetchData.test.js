@@ -59,5 +59,26 @@ describe('Test FetchData function requisitions', () => {
 
   });
 
+  it("Test if FetchData function return null data response for status != 200", async () => {
+    var data = null;
+     
+     try{
+      moxios.wait(function () {
+        let request = moxios.requests.mostRecent()
+        request.respondWith({
+          status: 201,
+          response: null
+        })
+      })
+
+      data = await fetchData();   
+     }catch(e){
+      // Nothing to do
+     }
+
+     expect(data).toBeNull();
+
+  });
+
 });
 

@@ -53,7 +53,7 @@ export default function NewsCard(props){
                                             <AddCircleOutlineIcon fontSize="inherit" />
                                         </IconButton>           
                                         {isDataFromSavedContentsComponent &&
-                                            <IconButton id={"saveButton"+info.id} aria-label="delete" className={classes.margin} size="small" onClick={handleSaveContent}>
+                                            <IconButton id={"saveButtonAgencia"+info.id} aria-label="delete" className={classes.margin} size="small" onClick={handleSaveContent}>
                                                 <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} /> 
                                             </IconButton>      
                                         }

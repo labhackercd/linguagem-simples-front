@@ -4,7 +4,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import List from '@material-ui/core/List'
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {newsMockData} from './test/radioMockData'
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';

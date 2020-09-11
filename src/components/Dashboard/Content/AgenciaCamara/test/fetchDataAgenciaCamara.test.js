@@ -1,8 +1,8 @@
-import axiosInstance from '../../../../auth/axiosApi'
+import axiosInstance from '../../../../../auth/axiosApi'
 import MockAdapter from "axios-mock-adapter"
 
-import {API_RADIO_AGENCY_URL} from '../../../../api_urls'
-import fetchDataAgenciaCamara from './fetchDataAgenciaCamara'
+import {API_RADIO_AGENCY_URL} from '../../../../../api_urls'
+import fetchDataAgenciaCamara from '../fetchDataAgenciaCamara'
 
 describe('Test Fetch Agencia Camara function requisitions with mock adapter', () => {
     var mock = new MockAdapter(axiosInstance);

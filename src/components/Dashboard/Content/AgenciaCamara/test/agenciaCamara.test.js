@@ -1,30 +1,31 @@
 import React from 'react';
+import { render, screen } from '@testing-library/react';
 import {shallow} from "enzyme/build";
-import RadioCamaraContent from '../radioCamara'
-import RadioCard from '../radioCard'
-
+import AgenciaCamaraContent from '../agenciaCamara'
+import NewsCard from '../newsCard'
 import { mount} from 'enzyme';
 import MockAdapter from "axios-mock-adapter"
 import axiosInstance from '../../../../../auth/axiosApi'
-import {API_RADIO_CAMARA_URL, API_SAVED_CONTENTS_URL} from '../../../../../api_urls'
+import {API_RADIO_AGENCY_URL, API_SAVED_CONTENTS_URL} from '../../../../../api_urls'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
-it("should render the RadioCamaraContent section", () => {
-    const component = shallow(<RadioCamaraContent/>);
+
+it("should render the AgenciaCamaraContent section and match snapshot", () => {
+    const component = shallow(<AgenciaCamaraContent/>);
 
     expect(component.exists()).toEqual(true);
     expect(component).toMatchSnapshot();
 });
 
-describe('Testing Radio Card', () => {
+describe('Testing News Card', () => {
 
-  it("Should render the RadioCard component and match snapshot ", () => {
+  it("should render the NewsCard component and match snapshot ", () => {
     var mockedPropsdata={
       info: {
         retrancas: [ 'Consumidor' ],
         id: 619693,
-        veiculo: 'radio',
+        veiculo: 'agencia',
         ano: 2020,
         data: '2020-04-14T07:00:16-0300',
         titulo: 'Projeto de Lei yyy/2020',
@@ -40,13 +41,13 @@ describe('Testing Radio Card', () => {
       },
       sessionId: undefined
     }
-    const component = shallow(<RadioCard info={mockedPropsdata} sessionId={1}/>);
+    const component = shallow(<NewsCard info={mockedPropsdata} sessionId={1}/>);
 
     expect(component.exists()).toEqual(true);
     expect(component).toMatchSnapshot();
   });
 
-  test("Test card lifeclycle", async (done) => {
+  test("Test post save content", async (done) => {
     var mockInstance = new MockAdapter(axiosInstance);
     var mockedPropsdata={
         id: 618134,
@@ -56,12 +57,12 @@ describe('Testing Radio Card', () => {
     }
       await mockInstance.onPost(API_SAVED_CONTENTS_URL).replyOnce(200,mockedPropsdata)
               
-      const wrapper = await mount(<RadioCard info={mockedPropsdata} sessionId={1}/>);
+      const wrapper = await mount(<NewsCard info={mockedPropsdata} sessionId={1}/>);
     
       setImmediate(() => {
         wrapper.update();
         //console.log(wrapper.debug())
-        const button = wrapper.find("#saveButtonRadio618134").at(0);
+        const button = wrapper.find("#saveButtonAgencia618134").at(0);
         //console.log(button.debug());
         button.simulate('click')
         //Add later a expect to check if modal os response has been triggered
@@ -76,9 +77,9 @@ describe('Testing Radio Card', () => {
 
 describe('Testing lifeclycle of RadioCamaraComponent content', () => {
 
-  test("Test radio content lifeclycle when data is not loaded", async (done) => {
+  test("Test agencia content lifeclycle when data is not loaded", async (done) => {
                  
-      const wrapper = await mount(<RadioCamaraContent sessionId={1}/>);
+      const wrapper = await mount(<AgenciaCamaraContent sessionId={1}/>);
 
       setImmediate(() => {
         wrapper.update();
@@ -90,9 +91,9 @@ describe('Testing lifeclycle of RadioCamaraComponent content', () => {
 
   });
 
-  test("Test radio content lifeclycle with data been loaded", async (done) => {
+  test("Test agencia content lifeclycle with data been loaded", async (done) => {
     var mockInstance = new MockAdapter(axiosInstance);
-    const radioMockData = {
+    const agenciaMockData = {
       "took": 157,
       "timed_out": false,
       "_shards": { "total": 5, "successful": 5, "skipped": 0, "failed": 0 },
@@ -153,9 +154,9 @@ describe('Testing lifeclycle of RadioCamaraComponent content', () => {
       }
     }
       
-      await mockInstance.onGet(API_RADIO_CAMARA_URL).replyOnce(200,radioMockData)
+      await mockInstance.onGet(API_RADIO_AGENCY_URL).replyOnce(200,agenciaMockData)
               
-      const wrapper = await mount(<RadioCamaraContent sessionId={1}/>);
+      const wrapper = await mount(<AgenciaCamaraContent sessionId={1}/>);
 
       setImmediate(() => {
         wrapper.update();
