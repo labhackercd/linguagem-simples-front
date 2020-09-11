@@ -5,7 +5,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import DividerIcon from './../../../../assets/divider.svg';
 import PictureUploadIcon from './../../../../assets/picture_upload.svg';
 import TwitterIcon from './../../../../assets/twitter_icon.svg';
-
+import LinkIcon from './../../../../assets/link.svg'
 const useStyles = makeStyles((theme) => ({
 	summaryBox: {
 		display: 'flex',
@@ -94,11 +94,11 @@ export default function NewUpdate(props) {
                 <div className={classes.subMenuItem}>
                   <a href="/"><img src={PictureUploadIcon} alt="upload icon" onClick={(e) => props.openImageDialog(e, true)}/></a>
                 </div>
-                <div className={classes.subMenuItem}>
-                  <a href="/"><img src={TwitterIcon} alt="incorporate tweet icon" onClick={(e) => props.handleTwitterDialogOpen(e, true)}/></a>
-                </div>
 								<div className={classes.subMenuItem}>
-									<a href="/"><img src={TwitterIcon} alt="incorporate tweet icon" onClick={(e) => props.handleDialogStateAction(e, true, "URLInputDialog", null)}/></a>
+									<a href="/"><img src={TwitterIcon} alt="incorporate twitter icon" onClick={(e) => props.handleDialogStateAction(e, true, "URLInputDialog", "URLInputIsTwitter")}/></a>
+								</div>
+								<div className={classes.subMenuItem}>
+									<a href="/"><img src={LinkIcon} alt="incorporate url icon" onClick={(e) => props.handleDialogStateAction(e, true, "URLInputDialog", null)}/></a>
 								</div>
               </Grid>
               <Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>

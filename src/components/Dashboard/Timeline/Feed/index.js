@@ -66,7 +66,7 @@ export default function Feed(props) {
                         /> : '' }
                       {update.image ?
                        <img src={update.image}  style={{maxWidth: '100%', maxHeight: '30vh'}} alt="timeline post"/> : '' }
-											{update.customURL ?
+											{update.customURL && !(props.URLInputIsTwitter) ?
 												<ReactTinyLink
 													cardSize="small"
 													showGraphic={true}

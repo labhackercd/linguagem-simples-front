@@ -35,9 +35,7 @@ class PreviewDialog extends React.Component {
 
 	handleDialog = (e, state) => {
 		e.preventDefault()
-		console.log("chega aqui com state " + state)
 		this.setState({dialogOpen: false})
-		console.log(this.state.dialogOpen)
 	}
 
 	render() {
@@ -74,12 +72,12 @@ class PreviewDialog extends React.Component {
 							 InputProps={{ disableUnderline: true }}
 							 style={{width: '100%'}}
 						 />
-					 {this.props.tweetID ?
+					 {this.props.URLInputIsTwitter ?
 						 <TwitterTweetEmbed
  							style={{alignSelf: 'center'}}
  							tweetId={this.props.tweetID}
  						/> : ''}
-					{this.props.customURL ?
+					{this.props.customURL && (!this.props.URLInputIsTwitter) ?
 						<ReactTinyLink
 							cardSize="small"
 							showGraphic={true}

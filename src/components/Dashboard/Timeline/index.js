@@ -4,7 +4,6 @@ import SummaryBox from './SummaryBox';
 import Header from './Header';
 import StatusSelection from './StatusSelection';
 import NewUpdate from './NewUpdate';
-import TwitterDialog from './Dialogs/Twitter';
 import URLInputDialog from './Dialogs/URLInput';
 import ImageUploadDialog from './Dialogs/ImageUpload';
 import PreviewDialog from './Dialogs/Preview';
@@ -37,10 +36,10 @@ class Timeline extends React.Component {
 				tweetURL: '',
 				tweetID: '',
 				customURL: '',
-				twitterDialogOpen: false,
 				previewModalOpen: false,
 				imageUploadModalOpen: false,
 				URLInputDialogOpen: false,
+				URLInputIsTwitter: false,
 				picture: false,
 				time: '19:00',
 				sessionID: props.sessionID,
@@ -128,26 +127,17 @@ class Timeline extends React.Component {
 
 		garbageCollection = () => {
 			this.setState({tweetID: ''})
+			this.setState({URLInputIsTwitter: false})
 			this.setState({picture: false})
 			this.setState({updateTitle: ''})
 			this.setState({updateTextArea: ''})
 			this.setState({customURL: ''})
 		}
-		/* Twitter Dialog */
-		handleTwitterDialogOpen = (e) => {
-			e.preventDefault()
-			this.setState({twitterDialogOpen: true})
-		}
-		handleTwitterDialogClose = () => {
-			this.setState({twitterDialogOpen: false})
-			let parseURL = this.state.tweetURL.split('/')
+		extractTweetIDFromURL = () => {
+			let parseURL = this.state.customURL.split('/')
 			let path = parseURL[parseURL.length-1]
 			let id = path.split('?')[0]
 			this.setState({tweetID: id})
-			this.setState({previewModalOpen: true})
-		}
-		setTweetURL = (url) => {
-			this.setState({tweetURL: url})
 		}
 		setCustomURL = (url) => {
 			this.setState({customURL: url})
@@ -170,8 +160,10 @@ class Timeline extends React.Component {
 			switch(dialog) {
 				case "previewDialog":
 					this.setState({previewModalOpen: state})
+					this.garbageCollection()
 					break;
 				case "URLInputDialog":
+					console.log("URLInputDialog:" +  state)
 					this.setState({URLInputDialogOpen: state})
 					break;
 			}
@@ -180,11 +172,18 @@ class Timeline extends React.Component {
 					this.dispatchPayload()
 					break;
 				case "previewModalOpen":
+					if(this.state.URLInputIsTwitter) {
+						this.extractTweetIDFromURL()
+						this.setState({customURL: ''}) // in order to avoid rendering customURL and Twitter components
+					}
 					this.setState({previewModalOpen: true})
+					break;
+				case "URLInputIsTwitter":
+					console.log("URLInputIsTwitter:" +  action)
+					this.setState({URLInputIsTwitter: true})
 					break;
 			}
 		}
-
 		handlePreviewModalClose = () => {
 			this.dispatchPayload()
 			this.setState({previewModalOpen: false})
@@ -208,14 +207,10 @@ class Timeline extends React.Component {
 					<SummaryBox sessionID={this.state.sessionID}></SummaryBox>
 					<StatusSelection startUpdateWithTitleFlow={this.startUpdateWithTitleFlow}></StatusSelection>
 					<NewUpdate handleClick={this.handleClick}
-										 handleTwitterDialogOpen={this.handleTwitterDialogOpen}
 										 openImageDialog={this.openImageDialog}
 										 updateTextArea={this.updateTextArea}
 										 handleChange={this.handleChange}
 										 handleDialogStateAction={this.handleDialogStateAction}></NewUpdate>
-				 <TwitterDialog handleTwitterDialogClose={this.handleTwitterDialogClose}
-							 twitterDialogOpen={this.state.twitterDialogOpen}
-							 setTweetURL={this.setTweetURL}></TwitterDialog>
 				 <ImageUploadDialog imageUploadModalOpen={this.state.imageUploadModalOpen}
 							 closeImageDialogSendPayload={this.closeImageDialogSendPayload}
 							 openImageDialog={this.openImageDialog}
@@ -228,12 +223,14 @@ class Timeline extends React.Component {
 							handleDialogStateAction={this.handleDialogStateAction}
 							handleChange={this.handleChange}
 							tweetID={this.state.tweetID}
+							URLInputIsTwitter={this.state.URLInputIsTwitter}
 							time={this.state.time}
 							customURL={this.state.customURL}></PreviewDialog>
 				<URLInputDialog
 							 URLInputDialogOpen={this.state.URLInputDialogOpen}
 							 customURL={this.state.customURL}
 							 setCustomURL={this.setCustomURL}
+							 URLInputIsTwitter={this.state.URLInputIsTwitter}
 							 handleDialogStateAction={this.handleDialogStateAction}></URLInputDialog>
 			 <FeedMemo updates={this.state.updates}></FeedMemo>
 				</div>
