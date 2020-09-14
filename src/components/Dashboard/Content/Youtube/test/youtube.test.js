@@ -1,6 +1,5 @@
 import Youtube from '../index'
 import React from 'react';
-import {shallow} from "enzyme/build";
 import { mount} from 'enzyme';
 import MockAdapter from "axios-mock-adapter"
 import axios from 'axios'
@@ -10,8 +9,6 @@ import {API_CD_EVENTOS} from '../../../../../api_urls'
 
 test("Test if youtube returns transmission not available when sessionID is null", async (done) => {
     const component = mount(<Youtube sessionIdDadosAbertos={null}></Youtube>);
-    //console.log(component.debug())
-    //console.log(component.text())
     expect(component.exists()).toEqual(true);
     expect(component).toMatchSnapshot();
     expect(component.text()).toMatch(/Transmissão não disponível/i)
@@ -20,7 +17,6 @@ test("Test if youtube returns transmission not available when sessionID is null"
 });
 
 describe('Test if youtube returns as expected when correct information are provided', () => {
-    //var mock = new MockAdapter(axios);
     const sessionMockData = {
           "dados": {
             "uriDeputados": null,
@@ -103,7 +99,6 @@ describe('Test if youtube returns as expected when correct information are provi
         await mock.onGet(API_CD_EVENTOS+sessionIdDadosAbertos).replyOnce(200,sessionMockData);
 
         data = await getYoutubeVideoUrl(sessionIdDadosAbertos);
-        //console.log(data)
         expect(data).not.toBeNull();
         expect(data).not.toBeUndefined();
         mock.restore();
@@ -131,9 +126,4 @@ describe('Test if youtube returns as expected when correct information are provi
      })
 
   });
-
-
-    afterAll(() => {
-       // mock.restore();
-    });
 });
