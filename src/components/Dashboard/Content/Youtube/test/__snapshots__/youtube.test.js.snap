@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test if youtube returns transmission not available when sessionID is null 1`] = `
+<Youtube
+  sessionIdDadosAbertos={null}
+>
+  <Styled(MuiBox)
+    alignContent="center"
+    display="flex"
+    height="100%"
+    justifyContent="center"
+    width="100%"
+  >
+    <div
+      className="MuiBox-root MuiBox-root-1"
+    >
+      <WithStyles(ForwardRef(Typography))
+        style={
+          Object {
+            "color": "grey",
+          }
+        }
+        variant="h5"
+      >
+        <ForwardRef(Typography)
+          classes={
+            Object {
+              "alignCenter": "MuiTypography-alignCenter",
+              "alignJustify": "MuiTypography-alignJustify",
+              "alignLeft": "MuiTypography-alignLeft",
+              "alignRight": "MuiTypography-alignRight",
+              "body1": "MuiTypography-body1",
+              "body2": "MuiTypography-body2",
+              "button": "MuiTypography-button",
+              "caption": "MuiTypography-caption",
+              "colorError": "MuiTypography-colorError",
+              "colorInherit": "MuiTypography-colorInherit",
+              "colorPrimary": "MuiTypography-colorPrimary",
+              "colorSecondary": "MuiTypography-colorSecondary",
+              "colorTextPrimary": "MuiTypography-colorTextPrimary",
+              "colorTextSecondary": "MuiTypography-colorTextSecondary",
+              "displayBlock": "MuiTypography-displayBlock",
+              "displayInline": "MuiTypography-displayInline",
+              "gutterBottom": "MuiTypography-gutterBottom",
+              "h1": "MuiTypography-h1",
+              "h2": "MuiTypography-h2",
+              "h3": "MuiTypography-h3",
+              "h4": "MuiTypography-h4",
+              "h5": "MuiTypography-h5",
+              "h6": "MuiTypography-h6",
+              "noWrap": "MuiTypography-noWrap",
+              "overline": "MuiTypography-overline",
+              "paragraph": "MuiTypography-paragraph",
+              "root": "MuiTypography-root",
+              "srOnly": "MuiTypography-srOnly",
+              "subtitle1": "MuiTypography-subtitle1",
+              "subtitle2": "MuiTypography-subtitle2",
+            }
+          }
+          style={
+            Object {
+              "color": "grey",
+            }
+          }
+          variant="h5"
+        >
+          <h5
+            className="MuiTypography-root MuiTypography-h5"
+            style={
+              Object {
+                "color": "grey",
+              }
+            }
+          >
+             Transmissão não disponível
+          </h5>
+        </ForwardRef(Typography)>
+      </WithStyles(ForwardRef(Typography))>
+    </div>
+  </Styled(MuiBox)>
+</Youtube>
+`;

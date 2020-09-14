@@ -2,38 +2,76 @@ import React from 'react';
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography' 
 
-export default function Youtube(sessionIdDadosAbertos){
-  const youtubeId = "stgBjJwcnIw";
-  if(sessionIdDadosAbertos===null){
-    return (
-      <Box width="100%" height="100%" display="flex" alignContent="center" justifyContent="center">
-        <Typography variant="h5" style={{ color: "grey" }}> Transmissão não disponível</Typography>
-      </Box>
-    )
+import getYoutubeVideoUrl from './fetchYoutubeVideoUrl'
+
+export default class Youtube extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = { 
+        youtubeVideoId:'',
+        sessionIdDadosAbertos: this.props.sessionIdDadosAbertos
+    };
+  }
+  
+
+  fetchYoutubeVideo = async term => {
+
+    var data = null;
+    if(this.state.sessionIdDadosAbertos !== undefined){
+      //console.log(this.state.sessionIdDadosAbertos)
+      data = await getYoutubeVideoUrl(this.state.sessionIdDadosAbertos);
+      //This split is necessary because we need just the ID of video, since we need 
+      //to use the tag embed in the url instead of the watch returned at API
+      this.setState({youtubeVideoId:(data.split('?v=').pop())}) 
+      this.setState({dataLoaded:true});
+    }else{
+      //Nothing to do
+    }
+
+
+  };
+
+  componentDidMount(){
+    this._isMounted = true;
+    if(this._isMounted){
+  
+        this.fetchYoutubeVideo();
+    }
   }
 
-  return (
-    <div
-      className="video"
-      style={{
-        position: "relative",
-        paddingBottom: "56.25%" /* 16:9 */,
-        paddingTop: 0,
-        height: 0
-      }}
-    >
-      <iframe
+  render(){
+    if(this.props.sessionIdDadosAbertos===null){
+      return (
+        <Box width="100%" height="100%" display="flex" alignContent="center" justifyContent="center">
+          <Typography variant="h5" style={{ color: "grey" }}> Transmissão não disponível</Typography>
+        </Box>
+      )
+    }
+
+    return (
+      <div
+        className="video"
+        id={"transmissaoYoutube"+this.state.youtubeVideoId}
         style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%"
+          position: "relative",
+          paddingBottom: "56.25%" /* 16:9 */,
+          paddingTop: 0,
+          height: 0
         }}
-        src={`https://www.youtube.com/embed/${youtubeId}`}
-        frameBorder="0"
-        title="Trasmissão da Sessão Plenária"
-      />
-    </div>
-  );
-};
+      >
+        <iframe
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%"
+          }}
+          src={`https://www.youtube.com/embed/${this.state.youtubeVideoId}`}
+          frameBorder="0"
+          title="Trasmissão da Sessão Plenária"
+        />
+      </div>
+    );
+  }
+}
