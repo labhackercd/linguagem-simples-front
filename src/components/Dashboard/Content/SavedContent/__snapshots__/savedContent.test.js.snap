@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render the SavedContentComponent 1`] = `
+<Styled(MuiBox)
+  alignItems="center"
+  display="flex"
+  justifyContent="center"
+>
+  <WithStyles(ForwardRef(CircularProgress)) />
+</Styled(MuiBox)>
+`;

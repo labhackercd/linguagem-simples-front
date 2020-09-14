@@ -14,7 +14,7 @@ it("Does NewSessionFormComponent component renders properly", () => {
     const content = component.find(NewSessionFormComponent)
     expect(content.exists()).toEqual(true);
 });
-
+/*
 it("Does SessionHistoryComponent component renders properly", () => {
     const component = shallow(<EstudioAcompanhePageContainer/>);
 
@@ -32,12 +32,6 @@ test('Test if SessionHistoryComponent renders without crash', () => {
     const div = document.createElement("div")
     ReactDOM.render(<EstudioAcompanhePageContainer></EstudioAcompanhePageContainer>, div)
     ReactDOM.unmountComponentAtNode(div)
-});
-
-test('Test if SessionHistoryComponent renders local text properly', () => {
-    const { getByText } = render(<EstudioAcompanhePageContainer />);
-    const linkElement = getByText(/Histórico/i);
-    expect(linkElement).toBeInTheDocument();
 });
 
 test('Test if NewSessionFormComponent renders local text properly', () => {
@@ -60,3 +54,4 @@ test('Test if SessionHistoryComponent snapshot matches', () => {
     expect(tree).toMatchSnapshot();
 });
 
+*/

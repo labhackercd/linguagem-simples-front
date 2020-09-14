@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot should not have differences 1`] = `
+<WithStyles(ForwardRef(Dialog))>
+  <WithStyles(ForwardRef(DialogContent))>
+    <WithStyles(ForwardRef(DialogContentText))>
+      Insira no campo abaixo o link para o tweet desejado
+    </WithStyles(ForwardRef(DialogContentText))>
+    <WithStyles(ForwardRef(TextField))
+      autoFocus={true}
+      fullWidth={true}
+      id="name"
+      label="Link para o tweet"
+      margin="dense"
+      name="tweetURL"
+      onChange={[Function]}
+      type="text"
+    />
+  </WithStyles(ForwardRef(DialogContent))>
+  <WithStyles(ForwardRef(DialogActions))>
+    <WithStyles(ForwardRef(Button))
+      color="primary"
+    >
+      Cancelar
+    </WithStyles(ForwardRef(Button))>
+    <WithStyles(ForwardRef(Button))
+      color="primary"
+    >
+      Incorporar tweet
+    </WithStyles(ForwardRef(Button))>
+  </WithStyles(ForwardRef(DialogActions))>
+</WithStyles(ForwardRef(Dialog))>
+`;

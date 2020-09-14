@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import NewSessionFormComponent from '../../components/EstudioAcompanhePageComponents/NewSessionFormComponent';
 import SessionHistoryComponent from '../../components/EstudioAcompanhePageComponents/SessionHistoryComponent';
+import LogoutButton from '../../components/LogoutButton'
 
 import AcompanheLogo from './logo_acompanhe.svg';
 import BackgroundImage from './background.svg';
@@ -27,12 +28,18 @@ const useStyles = makeStyles({
   },
   box:{
     paddingLeft:"370px",
-    paddingTop:"12%",
-    width:'100%',
+    paddingTop:"0%",
+    width:'80%',
     height:'100%'
   },
   logo:{
     marginBottom:"20px"
+  },
+  button:{
+    minHeight: '100%',
+    minWidth:'100%',
+    position: "fixed",
+    display: "flex"
   }
 });
 
@@ -41,10 +48,17 @@ export default function EstudioAcompanhePageContainer(){
 
     return (
       <div className={classes.root}>
+      <Grid container>
+        <Grid item xs={12}>
+          <Box display="flex"  justifyContent="flex-end" margin={2}>
+            <LogoutButton></LogoutButton>
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
         <Box className={classes.box}>
             <Box className={classes.logo}>
                 <img src={AcompanheLogo} alt="Logo Estudio Acompanhe"></img>
-            </Box>
+            </Box>  
               <Paper borders={10} elevation={10} className={classes.paper} square={false}> 
                 <Box ml={5}>
                   <Grid container>
@@ -68,6 +82,9 @@ export default function EstudioAcompanhePageContainer(){
                 </Box>
               </Paper>
         </Box>
+        </Grid>
+      </Grid>
+       
       </div>
     );
 
