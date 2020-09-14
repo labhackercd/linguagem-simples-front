@@ -11,6 +11,7 @@ import Feed from './Feed';
 import axiosInstance from '../../../auth/axiosApi.js';
 import { fetchFeedUpdates } from './timelineAPIhandler';
 import { parseHourMinute } from './../../Util';
+import {API_PUBLICATIONS_URL} from './../../../api_urls'
 
 const FeedMemo = React.memo(Feed)
 
@@ -59,7 +60,7 @@ class Timeline extends React.Component {
 		    formData.append('content', updateTextArea)
 		    formData.append('session', sessionID)
 		    formData.append('tweet_id', tweetID)
-		    axiosInstance.post('/publications/', formData, {
+		    axiosInstance.post(API_PUBLICATIONS_URL, formData, {
 		      headers: { 'Content-Type': 'multipart/form-data'},
 		    }).then(result => {
 		      if(result.status===201) {

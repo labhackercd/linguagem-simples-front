@@ -80,7 +80,7 @@ describe('Testing lifeclycle of SavedContentComponent content', () => {
         
 
         setImmediate(() => {
-            wrapper.update()
+            wrapper.update();
             //console.log(wrapper.debug())
             const containsSpinner = wrapper.containsMatchingElement(<CircularProgress />);
             expect(containsSpinner).not.toBeTruthy()

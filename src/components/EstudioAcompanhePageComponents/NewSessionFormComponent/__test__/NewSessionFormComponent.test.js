@@ -5,8 +5,8 @@ import NewSessionFormComponent from './../index'
 import { mount} from 'enzyme';
 
 import MockAdapter from "axios-mock-adapter"
-import axios from 'axios'
 import axiosInstance from './../../../../auth/axiosApi'
+import {API_SESSIONS_URL} from './../../../../api_urls'
 
 test('Test if NewSessionFormComponent renders without crash', () => {
     const div = document.createElement("div")
@@ -92,7 +92,7 @@ describe('Testing lifeclycle ', () => {
     test("Test sync lifeclycle", async (done) => {
         // Return a fixed timestamp when moment().format() is called
 
-        await mockInstance.onPost('/sessions/').reply(200,{response})
+        await mockInstance.onPost(API_SESSIONS_URL).reply(200,{response})
                 
         const  wrapper = mount(<NewSessionFormComponent />);
         const button = wrapper.find("#submitButton").at(0);

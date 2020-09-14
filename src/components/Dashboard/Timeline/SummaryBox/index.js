@@ -3,6 +3,7 @@ import { Grid, Typography, Box, Button, TextField } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import axiosInstance from '../../../../auth/axiosApi.js';
 import DownArrowIcon from './../../../../assets/down-arrow.svg';
+import {API_SESSIONS_URL} from './../../../../api_urls'
 
 const useStyles = makeStyles((theme) => ({
 	summaryBox: {
@@ -41,7 +42,7 @@ export default function SummaryBox(props) {
     setTextFieldValue(e.target.value)
   }
   function handleSubmit() {
-    const url = '/sessions/' + sessionID + '/';
+    const url = API_SESSIONS_URL + sessionID + '/';
     axiosInstance.patch(url, {
             id: sessionID,
             resume: textFieldValue

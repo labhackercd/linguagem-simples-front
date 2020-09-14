@@ -5,6 +5,8 @@ import { Grid, TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import axiosInstance from './../../auth/axiosApi.js'
+import {TOKEN_OBTAIN_URL, ESTUDIO_PAGE_URL} from './../../api_urls';
+
 import EstudioAcompanheIcon from './../../assets/estudio_acompanhe_logo.svg';
 import CamaraLogoIcon from './../../assets/camara_logo.svg';
 import PrototipoIcon from './../../assets/interacao_prototipo.png';
@@ -93,7 +95,7 @@ class LoginScreen extends React.Component {
   loginMethod(event){
     event.preventDefault();
 
-    axiosInstance.post('/token/obtain/', {
+    axiosInstance.post(TOKEN_OBTAIN_URL, {
             username: this.state.username,
             password: this.state.password
         }).then(
@@ -127,7 +129,7 @@ class LoginScreen extends React.Component {
       return (
         <div>
           {this.state.succesfullLogin ?
-            <Redirect to={"/estudio"} />
+            <Redirect to={ESTUDIO_PAGE_URL} />
             :
             <Grid container className={classes.body}>
               <div className={classes.loginArea}>

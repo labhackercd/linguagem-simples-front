@@ -20,6 +20,7 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker,
 } from '@material-ui/pickers';
 import ptBrLocale from "date-fns/locale/pt-BR";
 import axiosInstance from '../../../auth/axiosApi.js'
+import {API_SESSIONS_URL} from '../../../api_urls'
 
 
 const useStyles = makeStyles({
@@ -101,7 +102,7 @@ class NewSessionFormComponent extends React.Component {
     }
     */
     createSession(callback){
-        axiosInstance.post('/sessions/', {
+        axiosInstance.post(API_SESSIONS_URL, {
             location: "plenary",
             date:new Date(this.state.sessionDate).toISOString().slice(0,10),
             type_session: this.state.sessionType,

@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ImageUploadDialog(props) {
   const classes = useStyles();
-  console.log(props)
+  //console.log(props)
   return (
     <Dialog fullWidth={true}
               maxWidth={'sm'}

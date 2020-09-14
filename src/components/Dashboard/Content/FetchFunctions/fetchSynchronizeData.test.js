@@ -2,6 +2,8 @@ import axiosInstance from '../../../../auth/axiosApi'
 import MockAdapter from "axios-mock-adapter"
 import {checkIfSessionsAlreadyExistsInSILEG, updateSession} from './fetchSynchronizeData'
 import axios from 'axios'
+import {API_SESSIONS_URL,API_CD_EVENTOS_PLENARIO} from './../../../../api_urls'
+
 
 describe('Test updateSession function requisitions with mock adapter', () => {
     var mock = new MockAdapter(axiosInstance);
@@ -11,7 +13,7 @@ describe('Test updateSession function requisitions with mock adapter', () => {
         const dashboarId = 1;
         const sessionIdDadosAbertos = 59895;
         
-        mock.onPatch("/sessions/"+dashboarId+"/").replyOnce(200,{
+        mock.onPatch(API_SESSIONS_URL+dashboarId+"/").replyOnce(200,{
             id: 1,
             author: {
                 id: 1,
@@ -44,7 +46,7 @@ describe('Test updateSession function requisitions with mock adapter', () => {
         const dashboarId = 1;
         const sessionIdDadosAbertos = 50000;
         
-        mock.onPatch("/sessions/"+dashboarId+"/").replyOnce(200,{
+        mock.onPatch(API_SESSIONS_URL+dashboarId+"/").replyOnce(200,{
             id: 1,
             author: {
                 id: 1,
@@ -122,7 +124,7 @@ describe('Test checkIfSessionsAlreadyExistsInSILEG fetch data ', () => {
     test("Test if checkIfSessionsAlreadyExistsInSILEG correctly", async (done) => {
         // Return a fixed timestamp when moment().format() is called
         const date = '2020-01-09'
-        const url =  "https://dadosabertos.camara.leg.br/api/v2/eventos?codTipoEvento=110&dataInicio="+date+"&dataFim="+date+"&ordem=ASC&ordenarPor=dataHoraInicio";
+        const url =  API_CD_EVENTOS_PLENARIO+"&dataInicio="+date+"&dataFim="+date+"&ordem=ASC&ordenarPor=dataHoraInicio";
 
         await mockAxios.onGet(url).replyOnce(200,{
             data: dados

@@ -1,10 +1,11 @@
 import axiosInstance from '../../../../auth/axiosApi'
-
+import {API_SAVED_CONTENTS_URL} from './../../../../api_urls'
 
 export default async function fetchDataSavedContentCamara(sessionId) {
    
     //TODO - Change api call and uncomment line at agenciaCamara.js
-    const response = await axiosInstance.get(("/saved-contents/?session__id="+sessionId), {
+    //console.log(API_SAVED_CONTENTS_URL)
+    const response = await axiosInstance.get((API_SAVED_CONTENTS_URL+"?session__id="+sessionId), {
     });
     
 
