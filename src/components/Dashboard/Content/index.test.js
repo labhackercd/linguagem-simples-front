@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Content from './index';
 import {shallow} from "enzyme/build";
-import Youtube from './youtubeTransmission'
 import ExternalContentPanel from './externalContentPanel'
 import { mount} from 'enzyme';
 import MockAdapter from "axios-mock-adapter"
@@ -15,15 +14,31 @@ it("should render the content section", () => {
 });
 
 it("should render the external content section", () => {
-    const component = shallow(<Content/>);
+    const sessionId = 1;
+    const sessionInfo = {
+      "id": 1,
+      "author": {
+        "id": 1,
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "a@a.com",
+        "profile": "editor"
+      },
+      "location": "plenary",
+      "date": "2020-09-01",
+      "type_session": "virtual",
+      "situation_session": "pre_session",
+      "resume": "Resumo",
+      "enable": true,
+      "id_session_dados_abertos": "59895"
+    }
+
+    const component = shallow(<Content sessionId={sessionId} sessionInfo={sessionInfo} />);
     expect(component).toMatchSnapshot();
 });
 
-it("should return iframe of youtube content section", () => {
-    const sessionID = 1;
-    const youtubeVideo = Youtube(sessionID);
-    expect(youtubeVideo.props.className).toBe("video")
-});
 
 
 /*

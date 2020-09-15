@@ -127,12 +127,6 @@ exports[`should render the external content section 1`] = `
       className="makeStyles-headerMenu-11"
       item={true}
     >
-      <WithStyles(ForwardRef(Button))
-        className="makeStyles-headerMenuItem-12"
-        onClick={[Function]}
-      >
-        Sincronizar
-      </WithStyles(ForwardRef(Button))>
       <WithStyles(ForwardRef(Typography))
         className="makeStyles-headerMenuItem-12"
         variant="h5"
@@ -158,32 +152,9 @@ exports[`should render the external content section 1`] = `
       <div
         className="makeStyles-card-15"
       >
-        <div
-          className="video"
-          style={
-            Object {
-              "height": 0,
-              "paddingBottom": "56.25%",
-              "paddingTop": 0,
-              "position": "relative",
-            }
-          }
-        >
-          <iframe
-            frameBorder="0"
-            src="https://www.youtube.com/embed/stgBjJwcnIw"
-            style={
-              Object {
-                "height": "100%",
-                "left": 0,
-                "position": "absolute",
-                "top": 0,
-                "width": "100%",
-              }
-            }
-            title="Trasmissão da Sessão Plenária"
-          />
-        </div>
+        <Youtube
+          sessionIdDadosAbertos="59895"
+        />
       </div>
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))

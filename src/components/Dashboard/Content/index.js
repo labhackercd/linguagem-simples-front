@@ -68,14 +68,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Content(props) {
-  const sessionInfo = props.sessionInfo
+  const sessionInfo = props.sessionInfo;
   const sessionId = props.sessionID;
+  //console.log(props)
 
   if(sessionInfo!== undefined){
     var sessionIdDadosAbertos = sessionInfo.id_session_dados_abertos;
   }
   
-
+console.log(sessionInfo)
   const classes = useStyles();
 
   async function handleSynchronize(){
@@ -110,7 +111,11 @@ export default function Content(props) {
       <Grid container className={classes.firstRow} spacing={2}>
           <Grid item md={7}>
             <Typography variant="h5"> Transmissão </Typography>
-            <div className={classes.card}>{Youtube(sessionIdDadosAbertos)}</div>   
+            <div className={classes.card}>
+              {sessionInfo.id_session_dados_abertos &&
+                <Youtube sessionIdDadosAbertos={sessionInfo.id_session_dados_abertos}></Youtube>
+              }
+              </div> 
           </Grid>
           <Grid item md={5}>
             <Typography variant="h5"> Plenário </Typography>
