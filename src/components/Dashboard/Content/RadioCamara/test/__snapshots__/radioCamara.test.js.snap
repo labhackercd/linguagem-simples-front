@@ -5,6 +5,9 @@ exports[`Testing Radio Card Should render the RadioCard component and match snap
   height="100%"
   width="97%"
 >
+  <CustomizedSnackbars
+    open={false}
+  />
   <WithStyles(ForwardRef(Paper))
     className="makeStyles-newsCard-1"
     elevation={0}

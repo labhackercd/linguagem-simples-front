@@ -8,6 +8,7 @@ import MockAdapter from "axios-mock-adapter"
 import axiosInstance from '../../../../../auth/axiosApi'
 import {API_RADIO_CAMARA_URL, API_SAVED_CONTENTS_URL} from '../../../../../api_urls'
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Alert } from '@material-ui/lab';
 
 
 it("should render the RadioCamaraContent section", () => {
@@ -174,4 +175,52 @@ describe('Testing lifeclycle of RadioCamaraComponent content', () => {
 
   });
 
+  test("Test radio content lifeclycle error", async (done) => {
+    var mockInstance = new MockAdapter(axiosInstance);
+    const radioMockData = {
+      "data": {
+        "error": "Error not found results"
+      },
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "content-length": "35",
+        "content-type": "application/json"
+      },
+      "config": {
+        "url": "/radiocamara/",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json",
+        },
+        "baseURL": "http://localhost:8000/api/",
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1
+      },
+      "request": {}
+    }
+      
+      await mockInstance.onGet(API_RADIO_CAMARA_URL).replyOnce(200,radioMockData)
+              
+      const wrapper = await mount(<RadioCamaraContent sessionId={1}/>);
+
+      setImmediate(() => {
+        wrapper.update();
+        expect(wrapper.text()).toMatch(/Erro/i)
+        mockInstance.restore();
+        done();
+     })
+
+  });
+
 });
+
+

@@ -11,6 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 import RadioCard from './radioCard'
 import fetchDataRadioCamara from './fetchRadioCamara'
+import { Alert, AlertTitle } from '@material-ui/lab';
 
 
 
@@ -22,7 +23,8 @@ export default class RadioCamaraContent extends React.Component {
         radioNews: "",
         radioNewsFiltered:"",
         dataLoaded: false,
-        searchField: ''
+        searchField: '',
+        serverError: false
     };
   }
 
@@ -52,10 +54,15 @@ export default class RadioCamaraContent extends React.Component {
   }
 
   fetchRadioNewsList = async term => {
+    try{
       const data = await fetchDataRadioCamara();
-      this.setState({radioNews:data.hits.hits})
-      this.setState({radioNewsFiltered:data.hits.hits})
+      this.setState({radioNews:data.hits.hits});
+      this.setState({radioNewsFiltered:data.hits.hits});
       this.setState({dataLoaded:true});
+    }catch(e){
+      this.setState({serverError:true});
+      this.setState({dataLoaded:true});
+    }  
   };
 
   componentDidMount(){
@@ -70,10 +77,10 @@ export default class RadioCamaraContent extends React.Component {
     //console.log(event.target.value)
     this.setState({
       searchField: event.target.value
-    })
+    });
     this.setState({
       radioNewsFiltered: this.state.radioNews.filter(news => news._source.titulo.toLowerCase().includes(this.state.searchField.toLowerCase()))
-    })
+    });
   }
 
   render(){
@@ -81,6 +88,16 @@ export default class RadioCamaraContent extends React.Component {
     if(!this.state.dataLoaded){
       return (<Box display="flex" justifyContent="center" alignItems="center">
                   <CircularProgress></CircularProgress>
+              </Box>)
+    }
+
+    if(this.state.serverError){
+      return (<Box display="flex" justifyContent="center" alignItems="center">
+                  <Alert severity="error" style={{width:"100%",height:"100%"}}>
+                    <AlertTitle>Erro :(</AlertTitle>
+                      Um erro ocorreu ao tentar obter os dados do servidor. Tente novamente mais tarde.<br></br>
+                      Se o problema persistir, contate os administradores.
+                  </Alert>
               </Box>)
     }
 
@@ -93,7 +110,7 @@ export default class RadioCamaraContent extends React.Component {
               <List style={{maxHeight: '200px', overflow: 'auto'}}>            
                 {this.state.radioNewsFiltered.map((news) => (
                     <li key={`section-${news._id}`}>
-                        <Box my={0.5}><RadioCard info={news._source} sessionId={this.props.sessionId} ></RadioCard></Box>
+                        <Box my={0.5}><RadioCard info={news._source} sessionId={this.props.sessionId}></RadioCard></Box>
                     </li>
                 ))}
               </List>

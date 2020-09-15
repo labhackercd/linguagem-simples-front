@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,6 +9,7 @@ import BookmarkIcon from '@material-ui/icons/Bookmark';
 import moment from 'moment';
 import PlayIcon from './assets/play_image.svg'
 
+import CustomizedSnackbars from '../../../Snackbar/index'
 import postSaveContent from '../FetchFunctions/postSaveContent'
 
 const useStyles = makeStyles((theme) => ({
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RadioCard(props){
     const classes = useStyles();
+    const [openSnackbar,setOpenSnackBar] = useState(false);
 
     // The ternary is necessary to get correctly data from different endpoints and still use the same component
     const info = {
@@ -32,14 +34,22 @@ export default function RadioCard(props){
       const hasBeenSaved = await postSaveContent("radio", info, props.sessionId);
 
       if(hasBeenSaved){
-          //console.log("Conteúdo radio salvo")
+          console.log("Conteúdo radio salvo");
+          await setOpenSnackBar(true);
+          console.log(openSnackbar);
       }else{
           //console.log("Conteúdo não salvo")
       }
     }
 
+    useEffect(() => {
+      console.log('Fruit', openSnackbar);
+    }, [openSnackbar])
+
+
     return (
       <Box width="97%" height="100%" >
+          <CustomizedSnackbars open={openSnackbar}></CustomizedSnackbars>
           <Paper elevation={0} className={classes.newsCard}>
               <Grid container>
                   <Grid item xs={12}>
