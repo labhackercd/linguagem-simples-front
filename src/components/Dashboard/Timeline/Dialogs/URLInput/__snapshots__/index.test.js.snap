@@ -3,6 +3,7 @@
 exports[`snapshot should not have differences 1`] = `
 <WithStyles(ForwardRef(Dialog))
   onClose={[Function]}
+  open={true}
 >
   <WithStyles(ForwardRef(DialogContent))>
     <WithStyles(ForwardRef(DialogContentText))>

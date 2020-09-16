@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
 	      DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 export default function NewUpdate(props) {
   const classes = useStyles();
+
   return (
     <Grid container className={classes.summaryBox}>
       <Grid container className={classes.summaryHeader}>
@@ -65,7 +66,7 @@ export default function NewUpdate(props) {
           <Grid container >
               <form className={classes.textArea} noValidate autoComplete="off">
                 <TextField
-                  id="textfield"
+                  id="newUpdateTextField"
                   multiline
                   rows={4}
                   variant="outlined"
@@ -102,7 +103,7 @@ export default function NewUpdate(props) {
 								</div>
               </Grid>
               <Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
-                <Button className={classes.button} onClick={props.handleClick} variant="contained" disableElevation>
+                <Button id={"updateSubmitButton"}className={classes.button} onClick={props.handleClick} variant="contained" disableElevation>
                   Inserir
                 </Button>
               </Grid>

@@ -33,7 +33,7 @@ export default function Dashboard() {
   	const classes = useStyles();
     let { dashboardId } = useParams();
     const [sessionInfo, setSessionInfo] = useState('');
-  
+
 
     useEffect(() => {
       const fetchSessionData = async () => {

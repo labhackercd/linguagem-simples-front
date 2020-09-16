@@ -48,7 +48,6 @@ class Timeline extends React.Component {
 
 		async componentDidMount() {
 			let updates = await fetchFeedUpdates(this.state.sessionID)
-			console.log(updates)
 			if (updates.length > 0) {
 				for (let i = 0; i < updates.length; i++) {
 					let content = JSON.parse(updates[i].content)
@@ -205,16 +204,16 @@ class Timeline extends React.Component {
 			const { classes } = this.props;
 			return (
 				<div className={classes.body} testid="timeline">
-					<Header></Header>
-					<SummaryBox sessionID={this.state.sessionID}></SummaryBox>
-					<StatusSelection startUpdateWithTitleFlow={this.startUpdateWithTitleFlow}
+				<Header></Header>
+				<SummaryBox sessionID={this.state.sessionID}></SummaryBox>
+				<StatusSelection startUpdateWithTitleFlow={this.startUpdateWithTitleFlow}
 													 setUpdateTitle={this.setUpdateTitle}
 													 handleDialogStateAction={this.handleDialogStateAction}></StatusSelection>
-					<NewUpdate handleClick={this.handleClick}
-										 openImageDialog={this.openImageDialog}
-										 updateTextArea={this.updateTextArea}
-										 handleChange={this.handleChange}
-										 handleDialogStateAction={this.handleDialogStateAction}></NewUpdate>
+				<NewUpdate handleClick={this.handleClick}
+									 openImageDialog={this.openImageDialog}
+									 updateTextArea={this.updateTextArea}
+									 handleChange={this.handleChange}
+									 handleDialogStateAction={this.handleDialogStateAction}></NewUpdate>
 				<PreviewDialog previewModalOpen={this.state.previewModalOpen}
 							handleDialogStateAction={this.handleDialogStateAction}
 							handleChange={this.handleChange}

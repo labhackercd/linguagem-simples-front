@@ -58,7 +58,7 @@ exports[`snapshot should not have differences 1`] = `
           }
           bgcolor="white"
           className="makeStyles-textField-4"
-          id="textfield"
+          id="newUpdateTextField"
           multiline={true}
           name="updateText"
           rows={4}
@@ -151,6 +151,7 @@ exports[`snapshot should not have differences 1`] = `
           <WithStyles(ForwardRef(Button))
             className="makeStyles-button-7"
             disableElevation={true}
+            id="updateSubmitButton"
             variant="contained"
           >
             Inserir
