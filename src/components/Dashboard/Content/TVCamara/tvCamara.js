@@ -12,9 +12,7 @@ import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 
 import fetchTVCamara from './fetchTvCamara'
 import TVCard from './tvCamaraCard'
-
-
-
+import DescriptionErrorAlert from '../../../Alert/index'
 
 
 export default class TvCamaraContent extends React.Component {
@@ -25,7 +23,8 @@ export default class TvCamaraContent extends React.Component {
         tvNews: "", 
         tvNewsFiltered: "", 
         dataLoaded: false,
-        searchField:''
+        searchField:'',
+        serverError: false
     };
   }
 
@@ -55,11 +54,15 @@ export default class TvCamaraContent extends React.Component {
   }
 
   fetchTvNewsList = async term => {
+    try{
       const data = await fetchTVCamara();
-
       this.setState({tvNews:data.hits.hits})
       this.setState({tvNewsFiltered:data.hits.hits})
       this.setState({dataLoaded:true});
+    }catch(e){
+      this.setState({serverError:true});
+      this.setState({dataLoaded:true});
+    }  
   };
 
 
@@ -88,6 +91,12 @@ export default class TvCamaraContent extends React.Component {
     if(!this.state.dataLoaded){
       return (<Box display="flex" justifyContent="center" alignItems="center">
                   <CircularProgress></CircularProgress>
+              </Box>)
+    }
+
+    if(this.state.serverError){
+      return (<Box display="flex" justifyContent="center" alignItems="center">
+                  <DescriptionErrorAlert></DescriptionErrorAlert>
               </Box>)
     }
 

@@ -8,6 +8,7 @@ import MockAdapter from "axios-mock-adapter"
 import axiosInstance from '../../../../../auth/axiosApi'
 import {API_RADIO_CAMARA_URL, API_SAVED_CONTENTS_URL} from '../../../../../api_urls'
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Alert } from '@material-ui/lab';
 
 
 it("should render the RadioCamaraContent section", () => {
@@ -46,7 +47,7 @@ describe('Testing Radio Card', () => {
     expect(component).toMatchSnapshot();
   });
 
-  test("Test card lifeclycle", async (done) => {
+  test("Test card lifeclycle when doesn't work correct", async (done) => {
     var mockInstance = new MockAdapter(axiosInstance);
     var mockedPropsdata={
         id: 618134,
@@ -69,7 +70,31 @@ describe('Testing Radio Card', () => {
         mockInstance.restore();
         done();
      })
+  });
 
+  test("Test card when works correct", async (done) => {
+    var mockInstance = new MockAdapter(axiosInstance);
+    var mockedPropsdata={
+        id: 618134,
+        url: "www.camara.leg.br/radio/618134-DEPUTADOS-E-SENADORES-FECHAM-ACORDO-PARA-ANALISAR-PEC-DA-2ª-INSTANCIA",
+        titulo: "Deputados e senadores fecham acordo para analisar PEC da 2ª Instância",
+        data: "2019-11-26T18:00:22-0200"
+    }
+      await mockInstance.onPost(API_SAVED_CONTENTS_URL).replyOnce(201,mockedPropsdata)
+              
+      const wrapper = await mount(<RadioCard info={mockedPropsdata} sessionId={1}/>);
+    
+      setImmediate(() => {
+        wrapper.update();
+        //console.log(wrapper.debug())
+        const button = wrapper.find("#saveButtonRadio618134").at(0);
+        //console.log(button.debug());
+        button.simulate('click')
+        //Add later a expect to check if modal os response has been triggered
+
+        mockInstance.restore();
+        done();
+     })
   });
 
 });
@@ -174,4 +199,52 @@ describe('Testing lifeclycle of RadioCamaraComponent content', () => {
 
   });
 
+  test("Test radio content lifeclycle error", async (done) => {
+    var mockInstance = new MockAdapter(axiosInstance);
+    const radioMockData = {
+      "data": {
+        "error": "Error not found results"
+      },
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "content-length": "35",
+        "content-type": "application/json"
+      },
+      "config": {
+        "url": "/radiocamara/",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json",
+        },
+        "baseURL": "http://localhost:8000/api/",
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1
+      },
+      "request": {}
+    }
+      
+      await mockInstance.onGet(API_RADIO_CAMARA_URL).replyOnce(200,radioMockData)
+              
+      const wrapper = await mount(<RadioCamaraContent sessionId={1}/>);
+
+      setImmediate(() => {
+        wrapper.update();
+        expect(wrapper.text()).toMatch(/Erro/i)
+        mockInstance.restore();
+        done();
+     })
+
+  });
+
 });
+
+

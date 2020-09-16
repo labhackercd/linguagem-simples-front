@@ -13,98 +13,7 @@ import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 import ListItem from '@material-ui/core/ListItem';
 import { FixedSizeList } from 'react-window';
 import LaunchIcon from '@material-ui/icons/Launch';
-
-
-const useStyles = makeStyles((theme) => ({
-    body: {
-      padding: '1rem',
-      height: '100%',
-      overflow: 'auto',
-    },
-    menu: {
-      padding: '0.1rem',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-    },
-    button: {
-      margin: '0.1rem 0',
-      width: '100%',
-      height: '100% !important',
-      color: 'white',
-      '&:focus, &.Mui-focusVisible': {
-        backgroundColor: '#007E5A',
-        color: "white",
-      },
-    },
-    content: {
-      padding: '1rem',
-    },
-    root: {
-      flexGrow: 1,
-      backgroundColor: '#007E5A',
-      display: 'flex',
-      height: 224,
-    },
-    tabs: {
-      borderRight: `2px solid ${theme.palette.divider}`,
-    },
-    tabIndicator: {
-      backgroundColor: '#007E5A',
-    },
-    root2: {
-        background:'#007E5A',
-        border: 0,
-        height: '100%',
-        width: '100%',
-        position: "fixed",
-        display: "flex"
-      },
-      sessionList:{
-        overflow: 'auto',
-        maxHeight: 350,
-        maxWidth: '100%'
-      },
-      input:{
-          color: "green"
-      },
-      newsCard:{
-        background:'#F4F4F4',
-      },
-      rootAccordion: {
-        width: '100%',
-      },
-}));
-
-
-function TwitterCard(props){
-  const classes = useStyles();
-
-  return (
-      <Box width="97%" marginTop={0.5}>
-          <Paper elevation={0} className={classes.newsCard}>
-              <Grid container>
-                  <Grid item xs={12}>
-                  <a rel={'external noopener noreferrer'} target="_blank" href={"https://"+props.data.twitter} style={{textDecoration: "none"}}>
-                      <Box m={1}>
-                          <Grid container>
-                              <Grid item xs={11}>
-                                  <Typography style={{ color: "gray" }}>{props.data.nome} ({props.data.partido}-{props.data.uf})</Typography>
-                              </Grid>
-                              <Grid item xs={1}>                        
-                                  <IconButton aria-label="Ir para Twitter" size="small">
-                                      <LaunchIcon  fontSize="inherit" />
-                                  </IconButton>     
-                              </Grid>
-                          </Grid>
-                      </Box>
-                      </a>
-                  </Grid>
-              </Grid>
-          </Paper>
-      </Box>
-  );
-}
+import TwitterCard from './twitterCard'
 
 
 export default class TwitterDeputadosContent extends React.Component {
@@ -141,17 +50,19 @@ export default class TwitterDeputadosContent extends React.Component {
 
 
   fetchSessionsList = async term => {
-    try {
+    //Let structure here to future if necessary to connect twitter api instead of mock
+    //try {
       //const data = await fetchDataAgenciaCamara();
       //this.setState({sessionsList:data})
       this.setState({dataLoaded:true});
-
+    /*
     } catch (error) {
         throw error;
-    }
+    }*/
   };
 
   renderListItem = ({index, style}) => {
+
     return(
       <ListItem  style={style} >   
         <TwitterCard data={this.state.filterTwitters[index]}></TwitterCard>
@@ -169,7 +80,7 @@ export default class TwitterDeputadosContent extends React.Component {
 
 
   twittersFilterOnChange = (event) => {
-    console.log(event.target.value)
+    //console.log(event.target.value)
     this.setState({
       searchField: event.target.value
     })

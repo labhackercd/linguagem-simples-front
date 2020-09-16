@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import VideoSnippets from './VideoSnippets/videoSnippets'
 import {checkIfSessionsAlreadyExistsInSILEG,updateSession} from './FetchFunctions/fetchSynchronizeData'
 import moment from 'moment'
+import CustomizedSnackbars from '../../Snackbar/index'
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -102,6 +103,7 @@ console.log(sessionInfo)
           <Typography variant="h3" className={classes.title}>Conteúdos</Typography>
         </Grid>
         <Grid item className={classes.headerMenu}>
+
           {!sessionIdDadosAbertos &&
             <Button onClick={handleSynchronize} className={classes.headerMenuItem}>Sincronizar</Button>
           }

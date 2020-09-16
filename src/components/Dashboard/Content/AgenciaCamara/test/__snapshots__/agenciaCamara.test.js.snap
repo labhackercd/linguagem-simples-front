@@ -4,9 +4,18 @@ exports[`Testing News Card should render the NewsCard component and match snapsh
 <Styled(MuiBox)
   width="97%"
 >
+  <CustomizedSnackbars
+    message=""
+    open={false}
+    type=""
+  />
   <WithStyles(ForwardRef(Paper))
-    className="makeStyles-newsCard-1"
     elevation={0}
+    style={
+      Object {
+        "background": "#F4F4F4",
+      }
+    }
   >
     <WithStyles(ForwardRef(Grid))
       container={true}
