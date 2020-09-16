@@ -174,4 +174,49 @@ describe('Testing lifeclycle of RadioCamaraComponent content', () => {
 
   });
 
+  test("Test agencia content lifeclycle error", async (done) => {
+    var mockInstance = new MockAdapter(axiosInstance);
+    const agenciaMockData = {
+      "data": {
+        "error": "Error not found results"
+      },
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "content-length": "35",
+        "content-type": "application/json"
+      },
+      "config": {
+        "url": "/radiocamara/",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json",
+        },
+        "baseURL": "http://localhost:8000/api/",
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1
+      },
+      "request": {}
+    }
+      
+      await mockInstance.onGet(API_RADIO_AGENCY_URL).replyOnce(200,agenciaMockData)
+              
+      const wrapper = await mount(<AgenciaCamaraContent sessionId={1}/>);
+
+      setImmediate(() => {
+        wrapper.update();
+        expect(wrapper.text()).toMatch(/Erro/i)
+        mockInstance.restore();
+        done();
+     })
+  });
+  
 });

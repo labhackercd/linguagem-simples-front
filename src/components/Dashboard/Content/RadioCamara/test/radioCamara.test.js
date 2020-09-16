@@ -47,7 +47,7 @@ describe('Testing Radio Card', () => {
     expect(component).toMatchSnapshot();
   });
 
-  test("Test card lifeclycle", async (done) => {
+  test("Test card lifeclycle when doesn't work correct", async (done) => {
     var mockInstance = new MockAdapter(axiosInstance);
     var mockedPropsdata={
         id: 618134,
@@ -70,7 +70,31 @@ describe('Testing Radio Card', () => {
         mockInstance.restore();
         done();
      })
+  });
 
+  test("Test card when works correct", async (done) => {
+    var mockInstance = new MockAdapter(axiosInstance);
+    var mockedPropsdata={
+        id: 618134,
+        url: "www.camara.leg.br/radio/618134-DEPUTADOS-E-SENADORES-FECHAM-ACORDO-PARA-ANALISAR-PEC-DA-2ª-INSTANCIA",
+        titulo: "Deputados e senadores fecham acordo para analisar PEC da 2ª Instância",
+        data: "2019-11-26T18:00:22-0200"
+    }
+      await mockInstance.onPost(API_SAVED_CONTENTS_URL).replyOnce(201,mockedPropsdata)
+              
+      const wrapper = await mount(<RadioCard info={mockedPropsdata} sessionId={1}/>);
+    
+      setImmediate(() => {
+        wrapper.update();
+        //console.log(wrapper.debug())
+        const button = wrapper.find("#saveButtonRadio618134").at(0);
+        //console.log(button.debug());
+        button.simulate('click')
+        //Add later a expect to check if modal os response has been triggered
+
+        mockInstance.restore();
+        done();
+     })
   });
 
 });

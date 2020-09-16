@@ -12,7 +12,7 @@ import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 
 import NewsCard from './newsCard'
 import fetchDataAgenciaCamara from './fetchDataAgenciaCamara'
-
+import DescriptionErrorAlert from '../../../Alert/index'
 
 export default class AgenciaCamaraContent extends React.Component {
     
@@ -22,7 +22,8 @@ export default class AgenciaCamaraContent extends React.Component {
         agenciaNews: "", 
         agenciaNewsFiltered: "",
         dataLoaded: false,
-        searchField:''
+        searchField:'',
+        serverError: false
     };
   }
 
@@ -52,11 +53,15 @@ export default class AgenciaCamaraContent extends React.Component {
   }
 
   fetchNewsList = async term => {
+    try{
       const data = await fetchDataAgenciaCamara();
-
       this.setState({agenciaNews:data.hits.hits})
       this.setState({agenciaNewsFiltered:data.hits.hits})
       this.setState({dataLoaded:true});
+    }catch(e){
+      this.setState({serverError:true});
+      this.setState({dataLoaded:true});
+    }  
   };
 
   componentDidMount(){
@@ -81,6 +86,12 @@ export default class AgenciaCamaraContent extends React.Component {
     //console.log(this.state.news)
     if(!this.state.dataLoaded){
       return (<Box display="flex" justifyContent="center" alignItems="center"><CircularProgress></CircularProgress></Box>)
+    }
+
+    if(this.state.serverError){
+      return (<Box display="flex" justifyContent="center" alignItems="center">
+                  <DescriptionErrorAlert></DescriptionErrorAlert>
+              </Box>)
     }
 
     return (

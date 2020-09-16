@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render the SavedContentComponent 1`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <WithStyles(ForwardRef(Snackbar))
+    anchorOrigin={
+      Object {
+        "horizontal": "right",
+        "vertical": "bottom",
+      }
+    }
+    autoHideDuration={6000}
+    bodystyle={
+      Object {
+        "height": "auto",
+        "maxWidth": "100%",
+      }
+    }
+    onClose={[Function]}
+    open={true}
+  >
+    <Alert
+      onClose={[Function]}
+      severity="error"
+    >
+      Mensagem Teste
+    </Alert>
+  </WithStyles(ForwardRef(Snackbar))>
+</div>
+`;

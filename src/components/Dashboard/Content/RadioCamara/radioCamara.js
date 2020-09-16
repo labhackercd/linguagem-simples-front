@@ -12,6 +12,7 @@ import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 import RadioCard from './radioCard'
 import fetchDataRadioCamara from './fetchRadioCamara'
 import { Alert, AlertTitle } from '@material-ui/lab';
+import DescriptionErrorAlert from '../../../Alert/index'
 
 
 
@@ -93,11 +94,7 @@ export default class RadioCamaraContent extends React.Component {
 
     if(this.state.serverError){
       return (<Box display="flex" justifyContent="center" alignItems="center">
-                  <Alert severity="error" style={{width:"100%",height:"100%"}}>
-                    <AlertTitle>Erro :(</AlertTitle>
-                      Um erro ocorreu ao tentar obter os dados do servidor. Tente novamente mais tarde.<br></br>
-                      Se o problema persistir, contate os administradores.
-                  </Alert>
+                  <DescriptionErrorAlert></DescriptionErrorAlert>
               </Box>)
     }
 

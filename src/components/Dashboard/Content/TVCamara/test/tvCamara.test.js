@@ -74,9 +74,9 @@ describe('Testing TV News Card', () => {
 });
 
 
-describe('Testing lifeclycle of RadioCamaraComponent content', () => {
+describe('Testing lifeclycle of TVCamaraComponent content', () => {
 
-  test("Test agencia content lifeclycle when data is not loaded", async (done) => {
+  test("Test tv content lifeclycle when data is not loaded", async (done) => {
                  
       const wrapper = await mount(<TvCamaraContent sessionId={1}/>);
 
@@ -90,7 +90,7 @@ describe('Testing lifeclycle of RadioCamaraComponent content', () => {
 
   });
 
-  test("Test agencia content lifeclycle with data been loaded", async (done) => {
+  test("Test tv content lifeclycle with data been loaded", async (done) => {
     var mockInstance = new MockAdapter(axiosInstance);
     const agenciaMockData = {
       "took": 157,
@@ -174,65 +174,48 @@ describe('Testing lifeclycle of RadioCamaraComponent content', () => {
 
   });
 
-});
-
-/*
-it("should render the NewsCard component and match snapshot ", () => {
-    var mockedPropsdata={
-      info: {
-        retrancas: [ 'Consumidor' ],
-        id: 619693,
-        veiculo: 'agencia',
-        ano: 2020,
-        data: '2020-04-14T07:00:16-0300',
-        titulo: 'Projeto de Lei yyy/2020',
-        resumo: 'Resumo',
-        materia: 'Texto texto texto PEC 300/2008',
-        dataOrdenacao: '2020-04-14T07:00:16-0300',
-        rodape: '',
-        url: 'www.camara.leg.br/noticias/619693-PROJETO-DE-LEI-YYY/2020',
-        temaPortal: [ 'Consumidor' ],
-        temaAutomatico: [ '' ],
-        comissoes: [ [Object], [Object], [Object] ],
-        imagem: [ [Object], [Object] ]
-      },
-      sessionId: undefined
-    }
-    const component = shallow(<TVCard info={mockedPropsdata} sessionId={1}/>);
-
-    expect(component.exists()).toEqual(true);
-    expect(component).toMatchSnapshot();
-});
-
-describe('Testing lifeclycle of TVCamaraComponent content', () => {
-
-    var mockedResponseData = {
-        "id": 1,
-        "created": "2020-09-03T14:19:23.017327-03:00",
-        "content_type": "tv",
-        "title": "Teste",
-        "url": "https://www.camara.leg.br/",
-        "session": 1
-      }
+  test("Test tv content lifeclycle error", async (done) => {
     var mockInstance = new MockAdapter(axiosInstance);
-    
-    test("Test save tv content lifeclycle", async (done) => {
-        // Return a fixed timestamp when moment().format() is called
+    const tvMockData = {
+      "data": {
+        "error": "Error not found results"
+      },
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "content-length": "35",
+        "content-type": "application/json"
+      },
+      "config": {
+        "url": "/radiocamara/",
+        "method": "get",
+        "headers": {
+          "Accept": "application/json",
+        },
+        "baseURL": "http://localhost:8000/api/",
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1
+      },
+      "request": {}
+    }
+      
+      await mockInstance.onGet(API_TV_CAMARA_URL).replyOnce(200,tvMockData)
+              
+      const wrapper = await mount(<TvCamaraContent sessionId={1}/>);
 
-        await mockInstance.onPost('/saved-contents/').reply(201,{mockedResponseData})
-                
-        const  wrapper = mount(<TvCamaraContent />);
-        const button = wrapper.find("#saveButtonTv560001").at(0);
-        //console.log(button.debug())
-        button.simulate('click')
-
-        done();
-    });
-
-    afterAll(() => {
+      setImmediate(() => {
+        wrapper.update();
+        expect(wrapper.text()).toMatch(/Erro/i)
         mockInstance.restore();
-    });
-
-
+        done();
+     })
+  });
 });
-*/
