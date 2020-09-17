@@ -1,16 +1,13 @@
 import axiosInstance from '../../../../auth/axiosApi'
+import {API_VIDEOS_SNIPPETS} from '../../../../api_urls'
 
 
-export default async fetchDataAgenciaCamara => {
-    /*
-    //TODO - Change api call and uncomment line at agenciaCamara.js
-    const response = await axiosInstance.get("/sessions/", {
-    });
-    console.log("CODE: " +response.status)
+export default async function fetchSessionVideos(sessionIdDadosAbertos){
+    const response = await axiosInstance.get((API_VIDEOS_SNIPPETS+sessionIdDadosAbertos), {});
+    //console.log(response)
     if(response.status===200){
         return response.data;
     }else{
         return null;
     }
-*/
-};
+}

@@ -13,40 +13,9 @@ import TextField from '@material-ui/core/TextField';
 import ButtonBase from '@material-ui/core/ButtonBase'
 
 import VideoSnippetModal from './VideoSnippetModal/videoSnippetModal'
-
-function SnippetCard(props){
-  const deputado = props.data.author
-  const siglaPartidaria = props.data.legend
-
-  const [open, setOpen] = React.useState(false);
+import SnippetCard from './videoSnippetCard'
 
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (value) => {
-    setOpen(false);
-  };
-
-  return (
-    <Box width="100%" height="100%" marginX={0.3} marginTop={0.5}>
-      <ButtonBase  onClick={handleClickOpen}>
-        <div>
-        <img style={{width:"100%", height:"6vh"}} id="image" src={props.data.thumbnail} alt="Thumbanail trecho"></img>
-        <Box fontSize={10}>
-          <Typography>{deputado}</Typography>
-        </Box>
-        <Box fontSize={8}>
-          <Typography variant="body2">{siglaPartidaria}</Typography>
-        </Box>
-        </div>
-        </ButtonBase>
-      <VideoSnippetModal open={open} onClose={handleClose} data={props.data} />
-
-    </Box>
-  );
-}
 
 export default class VideoSnippets extends React.Component {
     
@@ -62,7 +31,8 @@ export default class VideoSnippets extends React.Component {
 
   componentDidMount(){
       this._isMounted = true;
-
+      console.log("oi")
+      console.log(this.props)
       if(this._isMounted){
           this.fetchSessionsList();
       }
@@ -113,7 +83,7 @@ export default class VideoSnippets extends React.Component {
   }
 
   snippetsFilterOnChange = (event) => {
-    console.log(event.target.value)
+    //console.log(event.target.value)
     this.setState({
       searchField: event.target.value
     })

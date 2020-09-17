@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Typography, Paper } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
+
 import ExternalContentPanel from './externalContentPanel';
 import Youtube from './Youtube/index'
 import Button from '@material-ui/core/Button';
@@ -9,7 +10,8 @@ import {checkIfSessionsAlreadyExistsInSILEG,updateSession} from './FetchFunction
 import moment from 'moment'
 import CustomizedSnackbars from '../../Snackbar/index'
 
-const useStyles = makeStyles((theme) => ({
+
+const useStyles = theme => ({
   body: {
     padding: '0 1.5rem'
   },
@@ -66,72 +68,84 @@ const useStyles = makeStyles((theme) => ({
   videoWrapper:{
     margin: '1rem 0 0 0',
   }
-}));
-
-export default function Content(props) {
-  const sessionInfo = props.sessionInfo;
-  const sessionId = props.sessionID;
-  //console.log(props)
-
-  if(sessionInfo!== undefined){
-    var sessionIdDadosAbertos = sessionInfo.id_session_dados_abertos;
-  }
+});
   
-console.log(sessionInfo)
-  const classes = useStyles();
+class Content extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = { 
+        sessionInfo: this.props.sessionInfo,
+        sessionId: this.props.sessionID,
+        sessionIdDadosAbertos:this.props.sessionInfo.id_session_dados_abertos===undefined ? null : this.props.sessionInfo.id_session_dados_abertos,
+        snackbar:{
+          open:false,
+          message:"",
+          type:""
+        }
+    };
+    this.handleSynchronize=this.handleSynchronize.bind(this);
+  }
 
-  async function handleSynchronize(){
-    let sessionsScheduleDadosAbertos = await checkIfSessionsAlreadyExistsInSILEG((moment(sessionInfo.date).format('YYYY-MM-DD')));
+
+  async handleSynchronize(){
+    let sessionsScheduleDadosAbertos = await checkIfSessionsAlreadyExistsInSILEG((moment(this.state.sessionInfo.date).format('YYYY-MM-DD')));
 
     if(sessionsScheduleDadosAbertos.dados[0] ){
       // Session is registered at sileg, so update the information of dashboard
-      const dashboardInfoUpdated = await updateSession(sessionId,sessionsScheduleDadosAbertos.dados[0].id)
+      const dashboardInfoUpdated = await updateSession(this.state.sessionId,sessionsScheduleDadosAbertos.dados[0].id)
   
       if(dashboardInfoUpdated){
-        window.alert("Session ID atualizado com sucesso :D");
-        window.location.reload(false);
+        this.setState({ snackbar:{open:true, message:"O ID da sessão foi sincronizado com sucesso.", type:"success"}});
+        //window.location.reload(false);
       }else{
-        window.alert("Falhou :(");
+        //window.alert("Falhou :(");
+        this.setState({ snackbar:{open:true, message:"Não foi possível sincronizar o ID da sessão.", type:"error"}});
       }
     }
   }
-  
-  return (
-		<Grid container className={classes.body}>
-      <Grid container className={classes.header}>
-        <Grid item className={classes.headerTitle}>
-          <Typography variant="h3" className={classes.title}>Conteúdos</Typography>
-        </Grid>
-        <Grid item className={classes.headerMenu}>
 
-          {!sessionIdDadosAbertos &&
-            <Button onClick={handleSynchronize} className={classes.headerMenuItem}>Sincronizar</Button>
-          }
-            <Typography variant="h5" className={classes.headerMenuItem}> Ver Acompanhe </Typography>
+  render(){
+    const { classes } = this.props;
+    return (
+      <Grid container className={classes.body}>
+         <CustomizedSnackbars open={this.state.snackbar.open} message={this.state.snackbar.message} type={this.state.snackbar.type}></CustomizedSnackbars>
+        <Grid container className={classes.header}>
+          <Grid item className={classes.headerTitle}>
+            <Typography variant="h3" className={classes.title}>Conteúdos</Typography>
+          </Grid>
+          <Grid item className={classes.headerMenu}>
+  
+            {!this.state.sessionIdDadosAbertos &&
+              <Button onClick={this.handleSynchronize} className={classes.headerMenuItem}>Sincronizar</Button>
+            }
+              <Typography variant="h5" className={classes.headerMenuItem}> Ver Acompanhe </Typography>
+          </Grid>
+        </Grid>
+        <Grid container className={classes.firstRow} spacing={2}>
+            <Grid item md={7}>
+              <Typography variant="h5"> Transmissão </Typography>
+              <div className={classes.card}>
+                {this.state.sessionInfo.id_session_dados_abertos &&
+                  <Youtube sessionIdDadosAbertos={this.state.sessionInfo.id_session_dados_abertos}></Youtube>
+                }
+                </div> 
+            </Grid>
+            <Grid item md={5}>
+              <Typography variant="h5"> Plenário </Typography>
+              <Paper elevation={0} className={classes.card}> 
+                
+              </Paper>
+            </Grid>
+        </Grid>
+        <Grid container className={classes.secondRow}>
+          <VideoSnippets sessionId={this.state.sessionId} sessionInfo={this.state.sessionInfo}></VideoSnippets>
+        </Grid>
+        <Grid container className={classes.thirdRow}>
+          <ExternalContentPanel sessionId={this.state.sessionId}></ExternalContentPanel>
         </Grid>
       </Grid>
-      <Grid container className={classes.firstRow} spacing={2}>
-          <Grid item md={7}>
-            <Typography variant="h5"> Transmissão </Typography>
-            <div className={classes.card}>
-              {sessionInfo.id_session_dados_abertos &&
-                <Youtube sessionIdDadosAbertos={sessionInfo.id_session_dados_abertos}></Youtube>
-              }
-              </div> 
-          </Grid>
-          <Grid item md={5}>
-            <Typography variant="h5"> Plenário </Typography>
-            <Paper elevation={0} className={classes.card}> 
-              
-            </Paper>
-          </Grid>
-      </Grid>
-      <Grid container className={classes.secondRow}>
-        <VideoSnippets></VideoSnippets>
-      </Grid>
-      <Grid container className={classes.thirdRow}>
-        <ExternalContentPanel sessionId={sessionId}></ExternalContentPanel>
-      </Grid>
-		</Grid>
-  )
+    )
+  }
 }
+
+export default withStyles(useStyles)(Content)
