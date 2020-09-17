@@ -4,9 +4,9 @@ module.exports = Object.freeze({
     APPLICATION_NAME: "Estudio",
 
     //APPLICATION URL'S
-        APPLICATION_FRONT_BASE_URL: "www.teste.com",  //APPLICATION FRONT BASE URL  
-        //APPLICATION_SERVER_API_BASE_URL: 'http://localhost:8000/api/', //APPLICATION API SERVER BASE URL
-        APPLICATION_SERVER_API_BASE_URL: 'https://acompanhe.camara.leg.br/server/api/',
+        APPLICATION_FRONT_BASE_URL: "www.teste.com",  //APPLICATION FRONT BASE URL
+        APPLICATION_SERVER_API_BASE_URL: 'http://localhost:8000/api/', //APPLICATION API SERVER BASE URL
+        // APPLICATION_SERVER_API_BASE_URL: 'https://acompanhe.camara.leg.br/server/api/',
         
     //ROUTES
         INITIAL_PAGE_URL: '/', //Application Login and Initial page
@@ -30,7 +30,7 @@ module.exports = Object.freeze({
         //NEWS
             API_NEWS_URL:'/news​/news_list', //Obtain news list
             API_NEWS_SEARCH_URL:'/news-search/', //Obtain specific news using parameters
-        
+
         //PUBLICATIONS
             API_PUBLICATIONS_URL:'/publications/',
 

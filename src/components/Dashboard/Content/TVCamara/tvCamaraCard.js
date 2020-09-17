@@ -62,9 +62,9 @@ export default class TVCard extends React.Component{
                               <Typography style={{ color: "gray" }} variant="body1">Vídeo</Typography>
                             </Grid>
                             <Grid item xs={1}>
-                              <CopyToClipboard text={info.url}>
-                                <IconButton className={classes.margin} size="small">
-                                  <FileCopyTwoToneIcon text={info.url} fontSize="inherit" />
+                              <CopyToClipboard text={this.state.info.url}>
+                                <IconButton  size="small">
+                                  <FileCopyTwoToneIcon text={this.state.info.url} fontSize="inherit" />
                                 </IconButton>
                               </CopyToClipboard>
 

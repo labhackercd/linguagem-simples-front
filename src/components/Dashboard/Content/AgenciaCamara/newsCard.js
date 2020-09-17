@@ -64,9 +64,9 @@ export default class NewsCard extends React.Component{
                                 </Grid>
                                 <Grid item xs={2}>
                                     <Box display="flex" justifyContent="flex-end">
-                                      <CopyToClipboard text={info.url}>
-                                        <IconButton className={classes.margin} size="small">
-                                          <FileCopyTwoToneIcon text={info.url} fontSize="inherit" />
+                                      <CopyToClipboard text={this.state.info.url}>
+                                        <IconButton size="small">
+                                          <FileCopyTwoToneIcon text={this.state.info.url} fontSize="inherit" />
                                         </IconButton>
                                       </CopyToClipboard>
                                         {this.state.isDataFromSavedContentsComponent &&

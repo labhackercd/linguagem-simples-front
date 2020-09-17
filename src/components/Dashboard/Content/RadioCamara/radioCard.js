@@ -45,12 +45,6 @@ export default class RadioCard extends React.Component{
         this.setState({openSnackBar:true, snackbar:{open:true, message:"Erro ao salvar conteúdo!", type:"error"}});
     }
   }
-
-    function copyURLToTimeline(e) {
-      let el = info.url.select()
-      document.execCommand('copy');
-    }
-
   render(){
 
     return (
@@ -71,7 +65,7 @@ export default class RadioCard extends React.Component{
                               </Grid>
                               <Grid item xs={1}>
                               <CopyToClipboard text={this.state.info.url}>
-                                <IconButton className={classes.margin} size="small">
+                                <IconButton size="small">
                                   <FileCopyTwoToneIcon text={this.state.info.url} fontSize="inherit" />
                                 </IconButton>
                               </CopyToClipboard>
