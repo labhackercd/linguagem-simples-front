@@ -24,13 +24,10 @@ describe('Test if Timeline loads internal components', () => {
     const header = wrapper.containsMatchingElement(<Header />);
     const statusSelection = wrapper.containsMatchingElement(<StatusSelection />);
     const newUpdate = wrapper.containsMatchingElement(<NewUpdate />);
-    const feed = wrapper.containsMatchingElement(<Feed />);
     const summaryBox = wrapper.containsMatchingElement(<SummaryBox />);
-
     expect(header).toBeTruthy()
     expect(statusSelection).toBeTruthy()
     expect(newUpdate).toBeTruthy()
-    expect(feed).toBeTruthy()
     expect(summaryBox).toBeTruthy()
     wrapper.unmount();
     })

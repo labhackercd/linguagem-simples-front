@@ -4,12 +4,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper'
-import FileCopyTwoToneIcon from '@material-ui/icons/FileCopyTwoTone';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import moment from 'moment';
 import postSaveContent from '../FetchFunctions/postSaveContent'
 import TVIcon from './assets/tv_image.svg'
-import {CopyToClipboard} from 'react-copy-to-clipboard';
 import CustomizedSnackbars from '../../../Snackbar/index'
 
 
@@ -62,11 +61,9 @@ export default class TVCard extends React.Component{
                               <Typography style={{ color: "gray" }} variant="body1">Vídeo</Typography>
                             </Grid>
                             <Grid item xs={1}>
-                              <CopyToClipboard text={this.state.info.url}>
-                                <IconButton  size="small">
-                                  <FileCopyTwoToneIcon text={this.state.info.url} fontSize="inherit" />
-                                </IconButton>
-                              </CopyToClipboard>
+                              <IconButton aria-label="delete" size="small">
+                                  <AddCircleOutlineIcon fontSize="inherit" />
+                              </IconButton>
 
                               {this.state.isDataFromSavedContentsComponent &&
                                   <IconButton id={"saveButtonTv"+this.state.info.id} aria-label="delete" size="small" onClick={this.handleSaveContent}>
