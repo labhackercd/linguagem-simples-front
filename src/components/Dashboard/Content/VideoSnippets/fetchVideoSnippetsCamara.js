@@ -4,7 +4,7 @@ import {API_VIDEOS_SNIPPETS} from '../../../../api_urls'
 
 export default async function fetchSessionVideos(sessionIdDadosAbertos){
     const response = await axiosInstance.get((API_VIDEOS_SNIPPETS+sessionIdDadosAbertos), {});
-    //console.log(response)
+
     if(response.status===200){
         return response.data;
     }else{

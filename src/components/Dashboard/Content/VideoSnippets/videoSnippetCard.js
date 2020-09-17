@@ -22,7 +22,7 @@ export default function SnippetCard(props){
 
   return (
     <Box width="100%" height="100%" marginX={0.3} marginTop={0.5}>
-      <ButtonBase  onClick={handleClickOpen}>
+      <ButtonBase onClick={handleClickOpen} id={"openModal"}>
         <div>
             <img style={{width:"100%", height:"6vh"}} id="image" src={props.data.thumbnail} alt="Thumbanail trecho"></img>
             <Box fontSize={10}>
