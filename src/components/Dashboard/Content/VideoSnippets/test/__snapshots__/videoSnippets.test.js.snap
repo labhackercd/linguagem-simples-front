@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing VideoSnippet Component Should render the VideoSnippets section and match snapshot 1`] = `
+<VideoSnippets
+  sessionId={1}
+  sessionInfo={
+    Object {
+      "author": Object {
+        "email": "jpnsoares@email.com",
+        "first_name": "",
+        "id": 1,
+        "is_superuser": true,
+        "last_name": "",
+        "profile": "editor",
+        "username": "jpnsoares",
+      },
+      "date": "2020-09-01",
+      "enable": true,
+      "id": 1,
+      "id_session_dados_abertos": "59895",
+      "location": "plenary",
+      "resume": "",
+      "situation_session": "pre_session",
+      "type_session": "virtual",
+    }
+  }
+>
+  <Styled(MuiBox)
+    alignItems="center"
+    display="flex"
+    justifyContent="center"
+    width="100%"
+  >
+    <div
+      className="MuiBox-root MuiBox-root-1"
+    >
+      <WithStyles(ForwardRef(Typography))>
+        <ForwardRef(Typography)
+          classes={
+            Object {
+              "alignCenter": "MuiTypography-alignCenter",
+              "alignJustify": "MuiTypography-alignJustify",
+              "alignLeft": "MuiTypography-alignLeft",
+              "alignRight": "MuiTypography-alignRight",
+              "body1": "MuiTypography-body1",
+              "body2": "MuiTypography-body2",
+              "button": "MuiTypography-button",
+              "caption": "MuiTypography-caption",
+              "colorError": "MuiTypography-colorError",
+              "colorInherit": "MuiTypography-colorInherit",
+              "colorPrimary": "MuiTypography-colorPrimary",
+              "colorSecondary": "MuiTypography-colorSecondary",
+              "colorTextPrimary": "MuiTypography-colorTextPrimary",
+              "colorTextSecondary": "MuiTypography-colorTextSecondary",
+              "displayBlock": "MuiTypography-displayBlock",
+              "displayInline": "MuiTypography-displayInline",
+              "gutterBottom": "MuiTypography-gutterBottom",
+              "h1": "MuiTypography-h1",
+              "h2": "MuiTypography-h2",
+              "h3": "MuiTypography-h3",
+              "h4": "MuiTypography-h4",
+              "h5": "MuiTypography-h5",
+              "h6": "MuiTypography-h6",
+              "noWrap": "MuiTypography-noWrap",
+              "overline": "MuiTypography-overline",
+              "paragraph": "MuiTypography-paragraph",
+              "root": "MuiTypography-root",
+              "srOnly": "MuiTypography-srOnly",
+              "subtitle1": "MuiTypography-subtitle1",
+              "subtitle2": "MuiTypography-subtitle2",
+            }
+          }
+        >
+          <p
+            className="MuiTypography-root MuiTypography-body1"
+          >
+            A transmissão ainda não foi iniciada.
+          </p>
+        </ForwardRef(Typography)>
+      </WithStyles(ForwardRef(Typography))>
+    </div>
+  </Styled(MuiBox)>
+</VideoSnippets>
+`;
+
+exports[`Testing VideoSnippetCard Component should render the Card component and match snapshot  1`] = `
+<Styled(MuiBox)
+  height="100%"
+  marginTop={0.5}
+  marginX={0.3}
+  width="100%"
+>
+  <WithStyles(ForwardRef(ButtonBase))
+    id="openModal"
+    onClick={[Function]}
+  >
+    <div>
+      <img
+        alt="Thumbanail trecho"
+        id="image"
+        src="https://www.camara.leg.br/internet/deputado/bandep/pagina_do_deputado/160600.jpg"
+        style={
+          Object {
+            "height": "6vh",
+            "width": "100%",
+          }
+        }
+      />
+      <Styled(MuiBox)
+        fontSize={10}
+      >
+        <WithStyles(ForwardRef(Typography))>
+          Arthur Oliveira Maia
+        </WithStyles(ForwardRef(Typography))>
+      </Styled(MuiBox)>
+      <Styled(MuiBox)
+        fontSize={8}
+      >
+        <WithStyles(ForwardRef(Typography))
+          variant="body2"
+        >
+          Deputado DEM-BA
+        </WithStyles(ForwardRef(Typography))>
+      </Styled(MuiBox)>
+    </div>
+  </WithStyles(ForwardRef(ButtonBase))>
+  <VideoSnippetModal
+    data={
+      Object {
+        "author": "Arthur Oliveira Maia",
+        "duration": "duração - 00:02:04",
+        "legend": "Deputado DEM-BA",
+        "schedule": "horário - 15h57'20",
+        "thumbnail": "https://www.camara.leg.br/internet/deputado/bandep/pagina_do_deputado/160600.jpg",
+        "url": "https://www.camara.leg.br/evento-legislativo/59733/sessao/523169/video-trecho/1594234640207",
+      }
+    }
+    onClose={[Function]}
+    open={false}
+  />
+</Styled(MuiBox)>
+`;

@@ -10,13 +10,6 @@ import moment from 'moment';
 import postSaveContent from '../FetchFunctions/postSaveContent'
 import CustomizedSnackbars from '../../../Snackbar/index'
 
-const useStyles = makeStyles((theme) => ({
-      newsCard:{
-        background:'#F4F4F4',
-      },
-}));
-
-
 export default class NewsCard extends React.Component{
     constructor(props){
       super(props);

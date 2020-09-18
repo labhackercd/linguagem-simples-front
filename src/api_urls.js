@@ -51,4 +51,7 @@ module.exports = Object.freeze({
         //TV CAMARA
             API_TV_CAMARA_URL:'/tvcamara/',
             API_TV_CAMARA_SEARCH_URL:'/tvcamara-search/',
+
+        //VIDEOS
+            API_VIDEOS_SNIPPETS:'/videos-session/'
   });
