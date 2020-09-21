@@ -1,9 +1,8 @@
 import React from 'react';
-import { render, screen, getByPlaceholderText } from '@testing-library/react';
-import { mount, shallow } from 'enzyme';
+import { render} from '@testing-library/react';
+import { mount } from 'enzyme';
 import LoginScreen from '../index';
 import axiosInstance from '../../../auth/axiosApi'
-import {responseData} from './auxTestResponse'
 import MockAdapter from "axios-mock-adapter"
 import {TOKEN_OBTAIN_URL} from '../../../api_urls'
 import { BrowserRouter as Router } from 'react-router-dom';
