@@ -8,7 +8,7 @@ import axiosInstance from './../../auth/axiosApi.js'
 import {ESTUDIO_PAGE_URL,APPLICATION_RESET_PASSWORD_URL} from './../../api_urls';
 import sendLoginRequest from './sendLoginRequest'
 import Alert from '@material-ui/lab/Alert';
-
+import { useHistory } from "react-router-dom";
 import EstudioAcompanheIcon from './../../assets/estudio_acompanhe_logo.svg';
 import CamaraLogoIcon from './../../assets/camara_logo.svg';
 import PrototipoIcon from './../../assets/interacao_prototipo.png';
@@ -96,12 +96,13 @@ class LoginScreen extends React.Component {
     };
     this.loginMethod = this.loginMethod.bind(this);
   }
+ 
 
   async loginMethod(event){
     event.preventDefault();
-
+    //const history = useHistory();
     try{
-      console.log("chamou")
+      //console.log("chamou")
       const result = await sendLoginRequest(this.state.username,this.state.password );
       //console.log(result.status)
       if(result.status===200){
@@ -109,11 +110,12 @@ class LoginScreen extends React.Component {
         localStorage.setItem('access_token', result.data.access);
         localStorage.setItem('refresh_token', result.data.refresh);
         this.setState({succesfullLogin:true})
+        
+
       }else{
         this.setState({error:{status:true, message:"Erro desconhecido. Tente novamente em alguns minutos."}})
       }
     }catch(e){
-
       if(e.name === "TypeError"){
         this.setState({error:{status:true, message:"Erro no servidor. Tente novamente em alguns minutos."}})
       }else if(e.name === "Error"){
@@ -147,10 +149,13 @@ class LoginScreen extends React.Component {
   render(){
     const { classes } = this.props;
 
+    if(this.state.succesfullLogin) {
+      return <Redirect to="/login/" />
+    }
       return (
         <div>
           {this.state.succesfullLogin ?
-            <Redirect to={ESTUDIO_PAGE_URL} />
+            <div>oi</div>
             :
             <Grid container className={classes.body}>
               <div className={classes.loginArea}>

@@ -6,6 +6,7 @@ import axiosInstance from '../../../auth/axiosApi'
 import {responseData} from './auxTestResponse'
 import MockAdapter from "axios-mock-adapter"
 import {TOKEN_OBTAIN_URL} from '../../../api_urls'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 describe('Test Fields', () => {
   test('renders forgot password link', () => {
@@ -63,17 +64,17 @@ describe('Test Login Lifecycle', () => {
 
       await mockInstance.onPost(TOKEN_OBTAIN_URL).replyOnce(200,data)
       
-      const  wrapper = mount(<LoginScreen />);
-      console.log(wrapper.debug())
+      const  wrapper = mount(<Router><LoginScreen/></Router>);
+      //console.log(wrapper.debug())
       const usernameField = wrapper.find("input").at(0);
-      console.log(usernameField.debug())
+      //console.log(usernameField.debug())
       usernameField.instance().value = "LABHacker";
       usernameField.simulate("change");
       const passwordField = wrapper.find("input").at(1);
       passwordField.instance().value = "LABHacker";
       passwordField.simulate("change");
       const button = wrapper.find("button").at(0);
-      console.log(button.debug())
+      //console.log(button.debug())
 
       button.simulate('click')
       //expect(localStorage.setItem).toHaveBeenCalled();
@@ -90,17 +91,17 @@ describe('Test Login Lifecycle', () => {
 
     await mockInstance.onPost(TOKEN_OBTAIN_URL).replyOnce(201,data)
     
-    const  wrapper = mount(<LoginScreen />);
-    console.log(wrapper.debug())
+    const  wrapper = mount(<Router><LoginScreen/></Router>);
+    //console.log(wrapper.debug())
     const usernameField = wrapper.find("input").at(0);
-    console.log(usernameField.debug())
+    //console.log(usernameField.debug())
     usernameField.instance().value = "LABHacker";
     usernameField.simulate("change");
     const passwordField = wrapper.find("input").at(1);
     passwordField.instance().value = "LABHacker";
     passwordField.simulate("change");
     const button = wrapper.find("button").at(0);
-    console.log(button.debug())
+    //console.log(button.debug())
 
     button.simulate('click')
     //expect(localStorage.setItem).toHaveBeenCalled();
@@ -116,17 +117,17 @@ describe('Test Login Lifecycle', () => {
 
     await mockInstance.onPost(TOKEN_OBTAIN_URL).replyOnce(401,data)
     
-    const  wrapper = mount(<LoginScreen />);
-    console.log(wrapper.debug())
+    const  wrapper = mount(<Router><LoginScreen/></Router>);
+    //console.log(wrapper.debug())
     const usernameField = wrapper.find("input").at(0);
-    console.log(usernameField.debug())
+    //console.log(usernameField.debug())
     usernameField.instance().value = "LABHacker";
     usernameField.simulate("change");
     const passwordField = wrapper.find("input").at(1);
     passwordField.instance().value = "LABHacker";
     passwordField.simulate("change");
     const button = wrapper.find("button").at(0);
-    console.log(button.debug())
+    //console.log(button.debug())
 
     button.simulate('click')
     //expect(localStorage.setItem).toHaveBeenCalled();
@@ -140,22 +141,24 @@ describe('Test Login Lifecycle', () => {
       "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk3MjYyMjg3LCJqdGkiOiJlN2Q1YThlYTI2ODQ0MzI4YmM4MzAyOWUyYjIwMGFmNSIsInVzZXJfaWQiOjEsInVzZXJuYW1lIjoianBuc29hcmVzIn0.f-iNNn7cOZwOSHQc61RL2lXBjtuSUWdIp1vPTU6T9gc"
     };
     
-    const  wrapper = mount(<LoginScreen />);
-    console.log(wrapper.debug())
+    const  wrapper = mount(<Router><LoginScreen/></Router>);
+    //console.log(wrapper.debug())
     const usernameField = wrapper.find("input").at(0);
-    console.log(usernameField.debug())
+    //console.log(usernameField.debug())
     usernameField.instance().value = "LABHacker";
     usernameField.simulate("change");
     const passwordField = wrapper.find("input").at(1);
     passwordField.instance().value = "LABHacker";
     passwordField.simulate("change");
     const button = wrapper.find("button").at(0);
-    console.log(button.debug())
+    //console.log(button.debug())
 
     button.simulate('click')
     //expect(localStorage.setItem).toHaveBeenCalled();
   });
   
+
+
 });
 
 
