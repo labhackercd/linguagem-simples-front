@@ -9,7 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
 import { withStyles } from "@material-ui/core/styles";
 
-import fetchData from './fetchData'
+import { fetchData, changeBroadcastingStatus } from './APIHandler';
 import { withRouter } from "react-router";
 
 const useStyles = theme => ({
@@ -39,7 +39,8 @@ class Dashboard extends React.Component {
     this.state = {
       dashboardId: this.props.match.params.dashboardId,
       sessionInfo: '',
-      dataLoaded: false
+      dataLoaded: false,
+      broadcastingOnline: false,
     };
   }
 
@@ -47,8 +48,10 @@ class Dashboard extends React.Component {
   fetchSessionInfo = async term => {
     try{
       const response = await fetchData(this.props.match.params.dashboardId);
+      console.log(response)
       this.setState({sessionInfo:response.data});
       this.setState({dataLoaded:true});
+      this.setState({broadcastingOnline: response.data.enable});
       //console.log("Session info", this.state.sessionInfo)
     }catch(e){
       console.log("erro ao obter informações da sessão")
@@ -64,6 +67,15 @@ class Dashboard extends React.Component {
       }
   }
 
+  setBroadcastingStatus = async (broadcastingStatus) => {
+    try {
+      let dashboardInfo = this.state.sessionInfo;
+      const response = await changeBroadcastingStatus(dashboardInfo, broadcastingStatus);
+      this.setState({broadcastingOnline: response.data.enable});
+    } catch(e) {
+      console.log("não foi possível inicializar ou finalizar a transmissão");
+    }
+  }
 
   render(){
     const classes = useStyles();
@@ -79,7 +91,10 @@ class Dashboard extends React.Component {
 					<Sidebar></Sidebar>
 				</Grid>
 				<Grid item md={4} style={{	backgroundColor: "#FFF"}}>
-          <Timeline sessionID={this.state.dashboardId} sessionInfo={this.state.sessionInfo}></Timeline>
+          <Timeline sessionID={this.state.dashboardId}
+                    broadcastingOnline={this.state.broadcastingOnline}
+                    setBroadcastingStatus={this.setBroadcastingStatus}
+                    sessionInfo={this.state.sessionInfo}></Timeline>
 				</Grid>
 				<Grid item md={7} style={{backgroundColor: "#F2F2F2"}}>
           <Content sessionID={this.state.dashboardId} sessionInfo={this.state.sessionInfo}></Content>
