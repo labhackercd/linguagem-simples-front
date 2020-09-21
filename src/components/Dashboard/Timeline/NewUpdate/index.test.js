@@ -1,8 +1,8 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import NewUpdate from './index';
-import {shallow } from "enzyme/build";
+import {shallow, mount } from "enzyme/build";
 import ReactDOM from 'react-dom';
 
 it("snapshot should not have differences", () => {
@@ -17,9 +17,11 @@ test('Test if NewUpdate renders without crash', () => {
     ReactDOM.unmountComponentAtNode(div)
 });
 
-
-test('does status selection button exists', () => {
-    const { getByText } = render(<NewUpdate />);
-    const textAreaLabel = getByText('Nova atualização');
-    expect(textAreaLabel).toBeInTheDocument();
+test('does internal elements exists', () => {
+    const wrapper = mount(<NewUpdate/>);
+    const button = wrapper.find("#updateSubmitButton").at(0);
+    const textField = wrapper.find("#newUpdateTextField").at(0);
+    expect(button).not.toBeNull();
+    expect(textField).not.toBeNull();
+    wrapper.unmount();
 });

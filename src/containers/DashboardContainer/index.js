@@ -32,11 +32,11 @@ const useStyles = theme => ({
   	backgroundColor: "#F2F2F2",
   }
 });
-  
+
 class Dashboard extends React.Component {
   constructor(props){
     super(props);
-    this.state = { 
+    this.state = {
       dashboardId: this.props.match.params.dashboardId,
       sessionInfo: '',
       dataLoaded: false
@@ -52,13 +52,13 @@ class Dashboard extends React.Component {
       //console.log("Session info", this.state.sessionInfo)
     }catch(e){
       console.log("erro ao obter informações da sessão")
-    }  
+    }
   };
 
   componentDidMount(){
       this._isMounted = true;
       //console.log(this.props.match.params.dashboardId);
-    
+
       if(this._isMounted){
           this.fetchSessionInfo();
       }

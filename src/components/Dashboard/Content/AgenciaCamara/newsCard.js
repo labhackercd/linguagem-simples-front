@@ -4,16 +4,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper'
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import FileCopyTwoToneIcon from '@material-ui/icons/FileCopyTwoTone';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import moment from 'moment';
 import postSaveContent from '../FetchFunctions/postSaveContent'
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 import CustomizedSnackbars from '../../../Snackbar/index'
 
 export default class NewsCard extends React.Component{
     constructor(props){
       super(props);
-      this.state = { 
+      this.state = {
           info : {
             id:this.props.info.id,
             url:this.props.info.url,
@@ -29,18 +30,18 @@ export default class NewsCard extends React.Component{
       };
       this.handleSaveContent=this.handleSaveContent.bind(this);
     }
-    
-  
+
+
     async handleSaveContent(){
       const hasBeenSaved = await postSaveContent("news", this.state.info, this.props.sessionId);
-  
+
       if(hasBeenSaved){
           this.setState({openSnackBar:true, snackbar:{open:true, message:"Conteúdo da agência salvo com sucesso!", type:"success"}});
       }else{
           this.setState({openSnackBar:true, snackbar:{open:true, message:"Erro ao salvar conteúdo da agência!", type:"error"}});
       }
     }
-  
+
     render(){
 
       return (
@@ -56,13 +57,15 @@ export default class NewsCard extends React.Component{
                                 </Grid>
                                 <Grid item xs={2}>
                                     <Box display="flex" justifyContent="flex-end">
-                                        <IconButton aria-label="delete" size="small">
-                                            <AddCircleOutlineIcon fontSize="inherit" />
-                                        </IconButton>           
+                                      <CopyToClipboard text={this.state.info.url}>
+                                        <IconButton size="small">
+                                          <FileCopyTwoToneIcon text={this.state.info.url} fontSize="inherit" />
+                                        </IconButton>
+                                      </CopyToClipboard>
                                         {this.state.isDataFromSavedContentsComponent &&
                                             <IconButton id={"saveButtonAgencia"+this.state.info.id} aria-label="delete" size="small" onClick={this.handleSaveContent}>
-                                                <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} /> 
-                                            </IconButton>      
+                                                <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} />
+                                            </IconButton>
                                         }
                                     </Box>
                                 </Grid>
@@ -90,5 +93,5 @@ export default class NewsCard extends React.Component{
         </Box>
     );
     }
-   
+
   }

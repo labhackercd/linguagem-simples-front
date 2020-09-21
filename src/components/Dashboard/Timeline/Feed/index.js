@@ -5,6 +5,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import {TwitterTweetEmbed} from 'react-twitter-embed';
 import MoreOptionsIcon from './../../../../assets/more_options_icon.svg';
 import { parseHourMinute } from './../../../Util';
+import { ReactTinyLink } from 'react-tiny-link';
 
 const useStyles = makeStyles((theme) => ({
   updatesArea: {
@@ -51,7 +52,11 @@ export default function Feed(props) {
                   </Grid>
                   <Grid container className={classes.timelinePost}>
                     <div style={{width: '100%'}}>
-                      <Typography style={{color: '#666', alignSelf: 'flex-start'}} variant="body1">{update.content}</Typography>
+                      <Typography style={{color: '#666', alignSelf: 'flex-start'}} variant="body1">
+												{update.updateTextArea ?
+												 update.updateTextArea :
+												 ''
+												}</Typography>
                     </div>
                     <section style={{width: '100%'}}>
                       {update.tweet_id ?
@@ -61,6 +66,14 @@ export default function Feed(props) {
                         /> : '' }
                       {update.image ?
                        <img src={update.image}  style={{maxWidth: '100%', maxHeight: '30vh'}} alt="timeline post"/> : '' }
+											{update.customURL && !(props.URLInputIsTwitter) ?
+												<ReactTinyLink
+													cardSize="small"
+													showGraphic={true}
+													maxLine={2}
+													minLine={1}
+													url={update.customURL} /> :
+													''}
                     </section>
                   </Grid>
                 </Grid>

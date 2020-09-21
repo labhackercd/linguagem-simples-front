@@ -15,7 +15,7 @@ import CustomizedSnackbars from '../../../Snackbar/index'
 export default class TVCard extends React.Component{
   constructor(props){
     super(props);
-    this.state = { 
+    this.state = {
         info : {
           id:this.props.info.id,
           url:this.props.info.url,
@@ -31,7 +31,7 @@ export default class TVCard extends React.Component{
     };
     this.handleSaveContent=this.handleSaveContent.bind(this);
   }
-  
+
 
   async handleSaveContent(){
     const hasBeenSaved = await postSaveContent("tv", this.state.info, this.props.sessionId);
@@ -52,8 +52,8 @@ export default class TVCard extends React.Component{
                 <Grid item xs={12}>
                     <Box my={1} mr={1}>
                       <Grid container  alignItems="center" justify="center">
-                        <Grid item xs={2} align="center">                         
-                          <img src={TVIcon} alt="Ícone de Televisão"></img>  
+                        <Grid item xs={2} align="center">
+                          <img src={TVIcon} alt="Ícone de Televisão"></img>
                         </Grid>
                         <Grid item xs={10}>
                           <Grid container>
@@ -64,11 +64,11 @@ export default class TVCard extends React.Component{
                               <IconButton aria-label="delete" size="small">
                                   <AddCircleOutlineIcon fontSize="inherit" />
                               </IconButton>
-                                        
+
                               {this.state.isDataFromSavedContentsComponent &&
                                   <IconButton id={"saveButtonTv"+this.state.info.id} aria-label="delete" size="small" onClick={this.handleSaveContent}>
-                                  <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} /> 
-                                  </IconButton>   
+                                  <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} />
+                                  </IconButton>
                                 }
                             </Grid>
                             <Grid item xs={12}>
@@ -97,5 +97,5 @@ export default class TVCard extends React.Component{
       </Box>
     );
   }
- 
+
 }

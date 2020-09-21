@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
 	      DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import DividerIcon from './../../../../assets/divider.svg';
 import PictureUploadIcon from './../../../../assets/picture_upload.svg';
 import TwitterIcon from './../../../../assets/twitter_icon.svg';
-
+import LinkIcon from './../../../../assets/link.svg'
 const useStyles = makeStyles((theme) => ({
 	summaryBox: {
 		display: 'flex',
@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 export default function NewUpdate(props) {
   const classes = useStyles();
+
   return (
     <Grid container className={classes.summaryBox}>
       <Grid container className={classes.summaryHeader}>
@@ -65,7 +66,7 @@ export default function NewUpdate(props) {
           <Grid container >
               <form className={classes.textArea} noValidate autoComplete="off">
                 <TextField
-                  id="textfield"
+                  id="newUpdateTextField"
                   multiline
                   rows={4}
                   variant="outlined"
@@ -92,14 +93,17 @@ export default function NewUpdate(props) {
                   <img src={DividerIcon} alt="divider icon"/>
                 </div>
                 <div className={classes.subMenuItem}>
-                  <a href="/"><img src={PictureUploadIcon} alt="upload icon" onClick={(e) => props.openImageDialog(e, true)}/></a>
+                  <a href="/"><img src={PictureUploadIcon} alt="upload icon" onClick={(e) => props.handleDialogStateAction(e, true, "previewDialog", "InputImage")}/></a>
                 </div>
-                <div className={classes.subMenuItem}>
-                  <img src={TwitterIcon} alt="incorporate tweet icon" onClick={props.handleTwitterDialogOpen}/>
-                </div>
+								<div className={classes.subMenuItem}>
+									<a href="/"><img src={TwitterIcon} alt="incorporate twitter icon" onClick={(e) => props.handleDialogStateAction(e, true, "URLInputDialog", "URLInputIsTwitter")}/></a>
+								</div>
+								<div className={classes.subMenuItem}>
+									<a href="/"><img src={LinkIcon} alt="incorporate url icon" onClick={(e) => props.handleDialogStateAction(e, true, "URLInputDialog", "noAction")}/></a>
+								</div>
               </Grid>
               <Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
-                <Button className={classes.button} onClick={props.handleClick} variant="contained" disableElevation>
+                <Button id={"updateSubmitButton"}className={classes.button} onClick={props.handleClick} variant="contained" disableElevation>
                   Inserir
                 </Button>
               </Grid>

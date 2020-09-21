@@ -4,8 +4,7 @@ import SummaryBox from './SummaryBox';
 import Header from './Header';
 import StatusSelection from './StatusSelection';
 import NewUpdate from './NewUpdate';
-import TwitterDialog from './Dialogs/Twitter';
-import ImageUploadDialog from './Dialogs/ImageUpload';
+import URLInputDialog from './Dialogs/URLInput';
 import PreviewDialog from './Dialogs/Preview';
 import Feed from './Feed';
 import axiosInstance from '../../../auth/axiosApi.js';
@@ -35,9 +34,12 @@ class Timeline extends React.Component {
 				updateTextArea: '',
 				tweetURL: '',
 				tweetID: '',
-				twitterDialogOpen: false,
+				customURL: '',
 				previewModalOpen: false,
 				imageUploadModalOpen: false,
+				inputIsImage: false,
+				URLInputDialogOpen: false,
+				URLInputIsTwitter: false,
 				picture: false,
 				time: '19:00',
 				sessionID: props.sessionID,
@@ -46,30 +48,57 @@ class Timeline extends React.Component {
 
 		async componentDidMount() {
 			let updates = await fetchFeedUpdates(this.state.sessionID)
-			this.setState({updates: updates})
+			if (updates.length > 0) {
+				for (let i = 0; i < updates.length; i++) {
+					try {
+						let content = JSON.parse(updates[i].content)
+						if(content.updateTextArea) {
+							updates[i]['updateTextArea'] = content.updateTextArea
+						}
+						if(content.customURL) {
+							updates[i]['customURL'] = content.customURL
+						}
+					} catch (e) {
+						console.log(e)
+					}
+				}
+				this.setState({updates: updates})
+			} else {
+				this.setState({updates: ''})
+			}
 		}
 
 		dispatchPayload = () => {
-			let { updates, picture, updateTitle, updateTextArea, sessionID, tweetID } = this.state;
+			let { updates, picture, updateTitle, updateTextArea, sessionID, tweetID, customURL } = this.state;
 		  if (this.validatePayload()) {
 		    const formData = new FormData()
 		    if(picture) {
 		      formData.append('image', picture, picture.name)
 		    }
+				let content = {
+					"updateTextArea": updateTextArea,
+					"customURL": customURL,
+				}
+				formData.append('content', JSON.stringify(content))
 		    formData.append('title', updateTitle)
-		    formData.append('content', updateTextArea)
 		    formData.append('session', sessionID)
 		    formData.append('tweet_id', tweetID)
 		    axiosInstance.post(API_PUBLICATIONS_URL, formData, {
 		      headers: { 'Content-Type': 'multipart/form-data'},
 		    }).then(result => {
 		      if(result.status===201) {
-		          let data = result.data
+							let data = result.data
+							let content = JSON.parse(data.content)
 		          let newUpdate = {
 		            id: data.id,
-		            content: data.content,
 		            created: data.created
 		          }
+							if(content.updateTextArea) {
+								newUpdate['updateTextArea'] = content.updateTextArea
+							}
+							if(content.customURL) {
+								newUpdate['customURL'] = content.customURL
+							}
 		          if(data.tweet_id.length > 0) {
 		            newUpdate['tweet_id'] = data.tweet_id
 		          }
@@ -90,7 +119,6 @@ class Timeline extends React.Component {
 		    alert(errorMessages.lacks_payload_content)
 		  }
 		}
-
 		validatePayload = () => {
 			let contentExists = this.state.updateTextArea.length > 0
 			let tweetExists = this.state.tweetID.length > 0
@@ -101,40 +129,62 @@ class Timeline extends React.Component {
 			this.dispatchPayload()
 		}
 
+	 listenerExternalContent = (data) => {
+			return true
+		}
+
 		garbageCollection = () => {
 			this.setState({tweetID: ''})
+			this.setState({URLInputIsTwitter: false})
 			this.setState({picture: false})
 			this.setState({updateTitle: ''})
 			this.setState({updateTextArea: ''})
+			this.setState({customURL: ''})
+			this.setState({inputIsImage: false})
 		}
-		/* Twitter Dialog */
-		handleTwitterDialogOpen = () => {
-			this.setState({twitterDialogOpen: true})
-		}
-		handleTwitterDialogClose = () => {
-			this.setState({twitterDialogOpen: false})
-			let parseURL = this.state.tweetURL.split('/')
+		extractTweetIDFromURL = () => {
+			let parseURL = this.state.customURL.split('/')
 			let path = parseURL[parseURL.length-1]
 			let id = path.split('?')[0]
 			this.setState({tweetID: id})
-			this.setState({previewModalOpen: true})
 		}
-		setTweetURL = (url) => {
-			this.setState({tweetURL: url})
-		}
-		/* Image Dialog */
-		openImageDialog = (e, status) => {
-			e.preventDefault()
-			this.setState({imageUploadModalOpen: status})
-		}
-		closeImageDialogSendPayload = (e) => {
-			this.openImageDialog(e, false)
-			this.dispatchPayload()
+		setCustomURL = (url) => {
+			this.setState({customURL: url})
 		}
 		onImageDrop = (picture) => {
 			picture.length > 0 ?  this.setState({picture: picture[0]}) : this.setState({picture: false})
 		}
 		/* Preview Modal */
+		handleDialogStateAction = (e, state, dialog, action) => {
+			e.preventDefault()
+			switch(dialog) {
+				case "previewDialog":
+					this.setState({previewModalOpen: state})
+					this.garbageCollection()
+					break;
+				case "URLInputDialog":
+					this.setState({URLInputDialogOpen: state})
+					break;
+			}
+			switch(action) {
+				case "dispatchPayload":
+					this.dispatchPayload()
+					break;
+				case "previewModalOpen":
+					if(this.state.URLInputIsTwitter) {
+						this.extractTweetIDFromURL()
+						this.setState({customURL: ''}) // in order to avoid rendering customURL and Twitter components
+					}
+					this.setState({previewModalOpen: true})
+					break;
+				case "URLInputIsTwitter":
+					this.setState({URLInputIsTwitter: true})
+					break;
+				case "InputImage":
+					this.setState({inputIsImage: true})
+					break;
+			}
+		}
 		handlePreviewModalClose = () => {
 			this.dispatchPayload()
 			this.setState({previewModalOpen: false})
@@ -143,43 +193,49 @@ class Timeline extends React.Component {
 		handleChange = (e) => {
 			this.setState({updateTextArea: e.target.value})
 		}
-		startUpdateWithTitleFlow = (e,title) => {
-			title.length > 0 ? this.setState({updateTitle: title}) : this.setState({updateTitle: ''})
-			this.openImageDialog(e, true)
+		startUpdateWithTitleFlow = (e, title) => {
+			e.preventDefault()
+			this.setState({updateTitle: title}, this.handleDialogStateAction(e, true, "previewDialog", null))
 		}
-		setUpdateTitle = () => {
-			this.setState({updateTitle: ''})
+		setUpdateTitle = (e, title) => {
+			if (!title) {
+				this.setState({updateTitle: ''})
+			} else {
+				this.setState({updateTitle: title})
+			}
 		}
 		render() {
 			const { classes } = this.props;
 			return (
 				<div className={classes.body} testid="timeline">
-					<Header></Header>
-					<SummaryBox sessionID={this.state.sessionID}></SummaryBox>
-					<StatusSelection startUpdateWithTitleFlow={this.startUpdateWithTitleFlow}></StatusSelection>
-					<NewUpdate handleClick={this.handleClick}
-										 handleTwitterDialogOpen={this.handleTwitterDialogOpen}
-										 openImageDialog={this.openImageDialog}
-										 updateTextArea={this.updateTextArea}
-										 handleChange={this.handleChange}></NewUpdate>
-				 <TwitterDialog handleTwitterDialogClose={this.handleTwitterDialogClose}
-							 twitterDialogOpen={this.state.twitterDialogOpen}
-							 setTweetURL={this.setTweetURL}></TwitterDialog>
-				 <ImageUploadDialog imageUploadModalOpen={this.state.imageUploadModalOpen}
-							 closeImageDialogSendPayload={this.closeImageDialogSendPayload}
-							 openImageDialog={this.openImageDialog}
-							 updateTitle={this.state.updateTitle}
-							 setUpdateTitle={this.setUpdateTitle}
-							 handleChange={this.handleChange}
-							 onImageDrop={this.onImageDrop}
-							 time={this.state.time}></ImageUploadDialog>
+				<Header></Header>
+				<SummaryBox sessionID={this.state.sessionID}></SummaryBox>
+				<StatusSelection startUpdateWithTitleFlow={this.startUpdateWithTitleFlow}
+													 setUpdateTitle={this.setUpdateTitle}
+													 handleDialogStateAction={this.handleDialogStateAction}></StatusSelection>
+				<NewUpdate handleClick={this.handleClick}
+									 openImageDialog={this.openImageDialog}
+									 updateTextArea={this.updateTextArea}
+									 handleChange={this.handleChange}
+									 handleDialogStateAction={this.handleDialogStateAction}></NewUpdate>
 				<PreviewDialog previewModalOpen={this.state.previewModalOpen}
-							 handlePreviewModalClose={this.handlePreviewModalClose}
-							 setPreviewModalOpen={this.setPreviewModalOpen}
-							 handleChange={this.handleChange}
-							 tweetID={this.state.tweetID}
-							 time={this.state.time}></PreviewDialog>
-				<FeedMemo updates={this.state.updates}></FeedMemo>
+							handleDialogStateAction={this.handleDialogStateAction}
+							handleChange={this.handleChange}
+							tweetID={this.state.tweetID}
+							URLInputIsTwitter={this.state.URLInputIsTwitter}
+							time={this.state.time}
+							customURL={this.state.customURL}
+							onImageDrop={this.onImageDrop}
+							inputIsImage={this.state.inputIsImage}
+							updateTitle={this.state.updateTitle}
+							setUpdateTitle={this.setUpdateTitle}></PreviewDialog>
+				<URLInputDialog
+							 URLInputDialogOpen={this.state.URLInputDialogOpen}
+							 customURL={this.state.customURL}
+							 setCustomURL={this.setCustomURL}
+							 URLInputIsTwitter={this.state.URLInputIsTwitter}
+							 handleDialogStateAction={this.handleDialogStateAction}></URLInputDialog>
+			 <FeedMemo updates={this.state.updates}></FeedMemo>
 				</div>
 			)
 		}

@@ -69,9 +69,7 @@ exports[`snapshot should match 1`] = `
                   }
                 }
                 variant="body1"
-              >
-                test
-              </WithStyles(ForwardRef(Typography))>
+              />
             </div>
             <section
               style={

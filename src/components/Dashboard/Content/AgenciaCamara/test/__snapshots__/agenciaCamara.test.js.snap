@@ -53,14 +53,15 @@ exports[`Testing News Card should render the NewsCard component and match snapsh
                 display="flex"
                 justifyContent="flex-end"
               >
-                <WithStyles(ForwardRef(IconButton))
-                  aria-label="delete"
-                  size="small"
-                >
-                  <AddCircleOutlineIcon
-                    fontSize="inherit"
-                  />
-                </WithStyles(ForwardRef(IconButton))>
+                <CopyToClipboard>
+                  <WithStyles(ForwardRef(IconButton))
+                    size="small"
+                  >
+                    <FileCopyTwoToneIcon
+                      fontSize="inherit"
+                    />
+                  </WithStyles(ForwardRef(IconButton))>
+                </CopyToClipboard>
               </Styled(MuiBox)>
             </WithStyles(ForwardRef(Grid))>
             <WithStyles(ForwardRef(Grid))
