@@ -11,13 +11,6 @@ import postSaveContent from '../FetchFunctions/postSaveContent'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import CustomizedSnackbars from '../../../Snackbar/index'
 
-const useStyles = makeStyles((theme) => ({
-      newsCard:{
-        background:'#F4F4F4',
-      },
-}));
-
-
 export default class NewsCard extends React.Component{
     constructor(props){
       super(props);

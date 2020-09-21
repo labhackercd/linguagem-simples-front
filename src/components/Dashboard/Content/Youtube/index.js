@@ -8,7 +8,7 @@ export default class Youtube extends React.Component {
   constructor(props){
     super(props);
     this.state = { 
-        youtubeVideoId:'',
+        youtubeVideoId: null,
         sessionIdDadosAbertos: this.props.sessionIdDadosAbertos
     };
   }
@@ -17,6 +17,7 @@ export default class Youtube extends React.Component {
   fetchYoutubeVideo = async term => {
 
     var data = null;
+    console.log(this.state.sessionIdDadosAbertos)
     if(this.state.sessionIdDadosAbertos !== undefined){
       //console.log(this.state.sessionIdDadosAbertos)
       data = await getYoutubeVideoUrl(this.state.sessionIdDadosAbertos);
@@ -26,6 +27,7 @@ export default class Youtube extends React.Component {
       this.setState({dataLoaded:true});
     }else{
       //Nothing to do
+      //console.log("entrou no loop")
     }
 
 
@@ -34,13 +36,13 @@ export default class Youtube extends React.Component {
   componentDidMount(){
     this._isMounted = true;
     if(this._isMounted){
-  
+        console.log(this.props)
         this.fetchYoutubeVideo();
     }
   }
 
   render(){
-    if(this.props.sessionIdDadosAbertos===null){
+    if(this.props.sessionIdDadosAbertos===null || this.state.youtubeVideoId === null){
       return (
         <Box width="100%" height="100%" display="flex" alignContent="center" justifyContent="center">
           <Typography variant="h5" style={{ color: "grey" }}> Transmissão não disponível</Typography>

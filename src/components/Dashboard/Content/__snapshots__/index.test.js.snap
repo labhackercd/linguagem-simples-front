@@ -105,84 +105,44 @@ exports[`should render the content section 1`] = `
 `;
 
 exports[`should render the external content section 1`] = `
-<WithStyles(ForwardRef(Grid))
-  className="makeStyles-body-8"
-  container={true}
->
-  <WithStyles(ForwardRef(Grid))
-    className="makeStyles-header-9"
-    container={true}
-  >
-    <WithStyles(ForwardRef(Grid))
-      className="makeStyles-headerTitle-10"
-      item={true}
-    >
-      <WithStyles(ForwardRef(Typography))
-        variant="h3"
-      >
-        Conteúdos
-      </WithStyles(ForwardRef(Typography))>
-    </WithStyles(ForwardRef(Grid))>
-    <WithStyles(ForwardRef(Grid))
-      className="makeStyles-headerMenu-11"
-      item={true}
-    >
-      <WithStyles(ForwardRef(Typography))
-        className="makeStyles-headerMenuItem-12"
-        variant="h5"
-      >
-         Ver Acompanhe 
-      </WithStyles(ForwardRef(Typography))>
-    </WithStyles(ForwardRef(Grid))>
-  </WithStyles(ForwardRef(Grid))>
-  <WithStyles(ForwardRef(Grid))
-    className="makeStyles-firstRow-14"
-    container={true}
-    spacing={2}
-  >
-    <WithStyles(ForwardRef(Grid))
-      item={true}
-      md={7}
-    >
-      <WithStyles(ForwardRef(Typography))
-        variant="h5"
-      >
-         Transmissão 
-      </WithStyles(ForwardRef(Typography))>
-      <div
-        className="makeStyles-card-15"
-      >
-        <Youtube
-          sessionIdDadosAbertos="59895"
-        />
-      </div>
-    </WithStyles(ForwardRef(Grid))>
-    <WithStyles(ForwardRef(Grid))
-      item={true}
-      md={5}
-    >
-      <WithStyles(ForwardRef(Typography))
-        variant="h5"
-      >
-         Plenário 
-      </WithStyles(ForwardRef(Typography))>
-      <WithStyles(ForwardRef(Paper))
-        className="makeStyles-card-15"
-        elevation={0}
-      />
-    </WithStyles(ForwardRef(Grid))>
-  </WithStyles(ForwardRef(Grid))>
-  <WithStyles(ForwardRef(Grid))
-    className="makeStyles-secondRow-17"
-    container={true}
-  >
-    <VideoSnippets />
-  </WithStyles(ForwardRef(Grid))>
-  <WithStyles(ForwardRef(Grid))
-    className="makeStyles-thirdRow-18"
-    container={true}
-  >
-    <ExternalContentPanel />
-  </WithStyles(ForwardRef(Grid))>
-</WithStyles(ForwardRef(Grid))>
+<Content
+  classes={
+    Object {
+      "body": "Content-body-8",
+      "card": "Content-card-15",
+      "cardVideo": "Content-cardVideo-16",
+      "column": "Content-column-13",
+      "firstRow": "Content-firstRow-14",
+      "header": "Content-header-9",
+      "headerMenu": "Content-headerMenu-11",
+      "headerMenuItem": "Content-headerMenuItem-12",
+      "headerTitle": "Content-headerTitle-10",
+      "secondRow": "Content-secondRow-17",
+      "thirdRow": "Content-thirdRow-18",
+      "videoWrapper": "Content-videoWrapper-19",
+    }
+  }
+  sessionId={1}
+  sessionInfo={
+    Object {
+      "author": Object {
+        "email": "a@a.com",
+        "first_name": "",
+        "id": 1,
+        "is_superuser": true,
+        "last_name": "",
+        "profile": "editor",
+        "username": "admin",
+      },
+      "date": "2020-09-01",
+      "enable": true,
+      "id": 1,
+      "id_session_dados_abertos": "59895",
+      "location": "plenary",
+      "resume": "Resumo",
+      "situation_session": "pre_session",
+      "type_session": "virtual",
+    }
+  }
+/>
 `;

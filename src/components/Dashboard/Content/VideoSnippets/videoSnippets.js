@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {videoSnippetsMockData} from './videoSnippetsMockData'
-import {fetchVideoSnippetsCamara} from './fetchVideoSnippetsCamara'
+import fetchSessionVideos from './fetchVideoSnippetsCamara'
 import { FixedSizeList } from 'react-window';
 import ListItem from '@material-ui/core/ListItem';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -13,69 +13,55 @@ import TextField from '@material-ui/core/TextField';
 import ButtonBase from '@material-ui/core/ButtonBase'
 
 import VideoSnippetModal from './VideoSnippetModal/videoSnippetModal'
-
-function SnippetCard(props){
-  const deputado = props.data.author
-  const siglaPartidaria = props.data.legend
-
-  const [open, setOpen] = React.useState(false);
+import SnippetCard from './videoSnippetCard'
 
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (value) => {
-    setOpen(false);
-  };
-
-  return (
-    <Box width="100%" height="100%" marginX={0.3} marginTop={0.5}>
-      <ButtonBase  onClick={handleClickOpen}>
-        <div>
-        <img style={{width:"100%", height:"6vh"}} id="image" src={props.data.thumbnail} alt="Thumbanail trecho"></img>
-        <Box fontSize={10}>
-          <Typography>{deputado}</Typography>
-        </Box>
-        <Box fontSize={8}>
-          <Typography variant="body2">{siglaPartidaria}</Typography>
-        </Box>
-        </div>
-        </ButtonBase>
-      <VideoSnippetModal open={open} onClose={handleClose} data={props.data} />
-
-    </Box>
-  );
-}
 
 export default class VideoSnippets extends React.Component {
     
   constructor(props){
     super(props);
     this.state = { 
-        snippets: videoSnippetsMockData,
-        filteredSnippets: videoSnippetsMockData,
+        snippets: '',
+        filteredSnippets: '',
+        sessionHasStarted: false,
         dataLoaded: false,
-        searchField: ''
+        searchField: '',
+        error:{
+          happened:false,
+          message: "Erro",
+          status:""
+        }
     };
   }
 
   componentDidMount(){
       this._isMounted = true;
-
+      //console.log(this.props)
       if(this._isMounted){
-          this.fetchSessionsList();
+
+          if(this.props.sessionInfo.situation_session === "pre_session"){
+            this.setState({sessionHasStarted:false});
+            //this.setState({snippets:true});
+          }else{
+            this.setState({sessionHasStarted:true})
+            this.fetchSessionsList();
+          }
+          
       }
   }
 
   fetchSessionsList = async term => {
     try {
-      //const data = await fetchVideoSnippetsCamara();
-      //this.setState({sessionsList:data})
+      //console.log(this.props)
+      const data = await fetchSessionVideos(this.props.sessionInfo.id_session_dados_abertos);
+      //console.log(data)
+      this.setState({snippets:data})
+      this.setState({filteredSnippets:data})
       this.setState({dataLoaded:true});
-
     } catch (error) {
-        throw error;
+      //console.log(error)
+      this.setState({error:{happened:true,status:error.response.status} })
     }
   };
 
@@ -107,27 +93,42 @@ export default class VideoSnippets extends React.Component {
   renderListItem = ({index, style}) => {
     return(
       <ListItem disableGutters={true} style={style} >
-          <SnippetCard data = {this.state.snippets[index]}></SnippetCard>        
+          <SnippetCard data = {this.state.filteredSnippets[index]}></SnippetCard>        
       </ListItem>
     )
   }
 
   snippetsFilterOnChange = (event) => {
-    console.log(event.target.value)
+    //console.log(event.target.value)
     this.setState({
       searchField: event.target.value
     })
+    
     this.setState({
       filteredSnippets: this.state.snippets.filter(term => term.author.toLowerCase().includes(this.state.searchField.toLowerCase()))
     })
+    
   }
 
   render(){
-    const widthSnippetsBox = ((window.innerWidth)*0.54);
+    const widthSnippetsBox = parseInt(((window.innerWidth)*0.54));
     const widthSnippetsItem = (((window.innerWidth)*0.5)*0.12);
+    console.log(widthSnippetsBox)
+   
+    if(this.state.error.happened){
+      return (<Box display="flex" justifyContent="center" alignItems="center" width={"100%"}>
+                  <Typography>Erro</Typography>
+              </Box>)
+    }
+
+    if(!this.state.sessionHasStarted){
+      return (<Box display="flex" justifyContent="center" alignItems="center" width={"100%"}>
+                  <Typography>A transmissão ainda não foi iniciada.</Typography>
+              </Box>)
+    }
 
     if(!this.state.dataLoaded){
-      return (<Box display="flex" justifyContent="center" alignItems="center"><CircularProgress></CircularProgress></Box>)
+      return (<Box display="flex" justifyContent="center" alignItems="center" width={"100%"}><CircularProgress></CircularProgress></Box>)
     }
 
     return (
