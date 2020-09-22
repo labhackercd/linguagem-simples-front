@@ -5,8 +5,10 @@ import { Grid, TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import axiosInstance from './../../auth/axiosApi.js'
-import {TOKEN_OBTAIN_URL, ESTUDIO_PAGE_URL} from './../../api_urls';
-
+import {ESTUDIO_PAGE_URL,APPLICATION_RESET_PASSWORD_URL} from './../../api_urls';
+import sendLoginRequest from './sendLoginRequest'
+import Alert from '@material-ui/lab/Alert';
+import { useHistory } from "react-router-dom";
 import EstudioAcompanheIcon from './../../assets/estudio_acompanhe_logo.svg';
 import CamaraLogoIcon from './../../assets/camara_logo.svg';
 import PrototipoIcon from './../../assets/interacao_prototipo.png';
@@ -83,33 +85,54 @@ class LoginScreen extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      errorMessage: "",
-      successMessage: "",
       username:"",
       password:"" ,
-      succesfullLogin:false
+      succesfullLogin:false,
+      error:{
+        status:false,
+        message:"Erro - Email ou senha incorreta. Tente novamente."
+      },
+
     };
     this.loginMethod = this.loginMethod.bind(this);
   }
+ 
 
-  loginMethod(event){
+  async loginMethod(event){
     event.preventDefault();
+    //const history = useHistory();
+    try{
+      //console.log("chamou")
+      const result = await sendLoginRequest(this.state.username,this.state.password );
+      //console.log(result.status)
+      if(result.status===200){
+        axiosInstance.defaults.headers['Authorization'] = "JWT " + result.data.access;
+        localStorage.setItem('access_token', result.data.access);
+        localStorage.setItem('refresh_token', result.data.refresh);
+        this.setState({succesfullLogin:true})
+        
 
-    axiosInstance.post(TOKEN_OBTAIN_URL, {
-            username: this.state.username,
-            password: this.state.password
-        }).then(
-            result => {
-              console.log(result)
-                axiosInstance.defaults.headers['Authorization'] = "JWT " + result.data.access;
-                localStorage.setItem('access_token', result.data.access);
-                localStorage.setItem('refresh_token', result.data.refresh);
-                this.setState({succesfullLogin:true})
-            }
-    ).catch (error => {
-        throw error;
-    })
-
+      }else{
+        this.setState({error:{status:true, message:"Erro desconhecido. Tente novamente em alguns minutos."}})
+      }
+    }catch(e){
+      if(e.name === "TypeError"){
+        this.setState({error:{status:true, message:"Erro no servidor. Tente novamente em alguns minutos."}})
+      }else if(e.name === "Error"){
+        this.setState({error:{status:true, message:" Email ou senha incorretos. Tente novamente."}})
+      }
+      /*
+      switch(e.name) {
+        case "TypeError": // Server didn't answered 
+          this.setState({error:{status:true, message:"Erro no servidor. Tente novamente em alguns minutos."}})
+          break;
+        case "Error": // 401 - Username or password wrong
+          this.setState({error:{status:true, message:" Email ou senha incorretos. Tente novamente."}})
+          break;
+        default:
+          this.setState({error:{status:true, message:"Erro desconhecido. Tente novamente em alguns minutos."}})
+      }*/
+    }
   }
 
   handleEmailFormChange = (e) =>
@@ -126,10 +149,13 @@ class LoginScreen extends React.Component {
   render(){
     const { classes } = this.props;
 
+    if(this.state.succesfullLogin) {
+      return <Redirect to="/login/" />
+    }
       return (
         <div>
           {this.state.succesfullLogin ?
-            <Redirect to={ESTUDIO_PAGE_URL} />
+            <div>oi</div>
             :
             <Grid container className={classes.body}>
               <div className={classes.loginArea}>
@@ -140,6 +166,9 @@ class LoginScreen extends React.Component {
                           <img src={EstudioAcompanheIcon} alt="Estudio Acompanhe logo"/>
                         </Grid>
                         <Grid item className={classes.loginForm}>
+                          {this.state.error.status ?
+                            <Alert severity="error">{this.state.error.message}</Alert>
+                          : null}     
                           <TextField className={classes.textField} variant="outlined" value={this.state.username} placeholder="email" id="username" type="email" onChange={(e)=>{this.handleEmailFormChange(e)}} fullWidth autoFocus required />
                           <TextField className={classes.textField} variant="outlined" value={this.state.password} placeholder="senha" id="password" type="password" onChange={(e)=>{this.handlePasswordFormChange(e)}} fullWidth required />
                         </Grid>
@@ -148,7 +177,7 @@ class LoginScreen extends React.Component {
                             <Button className={classes.loginButton} onClick={this.loginMethod} variant="contained">Acessar</Button>
                           </Grid>
                           <Grid item>
-                            <a href="/" className={classes.forgotPassword}>Esqueci a senha </a>
+                            <a href={APPLICATION_RESET_PASSWORD_URL} className={classes.forgotPassword}>Esqueci a senha </a>
                           </Grid>
                         </Grid>
                       </div>
