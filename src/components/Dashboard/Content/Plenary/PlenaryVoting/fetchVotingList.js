@@ -7,7 +7,7 @@ export default async function fetchVotingList(sessionIdDadosAbertos) {
     //const url =  "https://dadosabertos.camara.leg.br/api/v2/eventos/"+sessionIdDadosAbertos+"/pauta";
     const url =  "https://infoleg.camara.gov.br/wsVotDecom/votacao/itens-em-votacao-na-reuniao/"+sessionIdDadosAbertos;
     const response = await axios.get(url)
-    
-    console.log(response)
+
+    //console.log(response)
     return  response.data;
 }
