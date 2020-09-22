@@ -9,7 +9,7 @@ import VideoSnippets from './VideoSnippets/videoSnippets'
 import {checkIfSessionsAlreadyExistsInSILEG,updateSession} from './FetchFunctions/fetchSynchronizeData'
 import moment from 'moment'
 import CustomizedSnackbars from '../../Snackbar/index'
-
+import PlenaryPanel from './Plenary/index'
 
 const useStyles = theme => ({
   body: {
@@ -106,6 +106,8 @@ class Content extends React.Component {
 
   render(){
     const { classes } = this.props;
+    console.log("content", this.state.sessionIdDadosAbertos)
+
     return (
       <Grid container className={classes.body}>
          <CustomizedSnackbars open={this.state.snackbar.open} message={this.state.snackbar.message} type={this.state.snackbar.type}></CustomizedSnackbars>
@@ -133,7 +135,7 @@ class Content extends React.Component {
             <Grid item md={5}>
               <Typography variant="h5"> Plenário </Typography>
               <Paper elevation={0} className={classes.card}> 
-                
+                <PlenaryPanel sessionIdDadosAbertos={this.state.sessionIdDadosAbertos}></PlenaryPanel>
               </Paper>
             </Grid>
         </Grid>

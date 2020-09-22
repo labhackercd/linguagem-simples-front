@@ -150,7 +150,7 @@ class LoginScreen extends React.Component {
     const { classes } = this.props;
 
     if(this.state.succesfullLogin) {
-      return <Redirect to="/login/" />
+      return <Redirect to={ESTUDIO_PAGE_URL}/>
     }
       return (
         <div>
