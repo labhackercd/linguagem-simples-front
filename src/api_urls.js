@@ -18,6 +18,8 @@ module.exports = Object.freeze({
     //API'S CAMARA DOS DEPUTADOS
         API_CD_EVENTOS_PLENARIO: 'https://dadosabertos.camara.leg.br/api/v2/eventos?codTipoEvento=110',// 110 code corresponds to Plenary
         API_CD_EVENTOS: 'https://dadosabertos.camara.leg.br/api/v2/eventos/',
+        API_CD_ORIENTACAO_VOTACAO: 'https://liderancadigital.camara.leg.br/proxy_pass/secod-wsVotDecom-orientacao',
+        API_CD_ITENS_EM_VOTACAO: 'https://infoleg.camara.gov.br/wsVotDecom/votacao/itens-em-votacao-na-reuniao/',
 
     //API'S BACKEND
         //AUTH URL'S
