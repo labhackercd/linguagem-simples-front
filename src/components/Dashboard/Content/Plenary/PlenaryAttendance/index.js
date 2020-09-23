@@ -5,11 +5,6 @@ import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
-import Paper from '@material-ui/core/Paper'
-import { borders } from '@material-ui/system';
-import Divider from '@material-ui/core/Divider';
-
-import {fetchVotingList,fetchOrientationVote} from '../PlenaryVoting/fetchPlenaryVoting'
 import fetchPlenaryAttendance from './fetchPlenaryAttendance'
 import DescriptionErrorAlert from '../../../../Alert/index'
 
@@ -60,10 +55,6 @@ export default class PlenaryAttendance extends React.Component {
   handleSelectChange(event) {
     //event.preventDefault();
     this.setState({selectedOption:event.target.value})
-    console.log("mudou")
-    console.log(this.state.selectedOption)
-    //this.setState({selectedVotingListItem:event.target.value})
-    //this.fetchOrientationVote(event.target.value);
     this.forceUpdate()
   }
 
@@ -98,7 +89,7 @@ export default class PlenaryAttendance extends React.Component {
                 </Box>
             </Grid>
             <Grid item xs={3} >
-              <Box display="flex" display="flex" justifyContent="center" paddingTop={1} paddingLeft={2} >
+              <Box display="flex" justifyContent="center" paddingTop={1} paddingLeft={2} >
                 <FormControl >
                     <NativeSelect
                       autoWidth
@@ -121,8 +112,7 @@ export default class PlenaryAttendance extends React.Component {
                   {(parseInt(this.state.selectedOption) === 0)
                     ?  <AttendanceListAlphabetic plenaryAttendanceList={this.state.plenaryAttendanceList}></AttendanceListAlphabetic>
                     : <AttendanceListByState plenaryAttendanceList={this.state.plenaryAttendanceList}></AttendanceListByState>
-                  }
-                       
+                  }        
               </Box>
             </Grid>
           </Grid>

@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { Grid, Typography} from '@material-ui/core';
+import { Grid} from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
-import Paper from '@material-ui/core/Paper'
 
 import {fetchVotingList,fetchOrientationVote} from './fetchPlenaryVoting'
 import DescriptionErrorAlert from '../../../../Alert/index'

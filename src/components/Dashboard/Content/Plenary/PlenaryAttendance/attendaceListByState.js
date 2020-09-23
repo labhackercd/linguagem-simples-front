@@ -1,24 +1,15 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
-import Paper from '@material-ui/core/Paper'
-import CircularProgress from '@material-ui/core/CircularProgress';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import SearchIcon from '@material-ui/icons/Search';
-import TextField from '@material-ui/core/TextField';
-import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem';
-import { FixedSizeList } from 'react-window';
-import LaunchIcon from '@material-ui/icons/Launch';
-import Divider from '@material-ui/core/Divider';
 import CongressPersonLine from './congressPersonLine'
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import LinearProgress from '@material-ui/core/LinearProgress';
+
 
 export default class AttendanceListByState extends React.Component {
     
@@ -32,43 +23,46 @@ export default class AttendanceListByState extends React.Component {
     };
   }
 
+  async filterListByState(){
+    const states = this.state.states;
+    var filteredList = []
+
+    for(var i = 0; i < states.length; i++) {
+        let filteredArray = (this.state.plenaryAttendanceList).filter(it => it.sigUF.includes(states[i].value));
+        let object = {siglaUf:states[i].value, uf:states[i].label, deputies:filteredArray};
+        filteredList.push(object)
+    }
+
+    await this.setState({listFilteredByState:filteredList})
+    this.setState({dataLoaded:true})
+  }
 
 
   componentDidMount(){
       this._isMounted = true;
 
       if(this._isMounted){
+          this.filterListByState();
           //this.fetchSessionsList();    
       }
   }
 
-   filterArray(siglaUf){
-
-    var newArray = this.state.plenaryAttendanceList.filter(function (el) {
-        return el.sigUF === siglaUf
-      });
-
-    return newArray;
-      
-  }
-
-  renderListItem = ({index, style}) => {
-    
-    return(
-      <ListItem style={style} >   
-        <CongressPersonLine data={this.state.plenaryAttendanceList[index]}></CongressPersonLine>
-      </ListItem>
-    )
-  }
-
   render(){
     //console.log(this.state.news)
+    if(!this.state.dataLoaded){
+        return (        
+          <Box display="flex" justifyContent="center" alignItems="center" minWidth="40vh" minHeight="10vh" width={1}>
+            <LinearProgress></LinearProgress>
+          </Box>
+        )
+    }
+
     return (
       <div>
         <Grid container>
           <Grid item xs={12}>
             <Box style={{maxHeight: "21vh", overflow: "auto"}}>
-               {this.state.states.map((uf) => (
+               {this.state.listFilteredByState.map((state) => (
                         <Box paddingBottom={0.5} width={"98%"}>
                             <Accordion>
                                 <AccordionSummary
@@ -77,12 +71,23 @@ export default class AttendanceListByState extends React.Component {
                                 id="panel1a-header"
                                 style={{backgroundColor:'#F2F2F2'}}
                                 >
-                                    <Typography >{uf.label}</Typography>
+                                    <Box width="100%" marginTop={0.5}>
+                                        <Grid container>
+                                            <Grid item xs={6}>
+                                                <Typography style={{ color: "#666666" }} variant="body1">{state.uf}</Typography>
+                                            </Grid>
+                                            <Grid item xs={6}>
+                                                <Box display="flex" justifyContent="flex-end">
+                                                    <Typography style={{ color: "#00AF82" }}  variant="body1">{state.deputies.length}</Typography>
+                                                </Box>
+                                            </Grid>
+                                        </Grid>
+                                    </Box>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                     <Box width="100%">
                                         <List>
-                                            {(this.filterArray(uf.value)).map((item) => (
+                                            {(state.deputies).map((item) => (
                                                     <ListItem>
                                                         <CongressPersonLine data={item}></CongressPersonLine>
                                                     </ListItem>
