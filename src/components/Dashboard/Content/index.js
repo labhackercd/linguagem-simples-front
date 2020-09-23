@@ -106,7 +106,7 @@ class Content extends React.Component {
 
   render(){
     const { classes } = this.props;
-    console.log("content", this.state.sessionIdDadosAbertos)
+    //console.log("content", this.state.sessionIdDadosAbertos)
 
     return (
       <Grid container className={classes.body}>

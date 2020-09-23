@@ -8,6 +8,9 @@ exports[`Testing lifeclycle  should render the AgendaOfTheDay component and matc
     alignItems="center"
     display="flex"
     justifyContent="center"
+    minHeight="10vh"
+    minWidth="40vh"
+    width={1}
   >
     <div
       className="MuiBox-root MuiBox-root-1"

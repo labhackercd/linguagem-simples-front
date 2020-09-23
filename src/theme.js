@@ -41,7 +41,7 @@ const openSansSemiBold = {
         fontStyle: 'semibold',
       },
       h6:{
-        fontSize:16,
+        fontSize:13,
         fontStyle: 'semibold',
       },
       h7:{

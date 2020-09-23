@@ -42,11 +42,16 @@ export default class AgendaOfTheDayComponent extends React.Component {
   render(){
 
     if(!this.state.dataLoaded){
-    return (<Box display="flex" justifyContent="center" alignItems="center"><CircularProgress></CircularProgress></Box>)
+      return (
+        <Box display="flex" justifyContent="center" alignItems="center" minWidth="40vh" minHeight="10vh" width={1}>
+          <CircularProgress></CircularProgress>
+        </Box>
+      )
+
     }
 
     return (
-      <div>
+      <Box width={'99%'} height={"85%"} style={{ overflow: 'auto'}}>
         <Grid container>
           <Grid item xs={12}>
               <List style={{maxHeight: '260px', maxWidth:'98%', overflow: 'auto'}}>            
@@ -58,7 +63,7 @@ export default class AgendaOfTheDayComponent extends React.Component {
               </List>
           </Grid>
         </Grid>
-      </div>
+      </Box>
     )
   }
 }

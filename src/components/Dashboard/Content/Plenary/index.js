@@ -65,7 +65,7 @@ function a11yProps(index) {
 export default function PlenaryPanel(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  console.log(props)
+  //console.log(props)
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -80,7 +80,7 @@ export default function PlenaryPanel(props) {
                 <Tabs
                     orientation="horizontal"
                     value={value}
-                    variant="fullWidth"
+                    variant="standard"
                     onChange={handleChange}
                     className={classes.tabs}
                     classes={{

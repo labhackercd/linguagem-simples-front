@@ -8,7 +8,6 @@ import axiosInstance from './../../auth/axiosApi.js'
 import {ESTUDIO_PAGE_URL,APPLICATION_RESET_PASSWORD_URL} from './../../api_urls';
 import sendLoginRequest from './sendLoginRequest'
 import Alert from '@material-ui/lab/Alert';
-import { useHistory } from "react-router-dom";
 import EstudioAcompanheIcon from './../../assets/estudio_acompanhe_logo.svg';
 import CamaraLogoIcon from './../../assets/camara_logo.svg';
 import PrototipoIcon from './../../assets/interacao_prototipo.png';

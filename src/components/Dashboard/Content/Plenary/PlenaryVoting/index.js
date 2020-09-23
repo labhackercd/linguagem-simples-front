@@ -5,8 +5,10 @@ import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
-import {fetchVotingList,fetchOrientationVote} from './fetchPlenaryVoting'
 import Paper from '@material-ui/core/Paper'
+
+import {fetchVotingList,fetchOrientationVote} from './fetchPlenaryVoting'
+import DescriptionErrorAlert from '../../../../Alert/index'
 import VoteOrientationCard from './voteOrientationCard'
 
 export default class PlenaryVoting extends React.Component {
@@ -17,10 +19,10 @@ export default class PlenaryVoting extends React.Component {
         votingList: null, 
         dataLoaded: false,
         sessionIdDadosAbertos: this.props.sessionIdDadosAbertos,
-        selectedVotingListItem:null,
-        orientationSelectedVotingListItem:null,
-        orientationSelectedVotingListDataLoaded:null,
-        colorCounter:1
+        selectedVotingListItem:"",
+        orientationSelectedVotingListItem:"",
+        orientationSelectedVotingListDataLoaded:false,
+        serverError: false
     };
     this.handleSelectChange = this.handleSelectChange.bind(this);
   }
@@ -29,11 +31,15 @@ export default class PlenaryVoting extends React.Component {
   fetchVotingPauta = async term => {
     var responseData = null
       if(this.state.sessionIdDadosAbertos !== undefined){
-        responseData = await fetchVotingList(this.state.sessionIdDadosAbertos);
-        this.setState({votingList:responseData})
-        this.setState({dataLoaded:true});
-      }else{
-        //Nothing to do
+        try{
+          responseData = await fetchVotingList(this.state.sessionIdDadosAbertos);
+          //console.log(responseData)
+          this.setState({votingList:responseData});
+          this.setState({dataLoaded:true});
+        }catch(e){
+          this.setState({serverError:true});
+          this.setState({dataLoaded:true});
+        }
       }
   };
 
@@ -43,9 +49,10 @@ export default class PlenaryVoting extends React.Component {
         try{
           responseData = await fetchOrientationVote(id);
           this.setState({orientationSelectedVotingListItem:responseData})
-          this.setState({orientationSelectedVotingListDataLoaded:true})
+          this.setState({orientationSelectedVotingListDataLoaded:true});
         }catch(e){
-          console.log("erro")
+          this.setState({serverError:true});
+          this.setState({dataLoaded:true});
         }
       }
   };
@@ -68,7 +75,11 @@ export default class PlenaryVoting extends React.Component {
   render(){
     
     if(!this.state.dataLoaded){
-    return (<Box display="flex" justifyContent="center" alignItems="center"><CircularProgress></CircularProgress></Box>)
+      return (<Box display="flex" justifyContent="center" alignItems="center"><CircularProgress></CircularProgress></Box>)
+    }
+
+    if(this.state.serverError){
+      return (<Box display="flex" justifyContent="center" alignItems="center" width="95%" paddingTop={1}><DescriptionErrorAlert></DescriptionErrorAlert></Box>)
     }
 
     return (
@@ -87,7 +98,7 @@ export default class PlenaryVoting extends React.Component {
                 >
                
                 {this.state.votingList.map((item) => (
-                    <option key={item.ideItemVotacao} value={item.ideItemVotacao}>{item.titulo}</option>
+                    <option id={"selectOption"+item.ideItemVotacao} key={item.ideItemVotacao} value={item.ideItemVotacao}>{item.titulo}</option>
                 ))}
               </NativeSelect>
             </FormControl>
