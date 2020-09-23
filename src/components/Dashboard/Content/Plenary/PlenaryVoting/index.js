@@ -75,7 +75,11 @@ export default class PlenaryVoting extends React.Component {
   render(){
     
     if(!this.state.dataLoaded){
-      return (<Box display="flex" justifyContent="center" alignItems="center"><CircularProgress></CircularProgress></Box>)
+      return (        
+        <Box display="flex" justifyContent="center" alignItems="center" minWidth="40vh" minHeight="10vh" width={1}>
+          <CircularProgress></CircularProgress>
+        </Box>
+      )
     }
 
     if(this.state.serverError){
@@ -86,26 +90,26 @@ export default class PlenaryVoting extends React.Component {
       <div>
         <Grid container spacing={1}>
           <Grid item xs={12} >
-            <Box paddingTop={1} margin={1}>
-            <FormControl variant="outlined">
-                <NativeSelect
-                  value={this.state.selectedVotingListItem}
-                  onChange={this.handleSelectChange}
-                  inputProps={{
-                    name: 'votation',
-                    id: 'votation-list-item-slect',
-                  }}
-                >
-               
-                {this.state.votingList.map((item) => (
-                    <option id={"selectOption"+item.ideItemVotacao} key={item.ideItemVotacao} value={item.ideItemVotacao}>{item.titulo}</option>
-                ))}
-              </NativeSelect>
-            </FormControl>
+            <Box margin={1}>
+              <FormControl variant="outlined">
+                  <NativeSelect
+                    value={this.state.selectedVotingListItem}
+                    onChange={this.handleSelectChange}
+                    inputProps={{
+                      name: 'votation',
+                      id: 'votation-list-item-slect',
+                    }}
+                  >
+                
+                  {this.state.votingList.map((item) => (
+                      <option id={"selectOption"+item.ideItemVotacao} key={item.ideItemVotacao} value={item.ideItemVotacao}>{item.titulo}</option>
+                  ))}
+                </NativeSelect>
+              </FormControl>
             </Box>
           </Grid>
           <Grid item xs={12}>
-            <Box width={'99%'} style={{maxHeight: '200px', overflow: 'auto'}}>
+            <Box mx={1} width={'95%'} style={{maxHeight: "23vh", overflow: 'auto'}}>
                 {this.state.orientationSelectedVotingListDataLoaded === true && 
                   <Grid container>
                       {this.state.orientationSelectedVotingListItem.map((item) => (

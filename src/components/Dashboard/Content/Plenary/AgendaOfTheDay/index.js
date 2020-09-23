@@ -51,10 +51,10 @@ export default class AgendaOfTheDayComponent extends React.Component {
     }
 
     return (
-      <Box width={'99%'} height={"85%"} style={{ overflow: 'auto'}}>
+      <Box>
         <Grid container>
           <Grid item xs={12}>
-              <List style={{maxHeight: '260px', maxWidth:'98%', overflow: 'auto'}}>            
+              <List style={{maxHeight: "27vh", maxWidth:'100%', overflow: 'auto'}}>            
                 {this.state.pautas.map((pauta) => (
                     <li key={`section-${pauta.proposicao_.id}`}>
                         <Box my={0.5}><AgendaCard pautaInfo={pauta} sessionIdDadosAbertos={this.state.sessionIdDadosAbertos}></AgendaCard></Box>

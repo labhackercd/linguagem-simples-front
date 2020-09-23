@@ -8,19 +8,19 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 
 import AgendaOfTheDayComponent from './AgendaOfTheDay/index'
+import PlenaryAttendance from './PlenaryAttendance/index'
 import PlenaryVoting from './PlenaryVoting/index'
 
 
 const useStyles = makeStyles((theme) => ({
 
   root: {
-    flexGrow: 1,
     backgroundColor: '#007E5A',
     display: 'flex',
    
   },
   tabs: {
-    borderRight: `2px solid ${theme.palette.divider}`,
+   
   },
   tabIndicator: {
     backgroundColor: '#007E5A',
@@ -39,7 +39,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box ml={1}>
+        <Box m={0.5}>
           {children}
         </Box>
       )}
@@ -56,7 +56,6 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
   };
 }
 
@@ -75,7 +74,7 @@ export default function PlenaryPanel(props) {
       return <div> Dados abertos não sincronizados </div>
   }else{
     return (
-        <Grid container className={classes.body}>
+        <Grid container>
             <Grid item xs={12}>
                 <Tabs
                     orientation="horizontal"
@@ -93,10 +92,10 @@ export default function PlenaryPanel(props) {
                 </Tabs>
             </Grid>
                 <TabPanel value={value} index={0}>
-                    <AgendaOfTheDayComponent sessionIdDadosAbertos={props.sessionIdDadosAbertos}></AgendaOfTheDayComponent>
+                  <Box maxHeight={"100%"}><AgendaOfTheDayComponent sessionIdDadosAbertos={props.sessionIdDadosAbertos}></AgendaOfTheDayComponent></Box>
                 </TabPanel>
                 <TabPanel value={value} index={1} >
-                    oi 2
+                   <Box minWidth={"100%"}><PlenaryAttendance sessionIdDadosAbertos={props.sessionIdDadosAbertos}></PlenaryAttendance></Box>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                     <PlenaryVoting sessionIdDadosAbertos={props.sessionIdDadosAbertos}></PlenaryVoting>

@@ -37,20 +37,25 @@ const useStyles = theme => ({
     padding: "1rem",
   },
   firstRow: {
-    margin: '0 0 0.5rem 0',
+    margin: '0 0 0 0',
   },
   card: {
     backgroundColor: "white",
     height: 'auto',
     width: 'auto',
     margin: '1rem 0 0 0',
-    minHeight: '35vh',
-    minWidth: '32vh'
+    height: '36vh',
+
   },
   cardVideo: {
     backgroundColor: "white",
     height: '18vh',
     width: '32vh',
+    margin: '1rem 0 0 0',
+  },
+  cardPlenary: {
+    backgroundColor: "white",
+    height: '18vh',
     margin: '1rem 0 0 0',
   },
   secondRow: {
@@ -134,9 +139,9 @@ class Content extends React.Component {
             </Grid>
             <Grid item md={5}>
               <Typography variant="h5"> Plenário </Typography>
-              <Paper elevation={0} className={classes.card}> 
-                <PlenaryPanel sessionIdDadosAbertos={this.state.sessionIdDadosAbertos}></PlenaryPanel>
-              </Paper>
+                <Paper elevation={0} className={classes.card}> 
+                  <PlenaryPanel sessionIdDadosAbertos={this.state.sessionIdDadosAbertos}></PlenaryPanel>
+                </Paper>
             </Grid>
         </Grid>
         <Grid container className={classes.secondRow}>
