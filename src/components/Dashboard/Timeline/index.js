@@ -208,7 +208,8 @@ class Timeline extends React.Component {
 			const { classes } = this.props;
 			return (
 				<div className={classes.body} testid="timeline">
-				<Header></Header>
+				<Header setBroadcastingStatus={this.props.setBroadcastingStatus}
+								broadcastingOnline={this.props.broadcastingOnline}></Header>
 				<SummaryBox sessionID={this.state.sessionID}></SummaryBox>
 				<StatusSelection startUpdateWithTitleFlow={this.startUpdateWithTitleFlow}
 													 setUpdateTitle={this.setUpdateTitle}

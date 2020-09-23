@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Grid, Typography} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import InitStreamIcon from './../../../../assets/init_stream_button_icon.svg';
+import StartBroadcastAlert from './../Dialogs/Alert/Broadcast/startBroadcast';
+import EndBroadcastAlert from './../Dialogs/Alert/Broadcast/endBroadcast';
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -40,10 +42,26 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header(props){
 	const classes = useStyles();
-  function handleChange(e, broadcastingStatus) {
+  const [startBroadcastDialogOpen, setStartBroadcastDialogOpen] = useState(false)
+  const [endBroadcastDialogOpen, setEndBroadcastDialogOpen] = useState(false)
+  const [userInput, setUserInput] = useState(false)
+
+  const handleStartBroadcastDialogOpen = (e) => {
     e.preventDefault()
-    props.setBroadcastingStatus(broadcastingStatus)
+    setStartBroadcastDialogOpen(true)
   }
+
+  const handleEndBroadcastDialogOpen = (e) => {
+    e.preventDefault()
+    setEndBroadcastDialogOpen(true)
+  }
+
+  const handleDialogClose = (userInput) => {
+    setStartBroadcastDialogOpen(false)
+    setEndBroadcastDialogOpen(false)
+    props.setBroadcastingStatus(userInput)
+  }
+
 	return (
     <div className={classes.body}>
   		<Grid container className={classes.titleRow}>
@@ -53,26 +71,34 @@ export default function Header(props){
   			<Grid item md={6} className={classes.buttonContainer}>
           {props.broadcastingOnline ?
             <Button
-    	        variant="contained"
-    	        color="secondary"
-    	        disableElevation
-    	        className={classes.buttonBroadcastingOnline}
-              onClick={(e) => handleChange(e, false)}
-    	        startIcon={<img src={InitStreamIcon} alt="button to init stream"/>}>
-    	        <h6>Iniciar transmissão</h6>
-    	      </Button> :
+              variant="contained"
+              color="secondary"
+              disableElevation
+              onClick={(e) => handleEndBroadcastDialogOpen(e)}
+              className={classes.buttonBroadcastingOffline}
+              startIcon={<img src={InitStreamIcon} alt="button to init stream"/>}>
+              <h6>Finalizar transmissão</h6>
+            </Button> :
             <Button
     	        variant="contained"
     	        color="secondary"
     	        disableElevation
-    	        className={classes.buttonBroadcastingOffline}
-              onClick={(e) => handleChange(e, true)}
+    	        className={classes.buttonBroadcastingOnline}
+              onClick={(e) => handleStartBroadcastDialogOpen(e)}
     	        startIcon={<img src={InitStreamIcon} alt="button to init stream"/>}>
-    	        <h6>Finalizar transmissão</h6>
+    	        <h6>Iniciar transmissão</h6>
     	      </Button>
           }
   			</Grid>
   		</Grid>
+      <StartBroadcastAlert keepMounted
+                      open={startBroadcastDialogOpen}
+                      onClose={handleDialogClose}
+                      value={userInput} />
+      <EndBroadcastAlert keepMounted
+                      open={endBroadcastDialogOpen}
+                      onClose={handleDialogClose}
+                      value={userInput} />
     </div>
 	)
 }

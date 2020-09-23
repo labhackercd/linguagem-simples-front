@@ -12,7 +12,7 @@ const openSansSemiBold = {
       url(${OpenSansSemiBold}) format('ttf')
     `,
   };
-  
+
   export const customTheme = createMuiTheme({
     typography: {
       fontFamily: "OpenSans",
@@ -80,6 +80,12 @@ const openSansSemiBold = {
       amareloCamara: {
         main: '#FAC915',
       },
+      verdeCamaraLight: {
+        main: '#00AF82',
+      },
+      white: {
+        main: '#FFF',
+      }
     },
-  
+
   });
