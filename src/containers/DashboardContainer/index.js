@@ -48,7 +48,6 @@ class Dashboard extends React.Component {
   fetchSessionInfo = async term => {
     try{
       const response = await fetchData(this.props.match.params.dashboardId);
-      console.log(response)
       this.setState({sessionInfo:response.data});
       this.setState({dataLoaded:true});
       this.setState({broadcastingOnline: response.data.enable});
