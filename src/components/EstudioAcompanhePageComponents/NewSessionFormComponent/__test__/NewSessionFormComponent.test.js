@@ -7,6 +7,7 @@ import { mount} from 'enzyme';
 import MockAdapter from "axios-mock-adapter"
 import axiosInstance from './../../../../auth/axiosApi'
 import {API_SESSIONS_URL} from './../../../../api_urls'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 test('Test if NewSessionFormComponent renders without crash', () => {
     const div = document.createElement("div")
@@ -89,14 +90,28 @@ describe('Testing lifeclycle ', () => {
     }; 
     var mockInstance = new MockAdapter(axiosInstance);
     
-    test("Test sync lifeclycle", async (done) => {
+    test("Test create session lifeclycle sucess", async (done) => {
         // Return a fixed timestamp when moment().format() is called
 
-        await mockInstance.onPost(API_SESSIONS_URL).reply(200,{response})
+        await mockInstance.onPost(API_SESSIONS_URL).reply(201,response.data)
                 
-        const  wrapper = mount(<NewSessionFormComponent />);
+        const  wrapper = mount(<Router><NewSessionFormComponent /></Router>);
         const button = wrapper.find("#submitButton").at(0);
         button.simulate('click')
+        wrapper.update();
+
+        done();
+    });
+
+    test("Test create session lifeclycle error", async (done) => {
+        // Return a fixed timestamp when moment().format() is called
+
+        await mockInstance.onPost(API_SESSIONS_URL).reply(400);
+                
+        const  wrapper = mount(<Router><NewSessionFormComponent /></Router>);
+        const button = wrapper.find("#submitButton").at(0);
+        button.simulate('click')
+        wrapper.update();
 
         done();
     });

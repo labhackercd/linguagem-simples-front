@@ -23,7 +23,7 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker,
 } from '@material-ui/pickers';
 import ptBrLocale from "date-fns/locale/pt-BR";
 
-import fetchData from './fetchData'
+import {fetchData,fetchCurrentSessionsData} from './fetchData'
 import FormatStringData from './utils'
 import {DASHBOARD_BASE_URL} from '../../../api_urls'
 
@@ -156,16 +156,24 @@ class SessionHistoryComponent extends React.Component {
         this.state = {
             searchDate: new Date(),
             sessionsList: [],
+            currentSessionsList:null,
             dataLoaded:false,
         };
     }
 
-
-    fetchSessionsList = async term => {
+    fetchSessions = async term => {
         try {
           const data = await fetchData();
           this.setState({sessionsList:data})
+
+          const currentSessions = await fetchCurrentSessionsData();
+
+          if(currentSessions !== null){
+              this.setState({currentSessionsList:currentSessions})
+          }
+          
           this.setState({dataLoaded:true});
+          
         } catch (error) {
             throw error;
         }
@@ -175,7 +183,7 @@ class SessionHistoryComponent extends React.Component {
         this._isMounted = true;
 
         if(this._isMounted){
-            this.fetchSessionsList();
+            this.fetchSessions();
         }
     }
 
@@ -193,53 +201,59 @@ class SessionHistoryComponent extends React.Component {
         if(!this.state.dataLoaded){
             return (<Box display="flex" justifyContent="center" alignItems="center">
                         <CircularProgress></CircularProgress>
-                        Loading
                     </Box>)
         }
-
         return(
             <Box>
                 <Grid container>
                     <Grid item xs={12}>
-                            <Grid container>
-                                <Grid item xs={6}>
-                                    <Box display="flex" justifyContent="flex-start" paddingBottom={3}>
-                                        <Typography variant="h4" color="textSecondary">Histórico</Typography>
-                                    </Box>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <Box display="flex" justifyContent="flex-end" paddingBottom={3}>
-                                        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={ptBrLocale}>
-                                        <KeyboardDatePicker
-                                            disableToolbar
-                                            variant="inline"
-                                            value={this.state.searchDate}
-                                            format="dd/MM/yyyy"
-                                            id="date-picker-search"
-                                            InputLabelProps={{
-                                                shrink: true,
-                                            }}
-                                            />
-                                        </MuiPickersUtilsProvider>
-                                    </Box>
-                                </Grid>
+                        <Grid container>
+                            <Grid item xs={6}>
+                                <Box display="flex" justifyContent="flex-start" paddingBottom={2}>
+                                    <Typography variant="h4" color="textSecondary">Histórico</Typography>
+                                </Box>
                             </Grid>
+                            <Grid item xs={6}>
+                                <Box display="flex" justifyContent="flex-end" paddingBottom={2}>
+                                    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={ptBrLocale}>
+                                    <KeyboardDatePicker
+                                        disableToolbar
+                                        variant="inline"
+                                        value={this.state.searchDate}
+                                        format="dd/MM/yyyy"
+                                        id="date-picker-search"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        />
+                                    </MuiPickersUtilsProvider>
+                                </Box>
+                            </Grid>
+                        </Grid>
                     </Grid>
+                    {(this.state.currentSessionsList !== null) &&
+                        <Grid item xs={12}>
+                            <Box paddingBottom={1}>
+                                <Box paddingLeft={2}>
+                                    <img src={SessionHappening} alt="Uma sessão em andamento"></img>
+                                </Box>
+                                <List className={classes.sessionList} disablePadding dense={true} style={{maxHeight: '100px', overflow: 'auto'}}>
+                                    {this.state.currentSessionsList.map((session) =>
+                                        <ListItem key={session.id} value={session} button component={this.customListLink}>
+                                                <CurrentSessionHistoryCard infoSession={session}></CurrentSessionHistoryCard>
+                                        </ListItem>
+                                    )}
+                                </List>
+                            </Box>
+                        </Grid>
+                    }
                     <Grid item xs={12}>
-                        <Box paddingLeft={2}>
-                        <img src={SessionHappening} alt="Uma sessão em andamento"></img>
-                        </Box>
-
-                        <List className={classes.sessionList} disablePadding dense={true}>
+                        <List className={classes.sessionList} disablePadding dense={true} style={{maxHeight: '250px', overflow: 'auto'}}z>
                         {this.state.sessionsList.map((session) =>
                             <ListItem key={session.id} value={session} button component={this.customListLink}>
-                                { (session.situation_session === "pre_session" || session.situation_session === "closed_session") ?
-                                    <ScheduleOrFinishedSessionHistoryCard infoSession={session}></ScheduleOrFinishedSessionHistoryCard> :
-                                    <CurrentSessionHistoryCard infoSession={session}></CurrentSessionHistoryCard>
-                                }
+                                    <ScheduleOrFinishedSessionHistoryCard infoSession={session}></ScheduleOrFinishedSessionHistoryCard>
                             </ListItem>
                         )}
-
                         </List>
                     </Grid>
                 </Grid>

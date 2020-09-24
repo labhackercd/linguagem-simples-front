@@ -33,7 +33,7 @@ export default function Feed(props) {
   return (
     <Grid container className={classes.updatesArea}>
       <List style={{width: '100%'}}>
-          {props.updates.slice(0).reverse().map(update =>  //creates a shallow copy of the array and reverses it
+        {props.updates ? props.updates.slice(0).reverse().map(update =>  //creates a shallow copy of the array and reverses it
 						<ListItem divider key={update.id}>
               <Grid container>
                 <Grid item xs={2}>
@@ -79,7 +79,7 @@ export default function Feed(props) {
                 </Grid>
               </Grid>
             </ListItem>
-          )}
+          ) : ''}
       </List>
     </Grid>
   )

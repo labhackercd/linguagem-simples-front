@@ -1,4 +1,4 @@
-import fetchData from "./../fetchData";
+import {fetchData} from "./../fetchData";
 import axiosInstance from './../../../../auth/axiosApi'
 import moxios from 'moxios'
 import{responseData} from './requestData'
