@@ -1,6 +1,7 @@
 import MockAdapter from "axios-mock-adapter"
 import fetchAgendaOfTheDay from './../fetchAgendaOfTheDay'
 import axios from 'axios'
+import {API_CD_PAUTA_SESSAO_PLENARIO} from '../../../../../../api_urls'
 
 
 
@@ -10,27 +11,21 @@ describe('Test fetchAgendaOfTheDay fetch data ', () => {
     var sessionIdDadosAbertos = 59896;
     const dados = [
         {
-          "regime": "Urgência (Art. 155, RICD)",
-          "codRegime": 21,
-          "ordem": 6,
-          "proposicao_": {
-            "id": 2229142,
-            "uri": "https://dadosabertos.camara.leg.br/api/v2/proposicoes/2229142",
-            "siglaTipo": "PDL",
-            "codTipo": 550,
-            "numero": 28,
-            "ano": 2019,
-            "ementa": "Exclui da Área Indígena São Marcos a área urbana da sede do Município de Pacaraima (RR)."
-          },
-          "uriProposicaoRelacionada": "",
-          "situacaoItem": "Retirado",
-          "uriVotacao": ""
-        },
+          "ordem": 7,
+          "proposicaoNome": "PL 6407/2013",
+          "codProposicao": 593065,
+          "situacaoItem": 2,
+          "codParlamentarRelator": 1117239,
+          "nomRelator": "Laercio Oliveira",
+          "partidoRelator": "PP        ",
+          "ufRelator": "SE",
+          "bolRelatorPresente": 1
+        }
       ]
     
     test("Test if checkIfSessionsAlreadyExistsInSILEG correctly", async (done) => {
         // Return a fixed timestamp when moment().format() is called
-        const url =  "https://dadosabertos.camara.leg.br/api/v2/eventos/"+sessionIdDadosAbertos+"/pauta";
+        const url =  API_CD_PAUTA_SESSAO_PLENARIO+sessionIdDadosAbertos+"/1";
 
         await mockAxios.onGet(url).replyOnce(200,{
             data: dados

@@ -7,24 +7,7 @@ import Paper from '@material-ui/core/Paper'
 import LaunchIcon from '@material-ui/icons/Launch';
 import Divider from '@material-ui/core/Divider';
 
-//import axios from 'axios'
-
-
 export default function AgendaCard(props){
-    //console.log(props)
-    /*
-    const [description, setDescription] = useState("");
-
-    async function fetchData(){
-        //const response = await axios.get(props.pautaInfo.proposicao_.uri+"/autores");
-        //console.log(response)
-        //console.log(response.data.dados[0].nome)
-    }
-
-    useEffect(() => {
-        // Atualiza o titulo do documento usando a API do browser
-        fetchData();
-      });*/
 
     return (
         <Box width="97%"  >
@@ -34,13 +17,13 @@ export default function AgendaCard(props){
                         <Grid item xs={10}>
                             <Box fontWeight="fontWeightRegular">
                                 <Typography variant="h6" style={{ color: "#007E5A" }}>
-                                    {props.pautaInfo.proposicao_.siglaTipo}  {props.pautaInfo.proposicao_.numero}/ {props.pautaInfo.proposicao_.ano}
+                                    {props.pautaInfo.proposicaoNome}
                                 </Typography>
                             </Box>
                         </Grid>
                         <Grid item xs={2}>
                             <Box display="flex" justifyContent="flex-end">
-                                <a rel={'external noopener noreferrer'} target="_blank" href={props.pautaInfo.proposicao_.uri} style={{textDecoration: "none"}}>
+                                <a rel={'external noopener noreferrer'} target="_blank" href={"https://dadosabertos.camara.leg.br/api/v2/proposicoes/"+props.pautaInfo.codProposicao} style={{textDecoration: "none"}}>
                                     <IconButton aria-label="Ir para Proposicao" size="small">
                                         <LaunchIcon  fontSize="inherit" />
                                     </IconButton>    
@@ -49,10 +32,11 @@ export default function AgendaCard(props){
                         </Grid>
                         <Grid item xs={12}>
                             <Box fontSize={11}>
-                            <Typography style={{ color: "gray" }}>
-                                Texto Descritivo dos autores da proposição.
-                                Deputado X, Deputado Y
-                            </Typography>
+                                {props.pautaInfo.nomRelator !== null &&
+                                    <Typography style={{ color: "gray" }}>
+                                        Relator: {props.pautaInfo.nomRelator} ({props.pautaInfo.partidoRelator}-{props.pautaInfo.ufRelator})
+                                    </Typography>
+                                }
                             </Box>
                         </Grid>
                     </Grid>

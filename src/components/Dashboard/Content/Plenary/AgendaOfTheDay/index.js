@@ -24,7 +24,7 @@ export default class AgendaOfTheDayComponent extends React.Component {
     var data = null
       if(this.state.sessionIdDadosAbertos !== undefined){
         data = await fetchAgendaOfTheDay(this.state.sessionIdDadosAbertos);
-        this.setState({pautas:data.dados})
+        this.setState({pautas:data})
         this.setState({dataLoaded:true});
       }else{
         //Nothing to do
@@ -56,7 +56,7 @@ export default class AgendaOfTheDayComponent extends React.Component {
           <Grid item xs={12}>
               <List style={{maxHeight: "27vh", maxWidth:'100%', overflow: 'auto'}}>            
                 {this.state.pautas.map((pauta) => (
-                    <li key={`section-${pauta.proposicao_.id}`}>
+                    <li key={`section-${pauta.ordem}`}>
                         <Box my={0.5}><AgendaCard pautaInfo={pauta} sessionIdDadosAbertos={this.state.sessionIdDadosAbertos}></AgendaCard></Box>
                     </li>
                 ))}

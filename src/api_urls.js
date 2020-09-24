@@ -21,6 +21,7 @@ module.exports = Object.freeze({
         API_CD_ORIENTACAO_VOTACAO: 'https://liderancadigital.camara.leg.br/proxy_pass/secod-wsVotDecom-orientacao',
         API_CD_ITENS_EM_VOTACAO: 'https://infoleg.camara.gov.br/wsVotDecom/votacao/itens-em-votacao-na-reuniao/',
         API_CD_PRESENCA_VOTACAO_PLENARIO:  'https://infoleg.camara.gov.br/ws-plenario/api/presenca?local=P',
+        API_CD_PAUTA_SESSAO_PLENARIO: 'https://liderancadigital.camara.leg.br/proxy_pass/ws-pauta-itens-da-pauta/',
 
     //API'S BACKEND
         //AUTH URL'S

@@ -28,11 +28,7 @@ exports[`should render the AgendaCard component and match snapshot  1`] = `
               }
               variant="h6"
             >
-              REQ
-                
-              2144
-              / 
-              2020
+              PL 6407/2013
             </WithStyles(ForwardRef(Typography))>
           </Styled(MuiBox)>
         </WithStyles(ForwardRef(Grid))>
@@ -45,7 +41,7 @@ exports[`should render the AgendaCard component and match snapshot  1`] = `
             justifyContent="flex-end"
           >
             <a
-              href="https://dadosabertos.camara.leg.br/api/v2/proposicoes/2260444"
+              href="https://dadosabertos.camara.leg.br/api/v2/proposicoes/593065"
               rel="external noopener noreferrer"
               style={
                 Object {
@@ -79,7 +75,13 @@ exports[`should render the AgendaCard component and match snapshot  1`] = `
                 }
               }
             >
-              Texto Descritivo dos autores da proposição. Deputado X, Deputado Y
+              Relator: 
+              Laercio Oliveira
+               (
+              PP        
+              -
+              SE
+              )
             </WithStyles(ForwardRef(Typography))>
           </Styled(MuiBox)>
         </WithStyles(ForwardRef(Grid))>
