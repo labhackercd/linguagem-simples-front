@@ -1,24 +1,54 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Header from './index';
-import {shallow} from "enzyme/build";
+import StartBroadcastAlert from './../Dialogs/Alert/StartBroadcast';
+import {shallow, mount} from "enzyme/build";
 import ReactDOM from 'react-dom';
+import MockTheme from './../mockTheme';
 
-it("snapshot should not have differences", () => {
-    const component = shallow(<Header/>);
-    expect(component.exists()).toEqual(true);
-    expect(component).toMatchSnapshot();
-});
+describe("<Header />", () => {
+  it("with mount", () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+      <MockTheme>
+        <Header />
+      </MockTheme>,
+      div
+    );
+  });
 
-test('Test if Header renders without crash', () => {
-    const div = document.createElement("div")
-    ReactDOM.render(<Header></Header>, div)
-    ReactDOM.unmountComponentAtNode(div)
-});
+  it("doesnt break on start stream button click", () => {
+    const wrapper = mount(<MockTheme>
+                            <Header setBroadcastingStatus={jest.fn()}
+                    								broadcastingOnline={false}/>
+                          </MockTheme>);
+    const startStreamButton = wrapper.find('#start-stream').last();
+    expect(startStreamButton.length).toBe(1);
+    startStreamButton.simulate('click');
+  });
 
+  it("doesnt break on end stream button click", () => {
+    const wrapper = mount(<MockTheme>
+                            <Header setBroadcastingStatus={jest.fn()}
+                    								broadcastingOnline={true}/>
+                          </MockTheme>);
+    const endStreamButton = wrapper.find('#end-stream').last();
+    expect(endStreamButton.length).toBe(1);
+    endStreamButton.simulate('click');
+  });
 
-test('does "linha do tempo" label exists', () => {
-    const { getByText } = render(<Header />);
-    const textAreaLabel = getByText('Linha do Tempo');
-    expect(textAreaLabel).toBeInTheDocument();
+  it("sets sends correct value to API", () => {
+    const wrapper = mount(<MockTheme>
+                            <Header setBroadcastingStatus={jest.fn()}
+                    								broadcastingOnline={false}/>
+                          </MockTheme>);
+    const startStreamButton = wrapper.find('#start-stream').last();
+    startStreamButton.simulate('click');
+    // find the Home MenuItem
+    const startBroadcastDialog = wrapper.findWhere(node => node.is(StartBroadcastAlert));
+    // make sure it was rendered
+    expect(startBroadcastDialog.exists()).toBe(true);
+    const yesButton = startBroadcastDialog.find('#start-broadcast').last()
+    yesButton.simulate('click')
+  })
 });

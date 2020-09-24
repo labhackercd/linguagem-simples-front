@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {Button, Grid, Typography} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import InitStreamIcon from './../../../../assets/init_stream_button_icon.svg';
-import StartBroadcastAlert from './../Dialogs/Alert/Broadcast/startBroadcast';
-import EndBroadcastAlert from './../Dialogs/Alert/Broadcast/endBroadcast';
+import StartBroadcastAlert from './../Dialogs/Alert/StartBroadcast';
+import EndBroadcastAlert from './../Dialogs/Alert/EndBroadcast';
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -74,6 +74,7 @@ export default function Header(props){
               variant="contained"
               color="secondary"
               disableElevation
+              id="end-stream"
               onClick={(e) => handleEndBroadcastDialogOpen(e)}
               className={classes.buttonBroadcastingOffline}
               startIcon={<img src={InitStreamIcon} alt="button to init stream"/>}>
@@ -82,6 +83,7 @@ export default function Header(props){
             <Button
     	        variant="contained"
     	        color="secondary"
+              id="start-stream"
     	        disableElevation
     	        className={classes.buttonBroadcastingOnline}
               onClick={(e) => handleStartBroadcastDialogOpen(e)}

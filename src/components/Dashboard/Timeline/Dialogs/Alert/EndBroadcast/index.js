@@ -87,10 +87,18 @@ export default function EndBroadcastAlert(props) {
 					</Grid>
 				</Grid>
 			 <DialogActions>
-				 <Button className={classes.cancelButton} variant="contained" disableElevation onClick={handleCancel}>
+				 <Button className={classes.cancelButton}
+				 				 variant="contained"
+								 disableElevation
+								 onClick={handleCancel}
+								 id="cancel-flow-broadcast">
 					 Cancelar
 				 </Button>
-				 <Button className={classes.OkButton} variant="contained" disableElevation onClick={handleOk}>
+				 <Button className={classes.OkButton}
+				 					variant="contained"
+									id="end-broadcast"
+									disableElevation
+									onClick={handleOk}>
 					 Sim
 				 </Button>
 			 </DialogActions>

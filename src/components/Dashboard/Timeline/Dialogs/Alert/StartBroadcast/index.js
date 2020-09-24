@@ -56,7 +56,7 @@ export default function StartBroadcastAlert(props) {
 			 	<Grid container className={classes.exitIcon}>
 					<Grid item sm={11}></Grid>
 					<Grid item sm={1} spacing={1}>
-					<IconButton aria-label="exit">
+					<IconButton aria-label="exit" id="exit-button-start-broadcast" onClick={handleCancel}>
 						<img src={ExitIcon} />
 					</IconButton>
 					</Grid>
@@ -78,10 +78,18 @@ export default function StartBroadcastAlert(props) {
 					</Grid>
 				</Grid>
 			 <DialogActions>
-				 <Button className={classes.cancelButton} variant="contained" disableElevation onClick={handleCancel}>
+				 <Button className={classes.cancelButton}
+				  			 variant="contained"
+								 id="start-broadcast-cancel"
+								 disableElevation
+								 onClick={handleCancel}>
 					 Cancelar
 				 </Button>
-				 <Button className={classes.OkButton} variant="contained" disableElevation onClick={handleOk}>
+				 <Button className={classes.OkButton}
+				  			 variant="contained"
+								 id="start-broadcast"
+								 disableElevation
+								 onClick={handleOk}>
 					 Sim
 				 </Button>
 			 </DialogActions>
