@@ -33,7 +33,7 @@ export default class PlenaryAttendance extends React.Component {
       if(this.state.sessionIdDadosAbertos !== undefined){
         try{
           responseData = await fetchPlenaryAttendance(this.state.sessionIdDadosAbertos);
-          //console.log(responseData)
+          console.log(responseData)
           this.setState({plenaryAttendanceList:responseData});
           //console.log(this.state.plenaryAttendanceList)
           this.setState({dataLoaded:true});

@@ -11,6 +11,7 @@ import moment from 'moment'
 import CustomizedSnackbars from '../../Snackbar/index'
 import PlenaryPanel from './Plenary/index'
 
+
 const useStyles = theme => ({
   body: {
     padding: '0 1.5rem'
