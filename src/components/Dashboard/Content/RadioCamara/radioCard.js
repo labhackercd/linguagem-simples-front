@@ -1,6 +1,5 @@
-import React,{useState, useEffect} from 'react';
+import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { makeStyles,withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper'

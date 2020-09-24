@@ -113,7 +113,7 @@ export default class VideoSnippets extends React.Component {
   render(){
     const widthSnippetsBox = parseInt(((window.innerWidth)*0.54));
     const widthSnippetsItem = (((window.innerWidth)*0.5)*0.12);
-    console.log(widthSnippetsBox)
+    //console.log(widthSnippetsBox)
    
     if(this.state.error.happened){
       return (<Box display="flex" justifyContent="center" alignItems="center" width={"100%"}>

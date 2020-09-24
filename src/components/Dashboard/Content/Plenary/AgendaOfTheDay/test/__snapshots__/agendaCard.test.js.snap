@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the AgendaCard component and match snapshot  1`] = `
+<Styled(MuiBox)
+  width="97%"
+>
+  <WithStyles(ForwardRef(Paper))
+    elevation={0}
+  >
+    <Styled(MuiBox)
+      m={1}
+    >
+      <WithStyles(ForwardRef(Grid))
+        container={true}
+      >
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          xs={10}
+        >
+          <Styled(MuiBox)
+            fontWeight="fontWeightRegular"
+          >
+            <WithStyles(ForwardRef(Typography))
+              style={
+                Object {
+                  "color": "#007E5A",
+                }
+              }
+              variant="h6"
+            >
+              PL 6407/2013
+            </WithStyles(ForwardRef(Typography))>
+          </Styled(MuiBox)>
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          xs={2}
+        >
+          <Styled(MuiBox)
+            display="flex"
+            justifyContent="flex-end"
+          >
+            <a
+              href="https://dadosabertos.camara.leg.br/api/v2/proposicoes/593065"
+              rel="external noopener noreferrer"
+              style={
+                Object {
+                  "textDecoration": "none",
+                }
+              }
+              target="_blank"
+            >
+              <WithStyles(ForwardRef(IconButton))
+                aria-label="Ir para Proposicao"
+                size="small"
+              >
+                <LaunchIcon
+                  fontSize="inherit"
+                />
+              </WithStyles(ForwardRef(IconButton))>
+            </a>
+          </Styled(MuiBox)>
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          xs={12}
+        >
+          <Styled(MuiBox)
+            fontSize={11}
+          >
+            <WithStyles(ForwardRef(Typography))
+              style={
+                Object {
+                  "color": "gray",
+                }
+              }
+            >
+              Relator: 
+              Laercio Oliveira
+               (
+              PP        
+              -
+              SE
+              )
+            </WithStyles(ForwardRef(Typography))>
+          </Styled(MuiBox)>
+        </WithStyles(ForwardRef(Grid))>
+      </WithStyles(ForwardRef(Grid))>
+    </Styled(MuiBox)>
+    <WithStyles(ForwardRef(Divider))
+      variant="middle"
+    />
+  </WithStyles(ForwardRef(Paper))>
+</Styled(MuiBox)>
+`;

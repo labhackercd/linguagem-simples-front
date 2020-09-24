@@ -67,7 +67,8 @@ class Dashboard extends React.Component {
 
   render(){
     const classes = useStyles();
-
+    //console.log("dashboard",this.state.sessionInfo )
+    
     if(!this.state.dataLoaded){
       return (<Box display="flex" justifyContent="center" alignItems="center"><CircularProgress></CircularProgress></Box>)
     }

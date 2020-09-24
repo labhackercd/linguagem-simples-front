@@ -110,6 +110,7 @@ exports[`should render the external content section 1`] = `
     Object {
       "body": "Content-body-8",
       "card": "Content-card-15",
+      "cardPlenary": "Content-cardPlenary-17",
       "cardVideo": "Content-cardVideo-16",
       "column": "Content-column-13",
       "firstRow": "Content-firstRow-14",
@@ -117,9 +118,9 @@ exports[`should render the external content section 1`] = `
       "headerMenu": "Content-headerMenu-11",
       "headerMenuItem": "Content-headerMenuItem-12",
       "headerTitle": "Content-headerTitle-10",
-      "secondRow": "Content-secondRow-17",
-      "thirdRow": "Content-thirdRow-18",
-      "videoWrapper": "Content-videoWrapper-19",
+      "secondRow": "Content-secondRow-18",
+      "thirdRow": "Content-thirdRow-19",
+      "videoWrapper": "Content-videoWrapper-20",
     }
   }
   sessionId={1}

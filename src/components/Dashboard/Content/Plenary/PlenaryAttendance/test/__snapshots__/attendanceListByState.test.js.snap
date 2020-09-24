@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing AttendanceListByState Card should render the AttendanceListByState component and match snapshot  1`] = `
+<AttendanceListByState
+  plenaryAttendanceList={
+    Array [
+      Object {
+        "carteira": 190,
+        "datInicioOrdemDia": null,
+        "datInicioSessao": null,
+        "datRegistroPresencaPlenario": null,
+        "nomReduzido": "Abílio Santana    ",
+        "nomSessao": null,
+        "numLegislatura": 56,
+        "numPosicaoUF": 16,
+        "numSessao": 0,
+        "sigPartido": "PL        ",
+        "sigUF": "BA",
+        "tipoPresenca": "A",
+      },
+      Object {
+        "carteira": 332,
+        "datInicioOrdemDia": null,
+        "datInicioSessao": null,
+        "datRegistroPresencaPlenario": null,
+        "nomReduzido": "Abou Anni         ",
+        "nomSessao": null,
+        "numLegislatura": 56,
+        "numPosicaoUF": 20,
+        "numSessao": 0,
+        "sigPartido": "PSL       ",
+        "sigUF": "SP",
+        "tipoPresenca": "A",
+      },
+      Object {
+        "carteira": 10,
+        "datInicioOrdemDia": null,
+        "datInicioSessao": null,
+        "datRegistroPresencaPlenario": null,
+        "nomReduzido": "Acácio Favacho    ",
+        "nomSessao": null,
+        "numLegislatura": 56,
+        "numPosicaoUF": 2,
+        "numSessao": 0,
+        "sigPartido": "PROS      ",
+        "sigUF": "AP",
+        "tipoPresenca": "A",
+      },
+      Object {
+        "carteira": 191,
+        "datInicioOrdemDia": null,
+        "datInicioSessao": null,
+        "datRegistroPresencaPlenario": null,
+        "nomReduzido": "Adolfo Viana      ",
+        "nomSessao": null,
+        "numLegislatura": 56,
+        "numPosicaoUF": 16,
+        "numSessao": 0,
+        "sigPartido": "PSDB      ",
+        "sigUF": "BA",
+        "tipoPresenca": "A",
+      },
+      Object {
+        "carteira": 333,
+        "datInicioOrdemDia": null,
+        "datInicioSessao": null,
+        "datRegistroPresencaPlenario": null,
+        "nomReduzido": "Adriana Ventura   ",
+        "nomSessao": null,
+        "numLegislatura": 56,
+        "numPosicaoUF": 20,
+        "numSessao": 0,
+        "sigPartido": "Novo      ",
+        "sigUF": "SP",
+        "tipoPresenca": "A",
+      },
+      Object {
+        "carteira": 416,
+        "datInicioOrdemDia": null,
+        "datInicioSessao": null,
+        "datRegistroPresencaPlenario": null,
+        "nomReduzido": "Adriano do Baldy  ",
+        "nomSessao": null,
+        "numLegislatura": 56,
+        "numPosicaoUF": 23,
+        "numSessao": 0,
+        "sigPartido": "PP        ",
+        "sigUF": "GO",
+        "tipoPresenca": "A",
+      },
+      Object {
+        "carteira": 221,
+        "datInicioOrdemDia": null,
+        "datInicioSessao": null,
+        "datRegistroPresencaPlenario": null,
+        "nomReduzido": "Aécio Neves       ",
+        "nomSessao": null,
+        "numLegislatura": 56,
+        "numPosicaoUF": 17,
+        "numSessao": 0,
+        "sigPartido": "PSDB      ",
+        "sigUF": "MG",
+        "tipoPresenca": "A",
+      },
+    ]
+  }
+>
+  <Styled(MuiBox)
+    alignItems="center"
+    display="flex"
+    justifyContent="center"
+    minHeight="10vh"
+    minWidth="40vh"
+    width={1}
+  >
+    <div
+      className="MuiBox-root MuiBox-root-1"
+    >
+      <WithStyles(ForwardRef(LinearProgress))>
+        <ForwardRef(LinearProgress)
+          classes={
+            Object {
+              "bar": "MuiLinearProgress-bar",
+              "bar1Buffer": "MuiLinearProgress-bar1Buffer",
+              "bar1Determinate": "MuiLinearProgress-bar1Determinate",
+              "bar1Indeterminate": "MuiLinearProgress-bar1Indeterminate",
+              "bar2Buffer": "MuiLinearProgress-bar2Buffer",
+              "bar2Indeterminate": "MuiLinearProgress-bar2Indeterminate",
+              "barColorPrimary": "MuiLinearProgress-barColorPrimary",
+              "barColorSecondary": "MuiLinearProgress-barColorSecondary",
+              "buffer": "MuiLinearProgress-buffer",
+              "colorPrimary": "MuiLinearProgress-colorPrimary",
+              "colorSecondary": "MuiLinearProgress-colorSecondary",
+              "dashed": "MuiLinearProgress-dashed",
+              "dashedColorPrimary": "MuiLinearProgress-dashedColorPrimary",
+              "dashedColorSecondary": "MuiLinearProgress-dashedColorSecondary",
+              "determinate": "MuiLinearProgress-determinate",
+              "indeterminate": "MuiLinearProgress-indeterminate",
+              "query": "MuiLinearProgress-query",
+              "root": "MuiLinearProgress-root",
+            }
+          }
+        >
+          <div
+            className="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate"
+            role="progressbar"
+          >
+            <div
+              className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate"
+              style={Object {}}
+            />
+            <div
+              className="MuiLinearProgress-bar MuiLinearProgress-bar2Indeterminate MuiLinearProgress-barColorPrimary"
+              style={Object {}}
+            />
+          </div>
+        </ForwardRef(LinearProgress)>
+      </WithStyles(ForwardRef(LinearProgress))>
+    </div>
+  </Styled(MuiBox)>
+</AttendanceListByState>
+`;

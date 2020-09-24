@@ -1,0 +1,826 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the PlenaryPanel component, match snapshot and test lifeclycle 1`] = `
+<WithStyles(PlenaryPanel)
+  sessionIdDadosAbertos={1}
+>
+  <PlenaryPanel
+    classes={
+      Object {
+        "active_tabStyle": "PlenaryPanel-active_tabStyle-4",
+        "bigIndicator": "PlenaryPanel-bigIndicator-2",
+        "default_tabStyle": "PlenaryPanel-default_tabStyle-3",
+        "tab": "PlenaryPanel-tab-1",
+      }
+    }
+    sessionIdDadosAbertos={1}
+  >
+    <div>
+      <WithStyles(ForwardRef(Tabs))
+        classes={
+          Object {
+            "indicator": "PlenaryPanel-bigIndicator-2",
+            "labelContainer": undefined,
+            "root": "PlenaryPanel-tab-1",
+            "selected": undefined,
+          }
+        }
+        onChange={[Function]}
+        value={0}
+        variant="standard"
+      >
+        <ForwardRef(Tabs)
+          classes={
+            Object {
+              "centered": "MuiTabs-centered",
+              "fixed": "MuiTabs-fixed",
+              "flexContainer": "MuiTabs-flexContainer",
+              "flexContainerVertical": "MuiTabs-flexContainerVertical",
+              "indicator": "MuiTabs-indicator PlenaryPanel-bigIndicator-2",
+              "root": "MuiTabs-root PlenaryPanel-tab-1",
+              "scrollButtons": "MuiTabs-scrollButtons",
+              "scrollButtonsDesktop": "MuiTabs-scrollButtonsDesktop",
+              "scrollable": "MuiTabs-scrollable",
+              "scroller": "MuiTabs-scroller",
+              "vertical": "MuiTabs-vertical",
+            }
+          }
+          onChange={[Function]}
+          value={0}
+          variant="standard"
+        >
+          <div
+            className="MuiTabs-root PlenaryPanel-tab-1"
+          >
+            <div
+              className="MuiTabs-scroller MuiTabs-fixed"
+              onScroll={[Function]}
+              style={
+                Object {
+                  "marginBottom": null,
+                  "overflow": "hidden",
+                }
+              }
+            >
+              <div
+                className="MuiTabs-flexContainer"
+                onKeyDown={[Function]}
+                role="tablist"
+              >
+                <WithStyles(ForwardRef(Tab))
+                  classes={
+                    Object {
+                      "root": "PlenaryPanel-tab-1",
+                    }
+                  }
+                  fullWidth={false}
+                  id="agendaTab"
+                  indicator={false}
+                  key=".$0"
+                  label={
+                    <React.Fragment>
+                      <ForwardRef(WithStyles)
+                        className="PlenaryPanel-active_tabStyle-4"
+                        classes={
+                          Object {
+                            "root": "PlenaryPanel-tab-1",
+                          }
+                        }
+                        size="small"
+                      >
+                        <ForwardRef(StyledComponent)
+                          m={0.5}
+                        >
+                          Pauta do Dia
+                        </ForwardRef(StyledComponent)>
+                      </ForwardRef(WithStyles)>
+                    </React.Fragment>
+                  }
+                  onChange={[Function]}
+                  selected={true}
+                  textColor="inherit"
+                  value={0}
+                >
+                  <ForwardRef(Tab)
+                    classes={
+                      Object {
+                        "disabled": "Mui-disabled",
+                        "fullWidth": "MuiTab-fullWidth",
+                        "labelIcon": "MuiTab-labelIcon",
+                        "root": "MuiTab-root PlenaryPanel-tab-1",
+                        "selected": "Mui-selected",
+                        "textColorInherit": "MuiTab-textColorInherit",
+                        "textColorPrimary": "MuiTab-textColorPrimary",
+                        "textColorSecondary": "MuiTab-textColorSecondary",
+                        "wrapped": "MuiTab-wrapped",
+                        "wrapper": "MuiTab-wrapper",
+                      }
+                    }
+                    fullWidth={false}
+                    id="agendaTab"
+                    indicator={false}
+                    label={
+                      <React.Fragment>
+                        <ForwardRef(WithStyles)
+                          className="PlenaryPanel-active_tabStyle-4"
+                          classes={
+                            Object {
+                              "root": "PlenaryPanel-tab-1",
+                            }
+                          }
+                          size="small"
+                        >
+                          <ForwardRef(StyledComponent)
+                            m={0.5}
+                          >
+                            Pauta do Dia
+                          </ForwardRef(StyledComponent)>
+                        </ForwardRef(WithStyles)>
+                      </React.Fragment>
+                    }
+                    onChange={[Function]}
+                    selected={true}
+                    textColor="inherit"
+                    value={0}
+                  >
+                    <WithStyles(ForwardRef(ButtonBase))
+                      aria-selected={true}
+                      className="MuiTab-root PlenaryPanel-tab-1 MuiTab-textColorInherit Mui-selected"
+                      disabled={false}
+                      focusRipple={true}
+                      id="agendaTab"
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      role="tab"
+                      tabIndex={0}
+                    >
+                      <ForwardRef(ButtonBase)
+                        aria-selected={true}
+                        className="MuiTab-root PlenaryPanel-tab-1 MuiTab-textColorInherit Mui-selected"
+                        classes={
+                          Object {
+                            "disabled": "Mui-disabled",
+                            "focusVisible": "Mui-focusVisible",
+                            "root": "MuiButtonBase-root",
+                          }
+                        }
+                        disabled={false}
+                        focusRipple={true}
+                        id="agendaTab"
+                        onClick={[Function]}
+                        onFocus={[Function]}
+                        role="tab"
+                        tabIndex={0}
+                      >
+                        <button
+                          aria-selected={true}
+                          className="MuiButtonBase-root MuiTab-root PlenaryPanel-tab-1 MuiTab-textColorInherit Mui-selected"
+                          disabled={false}
+                          id="agendaTab"
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onDragLeave={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchMove={[Function]}
+                          onTouchStart={[Function]}
+                          role="tab"
+                          tabIndex={0}
+                          type="button"
+                        >
+                          <span
+                            className="MuiTab-wrapper"
+                          >
+                            <WithStyles(ForwardRef(Paper))
+                              className="PlenaryPanel-active_tabStyle-4"
+                              classes={
+                                Object {
+                                  "root": "PlenaryPanel-tab-1",
+                                }
+                              }
+                              size="small"
+                            >
+                              <ForwardRef(Paper)
+                                className="PlenaryPanel-active_tabStyle-4"
+                                classes={
+                                  Object {
+                                    "elevation0": "MuiPaper-elevation0",
+                                    "elevation1": "MuiPaper-elevation1",
+                                    "elevation10": "MuiPaper-elevation10",
+                                    "elevation11": "MuiPaper-elevation11",
+                                    "elevation12": "MuiPaper-elevation12",
+                                    "elevation13": "MuiPaper-elevation13",
+                                    "elevation14": "MuiPaper-elevation14",
+                                    "elevation15": "MuiPaper-elevation15",
+                                    "elevation16": "MuiPaper-elevation16",
+                                    "elevation17": "MuiPaper-elevation17",
+                                    "elevation18": "MuiPaper-elevation18",
+                                    "elevation19": "MuiPaper-elevation19",
+                                    "elevation2": "MuiPaper-elevation2",
+                                    "elevation20": "MuiPaper-elevation20",
+                                    "elevation21": "MuiPaper-elevation21",
+                                    "elevation22": "MuiPaper-elevation22",
+                                    "elevation23": "MuiPaper-elevation23",
+                                    "elevation24": "MuiPaper-elevation24",
+                                    "elevation3": "MuiPaper-elevation3",
+                                    "elevation4": "MuiPaper-elevation4",
+                                    "elevation5": "MuiPaper-elevation5",
+                                    "elevation6": "MuiPaper-elevation6",
+                                    "elevation7": "MuiPaper-elevation7",
+                                    "elevation8": "MuiPaper-elevation8",
+                                    "elevation9": "MuiPaper-elevation9",
+                                    "outlined": "MuiPaper-outlined",
+                                    "root": "MuiPaper-root PlenaryPanel-tab-1",
+                                    "rounded": "MuiPaper-rounded",
+                                  }
+                                }
+                                size="small"
+                              >
+                                <div
+                                  className="MuiPaper-root PlenaryPanel-tab-1 PlenaryPanel-active_tabStyle-4 MuiPaper-elevation1 MuiPaper-rounded"
+                                  size="small"
+                                >
+                                  <Styled(MuiBox)
+                                    m={0.5}
+                                  >
+                                    <div
+                                      className="MuiBox-root MuiBox-root-5"
+                                    >
+                                      Pauta do Dia
+                                    </div>
+                                  </Styled(MuiBox)>
+                                </div>
+                              </ForwardRef(Paper)>
+                            </WithStyles(ForwardRef(Paper))>
+                          </span>
+                          <WithStyles(memo)
+                            center={false}
+                          >
+                            <ForwardRef(TouchRipple)
+                              center={false}
+                              classes={
+                                Object {
+                                  "child": "MuiTouchRipple-child",
+                                  "childLeaving": "MuiTouchRipple-childLeaving",
+                                  "childPulsate": "MuiTouchRipple-childPulsate",
+                                  "ripple": "MuiTouchRipple-ripple",
+                                  "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                  "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                  "root": "MuiTouchRipple-root",
+                                }
+                              }
+                            >
+                              <span
+                                className="MuiTouchRipple-root"
+                              >
+                                <TransitionGroup
+                                  childFactory={[Function]}
+                                  component={null}
+                                  exit={true}
+                                />
+                              </span>
+                            </ForwardRef(TouchRipple)>
+                          </WithStyles(memo)>
+                        </button>
+                      </ForwardRef(ButtonBase)>
+                    </WithStyles(ForwardRef(ButtonBase))>
+                  </ForwardRef(Tab)>
+                </WithStyles(ForwardRef(Tab))>
+                <WithStyles(ForwardRef(Tab))
+                  classes={
+                    Object {
+                      "root": "PlenaryPanel-tab-1",
+                    }
+                  }
+                  fullWidth={false}
+                  id="attendanceTab"
+                  indicator={false}
+                  key=".$1"
+                  label={
+                    <React.Fragment>
+                      <ForwardRef(WithStyles)
+                        className="PlenaryPanel-default_tabStyle-3"
+                        size="small"
+                      >
+                        <ForwardRef(StyledComponent)
+                          m={0.5}
+                        >
+                          Presença
+                        </ForwardRef(StyledComponent)>
+                      </ForwardRef(WithStyles)>
+                    </React.Fragment>
+                  }
+                  onChange={[Function]}
+                  selected={false}
+                  textColor="inherit"
+                  value={1}
+                >
+                  <ForwardRef(Tab)
+                    classes={
+                      Object {
+                        "disabled": "Mui-disabled",
+                        "fullWidth": "MuiTab-fullWidth",
+                        "labelIcon": "MuiTab-labelIcon",
+                        "root": "MuiTab-root PlenaryPanel-tab-1",
+                        "selected": "Mui-selected",
+                        "textColorInherit": "MuiTab-textColorInherit",
+                        "textColorPrimary": "MuiTab-textColorPrimary",
+                        "textColorSecondary": "MuiTab-textColorSecondary",
+                        "wrapped": "MuiTab-wrapped",
+                        "wrapper": "MuiTab-wrapper",
+                      }
+                    }
+                    fullWidth={false}
+                    id="attendanceTab"
+                    indicator={false}
+                    label={
+                      <React.Fragment>
+                        <ForwardRef(WithStyles)
+                          className="PlenaryPanel-default_tabStyle-3"
+                          size="small"
+                        >
+                          <ForwardRef(StyledComponent)
+                            m={0.5}
+                          >
+                            Presença
+                          </ForwardRef(StyledComponent)>
+                        </ForwardRef(WithStyles)>
+                      </React.Fragment>
+                    }
+                    onChange={[Function]}
+                    selected={false}
+                    textColor="inherit"
+                    value={1}
+                  >
+                    <WithStyles(ForwardRef(ButtonBase))
+                      aria-selected={false}
+                      className="MuiTab-root PlenaryPanel-tab-1 MuiTab-textColorInherit"
+                      disabled={false}
+                      focusRipple={true}
+                      id="attendanceTab"
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      role="tab"
+                      tabIndex={-1}
+                    >
+                      <ForwardRef(ButtonBase)
+                        aria-selected={false}
+                        className="MuiTab-root PlenaryPanel-tab-1 MuiTab-textColorInherit"
+                        classes={
+                          Object {
+                            "disabled": "Mui-disabled",
+                            "focusVisible": "Mui-focusVisible",
+                            "root": "MuiButtonBase-root",
+                          }
+                        }
+                        disabled={false}
+                        focusRipple={true}
+                        id="attendanceTab"
+                        onClick={[Function]}
+                        onFocus={[Function]}
+                        role="tab"
+                        tabIndex={-1}
+                      >
+                        <button
+                          aria-selected={false}
+                          className="MuiButtonBase-root MuiTab-root PlenaryPanel-tab-1 MuiTab-textColorInherit"
+                          disabled={false}
+                          id="attendanceTab"
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onDragLeave={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchMove={[Function]}
+                          onTouchStart={[Function]}
+                          role="tab"
+                          tabIndex={-1}
+                          type="button"
+                        >
+                          <span
+                            className="MuiTab-wrapper"
+                          >
+                            <WithStyles(ForwardRef(Paper))
+                              className="PlenaryPanel-default_tabStyle-3"
+                              size="small"
+                            >
+                              <ForwardRef(Paper)
+                                className="PlenaryPanel-default_tabStyle-3"
+                                classes={
+                                  Object {
+                                    "elevation0": "MuiPaper-elevation0",
+                                    "elevation1": "MuiPaper-elevation1",
+                                    "elevation10": "MuiPaper-elevation10",
+                                    "elevation11": "MuiPaper-elevation11",
+                                    "elevation12": "MuiPaper-elevation12",
+                                    "elevation13": "MuiPaper-elevation13",
+                                    "elevation14": "MuiPaper-elevation14",
+                                    "elevation15": "MuiPaper-elevation15",
+                                    "elevation16": "MuiPaper-elevation16",
+                                    "elevation17": "MuiPaper-elevation17",
+                                    "elevation18": "MuiPaper-elevation18",
+                                    "elevation19": "MuiPaper-elevation19",
+                                    "elevation2": "MuiPaper-elevation2",
+                                    "elevation20": "MuiPaper-elevation20",
+                                    "elevation21": "MuiPaper-elevation21",
+                                    "elevation22": "MuiPaper-elevation22",
+                                    "elevation23": "MuiPaper-elevation23",
+                                    "elevation24": "MuiPaper-elevation24",
+                                    "elevation3": "MuiPaper-elevation3",
+                                    "elevation4": "MuiPaper-elevation4",
+                                    "elevation5": "MuiPaper-elevation5",
+                                    "elevation6": "MuiPaper-elevation6",
+                                    "elevation7": "MuiPaper-elevation7",
+                                    "elevation8": "MuiPaper-elevation8",
+                                    "elevation9": "MuiPaper-elevation9",
+                                    "outlined": "MuiPaper-outlined",
+                                    "root": "MuiPaper-root",
+                                    "rounded": "MuiPaper-rounded",
+                                  }
+                                }
+                                size="small"
+                              >
+                                <div
+                                  className="MuiPaper-root PlenaryPanel-default_tabStyle-3 MuiPaper-elevation1 MuiPaper-rounded"
+                                  size="small"
+                                >
+                                  <Styled(MuiBox)
+                                    m={0.5}
+                                  >
+                                    <div
+                                      className="MuiBox-root MuiBox-root-10"
+                                    >
+                                      Presença
+                                    </div>
+                                  </Styled(MuiBox)>
+                                </div>
+                              </ForwardRef(Paper)>
+                            </WithStyles(ForwardRef(Paper))>
+                          </span>
+                          <WithStyles(memo)
+                            center={false}
+                          >
+                            <ForwardRef(TouchRipple)
+                              center={false}
+                              classes={
+                                Object {
+                                  "child": "MuiTouchRipple-child",
+                                  "childLeaving": "MuiTouchRipple-childLeaving",
+                                  "childPulsate": "MuiTouchRipple-childPulsate",
+                                  "ripple": "MuiTouchRipple-ripple",
+                                  "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                  "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                  "root": "MuiTouchRipple-root",
+                                }
+                              }
+                            >
+                              <span
+                                className="MuiTouchRipple-root"
+                              >
+                                <TransitionGroup
+                                  childFactory={[Function]}
+                                  component={null}
+                                  exit={true}
+                                />
+                              </span>
+                            </ForwardRef(TouchRipple)>
+                          </WithStyles(memo)>
+                        </button>
+                      </ForwardRef(ButtonBase)>
+                    </WithStyles(ForwardRef(ButtonBase))>
+                  </ForwardRef(Tab)>
+                </WithStyles(ForwardRef(Tab))>
+                <WithStyles(ForwardRef(Tab))
+                  classes={
+                    Object {
+                      "root": "PlenaryPanel-tab-1",
+                    }
+                  }
+                  fullWidth={false}
+                  id="votationTab"
+                  indicator={false}
+                  key=".$2"
+                  label={
+                    <React.Fragment>
+                      <ForwardRef(WithStyles)
+                        className="PlenaryPanel-default_tabStyle-3"
+                        size="small"
+                      >
+                        <ForwardRef(StyledComponent)
+                          m={0.5}
+                        >
+                          Votação
+                        </ForwardRef(StyledComponent)>
+                      </ForwardRef(WithStyles)>
+                    </React.Fragment>
+                  }
+                  onChange={[Function]}
+                  selected={false}
+                  textColor="inherit"
+                  value={2}
+                >
+                  <ForwardRef(Tab)
+                    classes={
+                      Object {
+                        "disabled": "Mui-disabled",
+                        "fullWidth": "MuiTab-fullWidth",
+                        "labelIcon": "MuiTab-labelIcon",
+                        "root": "MuiTab-root PlenaryPanel-tab-1",
+                        "selected": "Mui-selected",
+                        "textColorInherit": "MuiTab-textColorInherit",
+                        "textColorPrimary": "MuiTab-textColorPrimary",
+                        "textColorSecondary": "MuiTab-textColorSecondary",
+                        "wrapped": "MuiTab-wrapped",
+                        "wrapper": "MuiTab-wrapper",
+                      }
+                    }
+                    fullWidth={false}
+                    id="votationTab"
+                    indicator={false}
+                    label={
+                      <React.Fragment>
+                        <ForwardRef(WithStyles)
+                          className="PlenaryPanel-default_tabStyle-3"
+                          size="small"
+                        >
+                          <ForwardRef(StyledComponent)
+                            m={0.5}
+                          >
+                            Votação
+                          </ForwardRef(StyledComponent)>
+                        </ForwardRef(WithStyles)>
+                      </React.Fragment>
+                    }
+                    onChange={[Function]}
+                    selected={false}
+                    textColor="inherit"
+                    value={2}
+                  >
+                    <WithStyles(ForwardRef(ButtonBase))
+                      aria-selected={false}
+                      className="MuiTab-root PlenaryPanel-tab-1 MuiTab-textColorInherit"
+                      disabled={false}
+                      focusRipple={true}
+                      id="votationTab"
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      role="tab"
+                      tabIndex={-1}
+                    >
+                      <ForwardRef(ButtonBase)
+                        aria-selected={false}
+                        className="MuiTab-root PlenaryPanel-tab-1 MuiTab-textColorInherit"
+                        classes={
+                          Object {
+                            "disabled": "Mui-disabled",
+                            "focusVisible": "Mui-focusVisible",
+                            "root": "MuiButtonBase-root",
+                          }
+                        }
+                        disabled={false}
+                        focusRipple={true}
+                        id="votationTab"
+                        onClick={[Function]}
+                        onFocus={[Function]}
+                        role="tab"
+                        tabIndex={-1}
+                      >
+                        <button
+                          aria-selected={false}
+                          className="MuiButtonBase-root MuiTab-root PlenaryPanel-tab-1 MuiTab-textColorInherit"
+                          disabled={false}
+                          id="votationTab"
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onDragLeave={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchMove={[Function]}
+                          onTouchStart={[Function]}
+                          role="tab"
+                          tabIndex={-1}
+                          type="button"
+                        >
+                          <span
+                            className="MuiTab-wrapper"
+                          >
+                            <WithStyles(ForwardRef(Paper))
+                              className="PlenaryPanel-default_tabStyle-3"
+                              size="small"
+                            >
+                              <ForwardRef(Paper)
+                                className="PlenaryPanel-default_tabStyle-3"
+                                classes={
+                                  Object {
+                                    "elevation0": "MuiPaper-elevation0",
+                                    "elevation1": "MuiPaper-elevation1",
+                                    "elevation10": "MuiPaper-elevation10",
+                                    "elevation11": "MuiPaper-elevation11",
+                                    "elevation12": "MuiPaper-elevation12",
+                                    "elevation13": "MuiPaper-elevation13",
+                                    "elevation14": "MuiPaper-elevation14",
+                                    "elevation15": "MuiPaper-elevation15",
+                                    "elevation16": "MuiPaper-elevation16",
+                                    "elevation17": "MuiPaper-elevation17",
+                                    "elevation18": "MuiPaper-elevation18",
+                                    "elevation19": "MuiPaper-elevation19",
+                                    "elevation2": "MuiPaper-elevation2",
+                                    "elevation20": "MuiPaper-elevation20",
+                                    "elevation21": "MuiPaper-elevation21",
+                                    "elevation22": "MuiPaper-elevation22",
+                                    "elevation23": "MuiPaper-elevation23",
+                                    "elevation24": "MuiPaper-elevation24",
+                                    "elevation3": "MuiPaper-elevation3",
+                                    "elevation4": "MuiPaper-elevation4",
+                                    "elevation5": "MuiPaper-elevation5",
+                                    "elevation6": "MuiPaper-elevation6",
+                                    "elevation7": "MuiPaper-elevation7",
+                                    "elevation8": "MuiPaper-elevation8",
+                                    "elevation9": "MuiPaper-elevation9",
+                                    "outlined": "MuiPaper-outlined",
+                                    "root": "MuiPaper-root",
+                                    "rounded": "MuiPaper-rounded",
+                                  }
+                                }
+                                size="small"
+                              >
+                                <div
+                                  className="MuiPaper-root PlenaryPanel-default_tabStyle-3 MuiPaper-elevation1 MuiPaper-rounded"
+                                  size="small"
+                                >
+                                  <Styled(MuiBox)
+                                    m={0.5}
+                                  >
+                                    <div
+                                      className="MuiBox-root MuiBox-root-11"
+                                    >
+                                      Votação
+                                    </div>
+                                  </Styled(MuiBox)>
+                                </div>
+                              </ForwardRef(Paper)>
+                            </WithStyles(ForwardRef(Paper))>
+                          </span>
+                          <WithStyles(memo)
+                            center={false}
+                          >
+                            <ForwardRef(TouchRipple)
+                              center={false}
+                              classes={
+                                Object {
+                                  "child": "MuiTouchRipple-child",
+                                  "childLeaving": "MuiTouchRipple-childLeaving",
+                                  "childPulsate": "MuiTouchRipple-childPulsate",
+                                  "ripple": "MuiTouchRipple-ripple",
+                                  "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                  "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                  "root": "MuiTouchRipple-root",
+                                }
+                              }
+                            >
+                              <span
+                                className="MuiTouchRipple-root"
+                              >
+                                <TransitionGroup
+                                  childFactory={[Function]}
+                                  component={null}
+                                  exit={true}
+                                />
+                              </span>
+                            </ForwardRef(TouchRipple)>
+                          </WithStyles(memo)>
+                        </button>
+                      </ForwardRef(ButtonBase)>
+                    </WithStyles(ForwardRef(ButtonBase))>
+                  </ForwardRef(Tab)>
+                </WithStyles(ForwardRef(Tab))>
+              </div>
+              <WithStyles(ForwardRef(TabIndicator))
+                className="MuiTabs-indicator PlenaryPanel-bigIndicator-2"
+                color="secondary"
+                orientation="horizontal"
+                style={
+                  Object {
+                    "left": 0,
+                    "width": 0,
+                  }
+                }
+              >
+                <ForwardRef(TabIndicator)
+                  className="MuiTabs-indicator PlenaryPanel-bigIndicator-2"
+                  classes={
+                    Object {
+                      "colorPrimary": "PrivateTabIndicator-colorPrimary-7",
+                      "colorSecondary": "PrivateTabIndicator-colorSecondary-8",
+                      "root": "PrivateTabIndicator-root-6",
+                      "vertical": "PrivateTabIndicator-vertical-9",
+                    }
+                  }
+                  color="secondary"
+                  orientation="horizontal"
+                  style={
+                    Object {
+                      "left": 0,
+                      "width": 0,
+                    }
+                  }
+                >
+                  <span
+                    className="PrivateTabIndicator-root-6 PrivateTabIndicator-colorSecondary-8 MuiTabs-indicator PlenaryPanel-bigIndicator-2"
+                    style={
+                      Object {
+                        "left": 0,
+                        "width": 0,
+                      }
+                    }
+                  />
+                </ForwardRef(TabIndicator)>
+              </WithStyles(ForwardRef(TabIndicator))>
+            </div>
+          </div>
+        </ForwardRef(Tabs)>
+      </WithStyles(ForwardRef(Tabs))>
+    </div>
+    <div
+      key="tab-content"
+    >
+      <AgendaOfTheDayComponent
+        sessionIdDadosAbertos={1}
+      >
+        <Styled(MuiBox)
+          alignItems="center"
+          display="flex"
+          justifyContent="center"
+          minHeight="10vh"
+          minWidth="40vh"
+          width={1}
+        >
+          <div
+            className="MuiBox-root MuiBox-root-12"
+          >
+            <WithStyles(ForwardRef(CircularProgress))>
+              <ForwardRef(CircularProgress)
+                classes={
+                  Object {
+                    "circle": "MuiCircularProgress-circle",
+                    "circleDisableShrink": "MuiCircularProgress-circleDisableShrink",
+                    "circleIndeterminate": "MuiCircularProgress-circleIndeterminate",
+                    "circleStatic": "MuiCircularProgress-circleStatic",
+                    "colorPrimary": "MuiCircularProgress-colorPrimary",
+                    "colorSecondary": "MuiCircularProgress-colorSecondary",
+                    "indeterminate": "MuiCircularProgress-indeterminate",
+                    "root": "MuiCircularProgress-root",
+                    "static": "MuiCircularProgress-static",
+                    "svg": "MuiCircularProgress-svg",
+                  }
+                }
+              >
+                <div
+                  className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+                  role="progressbar"
+                  style={
+                    Object {
+                      "height": 40,
+                      "width": 40,
+                    }
+                  }
+                >
+                  <svg
+                    className="MuiCircularProgress-svg"
+                    viewBox="22 22 44 44"
+                  >
+                    <circle
+                      className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+                      cx={44}
+                      cy={44}
+                      fill="none"
+                      r={20.2}
+                      strokeWidth={3.6}
+                      style={Object {}}
+                    />
+                  </svg>
+                </div>
+              </ForwardRef(CircularProgress)>
+            </WithStyles(ForwardRef(CircularProgress))>
+          </div>
+        </Styled(MuiBox)>
+      </AgendaOfTheDayComponent>
+    </div>
+  </PlenaryPanel>
+</WithStyles(PlenaryPanel)>
+`;

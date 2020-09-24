@@ -17,7 +17,7 @@ export default class Youtube extends React.Component {
   fetchYoutubeVideo = async term => {
 
     var data = null;
-    console.log(this.state.sessionIdDadosAbertos)
+    //console.log(this.state.sessionIdDadosAbertos)
     if(this.state.sessionIdDadosAbertos !== undefined){
       //console.log(this.state.sessionIdDadosAbertos)
       data = await getYoutubeVideoUrl(this.state.sessionIdDadosAbertos);
@@ -36,7 +36,7 @@ export default class Youtube extends React.Component {
   componentDidMount(){
     this._isMounted = true;
     if(this._isMounted){
-        console.log(this.props)
+        //console.log(this.props)
         this.fetchYoutubeVideo();
     }
   }
