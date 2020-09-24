@@ -59,6 +59,10 @@ class PlenaryPanel extends React.Component {
     const { classes } = this.props;
     const { value } = this.state;
 
+    if(this.props.sessionIdDadosAbertos === undefined || this.props.sessionIdDadosAbertos === null){
+      return <div> Dados abertos não sincronizados </div>
+    }
+
     return [
       <div>
         <Tabs
