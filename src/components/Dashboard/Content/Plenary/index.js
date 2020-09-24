@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper'
 
 import AgendaOfTheDayComponent from './AgendaOfTheDay/index'
 import PlenaryAttendance from './PlenaryAttendance/index'
@@ -19,7 +20,8 @@ const styles = (theme) => ({
       [theme.breakpoints.up(500)]: {
           minWidth: '0px',
           paddingLeft: '2px',
-          paddingRight: '5px'
+          paddingRight: '5px',
+          minHeight:'15px'
       }
   },
   bigIndicator: {
@@ -34,11 +36,9 @@ const styles = (theme) => ({
       backgroundColor: "#007E5A",
       borderRadius: 5,
       color:"white",
-      textTransform: "none"
+      textTransform: "none",
   }
 });
-
-
 
 
 class PlenaryPanel extends React.Component {
@@ -62,63 +62,74 @@ class PlenaryPanel extends React.Component {
     return [
       <div>
         <Tabs
-          variant="standart"
+          variant="standard"
           classes={{ root: classes.tab, selected: classes.tabSelected, labelContainer: classes.labelContainer,indicator: classes.bigIndicator  }}
           value={value}
           onChange={this.handleChange}
         >
           <Tab
+            key={0}
+            id="agendaTab"
             classes={{ root: classes.tab}}
             label={
               <React.Fragment>
-                <Button
-                  variant="contained"
-                  size="small"
-                  classes={{ root: classes.tab}}
-                  className={
-                    this.state.value === 0
-                      ? classes.active_tabStyle
-                      : classes.default_tabStyle
-                  }
-                >
-                  Pauta do Dia
-                </Button>
+                  <Paper
+                    size="small"
+                    classes={{ root: classes.tab}}
+                    className={
+                      this.state.value === 0
+                        ? classes.active_tabStyle
+                        : classes.default_tabStyle
+                    }
+                  >
+                    <Box m={0.5}>
+                      Pauta do Dia
+                    </Box>
+                  </Paper>
+         
               </React.Fragment>
             }
           />
           <Tab
+            key={1}
+            id="attendanceTab"
             classes={{ root: classes.tab}}
             label={
               <React.Fragment>
-                <Button
-                  variant="contained"
-                  size="small"
-                  className={
-                    this.state.value === 1
-                      ? classes.active_tabStyle
-                      : classes.default_tabStyle
-                  }
-                >
-                  Presença
-                </Button>
+                  <Paper
+                    size="small"
+                    className={
+                      this.state.value === 1
+                        ? classes.active_tabStyle
+                        : classes.default_tabStyle
+                    }
+                  >
+                    <Box m={0.5}>
+                      Presença
+                    </Box>
+                  </Paper>
+        
               </React.Fragment>
             }
           />
           <Tab
+            key={2}
+            id="votationTab"
             classes={{ root: classes.tab}}
             label={
               <React.Fragment>
-                <Button
-                  variant="contained"
-                  size="small"
-                  className={
-                    this.state.value === 2
-                      ? classes.active_tabStyle
-                      : classes.default_tabStyle
-                  }
-                >
-                  Votação
-                </Button>
+                  <Paper
+                    size="small"
+                    className={
+                      this.state.value === 2
+                        ? classes.active_tabStyle
+                        : classes.default_tabStyle
+                    }
+                  >
+                    <Box m={0.5}>
+                      Votação
+                    </Box>
+                  </Paper>
               </React.Fragment>
             }
           />
