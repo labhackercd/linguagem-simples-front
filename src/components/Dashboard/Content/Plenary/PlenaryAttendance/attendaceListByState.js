@@ -59,47 +59,51 @@ export default class AttendanceListByState extends React.Component {
 
     return (
       <div>
-        <Grid container>
+        <Grid container spacing={0}>
           <Grid item xs={12}>
             <Box style={{maxHeight: "21vh", overflow: "auto"}}>
+              <List>
                {this.state.listFilteredByState.map((state) => (
-                        <Box paddingBottom={0.5} width={"98%"}>
-                            <Accordion>
-                                <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                                style={{backgroundColor:'#F2F2F2'}}
-                                >
-                                    <Box width="100%" marginTop={0.5}>
-                                        <Grid container>
-                                            <Grid item xs={6}>
-                                                <Typography style={{ color: "#666666" }} variant="body1">{state.uf}</Typography>
-                                            </Grid>
-                                            <Grid item xs={6}>
-                                                <Box display="flex" justifyContent="flex-end">
-                                                    <Typography style={{ color: "#00AF82" }}  variant="body1">{state.deputies.length}</Typography>
-                                                </Box>
-                                            </Grid>
+                  <ListItem key={state.uf}>
+                    <Box paddingBottom={0.5} width={"98%"}>
+                        <Accordion>
+                            <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                            style={{backgroundColor:'#F2F2F2'}}
+                            >
+                                <Box width="100%" marginTop={0.5}>
+                                    <Grid container>
+                                        <Grid item xs={6}>
+                                            <Typography style={{ color: "#666666" }} variant="body1">{state.uf}</Typography>
                                         </Grid>
-                                    </Box>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Box width="100%">
-                                        <List>
-                                            {(state.deputies).map((item) => (
-                                                    <ListItem>
-                                                        <CongressPersonLine data={item}></CongressPersonLine>
-                                                    </ListItem>
-                                                )
-                                            )}
-                                        </List>
-                                    </Box>
-                                </AccordionDetails>
-                            </Accordion>
-                        </Box>  
-                    )
+                                        <Grid item xs={6}>
+                                            <Box display="flex" justifyContent="flex-end">
+                                                <Typography style={{ color: "#00AF82" }}  variant="body1">{state.deputies.length}</Typography>
+                                            </Box>
+                                        </Grid>
+                                    </Grid>
+                                </Box>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Box width="100%">
+                                    <List>
+                                        {(state.deputies).map((item) => (
+                                                <ListItem key={item.carteira}>
+                                                    <CongressPersonLine data={item}></CongressPersonLine>
+                                                </ListItem>
+                                            )
+                                        )}
+                                    </List>
+                                </Box>
+                            </AccordionDetails>
+                        </Accordion>
+                      </Box>  
+                    </ListItem>
+                  )
                 )}
+              </List>
             </Box>
           </Grid>
         </Grid>

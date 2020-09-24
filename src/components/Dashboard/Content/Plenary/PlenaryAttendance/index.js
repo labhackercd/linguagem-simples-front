@@ -33,7 +33,7 @@ export default class PlenaryAttendance extends React.Component {
       if(this.state.sessionIdDadosAbertos !== undefined){
         try{
           responseData = await fetchPlenaryAttendance(this.state.sessionIdDadosAbertos);
-          console.log(responseData)
+          //console.log(responseData)
           this.setState({plenaryAttendanceList:responseData});
           //console.log(this.state.plenaryAttendanceList)
           this.setState({dataLoaded:true});
@@ -79,7 +79,7 @@ export default class PlenaryAttendance extends React.Component {
 
     return (
         <Box paddingTop={1} width={"43vh"} mr={2} ml={0.5}>
-          <Grid container xs={12}>
+          <Grid container>
             <Grid item xs={9} >
                 <Box borderRadius={5} {...defaultProps}>
                   <Box margin={1} fontWeight="fontWeightBold">
@@ -92,7 +92,6 @@ export default class PlenaryAttendance extends React.Component {
               <Box display="flex" justifyContent="center" paddingTop={1} paddingLeft={2} >
                 <FormControl >
                     <NativeSelect
-                      autoWidth
                       value={this.state.selectedOption}
                       onChange={this.handleSelectChange}
                       inputProps={{
