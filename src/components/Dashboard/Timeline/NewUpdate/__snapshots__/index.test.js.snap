@@ -88,7 +88,8 @@ exports[`snapshot should not have differences 1`] = `
               className="makeStyles-time-9"
               variant="h6"
             >
-               18:00 
+               
+               
             </WithStyles(ForwardRef(Typography))>
           </div>
           <div

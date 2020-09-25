@@ -59,7 +59,9 @@ exports[`Testing News Card should render the NewsCard component and match snapsh
                   >
                     <FileCopyTwoToneIcon
                       fontSize="inherit"
+                      onClick={[Function]}
                     />
+                                                            
                   </WithStyles(ForwardRef(IconButton))>
                 </CopyToClipboard>
               </Styled(MuiBox)>

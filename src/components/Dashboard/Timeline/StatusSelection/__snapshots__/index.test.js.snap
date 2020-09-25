@@ -47,6 +47,7 @@ exports[`snapshot should not have changes 1`] = `
     <WithStyles(ForwardRef(Button))
       className="makeStyles-tab-4"
       disableElevation={true}
+      disabled={true}
       key="0"
       onClick={[Function]}
       uvariant="contained"
@@ -56,6 +57,7 @@ exports[`snapshot should not have changes 1`] = `
     <WithStyles(ForwardRef(Button))
       className="makeStyles-tab-4"
       disableElevation={true}
+      disabled={true}
       key="1"
       onClick={[Function]}
       uvariant="contained"
@@ -65,6 +67,7 @@ exports[`snapshot should not have changes 1`] = `
     <WithStyles(ForwardRef(Button))
       className="makeStyles-tab-4"
       disableElevation={true}
+      disabled={true}
       key="2"
       onClick={[Function]}
       uvariant="contained"
@@ -74,6 +77,7 @@ exports[`snapshot should not have changes 1`] = `
     <WithStyles(ForwardRef(Button))
       className="makeStyles-tab-4"
       disableElevation={true}
+      disabled={true}
       key="3"
       onClick={[Function]}
       uvariant="contained"
@@ -83,6 +87,7 @@ exports[`snapshot should not have changes 1`] = `
     <WithStyles(ForwardRef(Button))
       className="makeStyles-tab-4"
       disableElevation={true}
+      disabled={true}
       key="4"
       onClick={[Function]}
       uvariant="contained"
@@ -92,6 +97,7 @@ exports[`snapshot should not have changes 1`] = `
     <WithStyles(ForwardRef(Button))
       className="makeStyles-tab-4"
       disableElevation={true}
+      disabled={true}
       key="5"
       onClick={[Function]}
       uvariant="contained"
@@ -101,6 +107,7 @@ exports[`snapshot should not have changes 1`] = `
     <WithStyles(ForwardRef(Button))
       className="makeStyles-tab-4"
       disableElevation={true}
+      disabled={true}
       key="6"
       onClick={[Function]}
       uvariant="contained"
