@@ -210,7 +210,8 @@ class Timeline extends React.Component {
 				<div className={classes.body} testid="timeline">
 				<Header setBroadcastingStatus={this.props.setBroadcastingStatus}
 								broadcastingOnline={this.props.broadcastingOnline}></Header>
-				<SummaryBox sessionID={this.state.sessionID}></SummaryBox>
+				<SummaryBox sessionID={this.state.sessionID}
+										broadcastingOnline={this.props.broadcastingOnline}></SummaryBox>
 				<StatusSelection startUpdateWithTitleFlow={this.startUpdateWithTitleFlow}
 													 setUpdateTitle={this.setUpdateTitle}
 													 handleDialogStateAction={this.handleDialogStateAction}></StatusSelection>
@@ -218,6 +219,7 @@ class Timeline extends React.Component {
 									 openImageDialog={this.openImageDialog}
 									 updateTextArea={this.updateTextArea}
 									 handleChange={this.handleChange}
+									 broadcastingOnline={this.props.broadcastingOnline}
 									 handleDialogStateAction={this.handleDialogStateAction}></NewUpdate>
 				<PreviewDialog previewModalOpen={this.state.previewModalOpen}
 							handleDialogStateAction={this.handleDialogStateAction}
@@ -226,6 +228,7 @@ class Timeline extends React.Component {
 							URLInputIsTwitter={this.state.URLInputIsTwitter}
 							time={this.state.time}
 							customURL={this.state.customURL}
+							broadcastingOnline={this.props.broadcastingOnline}
 							onImageDrop={this.onImageDrop}
 							inputIsImage={this.state.inputIsImage}
 							updateTitle={this.state.updateTitle}

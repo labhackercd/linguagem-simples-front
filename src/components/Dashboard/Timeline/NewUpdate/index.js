@@ -69,6 +69,7 @@ export default function NewUpdate(props) {
                   id="newUpdateTextField"
                   multiline
                   rows={4}
+									disabled={!props.broadcastingOnline}
                   variant="outlined"
                   className={classes.textField}
                   bgcolor="white"
@@ -103,7 +104,7 @@ export default function NewUpdate(props) {
 								</div>
               </Grid>
               <Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
-                <Button id={"updateSubmitButton"}className={classes.button} onClick={props.handleClick} variant="contained" disableElevation>
+                <Button disabled={!props.broadcastingOnline} id={"updateSubmitButton"}className={classes.button} onClick={props.handleClick} variant="contained" disableElevation>
                   Inserir
                 </Button>
               </Grid>
