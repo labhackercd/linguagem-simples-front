@@ -19,7 +19,7 @@ export async function fetchData() {
 export async function fetchCurrentSessionsData() {
 
   const response = await axiosInstance.get(API_SESSIONS_CURRENT_LIVE_URL);
-  console.log(response)
+  //console.log(response)
   
   if(response.data.length > 0){
     return response.data;

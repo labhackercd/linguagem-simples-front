@@ -5,7 +5,6 @@ import SessionHistoryComponent from './../index'
 import renderer from 'react-test-renderer';
 import moxios from 'moxios'
 import{responseData} from './requestData'
-import{responseVerify} from './verifyresponse'
 import axiosInstance from './../../../../auth/axiosApi'
 
 import {shallow,mount} from "enzyme/build";

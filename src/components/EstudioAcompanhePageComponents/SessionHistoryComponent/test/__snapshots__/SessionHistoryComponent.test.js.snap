@@ -2,7 +2,7 @@
 
 exports[`Test if SessionHistoryComponent snapshot matches 1`] = `
 <div
-  className="MuiBox-root MuiBox-root-34"
+  className="MuiBox-root MuiBox-root-6"
 >
   <div
     className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
