@@ -41,7 +41,7 @@ class Timeline extends React.Component {
 				URLInputDialogOpen: false,
 				URLInputIsTwitter: false,
 				picture: false,
-				time: '19:00',
+				time: parseHourMinute(new Date),
 				sessionID: props.sessionID,
 			}
 		}
@@ -208,23 +208,28 @@ class Timeline extends React.Component {
 			const { classes } = this.props;
 			return (
 				<div className={classes.body} testid="timeline">
-				<Header></Header>
-				<SummaryBox sessionID={this.state.sessionID}></SummaryBox>
+				<Header setBroadcastingStatus={this.props.setBroadcastingStatus}
+								broadcastingOnline={this.props.broadcastingOnline}></Header>
+				<SummaryBox sessionID={this.state.sessionID}
+										broadcastingOnline={this.props.broadcastingOnline}></SummaryBox>
 				<StatusSelection startUpdateWithTitleFlow={this.startUpdateWithTitleFlow}
-													 setUpdateTitle={this.setUpdateTitle}
-													 handleDialogStateAction={this.handleDialogStateAction}></StatusSelection>
+												 setUpdateTitle={this.setUpdateTitle}
+												 broadcastingOnline={this.props.broadcastingOnline}
+												 handleDialogStateAction={this.handleDialogStateAction}></StatusSelection>
 				<NewUpdate handleClick={this.handleClick}
 									 openImageDialog={this.openImageDialog}
 									 updateTextArea={this.updateTextArea}
 									 handleChange={this.handleChange}
+									 time={this.state.time}
+									 broadcastingOnline={this.props.broadcastingOnline}
 									 handleDialogStateAction={this.handleDialogStateAction}></NewUpdate>
 				<PreviewDialog previewModalOpen={this.state.previewModalOpen}
 							handleDialogStateAction={this.handleDialogStateAction}
 							handleChange={this.handleChange}
 							tweetID={this.state.tweetID}
 							URLInputIsTwitter={this.state.URLInputIsTwitter}
-							time={this.state.time}
 							customURL={this.state.customURL}
+							broadcastingOnline={this.props.broadcastingOnline}
 							onImageDrop={this.onImageDrop}
 							inputIsImage={this.state.inputIsImage}
 							updateTitle={this.state.updateTitle}

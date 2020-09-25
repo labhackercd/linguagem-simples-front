@@ -73,12 +73,13 @@ export default function SummaryBox(props) {
         <Grid container >
             <form className={classes.textArea} noValidate autoComplete="off">
               <TextField
-                id="outlined-multiline-static"
+                id="summary-box-textfield"
                 multiline
                 rows={4}
                 value={textFieldValue}
                 onChange={handleChange}
                 variant="outlined"
+								disabled={!props.broadcastingOnline}
                 className={classes.textField}
                 bgcolor="white"
                 InputProps={{
@@ -92,8 +93,13 @@ export default function SummaryBox(props) {
           <Box borderTop={1} color="#F2F2F2" borderRadius="0 0 10px 25px" bgcolor="#F2F2F2">
             <Grid container>
               <Grid item xs={8} style={{display: 'flex', justifyContent: 'flex-start'}}></Grid>
-              <Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
-                <Button className={classes.button} onClick={(e) => handleSubmit(e)} variant="contained" disableElevation>
+              <Grid item xs={4} style={{display:  'flex', justifyContent: 'flex-end'}}>
+                <Button	disabled={!props.broadcastingOnline}
+												className={classes.button}
+												id="summary-box-submit-button"
+												onClick={(e) => handleSubmit(e)}
+												variant="contained"
+												disableElevation>
                   Atualizar
                 </Button>
               </Grid>

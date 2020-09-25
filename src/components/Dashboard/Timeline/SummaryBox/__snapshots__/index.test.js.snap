@@ -69,7 +69,8 @@ exports[`snapshot should not have differences 1`] = `
           }
           bgcolor="white"
           className="makeStyles-textField-5"
-          id="outlined-multiline-static"
+          disabled={true}
+          id="summary-box-textfield"
           multiline={true}
           onChange={[Function]}
           rows={4}
@@ -109,6 +110,8 @@ exports[`snapshot should not have differences 1`] = `
         >
           <WithStyles(ForwardRef(Button))
             disableElevation={true}
+            disabled={true}
+            id="summary-box-submit-button"
             onClick={[Function]}
             variant="contained"
           >

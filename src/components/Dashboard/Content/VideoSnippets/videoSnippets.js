@@ -18,10 +18,10 @@ import SnippetCard from './videoSnippetCard'
 
 
 export default class VideoSnippets extends React.Component {
-    
+
   constructor(props){
     super(props);
-    this.state = { 
+    this.state = {
         snippets: '',
         filteredSnippets: '',
         sessionHasStarted: false,
@@ -47,7 +47,7 @@ export default class VideoSnippets extends React.Component {
             this.setState({sessionHasStarted:true})
             this.fetchSessionsList();
           }
-          
+
       }
   }
 
@@ -74,7 +74,7 @@ export default class VideoSnippets extends React.Component {
             </Box>
           </Grid>
           <Grid item xs={2}>
-            <Box marginRight={1}> 
+            <Box marginRight={1}>
               <TextField
                 id="input-search-snippet"
                 size="small"
@@ -92,7 +92,7 @@ export default class VideoSnippets extends React.Component {
   renderListItem = ({index, style}) => {
     return(
       <ListItem disableGutters={true} style={style} >
-          <SnippetCard data = {this.state.filteredSnippets[index]}></SnippetCard>        
+          <SnippetCard data = {this.state.filteredSnippets[index]}></SnippetCard>
       </ListItem>
     )
   }
@@ -102,18 +102,18 @@ export default class VideoSnippets extends React.Component {
     this.setState({
       searchField: event.target.value
     })
-    
+
     this.setState({
       filteredSnippets: this.state.snippets.filter(term => term.author.toLowerCase().includes(this.state.searchField.toLowerCase()))
     })
-    
+
   }
 
   render(){
     const widthSnippetsBox = parseInt(((window.innerWidth)*0.54));
     const widthSnippetsItem = (((window.innerWidth)*0.5)*0.12);
     //console.log(widthSnippetsBox)
-   
+
     if(this.state.error.happened){
       return (<Box display="flex" justifyContent="center" alignItems="center" width={"100%"}>
                   <Typography>Erro</Typography>
@@ -136,7 +136,7 @@ export default class VideoSnippets extends React.Component {
         {this.renderSearchBarFunction()}
           <Grid item xs={12}>
             <Box marginLeft={1}>
-              <FixedSizeList width={widthSnippetsBox} height={"12.5vh"} itemSize={widthSnippetsItem} layout="horizontal" itemCount={this.state.filteredSnippets.length}>        
+              <FixedSizeList width={widthSnippetsBox} height={"12.5vh"} itemSize={widthSnippetsItem} layout="horizontal" itemCount={this.state.filteredSnippets.length}>
                 {this.renderListItem}
               </FixedSizeList>
             </Box>

@@ -91,6 +91,7 @@ class PreviewDialog extends React.Component {
 							 multiline
 							 rows={4}
 							 bgcolor="white"
+							 disabled={!this.props.broadcastingOnline}
 							 name="previewModalUpdateText"
 							 placeholder={"Inserir nota"}
 							 onChange = {this.props.handleChange}
@@ -131,7 +132,7 @@ class PreviewDialog extends React.Component {
 			 </Paper>
 				 <DialogActions className={classes.previewModalFooter}>
 					 <Typography className={classes.time} style={{alignSelf: 'flex-start'}} variant="h6"> {this.props.time} </Typography>
-					 <Button onClick={(e) => this.props.handleDialogStateAction(e, false, "previewDialog", "dispatchPayload")} variant="contained" className={classes.previewModalSubmitButton}>
+					 <Button disabled={!this.props.broadcastingOnline} onClick={(e) => this.props.handleDialogStateAction(e, false, "previewDialog", "dispatchPayload")} variant="contained" className={classes.previewModalSubmitButton}>
 						 Publicar
 					 </Button>
 				 </DialogActions>

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Grid, Typography} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import InitStreamIcon from './../../../../assets/init_stream_button_icon.svg';
+import StartBroadcastAlert from './../Dialogs/Alert/StartBroadcast';
+import EndBroadcastAlert from './../Dialogs/Alert/EndBroadcast';
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -24,16 +26,42 @@ const useStyles = makeStyles((theme) => ({
     margin: '0.3rem 0 0 0',
     padding: '0 1rem 0 0',
   },
-  button: {
+  buttonBroadcastingOnline: {
     alignSelf: 'flex-start',
   	height: '30%',
   	color: 'default',
   	backgroundColor: '#00AF82',
   },
+  buttonBroadcastingOffline: {
+    alignSelf: 'flex-start',
+    height: '30%',
+    color: 'default',
+    backgroundColor: '#000000',
+  }
 }));
 
-export default function Header(){
+export default function Header(props){
 	const classes = useStyles();
+  const [startBroadcastDialogOpen, setStartBroadcastDialogOpen] = useState(false)
+  const [endBroadcastDialogOpen, setEndBroadcastDialogOpen] = useState(false)
+  const [userInput, setUserInput] = useState(false)
+
+  const handleStartBroadcastDialogOpen = (e) => {
+    e.preventDefault()
+    setStartBroadcastDialogOpen(true)
+  }
+
+  const handleEndBroadcastDialogOpen = (e) => {
+    e.preventDefault()
+    setEndBroadcastDialogOpen(true)
+  }
+
+  const handleDialogClose = (userInput) => {
+    setStartBroadcastDialogOpen(false)
+    setEndBroadcastDialogOpen(false)
+    props.setBroadcastingStatus(userInput)
+  }
+
 	return (
     <div className={classes.body}>
   		<Grid container className={classes.titleRow}>
@@ -41,16 +69,38 @@ export default function Header(){
           <Typography variant="h3" className={classes.title}>Linha do Tempo </Typography>
   			</Grid>
   			<Grid item md={6} className={classes.buttonContainer}>
-  	      <Button
-  	        variant="contained"
-  	        color="secondary"
-  	        disableElevation
-  	        className={classes.button}
-  	        startIcon={<img src={InitStreamIcon} alt="button to init stream"/>}>
-  	        <h6>Iniciar transmissão</h6>
-  	      </Button>
+          {props.broadcastingOnline ?
+            <Button
+              variant="contained"
+              color="secondary"
+              disableElevation
+              id="end-stream"
+              onClick={(e) => handleEndBroadcastDialogOpen(e)}
+              className={classes.buttonBroadcastingOffline}
+              startIcon={<img src={InitStreamIcon} alt="button to init stream"/>}>
+              <h6>Finalizar transmissão</h6>
+            </Button> :
+            <Button
+    	        variant="contained"
+    	        color="secondary"
+              id="start-stream"
+    	        disableElevation
+    	        className={classes.buttonBroadcastingOnline}
+              onClick={(e) => handleStartBroadcastDialogOpen(e)}
+    	        startIcon={<img src={InitStreamIcon} alt="button to init stream"/>}>
+    	        <h6>Iniciar transmissão</h6>
+    	      </Button>
+          }
   			</Grid>
   		</Grid>
+      <StartBroadcastAlert keepMounted
+                      open={startBroadcastDialogOpen}
+                      onClose={handleDialogClose}
+                      value={userInput} />
+      <EndBroadcastAlert keepMounted
+                      open={endBroadcastDialogOpen}
+                      onClose={handleDialogClose}
+                      value={userInput} />
     </div>
 	)
 }

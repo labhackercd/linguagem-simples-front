@@ -10,7 +10,7 @@ import PlayIcon from './assets/play_image.svg'
 import CustomizedSnackbars from '../../../Snackbar/index'
 import postSaveContent from '../FetchFunctions/postSaveContent'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
-
+import {uiMessages} from './../constants'
 
 export default class RadioCard extends React.Component{
   constructor(props){
@@ -44,8 +44,12 @@ export default class RadioCard extends React.Component{
         this.setState({openSnackBar:true, snackbar:{open:true, message:"Erro ao salvar conteúdo!", type:"error"}});
     }
   }
-  render(){
 
+  showCopiedSnackBar = () => {
+    this.setState({openSnackBar:true, snackbar:{open: true, message: uiMessages.clipboardCopySucess, type:"success"}})
+  }
+
+  render(){
     return (
       <Box width="97%" height="100%" >
           <CustomizedSnackbars open={this.state.snackbar.open} message={this.state.snackbar.message} type={this.state.snackbar.type}></CustomizedSnackbars>
@@ -65,7 +69,9 @@ export default class RadioCard extends React.Component{
                               <Grid item xs={1}>
                               <CopyToClipboard text={this.state.info.url}>
                                 <IconButton size="small">
-                                  <FileCopyTwoToneIcon text={this.state.info.url} fontSize="inherit" />
+                                  <FileCopyTwoToneIcon text={this.state.info.url}
+                                                       fontSize="inherit"
+                                                        onClick={this.showCopiedSnackBar}/>
                                 </IconButton>
                               </CopyToClipboard>
 

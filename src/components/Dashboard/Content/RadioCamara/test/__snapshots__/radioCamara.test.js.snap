@@ -76,6 +76,7 @@ exports[`Testing Radio Card Should render the RadioCard component and match snap
                     >
                       <FileCopyTwoToneIcon
                         fontSize="inherit"
+                        onClick={[Function]}
                       />
                     </WithStyles(ForwardRef(IconButton))>
                   </CopyToClipboard>

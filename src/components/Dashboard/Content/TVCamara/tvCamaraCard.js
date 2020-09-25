@@ -10,6 +10,9 @@ import moment from 'moment';
 import postSaveContent from '../FetchFunctions/postSaveContent'
 import TVIcon from './assets/tv_image.svg'
 import CustomizedSnackbars from '../../../Snackbar/index'
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import FileCopyTwoToneIcon from '@material-ui/icons/FileCopyTwoTone';
+import {uiMessages} from './../constants'
 
 
 export default class TVCard extends React.Component{
@@ -43,6 +46,10 @@ export default class TVCard extends React.Component{
     }
   }
 
+  showCopiedSnackBar = () => {
+    this.setState({openSnackBar:true, snackbar:{open: true, message: uiMessages.clipboardCopySucess, type:"success"}})
+  }
+
   render(){
     return (
       <Box width="97%" height="100%" >
@@ -61,9 +68,12 @@ export default class TVCard extends React.Component{
                               <Typography style={{ color: "gray" }} variant="body1">Vídeo</Typography>
                             </Grid>
                             <Grid item xs={1}>
-                              <IconButton aria-label="delete" size="small">
-                                  <AddCircleOutlineIcon fontSize="inherit" />
-                              </IconButton>
+                              <CopyToClipboard text={this.state.info.url}>
+                                <IconButton size="small">
+                                <FileCopyTwoToneIcon text={this.state.info.url}
+                                                     fontSize="inherit"
+                                                    onClick={this.showCopiedSnackBar}/>                                </IconButton>
+                              </CopyToClipboard>
 
                               {this.state.isDataFromSavedContentsComponent &&
                                   <IconButton id={"saveButtonTv"+this.state.info.id} aria-label="delete" size="small" onClick={this.handleSaveContent}>
