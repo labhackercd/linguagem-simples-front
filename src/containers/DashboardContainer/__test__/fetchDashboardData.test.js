@@ -1,4 +1,4 @@
-import fetchData from "./../fetchData";
+import { fetchData } from "./../APIHandler";
 import moxios from 'moxios'
 import axiosInstance from './../../../auth/axiosApi'
 import MockAdapter from "axios-mock-adapter"
