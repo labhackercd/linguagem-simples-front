@@ -69,6 +69,7 @@ exports[`snapshot should not have differences 1`] = `
           }
           bgcolor="white"
           className="makeStyles-textField-5"
+          disabled={true}
           id="summary-box-textfield"
           multiline={true}
           onChange={[Function]}
@@ -109,6 +110,7 @@ exports[`snapshot should not have differences 1`] = `
         >
           <WithStyles(ForwardRef(Button))
             disableElevation={true}
+            disabled={true}
             id="summary-box-submit-button"
             onClick={[Function]}
             variant="contained"

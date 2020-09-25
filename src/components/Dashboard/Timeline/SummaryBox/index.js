@@ -94,7 +94,12 @@ export default function SummaryBox(props) {
             <Grid container>
               <Grid item xs={8} style={{display: 'flex', justifyContent: 'flex-start'}}></Grid>
               <Grid item xs={4} style={{display:  'flex', justifyContent: 'flex-end'}}>
-                <Button	disabled={!props.broadcastingOnline} className={classes.button} id="summary-box-submit-button" onClick={(e) => handleSubmit(e)} variant="contained" disableElevation>
+                <Button	disabled={!props.broadcastingOnline}
+												className={classes.button}
+												id="summary-box-submit-button"
+												onClick={(e) => handleSubmit(e)}
+												variant="contained"
+												disableElevation>
                   Atualizar
                 </Button>
               </Grid>

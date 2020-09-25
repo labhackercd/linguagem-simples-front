@@ -10,6 +10,7 @@ import moment from 'moment';
 import postSaveContent from '../FetchFunctions/postSaveContent'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import CustomizedSnackbars from '../../../Snackbar/index'
+import {uiMessages} from './../constants'
 
 export default class NewsCard extends React.Component{
     constructor(props){
@@ -31,6 +32,9 @@ export default class NewsCard extends React.Component{
       this.handleSaveContent=this.handleSaveContent.bind(this);
     }
 
+    showCopiedSnackBar = () => {
+      this.setState({openSnackBar:true, snackbar:{open: true, message: uiMessages.clipboardCopySucess, type:"success"}})
+    }
 
     async handleSaveContent(){
       const hasBeenSaved = await postSaveContent("news", this.state.info, this.props.sessionId);
@@ -59,8 +63,9 @@ export default class NewsCard extends React.Component{
                                     <Box display="flex" justifyContent="flex-end">
                                       <CopyToClipboard text={this.state.info.url}>
                                         <IconButton size="small">
-                                          <FileCopyTwoToneIcon text={this.state.info.url} fontSize="inherit" />
-                                        </IconButton>
+                                        <FileCopyTwoToneIcon text={this.state.info.url}
+                                                             fontSize="inherit"
+                                                              onClick={this.showCopiedSnackBar}/>                                        </IconButton>
                                       </CopyToClipboard>
                                         {this.state.isDataFromSavedContentsComponent &&
                                             <IconButton id={"saveButtonAgencia"+this.state.info.id} aria-label="delete" size="small" onClick={this.handleSaveContent}>

@@ -54,6 +54,7 @@ export default function StatusSelection(props) {
           return <Button key={index} uvariant="contained"
 												 onClick={(e) => props.startUpdateWithTitleFlow(e, title)}
 												 disableElevation
+												 disabled={!props.broadcastingOnline}
 												 className={classes.tab}>{title}</Button>
         })}
       </Grid>

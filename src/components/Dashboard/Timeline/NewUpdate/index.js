@@ -88,7 +88,7 @@ export default function NewUpdate(props) {
             <Grid container>
               <Grid item xs={8} className={classes.submenu}>
                 <div className={classes.subMenuItem}>
-                  <Typography className={classes.time} variant="h6"> 18:00 </Typography>
+                  <Typography className={classes.time} variant="h6"> {props.time} </Typography>
                 </div>
                 <div className={classes.subMenuItem}>
                   <img src={DividerIcon} alt="divider icon"/>
