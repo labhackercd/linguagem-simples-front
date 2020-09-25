@@ -55,7 +55,6 @@ export default class VideoSnippets extends React.Component {
     try {
       //console.log(this.props)
       const data = await fetchSessionVideos(this.props.sessionInfo.id_session_dados_abertos);
-      //console.log(data)
       this.setState({snippets:data})
       this.setState({filteredSnippets:data})
       this.setState({dataLoaded:true});

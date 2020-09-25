@@ -110,7 +110,6 @@ class LoginScreen extends React.Component {
         localStorage.setItem('refresh_token', result.data.refresh);
         this.setState({succesfullLogin:true})
         
-
       }else{
         this.setState({error:{status:true, message:"Erro desconhecido. Tente novamente em alguns minutos."}})
       }
@@ -148,9 +147,9 @@ class LoginScreen extends React.Component {
   render(){
     const { classes } = this.props;
 
-    if(this.state.succesfullLogin) {
-      return <Redirect to={ESTUDIO_PAGE_URL}/>
-    }
+      if(this.state.succesfullLogin) {
+        return <Redirect to={ESTUDIO_PAGE_URL}/>
+      }
       return (
         <div>
           {this.state.succesfullLogin ?

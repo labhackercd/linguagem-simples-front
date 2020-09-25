@@ -9,8 +9,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField'
 import MenuItem from '@material-ui/core/MenuItem';
 import SendIcon from '@material-ui/icons/Send';
-import * as moment from 'moment'
-    
+import {Redirect } from "react-router-dom";
+
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
@@ -19,9 +19,9 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker,
 } from '@material-ui/pickers';
 import ptBrLocale from "date-fns/locale/pt-BR";
-import axiosInstance from '../../../auth/axiosApi.js'
-import {API_SESSIONS_URL} from '../../../api_urls'
-
+import {DASHBOARD_BASE_URL} from '../../../api_urls'
+import createSessionRequest from './createSessionRequest'
+import CreatingSessionDialog from './dialogCreateSessionAlert'
 
 const useStyles = makeStyles({
   root: {
@@ -52,7 +52,10 @@ class NewSessionFormComponent extends React.Component {
             sessionType:"virtual" ,
             acompanheTransmissionChannel:true,
             twitterTransmissionChannel:false,
-            sessionIdDadosAbertos:""
+            sessionIdDadosAbertos:"",
+            openCreatingSessionModal:false,
+            sucessfullCreatedSession:false,
+            idSessionCreatedToRedirect:null
         };
         this.handleSessionDateChange = this.handleSessionDateChange.bind(this);
         this.handleSessionTypeChange = this.handleSessionTypeChange.bind(this);
@@ -80,176 +83,159 @@ class NewSessionFormComponent extends React.Component {
     {
       this.setState({twitterTransmissionChannel: e.target.checked});
     };
-    /*
-    checkIfSessionsAlreadyExistsInSILEG(callback) {
-        const date = (moment(this.state.sessionDate).format('YYYY-MM-DD'))
-        //const date = moment(new Date()).format('YYYY-MM-DD');
-        //const date = "2020-08-26"
-        const url =  new URL("https://dadosabertos.camara.leg.br/api/v2/eventos?codTipoEvento=110&dataInicio="+date+"&dataFim="+date+"&ordem=ASC&ordenarPor=dataHoraInicio");
 
-        fetch(url, {
-            method: 'GET',
-        }).then((response) => response.json())
-        .then((responseData) => {
-            if(responseData.dados[0]!==undefined){
-                this.setState({sessionIdDadosAbertos:responseData.dados[0].id})
-            }
-            callback();
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-    }
-    */
-    createSession(callback){
-        axiosInstance.post(API_SESSIONS_URL, {
+    async createSession(callback){
+        const sessionJson = {
             location: "plenary",
             date:new Date(this.state.sessionDate).toISOString().slice(0,10),
             type_session: this.state.sessionType,
             situation_session:"pre_session",
             resume: "Resumo",
             enable:true
-            }).then(
-                result => {
-                    if(result.status===201){
-                        //alert("Sessão criada com sucesso")
-                        console.log("Dashboard criado com sucesso")
-                    }else{
-                        console.log("Falha ao criar dashboard")
-                    }
-                    //callback();
-                }   
-        )
-        /*.catch (error => {
-            throw error;
-        })*/
+        }
+        try{
+            await this.setState({openCreatingSessionModal:true});
+
+            const response = await createSessionRequest(sessionJson);
+
+            if(response !== null){
+
+                await this.setState({idSessionCreatedToRedirect:response.id, sucessfullCreatedSession:true});
+            }
+
+        }catch(e){
+            await this.setState({openCreatingSessionModal:false});
+            //Set error message here informing
+        }
+        
     }
 
     submitCreateSessionForm = (event) =>
     {
         event.preventDefault();
 
-        //this.checkIfSessionsAlreadyExistsInSILEG(() => {
-            this.createSession( () => {
-                window.location.reload(false);
-            });
-        //});
+        this.createSession();
     };
 
     render(){
     const { classes } = this.props;
+    
+    if(this.state.sucessfullCreatedSession) {
+        return <Redirect to={DASHBOARD_BASE_URL+this.state.idSessionCreatedToRedirect}/>
+    }
 
-        return(
+    return(
         <Box>
-        <Grid container>
-            <Grid item xs={12}>
-                <Box display="flex" justifyContent="flex-start" paddingBottom={3}>
-                    <Typography variant="h4" color="textSecondary">Nova sessão</Typography>
-                </Box>
-            </Grid>
-            <Grid item xs={12}>
-                <Grid container spacing={2}>
-                    <Grid item xs={5}>
-                        <Box display="block" justifyContent="flex-start" >
-                            <div><Typography variant="h6"> Local </Typography></div>
-                            <TextField
-                            className={classes.inputBorderColor}
-                            id="sessionPlace"
-                            variant="outlined"
-                            size="small"
-                            color="primary"
-                            value={this.state.sessionPlace}
-                            InputProps={{
-                                className: classes.inputTextColor
-                                }}
-                            />
-                        </Box>
-                    </Grid>
-                    <Grid item xs={7}>
-                        <Box display="block" justifyContent="flex-start" >
-                            <div><Typography variant="h6" color="textSecondary"> Comissão </Typography></div>
-                            <TextField id="selectComission" value="" variant="outlined" size="small" fullWidth={true} disabled select>
-                                <MenuItem value="">Selecione</MenuItem>
-                            </TextField>
-                        </Box>
-
-                    </Grid>
-                    <Grid item xs={5}>
-                        <Box display="block" justifyContent="flex-start" >
-                            <div><Typography variant="h6"> Data </Typography></div>
-
-                                <MuiPickersUtilsProvider utils={DateFnsUtils} locale={ptBrLocale}>
-                                <KeyboardDatePicker
-                                    disableToolbar
-                                    variant="inline"
-                                    format="dd/MM/yyyy"
-                                    value={this.state.sessionDate}
-                                    id="sessionDate"
-                                    InputLabelProps={{
-                                        shrink: true,
-                                        }}
-                                    inputVariant="outlined"
-                                    size="small"
-                                    onChange={(e)=>{this.handleSessionDateChange(e)}}
-                                    />
-                                </MuiPickersUtilsProvider>
-
-                        </Box>
-                    </Grid>
-                    <Grid item xs={7}>
-                        <Box display="block" justifyContent="flex-start" >
-                            <div><Typography variant="h6"> Tipo de Sessão </Typography></div>
-                            <TextField id="sessionType" value={this.state.sessionType} variant="outlined" size="small" fullWidth={true} select onChange={(e)=>{this.handleSessionTypeChange(e)}}>
-                                <MenuItem value="virtual">Virtual</MenuItem>
-                                <MenuItem value="presential">Presencial</MenuItem>
-                            </TextField>
-                        </Box>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Box display="block" justifyContent="flex-start" >
-                            <div><Typography variant="h6"> Canais de transmissão </Typography></div>
-                            <FormGroup aria-label="position" row>
-                                <FormControlLabel
-                                id="acompanheTransmissionChannel"
-                                control={
-                                    <Checkbox color="primary" checked={this.state.acompanheTransmissionChannel}  
-                                               onChange={(e)=>{this.handleAcompanheTransmissionChannelChange(e)}} 
-                                               name="checkedAcompanheTransmissionChannel"/>
-                                }
-                                label="Acompanhe"
+            <CreatingSessionDialog open={this.state.openCreatingSessionModal}></CreatingSessionDialog>
+            <Grid container>
+                <Grid item xs={12}>
+                    <Box display="flex" justifyContent="flex-start" paddingBottom={3}>
+                        <Typography variant="h4" color="textSecondary">Nova sessão</Typography>
+                    </Box>
+                </Grid>
+                <Grid item xs={12}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={5}>
+                            <Box display="block" justifyContent="flex-start" >
+                                <div><Typography variant="h6"> Local </Typography></div>
+                                <TextField
                                 className={classes.inputBorderColor}
-                               
+                                id="sessionPlace"
+                                variant="outlined"
+                                size="small"
+                                color="primary"
+                                value={this.state.sessionPlace}
+                                InputProps={{
+                                    className: classes.inputTextColor
+                                    }}
                                 />
-                                <FormControlLabel
-                                id="twitterTransmissionChannel"
-                                control={
-                                    <Checkbox color="primary" checked={this.state.twitterTransmissionChannel}  
-                                               onChange={(e)=>{this.handleTwitterTransmissionChannelChange(e)}} 
-                                               name="checkedTwitterTransmissionChannel"/>
-                                }
-                                label="Twitter"
+                            </Box>
+                        </Grid>
+                        <Grid item xs={7}>
+                            <Box display="block" justifyContent="flex-start" >
+                                <div><Typography variant="h6" color="textSecondary"> Comissão </Typography></div>
+                                <TextField id="selectComission" value="" variant="outlined" size="small" fullWidth={true} disabled select>
+                                    <MenuItem value="">Selecione</MenuItem>
+                                </TextField>
+                            </Box>
 
-                                />
-                            </FormGroup>
-                        </Box>
+                        </Grid>
+                        <Grid item xs={5}>
+                            <Box display="block" justifyContent="flex-start" >
+                                <div><Typography variant="h6"> Data </Typography></div>
+
+                                    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={ptBrLocale}>
+                                    <KeyboardDatePicker
+                                        disableToolbar
+                                        variant="inline"
+                                        format="dd/MM/yyyy"
+                                        value={this.state.sessionDate}
+                                        id="sessionDate"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                            }}
+                                        inputVariant="outlined"
+                                        size="small"
+                                        onChange={(e)=>{this.handleSessionDateChange(e)}}
+                                        />
+                                    </MuiPickersUtilsProvider>
+
+                            </Box>
+                        </Grid>
+                        <Grid item xs={7}>
+                            <Box display="block" justifyContent="flex-start" >
+                                <div><Typography variant="h6"> Tipo de Sessão </Typography></div>
+                                <TextField id="sessionType" value={this.state.sessionType} variant="outlined" size="small" fullWidth={true} select onChange={(e)=>{this.handleSessionTypeChange(e)}}>
+                                    <MenuItem value="virtual">Virtual</MenuItem>
+                                    <MenuItem value="presential">Presencial</MenuItem>
+                                </TextField>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Box display="block" justifyContent="flex-start" >
+                                <div><Typography variant="h6"> Canais de transmissão </Typography></div>
+                                <FormGroup aria-label="position" row>
+                                    <FormControlLabel
+                                    id="acompanheTransmissionChannel"
+                                    control={
+                                        <Checkbox color="primary" checked={this.state.acompanheTransmissionChannel}  
+                                                onChange={(e)=>{this.handleAcompanheTransmissionChannelChange(e)}} 
+                                                name="checkedAcompanheTransmissionChannel"/>
+                                    }
+                                    label="Acompanhe"
+                                    className={classes.inputBorderColor}
+                                
+                                    />
+                                    <FormControlLabel
+                                    id="twitterTransmissionChannel"
+                                    control={
+                                        <Checkbox disabled color="primary" checked={this.state.twitterTransmissionChannel}  
+                                                onChange={(e)=>{this.handleTwitterTransmissionChannelChange(e)}} 
+                                                name="checkedTwitterTransmissionChannel"/>
+                                    }
+                                    label="Twitter"
+
+                                    />
+                                </FormGroup>
+                            </Box>
+                        </Grid>
+
                     </Grid>
-
                 </Grid>
             </Grid>
-        </Grid>
-        <Box pt={4} pb={8}>
-            <Button
-                id="submitButton"
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                startIcon={<SendIcon />}
-                onClick={(e) => { this.submitCreateSessionForm(e) }}
-            >
-                Iniciar Sessão
-            </Button>
+            <Box pt={4} pb={8}>
+                <Button
+                    id="submitButton"
+                    variant="contained"
+                    color="primary"
+                    className={classes.button}
+                    startIcon={<SendIcon />}
+                    onClick={(e) => { this.submitCreateSessionForm(e) }}
+                >
+                    Criar Sessão
+                </Button>
+            </Box>
         </Box>
-    </Box>
 
         )
     }

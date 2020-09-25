@@ -52,6 +52,8 @@ module.exports = Object.freeze({
 
         //SESSIONS
             API_SESSIONS_URL:'/sessions/',
+            API_SESSIONS_URL_NOT_LIVE:'/sessions/?enable=false',
+            API_SESSIONS_CURRENT_LIVE_URL:'sessions/?enable=true',
 
         //TV CAMARA
             API_TV_CAMARA_URL:'/tvcamara/',
