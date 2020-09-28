@@ -357,7 +357,7 @@ exports[`Testing AttendanceListAlphabetic Card should render the AttendanceListA
                   >
                     <List
                       direction="ltr"
-                      height={180}
+                      height={215}
                       itemCount={7}
                       itemSize={25}
                       layout="vertical"
@@ -370,7 +370,7 @@ exports[`Testing AttendanceListAlphabetic Card should render the AttendanceListA
                           Object {
                             "WebkitOverflowScrolling": "touch",
                             "direction": "ltr",
-                            "height": 180,
+                            "height": 215,
                             "overflow": "auto",
                             "position": "relative",
                             "width": undefined,

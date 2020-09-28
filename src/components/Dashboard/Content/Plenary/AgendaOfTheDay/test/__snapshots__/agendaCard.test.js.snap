@@ -8,7 +8,8 @@ exports[`should render the AgendaCard component and match snapshot  1`] = `
     elevation={0}
   >
     <Styled(MuiBox)
-      m={1}
+      marginBottom={2}
+      marginLeft={1}
     >
       <WithStyles(ForwardRef(Grid))
         container={true}
@@ -67,6 +68,7 @@ exports[`should render the AgendaCard component and match snapshot  1`] = `
         >
           <Styled(MuiBox)
             fontSize={11}
+            marginBottom={1}
           >
             <WithStyles(ForwardRef(Typography))
               style={
@@ -86,10 +88,10 @@ exports[`should render the AgendaCard component and match snapshot  1`] = `
           </Styled(MuiBox)>
         </WithStyles(ForwardRef(Grid))>
       </WithStyles(ForwardRef(Grid))>
+      <WithStyles(ForwardRef(Divider))
+        light={true}
+      />
     </Styled(MuiBox)>
-    <WithStyles(ForwardRef(Divider))
-      variant="middle"
-    />
   </WithStyles(ForwardRef(Paper))>
 </Styled(MuiBox)>
 `;

@@ -46,7 +46,7 @@ export default class AttendanceListAlphabetic extends React.Component {
         <Grid container>
           <Grid item xs={12}>
             <Box style={{overflow: "auto"}}>
-              <FixedSizeList height={180} itemSize={25} itemCount={this.state.plenaryAttendanceList.length}>        
+              <FixedSizeList height={215} itemSize={25} itemCount={this.state.plenaryAttendanceList.length}>        
                 {this.renderListItem}
               </FixedSizeList>
             </Box>

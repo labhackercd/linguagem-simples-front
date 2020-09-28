@@ -771,67 +771,75 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
     <div
       key="tab-content"
     >
-      <AgendaOfTheDayComponent
-        sessionIdDadosAbertos={1}
+      <Styled(MuiBox)
+        width="97%"
       >
-        <Styled(MuiBox)
-          alignItems="center"
-          display="flex"
-          justifyContent="center"
-          minHeight="10vh"
-          minWidth="40vh"
-          width={1}
+        <div
+          className="MuiBox-root MuiBox-root-12"
         >
-          <div
-            className="MuiBox-root MuiBox-root-12"
+          <AgendaOfTheDayComponent
+            sessionIdDadosAbertos={1}
           >
-            <WithStyles(ForwardRef(CircularProgress))>
-              <ForwardRef(CircularProgress)
-                classes={
-                  Object {
-                    "circle": "MuiCircularProgress-circle",
-                    "circleDisableShrink": "MuiCircularProgress-circleDisableShrink",
-                    "circleIndeterminate": "MuiCircularProgress-circleIndeterminate",
-                    "circleStatic": "MuiCircularProgress-circleStatic",
-                    "colorPrimary": "MuiCircularProgress-colorPrimary",
-                    "colorSecondary": "MuiCircularProgress-colorSecondary",
-                    "indeterminate": "MuiCircularProgress-indeterminate",
-                    "root": "MuiCircularProgress-root",
-                    "static": "MuiCircularProgress-static",
-                    "svg": "MuiCircularProgress-svg",
-                  }
-                }
+            <Styled(MuiBox)
+              alignItems="center"
+              display="flex"
+              justifyContent="center"
+              minHeight="10vh"
+              minWidth="40vh"
+              width={1}
+            >
+              <div
+                className="MuiBox-root MuiBox-root-13"
               >
-                <div
-                  className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
-                  role="progressbar"
-                  style={
-                    Object {
-                      "height": 40,
-                      "width": 40,
+                <WithStyles(ForwardRef(CircularProgress))>
+                  <ForwardRef(CircularProgress)
+                    classes={
+                      Object {
+                        "circle": "MuiCircularProgress-circle",
+                        "circleDisableShrink": "MuiCircularProgress-circleDisableShrink",
+                        "circleIndeterminate": "MuiCircularProgress-circleIndeterminate",
+                        "circleStatic": "MuiCircularProgress-circleStatic",
+                        "colorPrimary": "MuiCircularProgress-colorPrimary",
+                        "colorSecondary": "MuiCircularProgress-colorSecondary",
+                        "indeterminate": "MuiCircularProgress-indeterminate",
+                        "root": "MuiCircularProgress-root",
+                        "static": "MuiCircularProgress-static",
+                        "svg": "MuiCircularProgress-svg",
+                      }
                     }
-                  }
-                >
-                  <svg
-                    className="MuiCircularProgress-svg"
-                    viewBox="22 22 44 44"
                   >
-                    <circle
-                      className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
-                      cx={44}
-                      cy={44}
-                      fill="none"
-                      r={20.2}
-                      strokeWidth={3.6}
-                      style={Object {}}
-                    />
-                  </svg>
-                </div>
-              </ForwardRef(CircularProgress)>
-            </WithStyles(ForwardRef(CircularProgress))>
-          </div>
-        </Styled(MuiBox)>
-      </AgendaOfTheDayComponent>
+                    <div
+                      className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+                      role="progressbar"
+                      style={
+                        Object {
+                          "height": 40,
+                          "width": 40,
+                        }
+                      }
+                    >
+                      <svg
+                        className="MuiCircularProgress-svg"
+                        viewBox="22 22 44 44"
+                      >
+                        <circle
+                          className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+                          cx={44}
+                          cy={44}
+                          fill="none"
+                          r={20.2}
+                          strokeWidth={3.6}
+                          style={Object {}}
+                        />
+                      </svg>
+                    </div>
+                  </ForwardRef(CircularProgress)>
+                </WithStyles(ForwardRef(CircularProgress))>
+              </div>
+            </Styled(MuiBox)>
+          </AgendaOfTheDayComponent>
+        </div>
+      </Styled(MuiBox)>
     </div>
   </PlenaryPanel>
 </WithStyles(PlenaryPanel)>

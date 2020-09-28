@@ -12,7 +12,7 @@ export default function AgendaCard(props){
     return (
         <Box width="97%"  >
             <Paper elevation={0} >
-                <Box m={1}>
+                <Box marginLeft={1} marginBottom={2}>
                     <Grid container>
                         <Grid item xs={10}>
                             <Box fontWeight="fontWeightRegular">
@@ -31,7 +31,7 @@ export default function AgendaCard(props){
                             </Box>
                         </Grid>
                         <Grid item xs={12}>
-                            <Box fontSize={11}>
+                            <Box fontSize={11} marginBottom={1}>
                                 {props.pautaInfo.nomRelator !== null &&
                                     <Typography style={{ color: "gray" }}>
                                         Relator: {props.pautaInfo.nomRelator} ({props.pautaInfo.partidoRelator}-{props.pautaInfo.ufRelator})
@@ -40,8 +40,9 @@ export default function AgendaCard(props){
                             </Box>
                         </Grid>
                     </Grid>
+                    <Divider light/>
                 </Box>        
-                <Divider variant="middle" />
+                
             </Paper>
         </Box>
     );

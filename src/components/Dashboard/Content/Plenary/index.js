@@ -143,9 +143,9 @@ class PlenaryPanel extends React.Component {
         </Tabs>
       </div>,
       <div key="tab-content">
-        {value === 0 && <AgendaOfTheDayComponent sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></AgendaOfTheDayComponent>}
-        {value === 1 && <PlenaryAttendance sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></PlenaryAttendance>}
-        {value === 2 && <PlenaryVoting sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></PlenaryVoting>}
+        {value === 0 && <Box width={"97%"}><AgendaOfTheDayComponent sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></AgendaOfTheDayComponent></Box>}
+        {value === 1 && <Box width={"97%"}><PlenaryAttendance sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></PlenaryAttendance></Box>}
+        {value === 2 && <Box width={"97%"}><PlenaryVoting sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></PlenaryVoting></Box>}
       </div>
     ];
   }

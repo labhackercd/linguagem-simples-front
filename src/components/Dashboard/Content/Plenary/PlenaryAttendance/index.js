@@ -82,14 +82,14 @@ export default class PlenaryAttendance extends React.Component {
           <Grid container>
             <Grid item xs={9} >
                 <Box borderRadius={5} {...defaultProps}>
-                  <Box margin={1} fontWeight="fontWeightBold">
+                  <Box margin={1} fontWeight="fontWeightBold" height={10} display="flex" alignItems="center" >
                     <Typography style={{ color: "#666666" }} variant="h5"  display="inline">TOTAL DE PRESENTES: </Typography>
                     <Typography style={{ color: "#00AF82" }} variant="h5"  display="inline">{this.state.plenaryAttendanceList.length}</Typography>
                   </Box>
                 </Box>
             </Grid>
             <Grid item xs={3} >
-              <Box display="flex" justifyContent="center" paddingTop={1} paddingLeft={2} >
+              <Box display="flex" justifyContent="center"  paddingLeft={2} alignItems="center">
                 <FormControl >
                     <NativeSelect
                       value={this.state.selectedOption}
