@@ -25,6 +25,8 @@ module.exports = Object.freeze({
 
     //URL's
         ACOMPANHE_PORTAL_URL_PAGE: 'https://www.camara.leg.br/evento-legislativo/',
+        PROPOSICAO_INFO_PAGE: 'https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=',
+        
 
     //API'S BACKEND
         //AUTH URL'S

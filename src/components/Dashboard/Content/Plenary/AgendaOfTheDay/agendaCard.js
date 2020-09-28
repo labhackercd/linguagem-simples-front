@@ -3,7 +3,7 @@ import { Grid, Typography } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper'
-
+import {PROPOSICAO_INFO_PAGE} from '../../../../../api_urls'
 import LaunchIcon from '@material-ui/icons/Launch';
 import Divider from '@material-ui/core/Divider';
 
@@ -23,7 +23,7 @@ export default function AgendaCard(props){
                         </Grid>
                         <Grid item xs={2}>
                             <Box display="flex" justifyContent="flex-end">
-                                <a rel={'external noopener noreferrer'} target="_blank" href={"https://dadosabertos.camara.leg.br/api/v2/proposicoes/"+props.pautaInfo.codProposicao} style={{textDecoration: "none"}}>
+                                <a rel={'external noopener noreferrer'} target="_blank" href={PROPOSICAO_INFO_PAGE+props.pautaInfo.codProposicao} style={{textDecoration: "none"}}>
                                     <IconButton aria-label="Ir para Proposicao" size="small">
                                         <LaunchIcon  fontSize="inherit" />
                                     </IconButton>    

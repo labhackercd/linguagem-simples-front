@@ -41,7 +41,7 @@ exports[`should render the AgendaCard component and match snapshot  1`] = `
             justifyContent="flex-end"
           >
             <a
-              href="https://dadosabertos.camara.leg.br/api/v2/proposicoes/593065"
+              href="https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=593065"
               rel="external noopener noreferrer"
               style={
                 Object {

@@ -78,6 +78,7 @@ class PlenaryPanel extends React.Component {
             label={
               <React.Fragment>
                   <Paper
+                    elevation={0}
                     size="small"
                     classes={{ root: classes.tab}}
                     className={
@@ -101,6 +102,7 @@ class PlenaryPanel extends React.Component {
             label={
               <React.Fragment>
                   <Paper
+                    elevation={0}
                     size="small"
                     className={
                       this.state.value === 1
@@ -123,6 +125,7 @@ class PlenaryPanel extends React.Component {
             label={
               <React.Fragment>
                   <Paper
+                    elevation={0}
                     size="small"
                     className={
                       this.state.value === 2
