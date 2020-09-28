@@ -1,7 +1,9 @@
 import React from 'react';
 import { Grid, Typography, Paper } from '@material-ui/core';
 import { withStyles } from "@material-ui/core/styles";
-
+import LaunchIcon from '@material-ui/icons/Launch';
+import UpdateIcon from '@material-ui/icons/Update';
+import {ACOMPANHE_PORTAL_URL_PAGE} from '../../../api_urls'
 import ExternalContentPanel from './externalContentPanel';
 import Youtube from './Youtube/index'
 import Button from '@material-ui/core/Button';
@@ -124,9 +126,25 @@ class Content extends React.Component {
           <Grid item className={classes.headerMenu}>
   
             {!this.state.sessionIdDadosAbertos &&
-              <Button onClick={this.handleSynchronize} className={classes.headerMenuItem}>Sincronizar</Button>
+              <Button
+                onClick={this.handleSynchronize}
+                style= {{textTransform: 'capitalize', color:'grey'}}
+                className={classes.headerMenuItem}
+                endIcon={<UpdateIcon style={{ color: '#00AF82' }}></UpdateIcon>}
+              >
+                Sincronizar
+              </Button>
             }
-              <Typography variant="h5" className={classes.headerMenuItem}> Ver Acompanhe </Typography>
+            {this.state.sessionIdDadosAbertos &&
+              <Button
+                target="_blank" href={ACOMPANHE_PORTAL_URL_PAGE+this.state.sessionIdDadosAbertos}
+                style= {{textTransform: 'capitalize', color:'grey'}}
+                className={classes.headerMenuItem}
+                endIcon={<LaunchIcon style={{ color: '#00AF82' }}></LaunchIcon>}
+              >
+                Ver Acompanhe
+              </Button>
+            }
           </Grid>
         </Grid>
         <Grid container className={classes.firstRow} spacing={2}>

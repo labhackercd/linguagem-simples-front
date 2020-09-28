@@ -23,6 +23,9 @@ module.exports = Object.freeze({
         API_CD_PRESENCA_VOTACAO_PLENARIO:  'https://infoleg.camara.gov.br/ws-plenario/api/presenca?local=P',
         API_CD_PAUTA_SESSAO_PLENARIO: 'https://liderancadigital.camara.leg.br/proxy_pass/ws-pauta-itens-da-pauta/',
 
+    //URL's
+        ACOMPANHE_PORTAL_URL_PAGE: 'https://www.camara.leg.br/evento-legislativo/',
+
     //API'S BACKEND
         //AUTH URL'S
             TOKEN_REFRESH_URL: '/token/refresh/', //Application Api Token REFRESH PATH
