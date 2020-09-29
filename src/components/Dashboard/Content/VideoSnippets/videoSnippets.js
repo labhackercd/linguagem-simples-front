@@ -1,21 +1,16 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {videoSnippetsMockData} from './videoSnippetsMockData'
 import fetchSessionVideos from './fetchVideoSnippetsCamara'
 import { FixedSizeList } from 'react-window';
 import ListItem from '@material-ui/core/ListItem';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
-import ButtonBase from '@material-ui/core/ButtonBase'
-
-import VideoSnippetModal from './VideoSnippetModal/videoSnippetModal'
 import SnippetCard from './videoSnippetCard'
-
-
+import IconButton from '@material-ui/core/IconButton';
+import RefreshIcon from '@material-ui/icons/Refresh';
 
 export default class VideoSnippets extends React.Component {
 
@@ -64,6 +59,11 @@ export default class VideoSnippets extends React.Component {
     }
   };
 
+  handleUpdateSnippetsButton = async term => {
+    this.setState({dataLoaded:false})
+    await this.fetchSessionsList();
+  };
+
   renderSearchBarFunction(){
     return(
       <React.Fragment>
@@ -73,15 +73,21 @@ export default class VideoSnippets extends React.Component {
               <Typography variant="h5" style={{ color: "#3E3E3E" }}>Trechos</Typography>
             </Box>
           </Grid>
-          <Grid item xs={2}>
-            <Box marginRight={1}>
+          <Grid item xs={1}>
               <TextField
                 id="input-search-snippet"
                 size="small"
+                fullWidth={true}
                 onChange={this.snippetsFilterOnChange}
                 InputProps={{
                   endAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),
                 }}/>
+          </Grid>
+          <Grid item xs={1}>
+            <Box display="flex" justifyContent="center">
+              <IconButton id="atualizarSnippets" aria-label="atualizar" size="small"  onClick={() => { this.handleUpdateSnippetsButton()}}>
+                <RefreshIcon />
+              </IconButton>
             </Box>
           </Grid>
         </Grid>
