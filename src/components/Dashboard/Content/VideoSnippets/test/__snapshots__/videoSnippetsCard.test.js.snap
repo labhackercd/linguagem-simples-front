@@ -74,7 +74,9 @@ exports[`Testing VideoSnippetCard Component should render the Card component and
                 <div
                   className="MuiBox-root MuiBox-root-2"
                 >
-                  <WithStyles(ForwardRef(Typography))>
+                  <WithStyles(ForwardRef(Typography))
+                    variant="body2"
+                  >
                     <ForwardRef(Typography)
                       classes={
                         Object {
@@ -110,9 +112,10 @@ exports[`Testing VideoSnippetCard Component should render the Card component and
                           "subtitle2": "MuiTypography-subtitle2",
                         }
                       }
+                      variant="body2"
                     >
                       <p
-                        className="MuiTypography-root MuiTypography-body1"
+                        className="MuiTypography-root MuiTypography-body2"
                       >
                         Arthur Oliveira Maia
                       </p>
@@ -169,7 +172,7 @@ exports[`Testing VideoSnippetCard Component should render the Card component and
                       <p
                         className="MuiTypography-root MuiTypography-body2"
                       >
-                        Deputado DEM-BA
+                        15h57'20
                       </p>
                     </ForwardRef(Typography)>
                   </WithStyles(ForwardRef(Typography))>

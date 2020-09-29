@@ -164,6 +164,10 @@ describe('Testing VideoSnippet Component', () => {
             searchField.instance().value = "x";
             searchField.simulate("change");
 
+            const updateButton = component.find("#atualizarSnippets").at(0);
+            //console.log(component.find("#atualizarSnippets").at(0).debug())
+            updateButton.simulate('click');
+
             mock.restore();
             done();
          })
