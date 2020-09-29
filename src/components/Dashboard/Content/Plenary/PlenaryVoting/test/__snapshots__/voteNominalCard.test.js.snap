@@ -4,13 +4,19 @@ exports[`Testing Vote Nominal Card should render the  Vote Nominal Card componen
 <VoteNominalCard
   data={
     Object {
-      "codOrientacaoVotacao": "S",
-      "ideItemVotacao": 33398,
-      "nomOrientacaoVotacao": "Sim",
-      "nomOrientacaoVotacaoResumido": "Sim",
-      "nomReduzido": "Deputado X",
-      "sigPartido": "LAB",
-      "sigUF": "DF",
+      "bolRelator": false,
+      "codTipoMembroComissao": "T",
+      "codTipoParlamentar": "D",
+      "codTipoVoto": "S",
+      "dataPresenca": "01/09/2020 15:01:22.520",
+      "dataVoto": null,
+      "ideCadastroParlamentar": 123456,
+      "indContabilizarVoto": 0,
+      "indVagaPorPartido": true,
+      "nomParlamentarPainelEletronico": "Deputado X",
+      "nomTipoVoto": "Sim",
+      "sigPartidoPoliticoAtual": "LAB",
+      "sigUfEleito": "CD",
     }
   }
 >
@@ -139,7 +145,7 @@ exports[`Testing Vote Nominal Card should render the  Vote Nominal Card componen
           >
             <WithStyles(ForwardRef(Grid))
               item={true}
-              xs={6}
+              xs={10}
             >
               <ForwardRef(Grid)
                 classes={
@@ -250,10 +256,10 @@ exports[`Testing Vote Nominal Card should render the  Vote Nominal Card componen
                   }
                 }
                 item={true}
-                xs={6}
+                xs={10}
               >
                 <div
-                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
                 >
                   <WithStyles(ForwardRef(Typography))
                     style={
@@ -317,7 +323,7 @@ exports[`Testing Vote Nominal Card should render the  Vote Nominal Card componen
                          (
                         LAB
                         -
-                        DF
+                        CD
                         )
                       </p>
                     </ForwardRef(Typography)>
@@ -327,7 +333,7 @@ exports[`Testing Vote Nominal Card should render the  Vote Nominal Card componen
             </WithStyles(ForwardRef(Grid))>
             <WithStyles(ForwardRef(Grid))
               item={true}
-              xs={6}
+              xs={2}
             >
               <ForwardRef(Grid)
                 classes={
@@ -438,10 +444,10 @@ exports[`Testing Vote Nominal Card should render the  Vote Nominal Card componen
                   }
                 }
                 item={true}
-                xs={6}
+                xs={2}
               >
                 <div
-                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"
+                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
                 >
                   <Styled(MuiBox)
                     display="flex"

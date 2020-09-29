@@ -6,13 +6,19 @@ describe('Testing Vote Nominal Card', () => {
 
     test("should render the  Vote Nominal Card component", () => {
       var mockedPropsdata={
-        "ideItemVotacao": 33398,
-        "codOrientacaoVotacao": "S",
-        "sigPartido": "LAB",
-        "nomOrientacaoVotacao": "Sim",
-        "nomOrientacaoVotacaoResumido": "Sim",
-        "sigUF":"DF",
-        "nomReduzido":"Deputado X",
+        "codTipoMembroComissao": "T",
+        "codTipoParlamentar": "D",
+        "ideCadastroParlamentar": 123456,
+        "nomParlamentarPainelEletronico": "Deputado X",
+        "bolRelator": false,
+        "sigPartidoPoliticoAtual": "LAB",
+        "sigUfEleito": "CD",
+        "indVagaPorPartido": true,
+        "indContabilizarVoto": 0,
+        "dataPresenca": "01/09/2020 15:01:22.520",
+        "dataVoto": null,
+        "codTipoVoto": "S",
+        "nomTipoVoto": "Sim"
       }
       const component = mount(<VoteNominalCard data={mockedPropsdata}/>);
   
@@ -20,16 +26,22 @@ describe('Testing Vote Nominal Card', () => {
       expect(component).toMatchSnapshot();
     });
 
-    test("should render the  Vote Nominal Card component in Lib orientation", () => {
-        var mockedPropsdata={
-            "ideItemVotacao": 33398,
-            "codOrientacaoVotacao": "L",
-            "sigPartido": "LAB",
-            "nomOrientacaoVotacao": "Lib",
-            "nomOrientacaoVotacaoResumido": "Lib",
-            "sigUF":"DF",
-            "nomReduzido":"Deputado X",
-          }
+    test("should render the  Vote Nominal Card component in default orientation", () => {
+      var mockedPropsdata={
+        "codTipoMembroComissao": "T",
+        "codTipoParlamentar": "D",
+        "ideCadastroParlamentar": 123456,
+        "nomParlamentarPainelEletronico": "Deputado X",
+        "bolRelator": false,
+        "sigPartidoPoliticoAtual": "LAB",
+        "sigUfEleito": "CD",
+        "indVagaPorPartido": true,
+        "indContabilizarVoto": 0,
+        "dataPresenca": "01/09/2020 15:01:22.520",
+        "dataVoto": null,
+        "codTipoVoto": "",
+        "nomTipoVoto": ""
+      }
         const component = mount(<VoteNominalCard  data={mockedPropsdata}/>);
     
         expect(component.exists()).toEqual(true);
@@ -37,14 +49,20 @@ describe('Testing Vote Nominal Card', () => {
 
       test("should render the  Vote Nominal Card component in Nao orientation", () => {
         var mockedPropsdata={
-            "ideItemVotacao": 33398,
-            "codOrientacaoVotacao": "N",
-            "sigPartido": "LAB",
-            "nomOrientacaoVotacao": "Não",
-            "nomOrientacaoVotacaoResumido": "Não",
-            "sigUF":"DF",
-            "nomReduzido":"Deputado X",
-          }
+          "codTipoMembroComissao": "T",
+          "codTipoParlamentar": "D",
+          "ideCadastroParlamentar": 123456,
+          "nomParlamentarPainelEletronico": "Deputado X",
+          "bolRelator": false,
+          "sigPartidoPoliticoAtual": "LAB",
+          "sigUfEleito": "CD",
+          "indVagaPorPartido": true,
+          "indContabilizarVoto": 0,
+          "dataPresenca": "01/09/2020 15:01:22.520",
+          "dataVoto": null,
+          "codTipoVoto": "N",
+          "nomTipoVoto": "Não"
+        }
         const component = mount(<VoteNominalCard  data={mockedPropsdata}/>);
     
         expect(component.exists()).toEqual(true);

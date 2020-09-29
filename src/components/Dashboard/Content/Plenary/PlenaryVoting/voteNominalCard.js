@@ -8,8 +8,7 @@ import Divider from '@material-ui/core/Divider';
 export default function VoteNominalCard(props){
     var voteColor = null;
 
-
-    switch(props.data.codOrientacaoVotacao){
+    switch(props.data.codTipoVoto){
       case "S":
         voteColor = "green";//Sim
         break;
@@ -24,13 +23,13 @@ export default function VoteNominalCard(props){
     return(
         <Box width="100%" marginTop={0.5}>
             <Grid container>
-                <Grid item xs={6}>
-                    <Typography style={{ color: "#666666" }} variant="body1">{props.data.nomReduzido} ({props.data.sigPartido}-{props.data.sigUF})</Typography>
+                <Grid item xs={10}>
+                    <Typography style={{ color: "#666666" }} variant="body1">{props.data.nomParlamentarPainelEletronico} ({props.data.sigPartidoPoliticoAtual}-{props.data.sigUfEleito})</Typography>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={2}>
                     <Box display="flex" justifyContent="flex-end">
                         <Box display="flex" justifyContent="flex-end">
-                            <Typography style={{ color: voteColor }} variant="body1">{props.data.nomOrientacaoVotacaoResumido}</Typography>
+                            <Typography style={{ color: voteColor }} variant="body1">{props.data.nomTipoVoto}</Typography>
                         </Box>
                     </Box>
                 </Grid>

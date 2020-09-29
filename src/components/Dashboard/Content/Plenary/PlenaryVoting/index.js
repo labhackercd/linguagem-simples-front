@@ -40,6 +40,7 @@ export default class PlenaryVoting extends React.Component {
           responseData = await fetchVotingList(this.state.sessionIdDadosAbertos);
           //console.log(responseData)
           this.setState({votingList:responseData});
+          //console.log(responseData)
           this.setState({dataLoaded:true});
         }catch(e){
           this.setState({serverError:true});
@@ -48,17 +49,23 @@ export default class PlenaryVoting extends React.Component {
       }
   };
 
-  async fetchNominalVote(id){
+  async fetchNominalVoteFunction(id){
     var responseData = null
       if(id !== undefined){
         try{
           responseData = await fetchNominalVote(id);
-          // Se data não for nula
-            this.setState({orientationSelectedVotingListItem:responseData})
-            this.setState({orientationSelectedVotingListDataLoaded:true});
-            // return true;
-          // Se a data for nula
-            // return false;
+          
+          if(responseData !== null){
+            // Se data não for nula
+            //console.log(responseData.data.comissoes[0].representacoes[0].partidos[0].parlamentares)
+            this.setState({orientationSelectedVotingListDataLoaded:false})
+            this.setState({nominalSelectedVotingListItem:responseData.data.comissoes[0].representacoes[0].partidos[0].parlamentares});
+            this.setState({nominalSelectedVotingListDataLoaded:true});
+            return true;
+          }else{
+            return false;
+          }
+
         }catch(e){
           this.setState({serverError:true});
           this.setState({dataLoaded:true});
@@ -66,13 +73,15 @@ export default class PlenaryVoting extends React.Component {
       }
     }
 
-  async fetchOrientationVote(id){
-    var responseData = null
+  async fetchOrientationVoteFunction(id){
+    var responseData = null;
       if(this.state.selectedVotingListItem !== undefined){
         try{
           responseData = await fetchOrientationVote(id);
-          this.setState({nominalSelectedVotingListItem:responseData})
-          this.setState({nominalSelectedVotingListDataLoaded:true});
+        
+          this.setState({nominalSelectedVotingListDataLoaded:false})
+          this.setState({orientationSelectedVotingListItem:responseData})
+          this.setState({orientationSelectedVotingListDataLoaded:true});
         }catch(e){
           this.setState({serverError:true});
           this.setState({dataLoaded:true});
@@ -81,17 +90,14 @@ export default class PlenaryVoting extends React.Component {
   };
 
   async fetchCorrespondentVotation(id){
-    var selectedVotingItemIsNominal = await fetchNominalVote(id);
+    var selectedVotingItemIsNominal = await this.fetchNominalVoteFunction(id);
 
     if(selectedVotingItemIsNominal === false){
       //Select a orientation vote
-      await fetchOrientationVote(id);
-    }else{
-      //Não foi possível obter os dados da votação
+      
+      await this.fetchOrientationVoteFunction(id);
     }
   }
-
-  
 
   componentDidMount(){
       this._isMounted = true;
@@ -106,16 +112,14 @@ export default class PlenaryVoting extends React.Component {
 
     this.setState({selectedVotingListItem:event.target.value})
 
-    // Primeiro fetch nominal vote
-    // Se retornar nulo obtem votação orientação, se não segue em freten
-    this.fetchOrientationVote(event.target.value);
+    this.fetchCorrespondentVotation(event.target.value);
   }
 
 
   renderNominalVotingListItem = ({index, style}) => {
     return(
       <ListItem style={style} >   
-        <VoteNominalCard data={this.state.orientationSelectedVotingListItem[index]}></VoteNominalCard>
+        <VoteNominalCard data={this.state.nominalSelectedVotingListItem[index]}></VoteNominalCard>
       </ListItem>
     )
   }
@@ -173,7 +177,7 @@ export default class PlenaryVoting extends React.Component {
               <Grid item xs={12}>
                 <Box style={{overflow: "auto"}}>
                   {
-                    <FixedSizeList height={215} itemSize={25} itemCount={this.state.orientationSelectedVotingListItem.length}>        
+                    <FixedSizeList height={215} itemSize={25} itemCount={this.state.nominalSelectedVotingListItem.length}>        
                       {this.renderNominalVotingListItem}
                     </FixedSizeList>
                   }
