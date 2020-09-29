@@ -4,11 +4,6 @@ import Grid  from "@material-ui/core/Grid";
 import Typography  from "@material-ui/core/Typography";
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import SvgIcon from '@material-ui/core/SvgIcon';
-import { ReactComponent as DocumentIcon } from './assets/document_icon.svg';
-import ScheduleIcon from './assets/schedule_session.svg'
-import FinishedIcon from './assets/finished_session.svg'
 import StartedIcon from './assets/session_started.svg'
 import 'date-fns';
 import FormatStringData from './utils';

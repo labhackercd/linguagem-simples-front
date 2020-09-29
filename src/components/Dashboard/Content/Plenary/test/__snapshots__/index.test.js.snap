@@ -772,6 +772,7 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
       key="tab-content"
     >
       <Styled(MuiBox)
+        pt={1}
         width="97%"
       >
         <div

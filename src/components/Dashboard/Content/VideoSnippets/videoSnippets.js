@@ -1,18 +1,13 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import {videoSnippetsMockData} from './videoSnippetsMockData'
 import fetchSessionVideos from './fetchVideoSnippetsCamara'
 import { FixedSizeList } from 'react-window';
 import ListItem from '@material-ui/core/ListItem';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
-import ButtonBase from '@material-ui/core/ButtonBase'
-
-import VideoSnippetModal from './VideoSnippetModal/videoSnippetModal'
 import SnippetCard from './videoSnippetCard'
 
 

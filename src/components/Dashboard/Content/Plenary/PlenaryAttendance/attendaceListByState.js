@@ -64,16 +64,16 @@ export default class AttendanceListByState extends React.Component {
             <Box style={{maxHeight: "21vh", overflow: "auto"}}>
               <List>
                {this.state.listFilteredByState.map((state) => (
-                  <ListItem key={state.uf}>
-                    <Box paddingBottom={0.5} width={"98%"}>
+                  <ListItem key={state.uf} style={{paddingTop:0}}>
+                    <Box width={"98%"}>
                         <Accordion>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel1a-content"
                             id="panel1a-header"
-                            style={{backgroundColor:'#F2F2F2'}}
+                            style={{backgroundColor:'#F2F2F2', minHeight:30}}
                             >
-                                <Box width="100%" marginTop={0.5}>
+                                <Box width="100%">
                                     <Grid container>
                                         <Grid item xs={6}>
                                             <Typography style={{ color: "#666666" }} variant="body1">{state.uf}</Typography>

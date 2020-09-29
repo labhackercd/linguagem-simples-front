@@ -44,7 +44,6 @@ const useStyles = theme => ({
   },
   card: {
     backgroundColor: "white",
-    height: 'auto',
     width: 'auto',
     margin: '1rem 0 0 0',
     height: '36vh',
