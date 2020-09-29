@@ -10,19 +10,19 @@ describe('Testing News Card', () => {
 
     it("should render the NewsCard component and match snapshot ", () => {
       var mockedPropsdata={
-            carteira: 190,
-            datInicioOrdemDia: null,
-            datInicioSessao: null,
-            datRegistroPresencaPlenario: null,
-            nomReduzido: "Abílio Santana",
-            nomSessao: null,
-            numLegislatura: 56,
-            numPosicaoUF: 16,
-            numSessao: 0,
-            sigPartido: "PL",
-            sigUF: "BA",
-            tipoPresenca: "A"
-        };
+        "ideCadastro": 204379,
+        "tipoMembro": "T",
+        "nome": "Acácio Favacho",
+        "partido": "PROS",
+        "uf": "AP",
+        "dataPresenca": "01/09/2020 14:39:38",
+        "legendaPresenca": "P",
+        "presencaContabilizada": true,
+        "presencaExcedida": false,
+        "titular": true,
+        "suplente": false,
+        "presente": true
+      }
 
       const component = mount(<CongressPersonLine data={mockedPropsdata}/>);
   

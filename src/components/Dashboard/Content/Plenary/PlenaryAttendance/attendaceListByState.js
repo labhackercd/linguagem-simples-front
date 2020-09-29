@@ -28,7 +28,7 @@ export default class AttendanceListByState extends React.Component {
     var filteredList = []
 
     for(var i = 0; i < states.length; i++) {
-        let filteredArray = (this.state.plenaryAttendanceList).filter(it => it.sigUF.includes(states[i].value));
+        let filteredArray = (this.state.plenaryAttendanceList).filter(it => it.uf.includes(states[i].value));
         let object = {siglaUf:states[i].value, uf:states[i].label, deputies:filteredArray};
         filteredList.push(object)
     }
@@ -90,7 +90,7 @@ export default class AttendanceListByState extends React.Component {
                                 <Box width="100%">
                                     <List>
                                         {(state.deputies).map((item) => (
-                                                <ListItem key={item.carteira}>
+                                                <ListItem key={item.ideCadastro}>
                                                     <CongressPersonLine data={item}></CongressPersonLine>
                                                 </ListItem>
                                             )

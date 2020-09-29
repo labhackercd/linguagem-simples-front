@@ -31,7 +31,7 @@ export default class AttendanceListAlphabetic extends React.Component {
 
   componentDidMount(){
       this._isMounted = true;
-
+      //console.log(this.state.plenaryAttendanceList)
       if(this._isMounted){
           //this.fetchSessionsList();
       }

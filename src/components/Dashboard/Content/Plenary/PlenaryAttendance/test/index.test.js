@@ -7,6 +7,7 @@ import PlenaryAttendance from '../index.js'
 import axios from 'axios'
 import {API_CD_PRESENCA_VOTACAO_PLENARIO} from '../../../../../../api_urls'
 import {mockPresenceList} from './assets/mockdata'
+import {mockFullResponsePresenceList} from './assets/mockFullResponse'
 
 it("should render the PlenaryAttendance section and match snapshot", () => {
     const component = mount(<PlenaryAttendance sessionIdDadosAbertos={1}/>);
@@ -33,33 +34,38 @@ describe('Testing lifeclycle of PlenaryAttendance content', () => {
    
     test("Test PlenaryAttendance content lifeclycle with data been loaded", async (done) => {
       var mockInstance = new MockAdapter(axios);
-
+      var sessionIdDadosAbertos = 1;
         
-        await mockInstance.onGet(API_CD_PRESENCA_VOTACAO_PLENARIO).replyOnce(200,mockPresenceList)
+        await mockInstance.onGet(API_CD_PRESENCA_VOTACAO_PLENARIO+sessionIdDadosAbertos).replyOnce(200,mockFullResponsePresenceList)
                 
-        const wrapper = await mount(<PlenaryAttendance sessionIdDadosAbertos={1}/>);
+        const wrapper = await mount(<PlenaryAttendance sessionIdDadosAbertos={sessionIdDadosAbertos}/>);
   
         setImmediate(() => {
           wrapper.update();
           //console.log(wrapper.debug())
           const containsSpinner = wrapper.containsMatchingElement(<CircularProgress />);
           expect(containsSpinner).not.toBeTruthy();
-          const selectField = wrapper.find("#attendance-type-item-slect");
-          //console.log(selectField.debug());
-          wrapper.find('select').simulate('change',{target: { value : 1}});
-          wrapper.update();
+
          
-          mockInstance.restore();
-          done();
+          setImmediate(() => {
+            //const selectField = wrapper.find("#attendance-type-item-slect");
+            //console.log(selectField.debug());
+            wrapper.find('select').simulate('change',{target: { value : 1}});
+            wrapper.update();
+           
+            mockInstance.restore();
+            done();
+         })
+
        })
   
     });
 
     test("Test PlenaryAttendance content lifeclycle error", async (done) => {
       var mockInstance = new MockAdapter(axios);
-
+      var sessionIdDadosAbertos = 1;        
         
-        await mockInstance.onGet(API_CD_PRESENCA_VOTACAO_PLENARIO).replyOnce(404)
+        await mockInstance.onGet(API_CD_PRESENCA_VOTACAO_PLENARIO+sessionIdDadosAbertos).replyOnce(404)
                 
         const wrapper = await mount(<PlenaryAttendance sessionIdDadosAbertos={1}/>);
   

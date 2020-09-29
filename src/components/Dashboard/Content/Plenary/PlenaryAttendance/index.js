@@ -30,11 +30,14 @@ export default class PlenaryAttendance extends React.Component {
 
   fetchAttendanceList = async term => {
     var responseData = null
+    
       if(this.state.sessionIdDadosAbertos !== undefined){
         try{
           responseData = await fetchPlenaryAttendance(this.state.sessionIdDadosAbertos);
           //console.log(responseData)
-          this.setState({plenaryAttendanceList:responseData});
+          var data = responseData[Object.keys(responseData)[0]];
+    
+          this.setState({plenaryAttendanceList:data.comissoes.PLEN.tiposParlamentar.Deputados});
           //console.log(this.state.plenaryAttendanceList)
           this.setState({dataLoaded:true});
         }catch(e){
@@ -84,7 +87,7 @@ export default class PlenaryAttendance extends React.Component {
                 <Box borderRadius={5} {...defaultProps}>
                   <Box margin={1} fontWeight="fontWeightBold" height={10} display="flex" alignItems="center" >
                     <Typography style={{ color: "#666666" }} variant="h5"  display="inline">TOTAL DE PRESENTES: </Typography>
-                    <Typography style={{ color: "#00AF82" }} variant="h5"  display="inline">{this.state.plenaryAttendanceList.length}</Typography>
+                    <Typography style={{ color: "#00AF82" }} variant="h5"  display="inline">{this.state.plenaryAttendanceList.quorum}</Typography>
                   </Box>
                 </Box>
             </Grid>
@@ -109,8 +112,8 @@ export default class PlenaryAttendance extends React.Component {
             <Grid item xs={12}>
               <Box width={'97%'} style={{maxHeight: "21vh"}} paddingTop={2}  mr={2} ml={0.5} >
                   {(parseInt(this.state.selectedOption) === 0)
-                    ?  <AttendanceListAlphabetic plenaryAttendanceList={this.state.plenaryAttendanceList}></AttendanceListAlphabetic>
-                    : <AttendanceListByState plenaryAttendanceList={this.state.plenaryAttendanceList}></AttendanceListByState>
+                    ? <AttendanceListAlphabetic plenaryAttendanceList={this.state.plenaryAttendanceList.blocosPartidos.PLEN.parlamentares.Titulares}></AttendanceListAlphabetic>
+                    : <AttendanceListByState plenaryAttendanceList={this.state.plenaryAttendanceList.blocosPartidos.PLEN.parlamentares.Titulares}></AttendanceListByState>
                   }        
               </Box>
             </Grid>
