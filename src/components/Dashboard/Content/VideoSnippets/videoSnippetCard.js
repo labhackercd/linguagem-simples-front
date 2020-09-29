@@ -1,6 +1,5 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import {Typography } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import ButtonBase from '@material-ui/core/ButtonBase'
 import VideoSnippetModal from './VideoSnippetModal/videoSnippetModal'

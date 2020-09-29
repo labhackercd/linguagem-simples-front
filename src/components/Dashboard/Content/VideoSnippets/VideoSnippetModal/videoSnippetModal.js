@@ -27,7 +27,7 @@ const DialogTitle = withStyles(dialogStyles)((props) => {
     const { children, classes, onClose, ...other } = props;
     return (
       <MuiDialogTitle disableTypography className={classes.root} {...other}>
-        <Typography variant="h6">{children}</Typography>
+        <Typography component="span" variant="h4">{children}</Typography>
         {onClose ? (
           <IconButton aria-label="close" className={classes.closeButton} onClick={onClose} size="small" id="closeVideoSnippetModal">
             <CloseIcon />
@@ -52,7 +52,7 @@ export default function VideoSnippetModal(props){
 
   useEffect(() => {
     getVideoSnippet();
-  }, []);
+  },[]);
 
   const handleClose = () => {
     onClose();
