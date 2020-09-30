@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
 	      DialogTitle, Grid, Typography, Box,  List, ListItem} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
@@ -6,6 +6,8 @@ import DividerIcon from './../../../../assets/divider.svg';
 import PictureUploadIcon from './../../../../assets/picture_upload.svg';
 import TwitterIcon from './../../../../assets/twitter_icon.svg';
 import LinkIcon from './../../../../assets/link.svg'
+import { parseHourMinute } from './../../../Util';
+
 const useStyles = makeStyles((theme) => ({
 	summaryBox: {
 		display: 'flex',
@@ -52,6 +54,15 @@ const useStyles = makeStyles((theme) => ({
 }))
 export default function NewUpdate(props) {
   const classes = useStyles();
+	const [date, setDate] = useState(parseHourMinute(new Date()))
+
+	useEffect(() => {
+		setInterval(() => tick(), 1000)
+	}, clearInterval(1000));
+
+	const tick = () => {
+		setDate(parseHourMinute(new Date()))
+	}
 
   return (
     <Grid container className={classes.summaryBox}>
@@ -88,7 +99,7 @@ export default function NewUpdate(props) {
             <Grid container>
               <Grid item xs={8} className={classes.submenu}>
                 <div className={classes.subMenuItem}>
-                  <Typography className={classes.time} variant="h6"> {props.time} </Typography>
+                  <Typography className={classes.time} variant="h6"> {date} </Typography>
                 </div>
                 <div className={classes.subMenuItem}>
                   <img src={DividerIcon} alt="divider icon"/>

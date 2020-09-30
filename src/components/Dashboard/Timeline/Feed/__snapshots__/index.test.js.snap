@@ -2,7 +2,7 @@
 
 exports[`snapshot should match 1`] = `
 <WithStyles(ForwardRef(Grid))
-  className="makeStyles-updatesArea-12"
+  className="makeStyles-updatesArea-15"
   container={true}
 >
   <WithStyles(ForwardRef(List))
@@ -11,6 +11,24 @@ exports[`snapshot should match 1`] = `
         "width": "100%",
       }
     }
-  />
+  >
+    <WithStyles(ForwardRef(Grid))
+      className="makeStyles-updatesAreaNoPosts-16"
+      container={true}
+    >
+      <WithStyles(ForwardRef(Grid))
+        className="makeStyles-noUpdate-25"
+        item={true}
+      >
+        <ForwardRef(SvgCoffeeMugIcon) />
+        <WithStyles(ForwardRef(Typography))
+          className="makeStyles-textNoUpdate-26"
+          variant="h5"
+        >
+           Você não possui atualizações 
+        </WithStyles(ForwardRef(Typography))>
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(List))>
 </WithStyles(ForwardRef(Grid))>
 `;
