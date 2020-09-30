@@ -89,7 +89,7 @@ exports[`snapshot should not have differences 1`] = `
               variant="h6"
             >
                
-              14:06
+              0:00
                
             </WithStyles(ForwardRef(Typography))>
           </div>

@@ -54,7 +54,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 export default function NewUpdate(props) {
   const classes = useStyles();
-	const [date, setDate] = useState(parseHourMinute(new Date()))
+	const dateAux = props.date ? parseHourMinute(props.date) : parseHourMinute(new Date())
+	const [date, setDate] = useState(dateAux)
 
 	useEffect(() => {
 		setInterval(() => tick(), 1000)

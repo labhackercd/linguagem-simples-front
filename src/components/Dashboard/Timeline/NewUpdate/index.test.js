@@ -6,7 +6,7 @@ import {shallow, mount } from "enzyme/build";
 import ReactDOM from 'react-dom';
 
 it("snapshot should not have differences", () => {
-    const component = shallow(<NewUpdate/>);
+    const component = shallow(<NewUpdate date={new Date(98, 1)}/>);
     expect(component.exists()).toEqual(true);
     expect(component).toMatchSnapshot();
 });
