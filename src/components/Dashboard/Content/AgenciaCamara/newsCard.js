@@ -1,13 +1,14 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper'
 import FileCopyTwoToneIcon from '@material-ui/icons/FileCopyTwoTone';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
+import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
+import Tooltip from '@material-ui/core/Tooltip';
 import moment from 'moment';
-import postSaveContent from '../FetchFunctions/postSaveContent'
+import {postSaveContent, deleteSavedContent} from '../FetchFunctions/postSaveContent'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import CustomizedSnackbars from '../../../Snackbar/index'
 import {uiMessages} from './../constants'
@@ -30,6 +31,7 @@ export default class NewsCard extends React.Component{
           }
       };
       this.handleSaveContent=this.handleSaveContent.bind(this);
+      this.handleDeleteContent=this.handleDeleteContent.bind(this);
     }
 
     showCopiedSnackBar = () => {
@@ -38,11 +40,27 @@ export default class NewsCard extends React.Component{
 
     async handleSaveContent(){
       const hasBeenSaved = await postSaveContent("news", this.state.info, this.props.sessionId);
-
+      
       if(hasBeenSaved){
           this.setState({openSnackBar:true, snackbar:{open:true, message:"Conteúdo da agência salvo com sucesso!", type:"success"}});
+          //this.props.updateComponent()
       }else{
           this.setState({openSnackBar:true, snackbar:{open:true, message:"Erro ao salvar conteúdo da agência!", type:"error"}});
+      }
+    }
+
+    async handleDeleteContent(){
+      try{
+        const hasBeenDeleted = await deleteSavedContent(this.state.info.id);
+        
+        if(hasBeenDeleted){
+          await this.setState({openSnackBar:true, snackbar:{open:true, message:"Conteúdo Removido!", type:"success"}});
+          this.props.updateComponent(true)
+        }else{
+            this.setState({openSnackBar:true, snackbar:{open:true, message:"Erro ao remover conteúdo salvo!", type:"error"}});
+        }
+      }catch(e){
+        this.setState({openSnackBar:true, snackbar:{open:true, message:"Erro ao remover conteúdo salvo!", type:"error"}});
       }
     }
 
@@ -56,23 +74,26 @@ export default class NewsCard extends React.Component{
                     <Grid item xs={12}>
                         <Box m={1}>
                             <Grid container>
-                                <Grid item xs={10}>
-                                    <Typography style={{ color: "gray" }} variant="body1">Notícia</Typography>
-                                </Grid>
+                                <Grid item xs={10}><Typography style={{ color: "gray" }} variant="body1">Notícia</Typography></Grid>
                                 <Grid item xs={2}>
-                                    <Box display="flex" justifyContent="flex-end">
-                                      <CopyToClipboard text={this.state.info.url}>
-                                        <IconButton size="small">
-                                        <FileCopyTwoToneIcon text={this.state.info.url}
-                                                             fontSize="inherit"
-                                                              onClick={this.showCopiedSnackBar}/>                                        </IconButton>
-                                      </CopyToClipboard>
-                                        {this.state.isDataFromSavedContentsComponent &&
-                                            <IconButton id={"saveButtonAgencia"+this.state.info.id} aria-label="delete" size="small" onClick={this.handleSaveContent}>
-                                                <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} />
-                                            </IconButton>
-                                        }
-                                    </Box>
+                                  <Box display="flex" justifyContent="flex-end">
+                                    <CopyToClipboard text={this.state.info.url}>
+                                      <IconButton size="small">
+                                        <FileCopyTwoToneIcon text={this.state.info.url} fontSize="inherit" onClick={this.showCopiedSnackBar}/>
+                                      </IconButton>
+                                    </CopyToClipboard>
+                                    {this.state.isDataFromSavedContentsComponent ?
+                                        <IconButton id={"saveButtonAgencia"+this.state.info.id} aria-label="save" size="small" onClick={this.handleSaveContent}>
+                                            <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} />
+                                        </IconButton> 
+                                        :
+                                        <Tooltip title="Deletar conteúdo">
+                                          <IconButton id={"deleteSavedContent"+this.state.info.id} aria-label="delete" size="small" onClick={this.handleDeleteContent}>
+                                            <DeleteOutlineOutlinedIcon fontSize="inherit" />
+                                          </IconButton> 
+                                        </Tooltip>     
+                                    }
+                                  </Box>
                                 </Grid>
                                 <Grid item xs={12}>
                                   <Box fontWeight="fontWeightRegular">
@@ -96,7 +117,7 @@ export default class NewsCard extends React.Component{
                 </Grid>
             </Paper>
         </Box>
-    );
+      );
     }
 
   }

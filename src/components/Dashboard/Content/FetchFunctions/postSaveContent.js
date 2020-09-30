@@ -2,7 +2,7 @@ import axiosInstance from '../../../../auth/axiosApi'
 import {API_SAVED_CONTENTS_URL} from '../../../../api_urls'
 
 
-export default async function postSaveContent(content_type,content_info,sessionId){
+export  async function postSaveContent(content_type,content_info,sessionId){
 
     try{
         const response = await axiosInstance.post(API_SAVED_CONTENTS_URL, {
@@ -15,6 +15,23 @@ export default async function postSaveContent(content_type,content_info,sessionI
         //console.log(response)
 
         if(response.status === 201){
+            return true;
+        }else{
+            return false;
+        }
+    }catch(e){
+        return false;
+    }
+   
+}
+
+export  async function deleteSavedContent(savedContentId){
+
+    try{
+        const response = await axiosInstance.delete(API_SAVED_CONTENTS_URL+savedContentId);
+        //console.log(response)
+
+        if(response.status === 204){ // Sucess removed
             return true;
         }else{
             return false;

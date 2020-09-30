@@ -1,7 +1,7 @@
 import axiosInstance from '../../../../auth/axiosApi'
 import MockAdapter from "axios-mock-adapter"
 
-import postSaveContent from './postSaveContent'
+import {postSaveContent} from './postSaveContent'
 
 describe('Test postSaveContent function requisitions with mock adapter', () => {
     var mock = new MockAdapter(axiosInstance);

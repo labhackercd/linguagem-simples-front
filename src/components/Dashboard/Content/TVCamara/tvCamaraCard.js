@@ -7,7 +7,7 @@ import Paper from '@material-ui/core/Paper'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import moment from 'moment';
-import postSaveContent from '../FetchFunctions/postSaveContent'
+import {postSaveContent, deleteSavedContent} from '../FetchFunctions/postSaveContent'
 import TVIcon from './assets/tv_image.svg'
 import CustomizedSnackbars from '../../../Snackbar/index'
 import {CopyToClipboard} from 'react-copy-to-clipboard';

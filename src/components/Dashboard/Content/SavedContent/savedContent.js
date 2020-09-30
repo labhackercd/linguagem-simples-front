@@ -44,9 +44,10 @@ export default class SavedContent extends React.Component {
         savedContent: [], 
         dataLoaded: false
     };
+    this.updateComponent=this.updateComponent.bind(this);
   }
 
-  fetchSessionsList = async term => {
+  fetchSavedContent = async term => {
     //try {
       const data = await fetchDataSavedContentCamara(this.props.sessionId);
 
@@ -59,18 +60,24 @@ export default class SavedContent extends React.Component {
     //}
   };
 
+  updateComponent(status) {
+    console.log("chamou")
+    this.setState({dataLoaded: false});
+    this.fetchSavedContent();
+  }
+
   componentDidMount(){
       this._isMounted = true;
 
       if(this._isMounted){
-          this.fetchSessionsList();
+          this.fetchSavedContent();
       }
   }
 
   handleCardRenderType(info){
     switch(info.content_type) {
       case 'news':
-        return <NewsCard info={info} sessionId={this.props.sessionId}></NewsCard>
+        return <NewsCard info={info} sessionId={this.props.sessionId} updateComponent={this.updateComponent}></NewsCard>
       case 'tv':
         return <TVCard info={info} sessionId={this.props.sessionId}></TVCard>;
       case 'radio':

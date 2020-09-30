@@ -8,7 +8,7 @@ import BookmarkIcon from '@material-ui/icons/Bookmark';
 import moment from 'moment';
 import PlayIcon from './assets/play_image.svg'
 import CustomizedSnackbars from '../../../Snackbar/index'
-import postSaveContent from '../FetchFunctions/postSaveContent'
+import {postSaveContent, deleteSavedContent} from '../FetchFunctions/postSaveContent'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import {uiMessages} from './../constants'
 

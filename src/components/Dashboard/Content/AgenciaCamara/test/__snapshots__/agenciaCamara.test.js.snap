@@ -61,9 +61,22 @@ exports[`Testing News Card should render the NewsCard component and match snapsh
                       fontSize="inherit"
                       onClick={[Function]}
                     />
-                                                            
                   </WithStyles(ForwardRef(IconButton))>
                 </CopyToClipboard>
+                <WithStyles(ForwardRef(Tooltip))
+                  title="Deletar conteúdo"
+                >
+                  <WithStyles(ForwardRef(IconButton))
+                    aria-label="delete"
+                    id="deleteSavedContentundefined"
+                    onClick={[Function]}
+                    size="small"
+                  >
+                    <DeleteOutlineOutlinedIcon
+                      fontSize="inherit"
+                    />
+                  </WithStyles(ForwardRef(IconButton))>
+                </WithStyles(ForwardRef(Tooltip))>
               </Styled(MuiBox)>
             </WithStyles(ForwardRef(Grid))>
             <WithStyles(ForwardRef(Grid))
