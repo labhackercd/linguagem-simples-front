@@ -106,13 +106,13 @@ export default function NewUpdate(props) {
                   <img src={DividerIcon} alt="divider icon"/>
                 </div>
                 <div className={classes.subMenuItem}>
-                  <a href="/"><img src={PictureUploadIcon} alt="upload icon" onClick={(e) => props.handleDialogStateAction(e, true, "previewDialog", "InputImage")}/></a>
+                  <a href="/"><img src={PictureUploadIcon} id={"picture-upload-icon"} alt="upload icon" onClick={(e) => props.handleDialogStateAction(e, true, "previewDialog", "InputImage")}/></a>
                 </div>
 								<div className={classes.subMenuItem}>
-									<a href="/"><img src={TwitterIcon} alt="incorporate twitter icon" onClick={(e) => props.handleDialogStateAction(e, true, "URLInputDialog", "URLInputIsTwitter")}/></a>
+									<a href="/"><img src={TwitterIcon} id={"tweet-insert-icon"}alt="incorporate twitter icon" onClick={(e) => props.handleDialogStateAction(e, true, "URLInputDialog", "URLInputIsTwitter")}/></a>
 								</div>
 								<div className={classes.subMenuItem}>
-									<a href="/"><img src={LinkIcon} alt="incorporate url icon" onClick={(e) => props.handleDialogStateAction(e, true, "URLInputDialog", "noAction")}/></a>
+									<a href="/"><img src={LinkIcon} id={"link-insert-icon"} alt="incorporate url icon" onClick={(e) => props.handleDialogStateAction(e, true, "URLInputDialog", "noAction")}/></a>
 								</div>
               </Grid>
               <Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>

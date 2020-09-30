@@ -109,6 +109,7 @@ exports[`snapshot should not have differences 1`] = `
             >
               <img
                 alt="upload icon"
+                id="picture-upload-icon"
                 onClick={[Function]}
                 src="picture_upload.svg"
               />
@@ -122,6 +123,7 @@ exports[`snapshot should not have differences 1`] = `
             >
               <img
                 alt="incorporate twitter icon"
+                id="tweet-insert-icon"
                 onClick={[Function]}
                 src="twitter_icon.svg"
               />
@@ -135,6 +137,7 @@ exports[`snapshot should not have differences 1`] = `
             >
               <img
                 alt="incorporate url icon"
+                id="link-insert-icon"
                 onClick={[Function]}
                 src="link.svg"
               />
