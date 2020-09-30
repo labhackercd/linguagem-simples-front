@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {API_CD_ORIENTACAO_VOTACAO, API_CD_ITENS_EM_VOTACAO} from '../../../../../api_urls'
+import {API_CD_ORIENTACAO_VOTACAO, API_CD_ITENS_EM_VOTACAO, API_CD_VOTACAO_ITEM} from '../../../../../api_urls'
 
 export async function fetchOrientationVote(votacaoId) {
     //const url =  "https://infoleg.camara.gov.br/wsVotDecom/votacao/itens-em-votacao-na-reuniao/"+sessionIdDadosAbertos;
@@ -8,6 +8,20 @@ export async function fetchOrientationVote(votacaoId) {
 
     //console.log(response)
     return  response.data;
+}
+
+export async function fetchNominalVote(votacaoId) {
+    //const url =  "https://infoleg.camara.gov.br/wsVotDecom/votacao/itens-em-votacao-na-reuniao/"+sessionIdDadosAbertos;
+    const url = API_CD_VOTACAO_ITEM+votacaoId;
+    const response = await axios.get(url);
+
+    if(response.status === 204){
+        return null;
+    }else{
+        return response;
+    }
+    //console.log(response)
+    //return  response.data;
 }
 
 

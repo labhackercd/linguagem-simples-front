@@ -86,6 +86,7 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
                             "root": "PlenaryPanel-tab-1",
                           }
                         }
+                        elevation={0}
                         size="small"
                       >
                         <ForwardRef(StyledComponent)
@@ -128,6 +129,7 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
                               "root": "PlenaryPanel-tab-1",
                             }
                           }
+                          elevation={0}
                           size="small"
                         >
                           <ForwardRef(StyledComponent)
@@ -203,6 +205,7 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
                                   "root": "PlenaryPanel-tab-1",
                                 }
                               }
+                              elevation={0}
                               size="small"
                             >
                               <ForwardRef(Paper)
@@ -239,10 +242,11 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
                                     "rounded": "MuiPaper-rounded",
                                   }
                                 }
+                                elevation={0}
                                 size="small"
                               >
                                 <div
-                                  className="MuiPaper-root PlenaryPanel-tab-1 PlenaryPanel-active_tabStyle-4 MuiPaper-elevation1 MuiPaper-rounded"
+                                  className="MuiPaper-root PlenaryPanel-tab-1 PlenaryPanel-active_tabStyle-4 MuiPaper-elevation0 MuiPaper-rounded"
                                   size="small"
                                 >
                                   <Styled(MuiBox)
@@ -305,6 +309,7 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
                     <React.Fragment>
                       <ForwardRef(WithStyles)
                         className="PlenaryPanel-default_tabStyle-3"
+                        elevation={0}
                         size="small"
                       >
                         <ForwardRef(StyledComponent)
@@ -342,6 +347,7 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
                       <React.Fragment>
                         <ForwardRef(WithStyles)
                           className="PlenaryPanel-default_tabStyle-3"
+                          elevation={0}
                           size="small"
                         >
                           <ForwardRef(StyledComponent)
@@ -412,6 +418,7 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
                           >
                             <WithStyles(ForwardRef(Paper))
                               className="PlenaryPanel-default_tabStyle-3"
+                              elevation={0}
                               size="small"
                             >
                               <ForwardRef(Paper)
@@ -448,10 +455,11 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
                                     "rounded": "MuiPaper-rounded",
                                   }
                                 }
+                                elevation={0}
                                 size="small"
                               >
                                 <div
-                                  className="MuiPaper-root PlenaryPanel-default_tabStyle-3 MuiPaper-elevation1 MuiPaper-rounded"
+                                  className="MuiPaper-root PlenaryPanel-default_tabStyle-3 MuiPaper-elevation0 MuiPaper-rounded"
                                   size="small"
                                 >
                                   <Styled(MuiBox)
@@ -514,6 +522,7 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
                     <React.Fragment>
                       <ForwardRef(WithStyles)
                         className="PlenaryPanel-default_tabStyle-3"
+                        elevation={0}
                         size="small"
                       >
                         <ForwardRef(StyledComponent)
@@ -551,6 +560,7 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
                       <React.Fragment>
                         <ForwardRef(WithStyles)
                           className="PlenaryPanel-default_tabStyle-3"
+                          elevation={0}
                           size="small"
                         >
                           <ForwardRef(StyledComponent)
@@ -621,6 +631,7 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
                           >
                             <WithStyles(ForwardRef(Paper))
                               className="PlenaryPanel-default_tabStyle-3"
+                              elevation={0}
                               size="small"
                             >
                               <ForwardRef(Paper)
@@ -657,10 +668,11 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
                                     "rounded": "MuiPaper-rounded",
                                   }
                                 }
+                                elevation={0}
                                 size="small"
                               >
                                 <div
-                                  className="MuiPaper-root PlenaryPanel-default_tabStyle-3 MuiPaper-elevation1 MuiPaper-rounded"
+                                  className="MuiPaper-root PlenaryPanel-default_tabStyle-3 MuiPaper-elevation0 MuiPaper-rounded"
                                   size="small"
                                 >
                                   <Styled(MuiBox)
@@ -759,67 +771,76 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
     <div
       key="tab-content"
     >
-      <AgendaOfTheDayComponent
-        sessionIdDadosAbertos={1}
+      <Styled(MuiBox)
+        pt={1}
+        width="97%"
       >
-        <Styled(MuiBox)
-          alignItems="center"
-          display="flex"
-          justifyContent="center"
-          minHeight="10vh"
-          minWidth="40vh"
-          width={1}
+        <div
+          className="MuiBox-root MuiBox-root-12"
         >
-          <div
-            className="MuiBox-root MuiBox-root-12"
+          <AgendaOfTheDayComponent
+            sessionIdDadosAbertos={1}
           >
-            <WithStyles(ForwardRef(CircularProgress))>
-              <ForwardRef(CircularProgress)
-                classes={
-                  Object {
-                    "circle": "MuiCircularProgress-circle",
-                    "circleDisableShrink": "MuiCircularProgress-circleDisableShrink",
-                    "circleIndeterminate": "MuiCircularProgress-circleIndeterminate",
-                    "circleStatic": "MuiCircularProgress-circleStatic",
-                    "colorPrimary": "MuiCircularProgress-colorPrimary",
-                    "colorSecondary": "MuiCircularProgress-colorSecondary",
-                    "indeterminate": "MuiCircularProgress-indeterminate",
-                    "root": "MuiCircularProgress-root",
-                    "static": "MuiCircularProgress-static",
-                    "svg": "MuiCircularProgress-svg",
-                  }
-                }
+            <Styled(MuiBox)
+              alignItems="center"
+              display="flex"
+              justifyContent="center"
+              minHeight="10vh"
+              minWidth="40vh"
+              width={1}
+            >
+              <div
+                className="MuiBox-root MuiBox-root-13"
               >
-                <div
-                  className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
-                  role="progressbar"
-                  style={
-                    Object {
-                      "height": 40,
-                      "width": 40,
+                <WithStyles(ForwardRef(CircularProgress))>
+                  <ForwardRef(CircularProgress)
+                    classes={
+                      Object {
+                        "circle": "MuiCircularProgress-circle",
+                        "circleDisableShrink": "MuiCircularProgress-circleDisableShrink",
+                        "circleIndeterminate": "MuiCircularProgress-circleIndeterminate",
+                        "circleStatic": "MuiCircularProgress-circleStatic",
+                        "colorPrimary": "MuiCircularProgress-colorPrimary",
+                        "colorSecondary": "MuiCircularProgress-colorSecondary",
+                        "indeterminate": "MuiCircularProgress-indeterminate",
+                        "root": "MuiCircularProgress-root",
+                        "static": "MuiCircularProgress-static",
+                        "svg": "MuiCircularProgress-svg",
+                      }
                     }
-                  }
-                >
-                  <svg
-                    className="MuiCircularProgress-svg"
-                    viewBox="22 22 44 44"
                   >
-                    <circle
-                      className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
-                      cx={44}
-                      cy={44}
-                      fill="none"
-                      r={20.2}
-                      strokeWidth={3.6}
-                      style={Object {}}
-                    />
-                  </svg>
-                </div>
-              </ForwardRef(CircularProgress)>
-            </WithStyles(ForwardRef(CircularProgress))>
-          </div>
-        </Styled(MuiBox)>
-      </AgendaOfTheDayComponent>
+                    <div
+                      className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+                      role="progressbar"
+                      style={
+                        Object {
+                          "height": 40,
+                          "width": 40,
+                        }
+                      }
+                    >
+                      <svg
+                        className="MuiCircularProgress-svg"
+                        viewBox="22 22 44 44"
+                      >
+                        <circle
+                          className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+                          cx={44}
+                          cy={44}
+                          fill="none"
+                          r={20.2}
+                          strokeWidth={3.6}
+                          style={Object {}}
+                        />
+                      </svg>
+                    </div>
+                  </ForwardRef(CircularProgress)>
+                </WithStyles(ForwardRef(CircularProgress))>
+              </div>
+            </Styled(MuiBox)>
+          </AgendaOfTheDayComponent>
+        </div>
+      </Styled(MuiBox)>
     </div>
   </PlenaryPanel>
 </WithStyles(PlenaryPanel)>

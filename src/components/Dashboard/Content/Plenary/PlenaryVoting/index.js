@@ -6,9 +6,13 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 
-import {fetchVotingList,fetchOrientationVote} from './fetchPlenaryVoting'
+import {fetchVotingList, fetchNominalVote, fetchOrientationVote} from './fetchPlenaryVoting'
 import DescriptionErrorAlert from '../../../../Alert/index'
 import VoteOrientationCard from './voteOrientationCard'
+import VoteNominalCard from './voteNominalCard'
+
+import ListItem from '@material-ui/core/ListItem';
+import { FixedSizeList } from 'react-window';
 
 export default class PlenaryVoting extends React.Component {
     
@@ -21,6 +25,8 @@ export default class PlenaryVoting extends React.Component {
         selectedVotingListItem:"",
         orientationSelectedVotingListItem:"",
         orientationSelectedVotingListDataLoaded:false,
+        nominalSelectedVotingListItem:"",
+        nominalSelectedVotingListDataLoaded:false,
         serverError: false
     };
     this.handleSelectChange = this.handleSelectChange.bind(this);
@@ -34,6 +40,7 @@ export default class PlenaryVoting extends React.Component {
           responseData = await fetchVotingList(this.state.sessionIdDadosAbertos);
           //console.log(responseData)
           this.setState({votingList:responseData});
+          //console.log(responseData)
           this.setState({dataLoaded:true});
         }catch(e){
           this.setState({serverError:true});
@@ -42,11 +49,37 @@ export default class PlenaryVoting extends React.Component {
       }
   };
 
-  async fetchOrientationVote(id){
+  async fetchNominalVoteFunction(id){
     var responseData = null
+      if(id !== undefined){
+        try{
+          responseData = await fetchNominalVote(id);
+          
+          if(responseData !== null){
+            // Se data não for nula
+            //console.log(responseData.data.comissoes[0].representacoes[0].partidos[0].parlamentares)
+            this.setState({orientationSelectedVotingListDataLoaded:false})
+            this.setState({nominalSelectedVotingListItem:responseData.data.comissoes[0].representacoes[0].partidos[0].parlamentares});
+            this.setState({nominalSelectedVotingListDataLoaded:true});
+            return true;
+          }else{
+            return false;
+          }
+
+        }catch(e){
+          this.setState({serverError:true});
+          this.setState({dataLoaded:true});
+        }
+      }
+    }
+
+  async fetchOrientationVoteFunction(id){
+    var responseData = null;
       if(this.state.selectedVotingListItem !== undefined){
         try{
           responseData = await fetchOrientationVote(id);
+        
+          this.setState({nominalSelectedVotingListDataLoaded:false})
           this.setState({orientationSelectedVotingListItem:responseData})
           this.setState({orientationSelectedVotingListDataLoaded:true});
         }catch(e){
@@ -55,6 +88,16 @@ export default class PlenaryVoting extends React.Component {
         }
       }
   };
+
+  async fetchCorrespondentVotation(id){
+    var selectedVotingItemIsNominal = await this.fetchNominalVoteFunction(id);
+
+    if(selectedVotingItemIsNominal === false){
+      //Select a orientation vote
+      
+      await this.fetchOrientationVoteFunction(id);
+    }
+  }
 
   componentDidMount(){
       this._isMounted = true;
@@ -68,8 +111,19 @@ export default class PlenaryVoting extends React.Component {
     event.preventDefault();
 
     this.setState({selectedVotingListItem:event.target.value})
-    this.fetchOrientationVote(event.target.value);
+
+    this.fetchCorrespondentVotation(event.target.value);
   }
+
+
+  renderNominalVotingListItem = ({index, style}) => {
+    return(
+      <ListItem style={style} >   
+        <VoteNominalCard data={this.state.nominalSelectedVotingListItem[index]}></VoteNominalCard>
+      </ListItem>
+    )
+  }
+
 
   render(){
     
@@ -92,6 +146,7 @@ export default class PlenaryVoting extends React.Component {
             <Box margin={1}>
               <FormControl variant="outlined">
                   <NativeSelect
+                    placeholder="Selecione"
                     value={this.state.selectedVotingListItem}
                     onChange={this.handleSelectChange}
                     inputProps={{
@@ -99,7 +154,7 @@ export default class PlenaryVoting extends React.Component {
                       id: 'votation-list-item-slect',
                     }}
                   >
-                
+                  <option aria-label="None" key={0} value=""> Selecionar resultado</option>
                   {this.state.votingList.map((item) => (
                       <option id={"selectOption"+item.ideItemVotacao} key={item.ideItemVotacao} value={item.ideItemVotacao}>{item.titulo}</option>
                   ))}
@@ -107,17 +162,28 @@ export default class PlenaryVoting extends React.Component {
               </FormControl>
             </Box>
           </Grid>
-          <Grid item xs={12}>
-            <Box mx={1} width={'95%'} style={{maxHeight: "23vh", overflow: 'auto'}}>
-                {this.state.orientationSelectedVotingListDataLoaded === true && 
+            {this.state.orientationSelectedVotingListDataLoaded === true && 
+              <Grid item xs={12}>
+                <Box mx={1} width={'95%'} style={{maxHeight: "23vh", overflow: 'auto'}}>    
                   <Grid container>
                       {this.state.orientationSelectedVotingListItem.map((item) => (
                           <VoteOrientationCard key={item.numOrdemOrientacao} info={item}></VoteOrientationCard>
                       ))}
-                  </Grid>
-                }
-            </Box>
-          </Grid>
+                  </Grid>   
+                </Box>
+              </Grid>
+            }
+            { this.state.nominalSelectedVotingListDataLoaded === true &&
+              <Grid item xs={12}>
+                <Box style={{overflow: "auto"}}>
+                  {
+                    <FixedSizeList height={215} itemSize={25} itemCount={this.state.nominalSelectedVotingListItem.length}>        
+                      {this.renderNominalVotingListItem}
+                    </FixedSizeList>
+                  }
+                </Box>
+              </Grid> 
+            }
         </Grid>
       </div>
     )

@@ -1,21 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing News Card should render the NewsCard component and match snapshot  1`] = `
-<CongressPersonLine
+exports[`Testing Vote Nominal Card should render the  Vote Nominal Card component 1`] = `
+<VoteNominalCard
   data={
     Object {
-      "dataPresenca": "01/09/2020 14:39:38",
-      "ideCadastro": 204379,
-      "legendaPresenca": "P",
-      "nome": "Acácio Favacho",
-      "partido": "PROS",
-      "presencaContabilizada": true,
-      "presencaExcedida": false,
-      "presente": true,
-      "suplente": false,
-      "tipoMembro": "T",
-      "titular": true,
-      "uf": "AP",
+      "bolRelator": false,
+      "codTipoMembroComissao": "T",
+      "codTipoParlamentar": "D",
+      "codTipoVoto": "S",
+      "dataPresenca": "01/09/2020 15:01:22.520",
+      "dataVoto": null,
+      "ideCadastroParlamentar": 123456,
+      "indContabilizarVoto": 0,
+      "indVagaPorPartido": true,
+      "nomParlamentarPainelEletronico": "Deputado X",
+      "nomTipoVoto": "Sim",
+      "sigPartidoPoliticoAtual": "LAB",
+      "sigUfEleito": "CD",
     }
   }
 >
@@ -144,7 +145,7 @@ exports[`Testing News Card should render the NewsCard component and match snapsh
           >
             <WithStyles(ForwardRef(Grid))
               item={true}
-              xs={8}
+              xs={10}
             >
               <ForwardRef(Grid)
                 classes={
@@ -255,10 +256,10 @@ exports[`Testing News Card should render the NewsCard component and match snapsh
                   }
                 }
                 item={true}
-                xs={8}
+                xs={10}
               >
                 <div
-                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-8"
+                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10"
                 >
                   <WithStyles(ForwardRef(Typography))
                     style={
@@ -318,11 +319,11 @@ exports[`Testing News Card should render the NewsCard component and match snapsh
                           }
                         }
                       >
-                        Acácio Favacho
+                        Deputado X
                          (
-                        PROS
+                        LAB
                         -
-                        AP
+                        CD
                         )
                       </p>
                     </ForwardRef(Typography)>
@@ -332,7 +333,7 @@ exports[`Testing News Card should render the NewsCard component and match snapsh
             </WithStyles(ForwardRef(Grid))>
             <WithStyles(ForwardRef(Grid))
               item={true}
-              xs={4}
+              xs={2}
             >
               <ForwardRef(Grid)
                 classes={
@@ -443,10 +444,10 @@ exports[`Testing News Card should render the NewsCard component and match snapsh
                   }
                 }
                 item={true}
-                xs={4}
+                xs={2}
               >
                 <div
-                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4"
+                  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
                 >
                   <Styled(MuiBox)
                     display="flex"
@@ -455,68 +456,77 @@ exports[`Testing News Card should render the NewsCard component and match snapsh
                     <div
                       className="MuiBox-root MuiBox-root-2"
                     >
-                      <WithStyles(ForwardRef(Typography))
-                        style={
-                          Object {
-                            "color": "green",
-                          }
-                        }
-                        variant="body1"
+                      <Styled(MuiBox)
+                        display="flex"
+                        justifyContent="flex-end"
                       >
-                        <ForwardRef(Typography)
-                          classes={
-                            Object {
-                              "alignCenter": "MuiTypography-alignCenter",
-                              "alignJustify": "MuiTypography-alignJustify",
-                              "alignLeft": "MuiTypography-alignLeft",
-                              "alignRight": "MuiTypography-alignRight",
-                              "body1": "MuiTypography-body1",
-                              "body2": "MuiTypography-body2",
-                              "button": "MuiTypography-button",
-                              "caption": "MuiTypography-caption",
-                              "colorError": "MuiTypography-colorError",
-                              "colorInherit": "MuiTypography-colorInherit",
-                              "colorPrimary": "MuiTypography-colorPrimary",
-                              "colorSecondary": "MuiTypography-colorSecondary",
-                              "colorTextPrimary": "MuiTypography-colorTextPrimary",
-                              "colorTextSecondary": "MuiTypography-colorTextSecondary",
-                              "displayBlock": "MuiTypography-displayBlock",
-                              "displayInline": "MuiTypography-displayInline",
-                              "gutterBottom": "MuiTypography-gutterBottom",
-                              "h1": "MuiTypography-h1",
-                              "h2": "MuiTypography-h2",
-                              "h3": "MuiTypography-h3",
-                              "h4": "MuiTypography-h4",
-                              "h5": "MuiTypography-h5",
-                              "h6": "MuiTypography-h6",
-                              "noWrap": "MuiTypography-noWrap",
-                              "overline": "MuiTypography-overline",
-                              "paragraph": "MuiTypography-paragraph",
-                              "root": "MuiTypography-root",
-                              "srOnly": "MuiTypography-srOnly",
-                              "subtitle1": "MuiTypography-subtitle1",
-                              "subtitle2": "MuiTypography-subtitle2",
-                            }
-                          }
-                          style={
-                            Object {
-                              "color": "green",
-                            }
-                          }
-                          variant="body1"
+                        <div
+                          className="MuiBox-root MuiBox-root-3"
                         >
-                          <p
-                            className="MuiTypography-root MuiTypography-body1"
+                          <WithStyles(ForwardRef(Typography))
                             style={
                               Object {
                                 "color": "green",
                               }
                             }
+                            variant="body1"
                           >
-                            Presente
-                          </p>
-                        </ForwardRef(Typography)>
-                      </WithStyles(ForwardRef(Typography))>
+                            <ForwardRef(Typography)
+                              classes={
+                                Object {
+                                  "alignCenter": "MuiTypography-alignCenter",
+                                  "alignJustify": "MuiTypography-alignJustify",
+                                  "alignLeft": "MuiTypography-alignLeft",
+                                  "alignRight": "MuiTypography-alignRight",
+                                  "body1": "MuiTypography-body1",
+                                  "body2": "MuiTypography-body2",
+                                  "button": "MuiTypography-button",
+                                  "caption": "MuiTypography-caption",
+                                  "colorError": "MuiTypography-colorError",
+                                  "colorInherit": "MuiTypography-colorInherit",
+                                  "colorPrimary": "MuiTypography-colorPrimary",
+                                  "colorSecondary": "MuiTypography-colorSecondary",
+                                  "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                  "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                  "displayBlock": "MuiTypography-displayBlock",
+                                  "displayInline": "MuiTypography-displayInline",
+                                  "gutterBottom": "MuiTypography-gutterBottom",
+                                  "h1": "MuiTypography-h1",
+                                  "h2": "MuiTypography-h2",
+                                  "h3": "MuiTypography-h3",
+                                  "h4": "MuiTypography-h4",
+                                  "h5": "MuiTypography-h5",
+                                  "h6": "MuiTypography-h6",
+                                  "noWrap": "MuiTypography-noWrap",
+                                  "overline": "MuiTypography-overline",
+                                  "paragraph": "MuiTypography-paragraph",
+                                  "root": "MuiTypography-root",
+                                  "srOnly": "MuiTypography-srOnly",
+                                  "subtitle1": "MuiTypography-subtitle1",
+                                  "subtitle2": "MuiTypography-subtitle2",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "color": "green",
+                                }
+                              }
+                              variant="body1"
+                            >
+                              <p
+                                className="MuiTypography-root MuiTypography-body1"
+                                style={
+                                  Object {
+                                    "color": "green",
+                                  }
+                                }
+                              >
+                                Sim
+                              </p>
+                            </ForwardRef(Typography)>
+                          </WithStyles(ForwardRef(Typography))>
+                        </div>
+                      </Styled(MuiBox)>
                     </div>
                   </Styled(MuiBox)>
                 </div>
@@ -549,5 +559,5 @@ exports[`Testing News Card should render the NewsCard component and match snapsh
       </WithStyles(ForwardRef(Divider))>
     </div>
   </Styled(MuiBox)>
-</CongressPersonLine>
+</VoteNominalCard>
 `;

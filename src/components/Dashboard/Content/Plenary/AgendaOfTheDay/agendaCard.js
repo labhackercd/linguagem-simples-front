@@ -3,7 +3,7 @@ import { Grid, Typography } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper'
-
+import {PROPOSICAO_INFO_PAGE} from '../../../../../api_urls'
 import LaunchIcon from '@material-ui/icons/Launch';
 import Divider from '@material-ui/core/Divider';
 
@@ -12,7 +12,7 @@ export default function AgendaCard(props){
     return (
         <Box width="97%"  >
             <Paper elevation={0} >
-                <Box m={1}>
+                <Box marginLeft={1} marginBottom={2}>
                     <Grid container>
                         <Grid item xs={10}>
                             <Box fontWeight="fontWeightRegular">
@@ -23,7 +23,7 @@ export default function AgendaCard(props){
                         </Grid>
                         <Grid item xs={2}>
                             <Box display="flex" justifyContent="flex-end">
-                                <a rel={'external noopener noreferrer'} target="_blank" href={"https://dadosabertos.camara.leg.br/api/v2/proposicoes/"+props.pautaInfo.codProposicao} style={{textDecoration: "none"}}>
+                                <a rel={'external noopener noreferrer'} target="_blank" href={PROPOSICAO_INFO_PAGE+props.pautaInfo.codProposicao} style={{textDecoration: "none"}}>
                                     <IconButton aria-label="Ir para Proposicao" size="small">
                                         <LaunchIcon  fontSize="inherit" />
                                     </IconButton>    
@@ -31,7 +31,7 @@ export default function AgendaCard(props){
                             </Box>
                         </Grid>
                         <Grid item xs={12}>
-                            <Box fontSize={11}>
+                            <Box fontSize={11} marginBottom={1}>
                                 {props.pautaInfo.nomRelator !== null &&
                                     <Typography style={{ color: "gray" }}>
                                         Relator: {props.pautaInfo.nomRelator} ({props.pautaInfo.partidoRelator}-{props.pautaInfo.ufRelator})
@@ -40,8 +40,9 @@ export default function AgendaCard(props){
                             </Box>
                         </Grid>
                     </Grid>
+                    <Divider light/>
                 </Box>        
-                <Divider variant="middle" />
+                
             </Paper>
         </Box>
     );
