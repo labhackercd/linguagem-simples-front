@@ -772,6 +772,7 @@ exports[`should render the PlenaryPanel component, match snapshot and test lifec
       key="tab-content"
     >
       <Styled(MuiBox)
+        key="agendaDiv"
         pt={1}
         width="97%"
       >

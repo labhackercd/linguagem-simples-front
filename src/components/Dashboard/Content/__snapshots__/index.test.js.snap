@@ -11,47 +11,114 @@ exports[`should render the content section 1`] = `
     md={3}
   >
     <WithStyles(ForwardRef(Tabs))
-      aria-label="Vertical tabs example"
-      className="makeStyles-tabs-6"
       classes={
         Object {
-          "indicator": "makeStyles-tabIndicator-7",
+          "indicator": "makeStyles-bigIndicator-5",
+          "labelContainer": undefined,
+          "root": "makeStyles-tab-3",
+          "selected": undefined,
         }
       }
       onChange={[Function]}
       orientation="vertical"
       value={0}
-      variant="fullWidth"
+      variant="standard"
     >
       <WithStyles(ForwardRef(Tab))
-        aria-controls="full-width-tabpanel-0"
-        id="full-width-tab-0"
-        label="Conteúdos Salvos"
+        classes={
+          Object {
+            "root": "makeStyles-tab-3",
+          }
+        }
+        id="savedContentTab"
+        key="0"
+        label={
+          <TabLabel
+            tabIcon={<UNDEFINED />}
+            tabText="Conteúdos Salvos"
+            tabValue={0}
+          />
+        }
       />
       <WithStyles(ForwardRef(Tab))
-        aria-controls="full-width-tabpanel-1"
-        id="full-width-tab-1"
-        label="Agência Câmara"
+        classes={
+          Object {
+            "root": "makeStyles-tab-3",
+          }
+        }
+        id="agenciaCamaraContentTab"
+        key="1"
+        label={
+          <TabLabel
+            tabIcon={<UNDEFINED />}
+            tabText="Agência Câmara"
+            tabValue={1}
+          />
+        }
       />
       <WithStyles(ForwardRef(Tab))
-        aria-controls="full-width-tabpanel-2"
-        id="full-width-tab-2"
-        label="TV Câmara"
+        classes={
+          Object {
+            "root": "makeStyles-tab-3",
+          }
+        }
+        id="tvCamaraContentTab"
+        key="2"
+        label={
+          <TabLabel
+            tabIcon={<UNDEFINED />}
+            tabText="TV Câmara"
+            tabValue={2}
+          />
+        }
       />
       <WithStyles(ForwardRef(Tab))
-        aria-controls="full-width-tabpanel-3"
-        id="full-width-tab-3"
-        label="Rádio Câmara"
+        classes={
+          Object {
+            "root": "makeStyles-tab-3",
+          }
+        }
+        id="radioCamaraContentTab"
+        key="3"
+        label={
+          <TabLabel
+            tabIcon={<UNDEFINED />}
+            tabText="Rádio Câmara"
+            tabValue={3}
+          />
+        }
       />
       <WithStyles(ForwardRef(Tab))
-        aria-controls="full-width-tabpanel-4"
-        id="full-width-tab-4"
-        label="Twitter"
+        classes={
+          Object {
+            "root": "makeStyles-tab-3",
+          }
+        }
+        id="twitterContentTab"
+        key="4"
+        label={
+          <TabLabel
+            tabIcon={<UNDEFINED />}
+            tabText="Twitter"
+            tabValue={4}
+          />
+        }
       />
       <WithStyles(ForwardRef(Tab))
-        aria-controls="full-width-tabpanel-5"
-        id="full-width-tab-5"
-        label="Glossário"
+        classes={
+          Object {
+            "root": "makeStyles-tab-3",
+          }
+        }
+        id="glossarioContentTab"
+        key="5"
+        label={
+          <TabLabel
+            tabIcon={<UNDEFINED />}
+            tabText="Glossário"
+            tabValue={5}
+          />
+        }
       />
     </WithStyles(ForwardRef(Tabs))>
   </WithStyles(ForwardRef(Grid))>

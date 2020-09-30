@@ -11,6 +11,7 @@ import PlenaryAttendance from './PlenaryAttendance/index'
 import PlenaryVoting from './PlenaryVoting/index'
 
 
+
 const styles = (theme) => ({
   tab:{
       [theme.breakpoints.up(500)]: {
@@ -139,9 +140,9 @@ class PlenaryPanel extends React.Component {
         </Tabs>
       </div>,
       <div key="tab-content">
-        {value === 0 && <Box width={"97%"} pt={1}><AgendaOfTheDayComponent sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></AgendaOfTheDayComponent></Box>}
-        {value === 1 && <Box width={"97%"}><PlenaryAttendance sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></PlenaryAttendance></Box>}
-        {value === 2 && <Box width={"97%"}><PlenaryVoting sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></PlenaryVoting></Box>}
+        {value === 0 && <Box key={"agendaDiv"} width={"97%"} pt={1}><AgendaOfTheDayComponent sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></AgendaOfTheDayComponent></Box>}
+        {value === 1 && <Box key={"attentdanceDiv"} width={"97%"}><PlenaryAttendance sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></PlenaryAttendance></Box>}
+        {value === 2 && <Box key={"votingDiv"} width={"97%"}><PlenaryVoting sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></PlenaryVoting></Box>}
       </div>
     ];
   }
