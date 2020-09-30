@@ -7,22 +7,29 @@ exports[`should render the TwitterDeputados section 1`] = `
   >
     <WithStyles(ForwardRef(Grid))
       item={true}
-      xs={8}
+      xs={10}
     >
-      <WithStyles(ForwardRef(Typography))
-        style={
-          Object {
-            "color": "#007E5A",
-          }
-        }
-        variant="h6"
+      <Styled(MuiBox)
+        alignItems="flex-end"
+        display="flex"
+        height={1}
+        width={1}
       >
-        Mais recentes 
-      </WithStyles(ForwardRef(Typography))>
+        <WithStyles(ForwardRef(Typography))
+          style={
+            Object {
+              "color": "#007E5A",
+            }
+          }
+          variant="h6"
+        >
+          A-Z
+        </WithStyles(ForwardRef(Typography))>
+      </Styled(MuiBox)>
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
       item={true}
-      xs={4}
+      xs={2}
     >
       <WithStyles(ForwardRef(TextField))
         InputProps={

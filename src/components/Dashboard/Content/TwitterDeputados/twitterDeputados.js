@@ -31,10 +31,12 @@ export default class TwitterDeputadosContent extends React.Component {
   renderSearchBarFunction(){
     return(
       <React.Fragment>
-        <Grid item xs={8}>
-          <Typography variant="h6" style={{ color: "#007E5A" }}>Mais recentes </Typography>
+        <Grid item xs={10}>
+          <Box width={1} height={1} display="flex" alignItems="flex-end">
+            <Typography variant="h6" style={{ color: "#007E5A" }}>A-Z</Typography>
+          </Box>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={2}>
           <TextField
             id="input-search-agencia"
             size="small"

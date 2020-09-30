@@ -19,11 +19,11 @@ import RadioCard from './../RadioCamara/radioCard'
 function topBarSavedContent(props){
   return(
     <React.Fragment>
-      <Grid item xs={9}>
+      <Grid item xs={10}>
         <Typography variant="h6" style={{ color: "#007E5A" }}>Mais recentes </Typography>
       </Grid>
 
-      <Grid item xs={3}>
+      <Grid item xs={2}>
         <TextField
           id="input-search-agencia"
           size="small"

@@ -4,6 +4,7 @@ exports[`should render the content section 1`] = `
 <WithStyles(ForwardRef(Grid))
   className="makeStyles-body-1"
   container={true}
+  spacing={2}
 >
   <WithStyles(ForwardRef(Grid))
     className="makeStyles-menu-2"

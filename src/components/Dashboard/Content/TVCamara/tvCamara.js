@@ -31,15 +31,12 @@ export default class TvCamaraContent extends React.Component {
   topBarTVCamara(props){
     return(
       <React.Fragment>
-        <Grid item xs={8}>
-          <Typography variant="h6" style={{ color: "#007E5A" }}>Mais recentes </Typography>
+        <Grid item xs={10}>
+          <Box width={1} height={1} display="flex" alignItems="flex-end">
+            <Typography variant="h6" style={{ color: "#007E5A" }}>Mais recentes </Typography>
+          </Box>
         </Grid>
-        <Grid item xs={1}>
-          <IconButton color="primary" aria-label="folder picture" component="span" style={{padding:0}}>
-            <CreateNewFolderIcon />
-          </IconButton>
-        </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           <TextField
             id="input-search-tv"
             size="small"
@@ -106,7 +103,7 @@ export default class TvCamaraContent extends React.Component {
           {this.topBarTVCamara()}
           <Grid item xs={12}>
             <Box paddingTop={3}>
-              <List style={{maxHeight: '200px', overflow: 'auto'}}>            
+              <List style={{maxHeight: '232px', overflow: 'auto'}}>         
                 {this.state.tvNewsFiltered.map((newsItem) => (
                   <li key={`section-${newsItem._id}`}>
                       <Box my={0.5}><TVCard info={newsItem._source} sessionId={this.props.sessionId} ></TVCard></Box>

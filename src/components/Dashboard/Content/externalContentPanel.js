@@ -129,7 +129,7 @@ export default function ExternalContentPanel(props) {
   }
 
   return (
-    <Grid container className={classes.body}>
+    <Grid container className={classes.body} spacing={2}>
       <Grid item md={3} className={classes.menu}>
         <Tabs
           orientation="vertical" variant="standard"
