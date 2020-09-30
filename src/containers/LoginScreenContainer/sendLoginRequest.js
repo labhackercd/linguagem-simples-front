@@ -1,10 +1,10 @@
 import axiosInstance from '../../auth/axiosApi'
 import {TOKEN_OBTAIN_URL} from '../../api_urls'
 
-export default async function sendLoginRequest(username,password) {
+export default async function sendLoginRequest(email,password) {
 
     const response = await axiosInstance.post(TOKEN_OBTAIN_URL, {
-        username: username,
+        email: email,
         password: password
     });
     

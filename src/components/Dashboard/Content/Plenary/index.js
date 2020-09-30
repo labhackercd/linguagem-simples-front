@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import Paper from '@material-ui/core/Paper'
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography'
 
 import AgendaOfTheDayComponent from './AgendaOfTheDay/index'
 import PlenaryAttendance from './PlenaryAttendance/index'
@@ -57,8 +58,14 @@ class PlenaryPanel extends React.Component {
     const { value } = this.state;
 
     if(this.props.sessionIdDadosAbertos === undefined || this.props.sessionIdDadosAbertos === null){
-      return <div> Dados abertos não sincronizados </div>
-    }
+      return (
+          <Box width={1} height={1}>
+            <Box display="flex" justifyContent="center" alignItems="center" width={"100%"} height={"100%"}>
+              <Typography variant="h5" style={{color: "#C4C4C4"}}>Sincronize para carregar</Typography>
+            </Box>
+          </Box>
+      )
+    };
 
     return [
       <div>

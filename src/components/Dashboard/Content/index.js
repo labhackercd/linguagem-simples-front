@@ -3,6 +3,8 @@ import { Grid, Typography, Paper } from '@material-ui/core';
 import { withStyles } from "@material-ui/core/styles";
 import LaunchIcon from '@material-ui/icons/Launch';
 import UpdateIcon from '@material-ui/icons/Update';
+import Box from '@material-ui/core/Box'
+
 import {ACOMPANHE_PORTAL_URL_PAGE} from '../../../api_urls'
 import ExternalContentPanel from './externalContentPanel';
 import Youtube from './Youtube/index'
@@ -150,8 +152,14 @@ class Content extends React.Component {
             <Grid item md={7}>
               <Typography variant="h5"> Transmissão </Typography>
               <div className={classes.card}>
-                {this.state.sessionInfo.id_session_dados_abertos &&
-                  <Youtube sessionIdDadosAbertos={this.state.sessionInfo.id_session_dados_abertos}></Youtube>
+                {this.state.sessionInfo.id_session_dados_abertos ?
+                  <Youtube sessionIdDadosAbertos={this.state.sessionInfo.id_session_dados_abertos}></Youtube> :
+                  <Box width={1} height={1}>
+                    <Box display="flex" justifyContent="center" alignItems="center" width={"100%"} height={"100%"}>
+                      <Typography variant="h5" style={{color: "#C4C4C4"}}>Transmissão não disponível</Typography>
+                    </Box>
+                  </Box>
+                  
                 }
                 </div> 
             </Grid>

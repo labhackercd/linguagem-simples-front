@@ -20,7 +20,7 @@ it("should render the external content section", () => {
       "author": {
         "id": 1,
         "is_superuser": true,
-        "username": "admin",
+        "email": "admin",
         "first_name": "",
         "last_name": "",
         "email": "a@a.com",
@@ -88,7 +88,7 @@ describe('Testing lifeclycle ', () => {
         "author": {
           "id": 1,
           "is_superuser": true,
-          "username": "jpnsoares",
+          "email": "jpnsoares",
           "first_name": "",
           "last_name": "",
           "email": "jpnsoares@email.com",
@@ -115,7 +115,7 @@ describe('Testing lifeclycle ', () => {
             author: {
                 id: 1,
                 is_superuser: true,
-                username: "jpnsoares",
+                email: "jpnsoares",
                 first_name: "",
                 last_name: "",
                 email: "jpnsoares@email.com",

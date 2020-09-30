@@ -86,6 +86,16 @@ export default class SavedContent extends React.Component {
       return (<Box display="flex" justifyContent="center" alignItems="center"><CircularProgress></CircularProgress></Box>)
     }
 
+    if(this.state.savedContent.length < 1){
+      return (
+        <Box width={1} height={1}>
+          <Box display="flex" justifyContent="center" alignItems="center" width={"100%"} height={"100%"}>
+            <Typography variant="h5" style={{color: "#C4C4C4"}}>Conteúdos salvos</Typography>
+          </Box>
+        </Box>
+      )
+    }
+
     return (
       <div>
         <Grid container>

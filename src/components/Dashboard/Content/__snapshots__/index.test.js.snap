@@ -201,7 +201,6 @@ exports[`should render the external content section 1`] = `
         "is_superuser": true,
         "last_name": "",
         "profile": "editor",
-        "username": "admin",
       },
       "date": "2020-09-01",
       "enable": true,

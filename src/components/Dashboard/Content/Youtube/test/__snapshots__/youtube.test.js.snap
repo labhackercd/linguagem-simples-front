@@ -5,77 +5,86 @@ exports[`Test if youtube returns transmission not available when sessionID is nu
   sessionIdDadosAbertos={null}
 >
   <Styled(MuiBox)
-    alignContent="center"
-    display="flex"
-    height="100%"
-    justifyContent="center"
-    width="100%"
+    height={1}
+    width={1}
   >
     <div
       className="MuiBox-root MuiBox-root-1"
     >
-      <WithStyles(ForwardRef(Typography))
-        style={
-          Object {
-            "color": "grey",
-          }
-        }
-        variant="h5"
+      <Styled(MuiBox)
+        alignItems="center"
+        display="flex"
+        height="100%"
+        justifyContent="center"
+        width="100%"
       >
-        <ForwardRef(Typography)
-          classes={
-            Object {
-              "alignCenter": "MuiTypography-alignCenter",
-              "alignJustify": "MuiTypography-alignJustify",
-              "alignLeft": "MuiTypography-alignLeft",
-              "alignRight": "MuiTypography-alignRight",
-              "body1": "MuiTypography-body1",
-              "body2": "MuiTypography-body2",
-              "button": "MuiTypography-button",
-              "caption": "MuiTypography-caption",
-              "colorError": "MuiTypography-colorError",
-              "colorInherit": "MuiTypography-colorInherit",
-              "colorPrimary": "MuiTypography-colorPrimary",
-              "colorSecondary": "MuiTypography-colorSecondary",
-              "colorTextPrimary": "MuiTypography-colorTextPrimary",
-              "colorTextSecondary": "MuiTypography-colorTextSecondary",
-              "displayBlock": "MuiTypography-displayBlock",
-              "displayInline": "MuiTypography-displayInline",
-              "gutterBottom": "MuiTypography-gutterBottom",
-              "h1": "MuiTypography-h1",
-              "h2": "MuiTypography-h2",
-              "h3": "MuiTypography-h3",
-              "h4": "MuiTypography-h4",
-              "h5": "MuiTypography-h5",
-              "h6": "MuiTypography-h6",
-              "noWrap": "MuiTypography-noWrap",
-              "overline": "MuiTypography-overline",
-              "paragraph": "MuiTypography-paragraph",
-              "root": "MuiTypography-root",
-              "srOnly": "MuiTypography-srOnly",
-              "subtitle1": "MuiTypography-subtitle1",
-              "subtitle2": "MuiTypography-subtitle2",
-            }
-          }
-          style={
-            Object {
-              "color": "grey",
-            }
-          }
-          variant="h5"
+        <div
+          className="MuiBox-root MuiBox-root-2"
         >
-          <h5
-            className="MuiTypography-root MuiTypography-h5"
+          <WithStyles(ForwardRef(Typography))
             style={
               Object {
-                "color": "grey",
+                "color": "#C4C4C4",
               }
             }
+            variant="h5"
           >
-             Transmissão não disponível
-          </h5>
-        </ForwardRef(Typography)>
-      </WithStyles(ForwardRef(Typography))>
+            <ForwardRef(Typography)
+              classes={
+                Object {
+                  "alignCenter": "MuiTypography-alignCenter",
+                  "alignJustify": "MuiTypography-alignJustify",
+                  "alignLeft": "MuiTypography-alignLeft",
+                  "alignRight": "MuiTypography-alignRight",
+                  "body1": "MuiTypography-body1",
+                  "body2": "MuiTypography-body2",
+                  "button": "MuiTypography-button",
+                  "caption": "MuiTypography-caption",
+                  "colorError": "MuiTypography-colorError",
+                  "colorInherit": "MuiTypography-colorInherit",
+                  "colorPrimary": "MuiTypography-colorPrimary",
+                  "colorSecondary": "MuiTypography-colorSecondary",
+                  "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                  "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                  "displayBlock": "MuiTypography-displayBlock",
+                  "displayInline": "MuiTypography-displayInline",
+                  "gutterBottom": "MuiTypography-gutterBottom",
+                  "h1": "MuiTypography-h1",
+                  "h2": "MuiTypography-h2",
+                  "h3": "MuiTypography-h3",
+                  "h4": "MuiTypography-h4",
+                  "h5": "MuiTypography-h5",
+                  "h6": "MuiTypography-h6",
+                  "noWrap": "MuiTypography-noWrap",
+                  "overline": "MuiTypography-overline",
+                  "paragraph": "MuiTypography-paragraph",
+                  "root": "MuiTypography-root",
+                  "srOnly": "MuiTypography-srOnly",
+                  "subtitle1": "MuiTypography-subtitle1",
+                  "subtitle2": "MuiTypography-subtitle2",
+                }
+              }
+              style={
+                Object {
+                  "color": "#C4C4C4",
+                }
+              }
+              variant="h5"
+            >
+              <h5
+                className="MuiTypography-root MuiTypography-h5"
+                style={
+                  Object {
+                    "color": "#C4C4C4",
+                  }
+                }
+              >
+                Transmissão não disponível
+              </h5>
+            </ForwardRef(Typography)>
+          </WithStyles(ForwardRef(Typography))>
+        </div>
+      </Styled(MuiBox)>
     </div>
   </Styled(MuiBox)>
 </Youtube>

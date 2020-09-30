@@ -127,9 +127,13 @@ export default class VideoSnippets extends React.Component {
     }
 
     if(!this.state.sessionHasStarted){
-      return (<Box display="flex" justifyContent="center" alignItems="center" width={"100%"}>
-                  <Typography>A transmissão ainda não foi iniciada.</Typography>
-              </Box>)
+      return (          
+        <Box width={1} height={1}>
+          <Box display="flex" justifyContent="center" alignItems="center" width={"100%"} height={"100%"}>
+            <Typography variant="h5" style={{color: "#C4C4C4"}}>Trechos não disponíveis</Typography>
+          </Box>
+        </Box>
+      )
     }
 
     if(!this.state.dataLoaded){
