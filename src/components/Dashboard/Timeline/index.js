@@ -8,7 +8,7 @@ import URLInputDialog from './Dialogs/URLInput';
 import PreviewDialog from './Dialogs/Preview';
 import Feed from './Feed';
 import axiosInstance from '../../../auth/axiosApi.js';
-import { fetchFeedUpdates } from './timelineAPIhandler';
+import { fetchFeedUpdates, deletePostFromFeed } from './timelineAPIhandler';
 import { parseHourMinute } from './../../Util';
 import {API_PUBLICATIONS_URL} from './../../../api_urls'
 
@@ -91,7 +91,8 @@ class Timeline extends React.Component {
 							let content = JSON.parse(data.content)
 		          let newUpdate = {
 		            id: data.id,
-		            created: data.created
+		            created: data.created,
+								state: data.state
 		          }
 							if(content.updateTextArea) {
 								newUpdate['updateTextArea'] = content.updateTextArea
@@ -204,6 +205,13 @@ class Timeline extends React.Component {
 				this.setState({updateTitle: title})
 			}
 		}
+		handleDeletePost = async updateId => {
+			let postWithPublicationStateChanged = await deletePostFromFeed(updateId)
+			let updates = [...this.state.updates]
+			let itemIndex = updates.findIndex(update => update.id === updateId)
+			updates[itemIndex] = postWithPublicationStateChanged
+			this.setState({updates: updates})
+		}
 		render() {
 			const { classes } = this.props;
 			return (
@@ -240,7 +248,8 @@ class Timeline extends React.Component {
 							 setCustomURL={this.setCustomURL}
 							 URLInputIsTwitter={this.state.URLInputIsTwitter}
 							 handleDialogStateAction={this.handleDialogStateAction}></URLInputDialog>
-			 <FeedMemo updates={this.state.updates}></FeedMemo>
+			 <FeedMemo updates={this.state.updates}
+			 					 handleDeletePost={this.handleDeletePost}></FeedMemo>
 				</div>
 			)
 		}

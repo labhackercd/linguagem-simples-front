@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Paper,Button, Popover, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
+import React, {useState, useEffect} from 'react';
+import { Paper,Button, Popover, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
 	      DialogTitle, Grid, Typography, Box,  IconButton, List, ListItem} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import {TwitterTweetEmbed} from 'react-twitter-embed';
@@ -8,12 +8,13 @@ import { ReactComponent as LixeiraIcon } from './../../../../assets/lixeira.svg'
 import { ReactComponent as EditIcon } from './../../../../assets/edit_icon.svg';
 import { parseHourMinute } from './../../../Util';
 import { ReactTinyLink } from 'react-tiny-link';
+import { deletePostFromFeed } from './../timelineAPIhandler';
 
 const useStyles = makeStyles((theme) => ({
 	dialogPaper: {
 		borderRadius: 0,
-		width: '14%',
-		boxShadow: '0px -1px 10px -2px rgba(71,71,71,0.05)',
+		width: '8%',
+		boxShadow: '0px -1px 10px -2px rgba(71,71,71,0.3)',
 	},
   updatesArea: {
     overflow: 'auto',
@@ -40,19 +41,44 @@ const useStyles = makeStyles((theme) => ({
 	popoverItem: {
 		display: 'flex',
 		justifyContent: 'space-between',
-		width: '100%'
 	},
+	excludeText: {
+		margin: '0 0 0 0.5rem',
+	},
+	editText: {
+		color: '#C4C4C4',
+	},
+	alignIcon: {
+		alignSelf: 'center',
+	}
 }))
 
 export default function Feed(props) {
   const classes = useStyles();
 	const [anchorEl, setAnchorEl] = useState(null)
+	const [updates, setUpdates] = useState('')
+	const { handleDeletePost } = props
+	const [postToBeDeleted, setPostToBeDeleted] = useState('')
 
-	const handleClick = (event) => {
+	useEffect(() => {
+		const filteredUpdates = props.updates.filter(update => update.state === "published")
+		setUpdates(filteredUpdates)
+	}, [props.updates]);
+
+	const handleClick = (event, update) => {
+		setPostToBeDeleted(update)
 		setAnchorEl(event.currentTarget);
 	}
 
 	const handleClose = () => {
+		setPostToBeDeleted('')
+		setAnchorEl(null);
+	}
+
+	const deletePost = async (e) => {
+		e.preventDefault()
+		handleDeletePost(postToBeDeleted.id)
+		setPostToBeDeleted('')
 		setAnchorEl(null);
 	}
 
@@ -62,7 +88,7 @@ export default function Feed(props) {
   return (
     <Grid container className={classes.updatesArea}>
       <List style={{width: '100%'}}>
-          {props.updates ? props.updates.slice(0).reverse().map(update =>  //creates a shallow copy of the array and reverses it
+          {updates.length > 0 ? updates.slice(0).reverse().map(update =>  //creates a shallow copy of the array and reverses it
 						<ListItem divider key={update.id}>
               <Grid container>
                 <Grid item xs={2}>
@@ -76,7 +102,7 @@ export default function Feed(props) {
                       {update.title}
                     </Typography>
                     <Grid item>
-											<IconButton aria-describedby={id} onClick={handleClick}>
+											<IconButton aria-describedby={id} onClick={(e) => handleClick(e, update)}>
 	                    	<MoreOptionsIcon />
 											</IconButton>
 											<Popover
@@ -96,11 +122,27 @@ export default function Feed(props) {
 												}}
 											>
 											<Grid container className={classes.popover}>
-													<Grid item className={classes.popoverItem}>
-														<EditIcon/><h5 style={{alignSelf: 'flex-start'}}>Editar</h5>
+													<Grid container className={classes.popoverItem} >
+														<Grid item xs={4} className={classes.alignIcon}>
+															<IconButton>
+																<EditIcon width="20" height="20"/>
+															</IconButton>
+														</Grid>
+														<Grid item xs={8} className={classes.alignIcon}>
+															<h5 className={classes.editText}>Editar</h5>
+														</Grid>
 													</Grid>
 													<Grid item className={classes.popoverItem}>
-														<LixeiraIcon /><h5 style={{alignSelf: 'flex-start'}}>Excluir</h5>
+														<Grid container className={classes.popoverItem}>
+															<Grid item xs={4} className={classes.alignIcon}>
+																<IconButton onClick={handleClose}>
+																	<LixeiraIcon width="20" height="20"/>
+																</IconButton>
+															</Grid>
+															<Grid item xs={8} className={classes.alignIcon}>
+																<h5 className={classes.excludeText} onClick={(e) => deletePost(e, update)}>Excluir</h5>
+															</Grid>
+														</Grid>
 													</Grid>
 												</Grid>
 											</Popover>
