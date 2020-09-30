@@ -61,7 +61,6 @@ export default class SavedContent extends React.Component {
   };
 
   updateComponent(status) {
-    console.log("chamou")
     this.setState({dataLoaded: false});
     this.fetchSavedContent();
   }
