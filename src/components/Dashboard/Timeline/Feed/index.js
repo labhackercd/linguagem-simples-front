@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { Paper,Button, Popover, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
 	      DialogTitle, Grid, Typography, Box,  IconButton, List, ListItem} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
-import {TwitterTweetEmbed} from 'react-twitter-embed';
+import { makeStyles } from '@material-ui/core/styles';
+import { TwitterTweetEmbed } from 'react-twitter-embed';
 import { ReactComponent as MoreOptionsIcon } from './../../../../assets/more_options_icon.svg';
 import { ReactComponent as LixeiraIcon } from './../../../../assets/lixeira.svg';
 import { ReactComponent as EditIcon } from './../../../../assets/edit_icon.svg';
@@ -97,12 +97,12 @@ export default function Feed(props) {
                   </Typography>
                 </Grid>
                 <Grid item xs={10}>
-                  <Grid container className={classes.itemHeader}>
+                  <Grid container id={'item-header'} className={classes.itemHeader}>
                     <Typography variant="h5" className={classes.title}>
                       {update.title}
                     </Typography>
                     <Grid item>
-											<IconButton aria-describedby={id} onClick={(e) => handleClick(e, update)}>
+											<IconButton id={'more-options-icon'} onClick={(e) => handleClick(e, update)}>
 	                    	<MoreOptionsIcon />
 											</IconButton>
 											<Popover
@@ -135,12 +135,14 @@ export default function Feed(props) {
 													<Grid item className={classes.popoverItem}>
 														<Grid container className={classes.popoverItem}>
 															<Grid item xs={4} className={classes.alignIcon}>
-																<IconButton onClick={handleClose}>
+																<IconButton onClick={(e) => deletePost(e)}>
 																	<LixeiraIcon width="20" height="20"/>
 																</IconButton>
 															</Grid>
 															<Grid item xs={8} className={classes.alignIcon}>
-																<h5 className={classes.excludeText} onClick={(e) => deletePost(e, update)}>Excluir</h5>
+																<h5 className={classes.excludeText}
+																		id={'delete-post-button'}
+																		onClick={(e) => deletePost(e)}>Excluir</h5>
 															</Grid>
 														</Grid>
 													</Grid>
@@ -148,7 +150,7 @@ export default function Feed(props) {
 											</Popover>
                     </Grid>
                   </Grid>
-                  <Grid container className={classes.timelinePost}>
+                  <Grid container id={'timeline-post'} className={classes.timelinePost}>
                     <div style={{width: '100%'}}>
                       <Typography
 												style={{color: '#666', alignSelf: 'flex-start', whiteSpace: 'pre-line'}}
