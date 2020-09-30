@@ -155,7 +155,7 @@ export default function ExternalContentPanel(props) {
         <TabPanel value={value} index={2}><TvCamaraContent sessionId={props.sessionId}></TvCamaraContent></TabPanel>
         <TabPanel value={value} index={3}><RadioCamaraContent sessionId={props.sessionId}></RadioCamaraContent></TabPanel>
         <TabPanel value={value} index={4}><TwitterDeputadosContent></TwitterDeputadosContent></TabPanel>
-        <TabPanel value={value} index={5}><GlossarioContent></GlossarioContent></TabPanel>     
+        <TabPanel value={value} index={5}><GlossarioContent></GlossarioContent></TabPanel>
       </Grid>
     </Grid>
   )

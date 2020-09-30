@@ -4,13 +4,13 @@ import { Grid, Typography } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import List from '@material-ui/core/List'
 import CircularProgress from '@material-ui/core/CircularProgress';
-
-
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
-import fetchDataSavedContentCamara from './fetchDataSavedContent'
 
+import NoSavedContentImage from './assets/noSavedContent.svg'
+
+import fetchDataSavedContentCamara from './fetchDataSavedContent'
 import NewsCard from './../AgenciaCamara/newsCard'
 import TVCard from './../TVCamara/tvCamaraCard'
 import RadioCard from './../RadioCamara/radioCard'
@@ -88,9 +88,9 @@ export default class SavedContent extends React.Component {
 
     if(this.state.savedContent.length < 1){
       return (
-        <Box width={1} height={1}>
-          <Box display="flex" justifyContent="center" alignItems="center" width={"100%"} height={"100%"}>
-            <Typography variant="h5" style={{color: "#C4C4C4"}}>Conteúdos salvos</Typography>
+        <Box width={1} height={"295px"}>
+          <Box display="flex" justifyContent="center" alignItems="center" width={"100%"} height={"100%"} marginTop={"1"}>
+            <img src={NoSavedContentImage} alt="Nenhum conteúdo salvo"></img>
           </Box>
         </Box>
       )
