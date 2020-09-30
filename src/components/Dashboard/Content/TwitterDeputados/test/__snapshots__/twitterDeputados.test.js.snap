@@ -49,7 +49,7 @@ exports[`should render the TwitterDeputados section 1`] = `
         <List
           direction="ltr"
           height={250}
-          itemCount={500}
+          itemCount={515}
           itemSize={44}
           layout="vertical"
           overscanCount={2}
