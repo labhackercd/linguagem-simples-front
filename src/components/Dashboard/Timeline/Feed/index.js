@@ -6,6 +6,7 @@ import { TwitterTweetEmbed } from 'react-twitter-embed';
 import { ReactComponent as MoreOptionsIcon } from './../../../../assets/more_options_icon.svg';
 import { ReactComponent as LixeiraIcon } from './../../../../assets/lixeira.svg';
 import { ReactComponent as EditIcon } from './../../../../assets/edit_icon.svg';
+import { ReactComponent as CoffeMugIcon } from './../../../../assets/coffee-mug-icon.svg';
 import { parseHourMinute } from './../../../Util';
 import { ReactTinyLink } from 'react-tiny-link';
 import { deletePostFromFeed } from './../timelineAPIhandler';
@@ -20,6 +21,13 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     maxHeight: '50vh',
   },
+	updatesAreaNoPosts: {
+		overflow: 'auto',
+		height: '50vh',
+		display: 'flex',
+		width: '100%',
+		justifyContent: 'center',
+	},
   itemHeader: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -50,6 +58,17 @@ const useStyles = makeStyles((theme) => ({
 	},
 	alignIcon: {
 		alignSelf: 'center',
+	},
+	noUpdate: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	textNoUpdate: {
+		color: '#989898',
+		width: '60%',
+		textAlign: 'center',
 	}
 }))
 
@@ -140,9 +159,11 @@ export default function Feed(props) {
 																</IconButton>
 															</Grid>
 															<Grid item xs={8} className={classes.alignIcon}>
-																<h5 className={classes.excludeText}
+																<a href="#" style={{textDecoration: 'none', color: 'inherit'}}>
+																<Typography variant="h5"
+																		className={classes.excludeText}
 																		id={'delete-post-button'}
-																		onClick={(e) => deletePost(e)}>Excluir</h5>
+																		onClick={(e) => deletePost(e)}>Excluir</Typography></a>
 															</Grid>
 														</Grid>
 													</Grid>
@@ -181,7 +202,14 @@ export default function Feed(props) {
                 </Grid>
               </Grid>
             </ListItem>
-          ) : ''}
+          ) :
+					<Grid container className={classes.updatesAreaNoPosts}>
+						<Grid item className={classes.noUpdate}>
+							<CoffeMugIcon />
+							<Typography variant="h5" className={classes.textNoUpdate}> Você não possui atualizações </Typography>
+						</Grid>
+					</Grid>
+				}
       </List>
     </Grid>
   )
