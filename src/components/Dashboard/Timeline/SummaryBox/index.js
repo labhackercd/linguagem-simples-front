@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 		border: '2px solid #F2F2F2',
 		borderWidthBottom: '0px',
 		color: theme.palette.secondary,
-		borderRadius: '0 0 0 0',
+		borderRadius: '5px 5px 0 0',
 	},
 	textArea: {
 		height: '100%',
@@ -27,11 +27,31 @@ const useStyles = makeStyles((theme) => ({
 		width: '100%',
 		border: '0',
 	},
+	button: {
+	  height: 'inherit',
+	  alignSelf: 'center',
+		borderRadius: '0 0 5px 5px',
+		backgroundColor: theme.palette.verdeCamaraLight.main,
+		color: theme.palette.white.main,
+		textTransform: 'capitalize',
+	},
 	textField: {
 		margin: '0 1rem 0 0',
 		height: '100%',
 		width: '100%',
-	}
+	},
+	box: {
+		borderRadius: '0 0 0 5px',
+		width: '100%',
+	},
+	buttonContainer: {
+		display: 'flex',
+		justifyContent: 'flex-end',
+		 height: 'inherit'
+	},
+	container: {
+		height: '100%',
+	},
 }));
 
 export default function SummaryBox(props) {
@@ -65,7 +85,6 @@ export default function SummaryBox(props) {
           <Typography variant="h5"> Resumo </Typography>
         </Grid>
         <Grid item md={6} style={{display:'flex', justifyContent: 'flex-end'}}>
-          <a href="/"><img src={DownArrowIcon} alt="up arrow icon"/></a>
         </Grid>
       </Grid>
     </Grid>
@@ -89,23 +108,18 @@ export default function SummaryBox(props) {
                 }}
               />
             </form>
-        </Grid>
-          <Box borderTop={1} color="#F2F2F2" borderRadius="0 0 10px 25px" bgcolor="#F2F2F2">
-            <Grid container>
-              <Grid item xs={8} style={{display: 'flex', justifyContent: 'flex-start'}}></Grid>
-              <Grid item xs={4} style={{display:  'flex', justifyContent: 'flex-end'}}>
-                <Button	disabled={!props.broadcastingOnline}
-												className={classes.button}
-												id="summary-box-submit-button"
-												onClick={(e) => handleSubmit(e)}
-												variant="contained"
-												disableElevation>
-                  Atualizar
-                </Button>
-              </Grid>
-            </Grid>
+          <Box className={classes.box} color="#F2F2F2" bgcolor="#F2F2F2">
+						<Grid container className={classes.container}>
+								<Grid item xs={8}></Grid>
+								<Grid item xs={4} className={classes.buttonContainer}>
+									<Button disabled={!props.broadcastingOnline} id="summary-box-submit-button" className={classes.button} onClick={(e) => handleSubmit(e)} variant="contained" disableElevation>
+										Atualizar
+									</Button>
+								</Grid>
+						</Grid>
           </Box>
       </Grid>
+		</Grid>
     </React.Fragment>
   )
 }
