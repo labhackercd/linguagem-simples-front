@@ -4,6 +4,8 @@ import {Redirect } from "react-router-dom";
 import { Grid, TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import Box from '@material-ui/core/Box'
+
 import axiosInstance from './../../auth/axiosApi.js'
 import {ESTUDIO_PAGE_URL,APPLICATION_RESET_PASSWORD_URL} from './../../api_urls';
 import sendLoginRequest from './sendLoginRequest'
@@ -22,7 +24,7 @@ const useStyles = theme => ({
     border: 0,
   },
   sidebar: {
-  	height: "100vh",
+  	height: "5vh",
   },
   loginArea: {
     height: '100vh',
@@ -187,12 +189,15 @@ class LoginScreen extends React.Component {
                     </Grid>
                 </Grid>
               </div>
-              <Grid item xs={12} sm={5} md={5}>
+              <Grid item xs={12} sm={8} md={8}>
                 <div className={classes.prototipoArea}>
-                  <div style={{margin: '10rem 0 0 0'}}>
-                    <img src={PrototipoIcon} alt="Imagem ilustrativa da interação do protótipo"/>
-                  </div>
+                  <Box style={{margin: '8rem 0 0 0'}} width={1}>
+                    <Box display="flex" flexDirection="row-reverse" paddingRight={10}>
+                      <img src={PrototipoIcon} alt="Imagem ilustrativa da interação do protótipo"/>
+                    </Box>
+                  </Box>
                 </div>
+                
               </Grid>
               <Grid item xs={12} sm={1} md={1} className={classes.sidebar}></Grid>
             </Grid>
