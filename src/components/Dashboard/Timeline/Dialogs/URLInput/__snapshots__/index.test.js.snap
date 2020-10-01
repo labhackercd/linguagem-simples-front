@@ -12,7 +12,7 @@ exports[`snapshot should not have differences 1`] = `
     <WithStyles(ForwardRef(TextField))
       autoFocus={true}
       fullWidth={true}
-      id="name"
+      id="url-input"
       label="Insira aqui o link"
       margin="dense"
       name="customURL"
@@ -23,6 +23,7 @@ exports[`snapshot should not have differences 1`] = `
   <WithStyles(ForwardRef(DialogActions))>
     <WithStyles(ForwardRef(Button))
       color="primary"
+      id="cancel-button"
       onClick={[Function]}
     >
       Cancelar
@@ -30,6 +31,7 @@ exports[`snapshot should not have differences 1`] = `
     <WithStyles(ForwardRef(Button))
       color="primary"
       disabled={true}
+      id="submit-button"
       onClick={[Function]}
     >
       Incorporar link

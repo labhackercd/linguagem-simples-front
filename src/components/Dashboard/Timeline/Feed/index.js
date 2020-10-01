@@ -80,8 +80,10 @@ export default function Feed(props) {
 	const [postToBeDeleted, setPostToBeDeleted] = useState('')
 
 	useEffect(() => {
-		const filteredUpdates = props.updates.filter(update => update.state === "published")
-		setUpdates(filteredUpdates)
+		if(props.updates) {
+			const filteredUpdates = props.updates.filter(update => update.state === "published")
+			setUpdates(filteredUpdates)	
+		}
 	}, [props.updates]);
 
 	const handleClick = (event, update) => {
