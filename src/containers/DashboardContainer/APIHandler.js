@@ -3,8 +3,8 @@ import {API_SESSIONS_URL} from './../../api_urls'
 
 export async function fetchData(dashboarId){
   //console.log(dashboarId)
-  const response = await axiosInstance.get(("/sessions/"+dashboarId+"/"), {});
-  console.log(response)
+  const response = await axiosInstance.get((API_SESSIONS_URL+dashboarId+"/"), {});
+  //console.log(response)
   return response
   /*
   if(response.status===200){
@@ -22,8 +22,8 @@ export async function changeBroadcastingStatus(dashboardInfo, broadcastingStatus
       id: sessionId,
       enable: broadcastingStatus,
     })
-    return response
+    return response;
   } catch(e) {
-    console.log(e)
+    console.log("Change BroadCastingStatus error")
   }
 }
