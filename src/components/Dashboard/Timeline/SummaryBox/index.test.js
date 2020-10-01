@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import SummaryBox from './index';
-import {shallow} from "enzyme/build";
+import {shallow, mount} from "enzyme/build";
 import ReactDOM from 'react-dom';
 
 it("snapshot should not have differences", () => {
@@ -21,3 +21,12 @@ test('does "resumo" label gets rendered', () => {
     const textAreaLabel = getByText('Resumo');
     expect(textAreaLabel).toBeInTheDocument();
 });
+
+test('click on update button doesnt break page', () => {
+  const wrapper = mount(<SummaryBox sessionId={1} broadcastingOnline={true} />);
+  const submitButton = wrapper.find('#summary-box-submit-button').last()
+  const textfield = wrapper.find('#summary-box-textfield').last()
+  textfield.instance().value = "test content"
+  textfield.simulate("change");
+  submitButton.simulate('click')
+})

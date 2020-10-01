@@ -10,3 +10,13 @@ export async function fetchFeedUpdates(sessionId){
     }
     return response
 }
+
+export async function deletePostFromFeed(publicationId) {
+  if(!publicationId) { return "Please provide a valid publication id" }
+  const response = await axiosInstance.patch((API_PUBLICATIONS_URL + publicationId + "/"), {
+          state: 'inactive'
+      })
+  if(response.status === 200) {
+    return response.data
+  }
+}

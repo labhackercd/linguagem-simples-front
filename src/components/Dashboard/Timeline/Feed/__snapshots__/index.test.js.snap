@@ -2,7 +2,7 @@
 
 exports[`snapshot should match 1`] = `
 <WithStyles(ForwardRef(Grid))
-  className="makeStyles-updatesArea-1"
+  className="makeStyles-updatesArea-15"
   container={true}
 >
   <WithStyles(ForwardRef(List))
@@ -12,76 +12,23 @@ exports[`snapshot should match 1`] = `
       }
     }
   >
-    <WithStyles(ForwardRef(ListItem))
-      divider={true}
-      key="1"
+    <WithStyles(ForwardRef(Grid))
+      className="makeStyles-updatesAreaNoPosts-16"
+      container={true}
     >
       <WithStyles(ForwardRef(Grid))
-        container={true}
+        className="makeStyles-noUpdate-25"
+        item={true}
       >
-        <WithStyles(ForwardRef(Grid))
-          item={true}
-          xs={2}
+        <ForwardRef(SvgCoffeeMugIcon) />
+        <WithStyles(ForwardRef(Typography))
+          className="makeStyles-textNoUpdate-26"
+          variant="h5"
         >
-          <WithStyles(ForwardRef(Typography))
-            variant="h6"
-          >
-            NaN:aN
-          </WithStyles(ForwardRef(Typography))>
-        </WithStyles(ForwardRef(Grid))>
-        <WithStyles(ForwardRef(Grid))
-          item={true}
-          xs={10}
-        >
-          <WithStyles(ForwardRef(Grid))
-            className="makeStyles-itemHeader-2"
-            container={true}
-          >
-            <WithStyles(ForwardRef(Typography))
-              className="makeStyles-title-3"
-              variant="h5"
-            />
-            <WithStyles(ForwardRef(Grid))
-              item={true}
-            >
-              <img
-                alt="more options icon"
-                src="more_options_icon.svg"
-              />
-            </WithStyles(ForwardRef(Grid))>
-          </WithStyles(ForwardRef(Grid))>
-          <WithStyles(ForwardRef(Grid))
-            className="makeStyles-timelinePost-4"
-            container={true}
-          >
-            <div
-              style={
-                Object {
-                  "width": "100%",
-                }
-              }
-            >
-              <WithStyles(ForwardRef(Typography))
-                style={
-                  Object {
-                    "alignSelf": "flex-start",
-                    "color": "#666",
-                  }
-                }
-                variant="body1"
-              />
-            </div>
-            <section
-              style={
-                Object {
-                  "width": "100%",
-                }
-              }
-            />
-          </WithStyles(ForwardRef(Grid))>
-        </WithStyles(ForwardRef(Grid))>
+           Você não possui atualizações 
+        </WithStyles(ForwardRef(Typography))>
       </WithStyles(ForwardRef(Grid))>
-    </WithStyles(ForwardRef(ListItem))>
+    </WithStyles(ForwardRef(Grid))>
   </WithStyles(ForwardRef(List))>
 </WithStyles(ForwardRef(Grid))>
 `;

@@ -68,6 +68,7 @@ class PreviewDialog extends React.Component {
 					 <DialogTitle id="form-dialog-title">Nova atualizacao</DialogTitle>
 					 <img src={ExitIcon}
 								style={{margin: '0 1rem 0 0'}}
+								id="close-preview-dialog" 
 								onClick={(e) => this.props.handleDialogStateAction(e, false, "previewDialog", null) }
 								alt="exit" />
 				 </div>
@@ -82,12 +83,13 @@ class PreviewDialog extends React.Component {
 						<Grid item md={10}>{this.props.updateTitle}</Grid>
 							<Grid item md={1} style={{padding: '0.1rem 0.1rem 0rem 1rem'}}>
 								<img src={AlertDialogIcon}
+										 id="remove-post-title"
 										 onClick={() => this.props.setUpdateTitle('')}
 										 alt="exit" />
 							</Grid>
 					</Grid>
 						 <TextField
-							 id="textfield"
+							 id="textfield-preview-dialog"
 							 multiline
 							 rows={4}
 							 bgcolor="white"
@@ -132,7 +134,11 @@ class PreviewDialog extends React.Component {
 			 </Paper>
 				 <DialogActions className={classes.previewModalFooter}>
 					 <Typography className={classes.time} style={{alignSelf: 'flex-start'}} variant="h6"> {this.props.time} </Typography>
-					 <Button disabled={!this.props.broadcastingOnline} onClick={(e) => this.props.handleDialogStateAction(e, false, "previewDialog", "dispatchPayload")} variant="contained" className={classes.previewModalSubmitButton}>
+					 <Button disabled={!this.props.broadcastingOnline}
+					 					onClick={(e) => this.props.handleDialogStateAction(e, false, "previewDialog", "dispatchPayload")}
+										variant="contained"
+										className={classes.previewModalSubmitButton}
+										id="button-preview-click">
 						 Publicar
 					 </Button>
 				 </DialogActions>

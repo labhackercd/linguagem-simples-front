@@ -29,19 +29,22 @@ export default function URLInputDialog(props) {
          name="customURL"
          onChange={(e) => validateStoreURL(e)}
          margin="dense"
-         id="name"
+         id="url-input"
          label="Insira aqui o link"
          type="text"
          fullWidth
        />
      </DialogContent>
      <DialogActions>
-       <Button onClick={(e) => props.handleDialogStateAction(e, false, "URLInputDialog", null)} color="primary">
+       <Button onClick={(e) => props.handleDialogStateAction(e, false, "URLInputDialog", null)}
+			 				 color="primary"
+							 id="cancel-button">
          Cancelar
        </Button>
        <Button onClick={(e) => props.handleDialogStateAction(e, false, "URLInputDialog", "previewModalOpen")}
 				 			 disabled={validURL ? false : true}
-							 color="primary">
+							 color="primary"
+							 id="submit-button">
          Incorporar link
        </Button>
      </DialogActions>

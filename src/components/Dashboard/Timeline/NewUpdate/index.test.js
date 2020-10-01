@@ -6,7 +6,7 @@ import {shallow, mount } from "enzyme/build";
 import ReactDOM from 'react-dom';
 
 it("snapshot should not have differences", () => {
-    const component = shallow(<NewUpdate/>);
+    const component = shallow(<NewUpdate date={new Date(98, 1)}/>);
     expect(component.exists()).toEqual(true);
     expect(component).toMatchSnapshot();
 });
@@ -17,11 +17,22 @@ test('Test if NewUpdate renders without crash', () => {
     ReactDOM.unmountComponentAtNode(div)
 });
 
-test('does internal elements exists', () => {
-    const wrapper = mount(<NewUpdate/>);
-    const button = wrapper.find("#updateSubmitButton").at(0);
-    const textField = wrapper.find("#newUpdateTextField").at(0);
-    expect(button).not.toBeNull();
-    expect(textField).not.toBeNull();
+test('writes update and submit doesnt break page', () => {
+    const wrapper = mount(<NewUpdate handleDialogStateAction={jest.fn()}/>);
+    const button = wrapper.find("#updateSubmitButton").last();
+    const textField = wrapper.find("#newUpdateTextField").last();
+    textField.instance().value = "test content"
+    textField.simulate("change");
+    button.simulate('click');
     wrapper.unmount();
 });
+
+test('clicking content insertion icons doesnt break page', () => {
+  const wrapper = mount(<NewUpdate handleDialogStateAction={jest.fn()}/>);
+  const imageInsert = wrapper.find('#picture-upload-icon').last()
+  const twitterInsert = wrapper.find('#tweet-insert-icon').last()
+  const linkInsert = wrapper.find('#link-insert-icon').last()
+  imageInsert.simulate('click')
+  twitterInsert.simulate('click')
+  linkInsert.simulate('click')
+})

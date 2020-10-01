@@ -15,3 +15,17 @@ test('Test if Feed renders without crash', () => {
     ReactDOM.render(<URLInputDialog URLInputDialogOpen={true} />, div)
     ReactDOM.unmountComponentAtNode(div)
 });
+
+test('Clicking on buttons doesnt break page', () => {
+  const wrapper = mount(<URLInputDialog URLInputDialogOpen={true}
+                                        setCustomURL={jest.fn()}
+                                        customURL="testURL"
+                                        handleDialogStateAction={jest.fn()}/>)
+  const textfield = wrapper.find('#url-input').last()
+  textfield.instance().value = "test text"
+  textfield.simulate('change')
+  const submitButton = wrapper.find('#submit-button').last()
+  submitButton.simulate('click')
+  const deleteButton = wrapper.find('#cancel-button').last()
+  deleteButton.simulate('click')
+})
