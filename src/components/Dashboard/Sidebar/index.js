@@ -6,6 +6,10 @@ import  HomeIcon  from './../../../assets/Home.svg';
 import  ACIcon  from './../../../assets/AC.svg';
 import  ExitIcon  from './../../../assets/Exit.svg';
 
+import Tooltip from '@material-ui/core/Tooltip'
+import {ESTUDIO_PAGE_URL} from '../../../api_urls'
+import handleLogout from '../../LogoutButton/handleLogout'
+
 const useStyles = makeStyles((theme) => ({
   sidebar: {
   	backgroundColor: "#00AF82",
@@ -45,20 +49,24 @@ export default function Sidebar() {
   return (
 		<Grid container className={classes.sidebar}>
 			<Grid item md={3} className={classes.user}>
-				<a href="/"><img src={UserIcon} alt="user icon"/></a>
+				<a ><img src={UserIcon} alt="user icon"/></a>
 			</Grid>
 			<Grid container className={classes.middleSection}>
 				<Grid item md={6} className={classes.middleIcon}>
-					<a href="/"><img src={HomeIcon} alt="home icon"/></a>
+					<Tooltip title="Ir para estúdio">
+						<a href={ESTUDIO_PAGE_URL} id="goToEstudioButton"><img src={HomeIcon} alt="home icon"/></a>
+					</Tooltip>
 				</Grid>
 				<Grid item md={6} className={classes.middleIcon}>
-					<a href="/"><img src={ACIcon} alt="AC icon"/></a>
+					<img src={ACIcon} alt="AC icon"/>
 				</Grid>
 			</Grid>
 			<Grid item md={3} className={classes.exit}>
-        <div className={classes.exitIcon}>
-				    <a href="/"><img src={ExitIcon} alt="Exit icon"/></a>
-        </div>
+        	<div className={classes.exitIcon}>
+				<Tooltip title="Logout">
+				    <a href="/" id="logoutButton" onClick={() => { handleLogout() }}><img src={ExitIcon} alt="Exit icon"/></a>
+				</Tooltip>
+       		 </div>
 			</Grid>
 		</Grid>
   )

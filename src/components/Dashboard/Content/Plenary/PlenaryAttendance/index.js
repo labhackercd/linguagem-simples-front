@@ -81,7 +81,7 @@ export default class PlenaryAttendance extends React.Component {
     }
 
     return (
-        <Box paddingTop={1} width={"43vh"} mr={2} ml={0.5}>
+        <Box paddingTop={1} width={"95%"} height={"100%"} marginX={2}>
           <Grid container>
             <Grid item xs={9} >
                 <Box borderRadius={5} {...defaultProps}>
@@ -110,7 +110,7 @@ export default class PlenaryAttendance extends React.Component {
               </Box>
             </Grid>
             <Grid item xs={12}>
-              <Box width={'97%'} style={{maxHeight: "21vh"}} paddingTop={2}  mr={2} ml={0.5} >
+              <Box width={'100%'} height={"100%"}  paddingTop={2}  mr={0.5} ml={0.5} >
                   {(parseInt(this.state.selectedOption) === 0)
                     ? <AttendanceListAlphabetic plenaryAttendanceList={this.state.plenaryAttendanceList.blocosPartidos.PLEN.parlamentares.Titulares}></AttendanceListAlphabetic>
                     : <AttendanceListByState plenaryAttendanceList={this.state.plenaryAttendanceList.blocosPartidos.PLEN.parlamentares.Titulares}></AttendanceListByState>
