@@ -11,6 +11,8 @@ import TextField from '@material-ui/core/TextField';
 import SnippetCard from './videoSnippetCard'
 import IconButton from '@material-ui/core/IconButton';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 export default class VideoSnippets extends React.Component {
 
@@ -74,6 +76,16 @@ export default class VideoSnippets extends React.Component {
             </Box>
           </Grid>
           <Grid item xs={1}>
+            <Box display="flex" justifyContent="center">
+              <Tooltip title="Atualizar trechos">
+                <IconButton id="atualizarSnippets" aria-label="atualizar" size="small"  onClick={() => { this.handleUpdateSnippetsButton()}}>
+                  <RefreshIcon />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Grid>
+          <Grid item xs={1}>
+            <Box mr={1}>
               <TextField
                 id="input-search-snippet"
                 size="small"
@@ -81,13 +93,7 @@ export default class VideoSnippets extends React.Component {
                 onChange={this.snippetsFilterOnChange}
                 InputProps={{
                   endAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),
-                }}/>
-          </Grid>
-          <Grid item xs={1}>
-            <Box display="flex" justifyContent="center">
-              <IconButton id="atualizarSnippets" aria-label="atualizar" size="small"  onClick={() => { this.handleUpdateSnippetsButton()}}>
-                <RefreshIcon />
-              </IconButton>
+              }}/>
             </Box>
           </Grid>
         </Grid>

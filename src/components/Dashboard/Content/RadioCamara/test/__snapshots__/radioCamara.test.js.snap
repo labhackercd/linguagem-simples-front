@@ -23,125 +23,131 @@ exports[`Testing Radio Card Should render the RadioCard component and match snap
     >
       <WithStyles(ForwardRef(Grid))
         item={true}
-        xs={12}
+        xs={2}
       >
         <Styled(MuiBox)
-          mr={1}
-          my={1}
+          height={1}
+          width={1}
+        >
+          <Styled(MuiBox)
+            alignItems="center"
+            display="flex"
+            height="100%"
+            justifyContent="center"
+            width="100%"
+          >
+            <img
+              alt="Ícone de Rádio"
+              src="play_image.svg"
+              style={
+                Object {
+                  "height": "75%",
+                  "width": "75%",
+                }
+              }
+            />
+          </Styled(MuiBox)>
+        </Styled(MuiBox)>
+      </WithStyles(ForwardRef(Grid))>
+      <WithStyles(ForwardRef(Grid))
+        item={true}
+        xs={10}
+      >
+        <Styled(MuiBox)
+          margin={1}
         >
           <WithStyles(ForwardRef(Grid))
-            alignItems="center"
             container={true}
-            justify="center"
           >
             <WithStyles(ForwardRef(Grid))
-              align="center"
               item={true}
-              xs={2}
+              xs={11}
             >
-              <img
-                alt="Ícone de play audio"
-                src="play_image.svg"
-              />
+              <WithStyles(ForwardRef(Typography))
+                style={
+                  Object {
+                    "color": "gray",
+                  }
+                }
+                variant="body1"
+              >
+                Áudio
+              </WithStyles(ForwardRef(Typography))>
             </WithStyles(ForwardRef(Grid))>
             <WithStyles(ForwardRef(Grid))
               item={true}
-              xs={10}
+              xs={1}
             >
-              <WithStyles(ForwardRef(Grid))
-                container={true}
+              <CopyToClipboard>
+                <WithStyles(ForwardRef(IconButton))
+                  size="small"
+                >
+                  <FileCopyTwoToneIcon
+                    fontSize="inherit"
+                    onClick={[Function]}
+                  />
+                </WithStyles(ForwardRef(IconButton))>
+              </CopyToClipboard>
+              <WithStyles(ForwardRef(Tooltip))
+                title="Deletar conteúdo"
               >
-                <WithStyles(ForwardRef(Grid))
-                  item={true}
-                  xs={11}
+                <WithStyles(ForwardRef(IconButton))
+                  aria-label="delete"
+                  id="deleteRadioSavedContentundefined"
+                  onClick={[Function]}
+                  size="small"
+                >
+                  <DeleteOutlineOutlinedIcon
+                    fontSize="inherit"
+                  />
+                </WithStyles(ForwardRef(IconButton))>
+              </WithStyles(ForwardRef(Tooltip))>
+            </WithStyles(ForwardRef(Grid))>
+            <WithStyles(ForwardRef(Grid))
+              item={true}
+              xs={12}
+            >
+              <Styled(MuiBox)
+                fontWeight="fontWeightRegular"
+              >
+                <a
+                  href="https://undefined"
+                  rel="external noopener noreferrer"
+                  style={
+                    Object {
+                      "textDecoration": "none",
+                    }
+                  }
+                  target="_blank"
                 >
                   <WithStyles(ForwardRef(Typography))
                     style={
                       Object {
-                        "color": "gray",
+                        "color": "#007E5A",
                       }
                     }
-                    variant="body1"
-                  >
-                    Áudio
-                  </WithStyles(ForwardRef(Typography))>
-                </WithStyles(ForwardRef(Grid))>
-                <WithStyles(ForwardRef(Grid))
-                  item={true}
-                  xs={1}
+                    variant="h6"
+                  />
+                </a>
+              </Styled(MuiBox)>
+            </WithStyles(ForwardRef(Grid))>
+            <WithStyles(ForwardRef(Grid))
+              item={true}
+              xs={12}
+            >
+              <Styled(MuiBox)
+                fontSize={11}
+              >
+                <WithStyles(ForwardRef(Typography))
+                  style={
+                    Object {
+                      "color": "gray",
+                    }
+                  }
                 >
-                  <CopyToClipboard>
-                    <WithStyles(ForwardRef(IconButton))
-                      size="small"
-                    >
-                      <FileCopyTwoToneIcon
-                        fontSize="inherit"
-                        onClick={[Function]}
-                      />
-                    </WithStyles(ForwardRef(IconButton))>
-                  </CopyToClipboard>
-                  <WithStyles(ForwardRef(Tooltip))
-                    title="Deletar conteúdo"
-                  >
-                    <WithStyles(ForwardRef(IconButton))
-                      aria-label="delete"
-                      id="deleteRadioSavedContentundefined"
-                      onClick={[Function]}
-                      size="small"
-                    >
-                      <DeleteOutlineOutlinedIcon
-                        fontSize="inherit"
-                      />
-                    </WithStyles(ForwardRef(IconButton))>
-                  </WithStyles(ForwardRef(Tooltip))>
-                </WithStyles(ForwardRef(Grid))>
-                <WithStyles(ForwardRef(Grid))
-                  item={true}
-                  xs={12}
-                >
-                  <Styled(MuiBox)
-                    fontWeight="fontWeightRegular"
-                  >
-                    <a
-                      href="https://undefined"
-                      rel="external noopener noreferrer"
-                      style={
-                        Object {
-                          "textDecoration": "none",
-                        }
-                      }
-                      target="_blank"
-                    >
-                      <WithStyles(ForwardRef(Typography))
-                        style={
-                          Object {
-                            "color": "#007E5A",
-                          }
-                        }
-                        variant="h6"
-                      />
-                    </a>
-                  </Styled(MuiBox)>
-                </WithStyles(ForwardRef(Grid))>
-                <WithStyles(ForwardRef(Grid))
-                  item={true}
-                  xs={12}
-                >
-                  <Styled(MuiBox)
-                    fontSize={11}
-                  >
-                    <WithStyles(ForwardRef(Typography))
-                      style={
-                        Object {
-                          "color": "gray",
-                        }
-                      }
-                    >
-                      Invalid date
-                    </WithStyles(ForwardRef(Typography))>
-                  </Styled(MuiBox)>
-                </WithStyles(ForwardRef(Grid))>
-              </WithStyles(ForwardRef(Grid))>
+                  Invalid date
+                </WithStyles(ForwardRef(Typography))>
+              </Styled(MuiBox)>
             </WithStyles(ForwardRef(Grid))>
           </WithStyles(ForwardRef(Grid))>
         </Styled(MuiBox)>

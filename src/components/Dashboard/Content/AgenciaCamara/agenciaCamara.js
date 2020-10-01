@@ -1,14 +1,12 @@
 import React from 'react';
 
 import { Grid, Typography } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import List from '@material-ui/core/List'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
-import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 
 import NewsCard from './newsCard'
 import fetchDataAgenciaCamara from './fetchDataAgenciaCamara'
