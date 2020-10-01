@@ -3,6 +3,7 @@ import React from 'react';
 
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles';
+import handleLogout from './handleLogout.js'
 
 const useStyles = makeStyles({
     inputTextColor:{
@@ -17,17 +18,6 @@ const useStyles = makeStyles({
 
 export default function LogoutButton() {
     const classes = useStyles();
-
-    function handleLogout() {
-        try {
-            localStorage.removeItem('access_token');
-            localStorage.removeItem('refresh_token');
-            axiosInstance.defaults.headers['Authorization'] = null;
-        }
-        catch (e) {
-            //console.log(e);
-        }
-    };
 
     return (
         <Button

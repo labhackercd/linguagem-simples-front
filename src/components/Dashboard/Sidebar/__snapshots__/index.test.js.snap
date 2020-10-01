@@ -10,9 +10,7 @@ exports[`should render the content section 1`] = `
     item={true}
     md={3}
   >
-    <a
-      href="/"
-    >
+    <a>
       <img
         alt="user icon"
         src="User.svg"
@@ -28,28 +26,29 @@ exports[`should render the content section 1`] = `
       item={true}
       md={6}
     >
-      <a
-        href="/"
+      <WithStyles(ForwardRef(Tooltip))
+        title="Ir para estúdio"
       >
-        <img
-          alt="home icon"
-          src="Home.svg"
-        />
-      </a>
+        <a
+          href="/estudio"
+          id="goToEstudioButton"
+        >
+          <img
+            alt="home icon"
+            src="Home.svg"
+          />
+        </a>
+      </WithStyles(ForwardRef(Tooltip))>
     </WithStyles(ForwardRef(Grid))>
     <WithStyles(ForwardRef(Grid))
       className="makeStyles-middleIcon-4"
       item={true}
       md={6}
     >
-      <a
-        href="/"
-      >
-        <img
-          alt="AC icon"
-          src="AC.svg"
-        />
-      </a>
+      <img
+        alt="AC icon"
+        src="AC.svg"
+      />
     </WithStyles(ForwardRef(Grid))>
   </WithStyles(ForwardRef(Grid))>
   <WithStyles(ForwardRef(Grid))
@@ -60,14 +59,20 @@ exports[`should render the content section 1`] = `
     <div
       className="makeStyles-exitIcon-6"
     >
-      <a
-        href="/"
+      <WithStyles(ForwardRef(Tooltip))
+        title="Logout"
       >
-        <img
-          alt="Exit icon"
-          src="Exit.svg"
-        />
-      </a>
+        <a
+          href="/"
+          id="logoutButton"
+          onClick={[Function]}
+        >
+          <img
+            alt="Exit icon"
+            src="Exit.svg"
+          />
+        </a>
+      </WithStyles(ForwardRef(Tooltip))>
     </div>
   </WithStyles(ForwardRef(Grid))>
 </WithStyles(ForwardRef(Grid))>
