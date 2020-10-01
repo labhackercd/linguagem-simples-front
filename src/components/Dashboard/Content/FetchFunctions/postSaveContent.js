@@ -32,7 +32,6 @@ export  async function deleteSavedContent(savedContentId){
         //console.log(response)
 
         if(response.status === 204){ // Sucess removed
-            
             return true;
         }else{
             return false;

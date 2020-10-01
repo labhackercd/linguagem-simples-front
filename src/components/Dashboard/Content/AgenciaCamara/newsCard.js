@@ -50,7 +50,7 @@ export default class NewsCard extends React.Component{
     }
 
     async handleDeleteContent(){
-      try{
+
         const hasBeenDeleted = await deleteSavedContent(this.state.info.id);
         
         if(hasBeenDeleted){
@@ -59,13 +59,9 @@ export default class NewsCard extends React.Component{
         }else{
             this.setState({openSnackBar:true, snackbar:{open:true, message:"Erro ao remover conteúdo salvo!", type:"error"}});
         }
-      }catch(e){
-        this.setState({openSnackBar:true, snackbar:{open:true, message:"Erro ao remover conteúdo salvo!", type:"error"}});
-      }
     }
 
     render(){
-
       return (
         <Box width="97%">
             <CustomizedSnackbars open={this.state.snackbar.open} message={this.state.snackbar.message} type={this.state.snackbar.type}></CustomizedSnackbars>
@@ -78,13 +74,13 @@ export default class NewsCard extends React.Component{
                                 <Grid item xs={2}>
                                   <Box display="flex" justifyContent="flex-end">
                                     <CopyToClipboard text={this.state.info.url}>
-                                      <IconButton size="small">
+                                      <IconButton size="small" id={"copyButtonAgencia"+this.state.info.id}>
                                         <FileCopyTwoToneIcon text={this.state.info.url} fontSize="inherit" onClick={this.showCopiedSnackBar}/>
                                       </IconButton>
                                     </CopyToClipboard>
                                     {this.state.isDataFromSavedContentsComponent ?
                                         <IconButton id={"saveButtonAgencia"+this.state.info.id} aria-label="save" size="small" onClick={this.handleSaveContent}>
-                                            <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} />
+                                            <BookmarkIcon fontSize="inherit" style={{ color: "#C4C4C4" }}/>
                                         </IconButton> 
                                         :
                                         <Tooltip title="Deletar conteúdo">

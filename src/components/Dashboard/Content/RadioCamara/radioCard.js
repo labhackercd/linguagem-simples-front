@@ -5,6 +5,8 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper'
 import FileCopyTwoToneIcon from '@material-ui/icons/FileCopyTwoTone';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
+import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
+import Tooltip from '@material-ui/core/Tooltip';
 import moment from 'moment';
 import PlayIcon from './assets/play_image.svg'
 import CustomizedSnackbars from '../../../Snackbar/index'
@@ -30,8 +32,8 @@ export default class RadioCard extends React.Component{
         }
     };
     this.handleSaveContent=this.handleSaveContent.bind(this);
+    this.handleDeleteContent=this.handleDeleteContent.bind(this);
   }
-
 
   async handleSaveContent(){
     const hasBeenSaved = await postSaveContent("radio", this.state.info, this.props.sessionId);
@@ -42,6 +44,18 @@ export default class RadioCard extends React.Component{
     }else{
         //console.log("Conteúdo não salvo")
         this.setState({openSnackBar:true, snackbar:{open:true, message:"Erro ao salvar conteúdo!", type:"error"}});
+    }
+  }
+
+  async handleDeleteContent(){
+
+    const hasBeenDeleted = await deleteSavedContent(this.state.info.id);
+    
+    if(hasBeenDeleted){
+      await this.setState({openSnackBar:true, snackbar:{open:true, message:"Conteúdo Removido!", type:"success"}});
+      this.props.updateComponent(true)
+    }else{
+        this.setState({openSnackBar:true, snackbar:{open:true, message:"Erro ao remover conteúdo salvo!", type:"error"}});
     }
   }
 
@@ -67,19 +81,23 @@ export default class RadioCard extends React.Component{
                                 <Typography style={{ color: "gray" }} variant="body1">Áudio</Typography>
                               </Grid>
                               <Grid item xs={1}>
-                              <CopyToClipboard text={this.state.info.url}>
-                                <IconButton size="small">
-                                  <FileCopyTwoToneIcon text={this.state.info.url}
-                                                       fontSize="inherit"
-                                                        onClick={this.showCopiedSnackBar}/>
-                                </IconButton>
-                              </CopyToClipboard>
+                                <CopyToClipboard text={this.state.info.url}>
+                                  <IconButton size="small">
+                                    <FileCopyTwoToneIcon text={this.state.info.url} fontSize="inherit" onClick={this.showCopiedSnackBar}/>
+                                  </IconButton>
+                                </CopyToClipboard>
 
-
-                                  {this.state.isDataFromSavedContentsComponent &&
-                                    <IconButton id={"saveButtonRadio"+this.state.info.id} aria-label="delete" size="small"  onClick={this.handleSaveContent}>
-                                      <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} />
-                                    </IconButton>                                      }
+                                {this.state.isDataFromSavedContentsComponent ?
+                                  <IconButton id={"saveButtonRadio"+this.state.info.id} aria-label="delete" size="small"  onClick={this.handleSaveContent}>
+                                    <BookmarkIcon fontSize="inherit" style={{ color: "#C4C4C4" }} />
+                                  </IconButton>
+                                  :
+                                  <Tooltip title="Deletar conteúdo">
+                                    <IconButton id={"deleteRadioSavedContent"+this.state.info.id} aria-label="delete" size="small" onClick={this.handleDeleteContent}>
+                                      <DeleteOutlineOutlinedIcon fontSize="inherit" />
+                                    </IconButton> 
+                                  </Tooltip>                                     
+                                }
                               </Grid>
                               <Grid item xs={12}>
                                 <Box fontWeight="fontWeightRegular">

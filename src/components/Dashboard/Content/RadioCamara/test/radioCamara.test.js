@@ -97,6 +97,52 @@ describe('Testing Radio Card', () => {
      })
   });
 
+  test("Test delete savedcontent not working correct", async (done) => {
+    var mockInstance = new MockAdapter(axiosInstance);
+    var mockedPropsdata={
+        id: 618134,
+        url: "www.camara.leg.br/radio/618134-DEPUTADOS-E-SENADORES-FECHAM-ACORDO-PARA-ANALISAR-PEC-DA-2ª-INSTANCIA",
+        title: "Deputados e senadores fecham acordo para analisar PEC da 2ª Instância",
+        created: "2019-11-26T18:00:22-0200"
+    }
+    await mockInstance.onDelete(API_SAVED_CONTENTS_URL+mockedPropsdata.id).replyOnce(200)
+            
+    const wrapper = await mount(<RadioCard info={mockedPropsdata} sessionId={1}/>);
+  
+    setImmediate(() => {
+      wrapper.update();
+      const button = wrapper.find("#deleteRadioSavedContent618134").at(0);
+      button.simulate('click');
+      //Add later a expect to check if modal os response has been triggered
+
+      mockInstance.restore();
+      done();
+   })
+  });
+
+  test("Test delete savedcontent error working correct", async (done) => {
+    var mockInstance = new MockAdapter(axiosInstance);
+    var mockedPropsdata={
+        id: 618134,
+        url: "www.camara.leg.br/radio/618134-DEPUTADOS-E-SENADORES-FECHAM-ACORDO-PARA-ANALISAR-PEC-DA-2ª-INSTANCIA",
+        title: "Deputados e senadores fecham acordo para analisar PEC da 2ª Instância",
+        created: "2019-11-26T18:00:22-0200"
+    }
+    await mockInstance.onDelete(API_SAVED_CONTENTS_URL+mockedPropsdata.id).replyOnce(400)
+            
+    const wrapper = await mount(<RadioCard info={mockedPropsdata} sessionId={1}/>);
+  
+    setImmediate(() => {
+      wrapper.update();
+      const button = wrapper.find("#deleteRadioSavedContent618134").at(0);
+      button.simulate('click');
+      //Add later a expect to check if modal os response has been triggered
+
+      mockInstance.restore();
+      done();
+   })
+  });
+
 });
 
 describe('Testing lifeclycle of RadioCamaraComponent content', () => {

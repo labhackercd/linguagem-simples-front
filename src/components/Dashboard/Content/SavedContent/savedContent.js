@@ -78,9 +78,9 @@ export default class SavedContent extends React.Component {
       case 'news':
         return <NewsCard info={info} sessionId={this.props.sessionId} updateComponent={this.updateComponent}></NewsCard>
       case 'tv':
-        return <TVCard info={info} sessionId={this.props.sessionId}></TVCard>;
+        return <TVCard info={info} sessionId={this.props.sessionId} updateComponent={this.updateComponent}></TVCard>;
       case 'radio':
-        return <RadioCard info={info} sessionId={this.props.sessionId}></RadioCard>;
+        return <RadioCard info={info} sessionId={this.props.sessionId} updateComponent={this.updateComponent}></RadioCard>;
       default:
         return null;
     }

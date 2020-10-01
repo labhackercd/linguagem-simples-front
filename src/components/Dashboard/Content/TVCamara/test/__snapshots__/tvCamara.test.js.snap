@@ -78,9 +78,22 @@ exports[`Testing TV News Card should render the NewsCard component and match sna
                         fontSize="inherit"
                         onClick={[Function]}
                       />
-                                                      
                     </WithStyles(ForwardRef(IconButton))>
                   </CopyToClipboard>
+                  <WithStyles(ForwardRef(Tooltip))
+                    title="Deletar conteúdo"
+                  >
+                    <WithStyles(ForwardRef(IconButton))
+                      aria-label="delete"
+                      id="deleteTVSavedContentundefined"
+                      onClick={[Function]}
+                      size="small"
+                    >
+                      <DeleteOutlineOutlinedIcon
+                        fontSize="inherit"
+                      />
+                    </WithStyles(ForwardRef(IconButton))>
+                  </WithStyles(ForwardRef(Tooltip))>
                 </WithStyles(ForwardRef(Grid))>
                 <WithStyles(ForwardRef(Grid))
                   item={true}

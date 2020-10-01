@@ -80,6 +80,20 @@ exports[`Testing Radio Card Should render the RadioCard component and match snap
                       />
                     </WithStyles(ForwardRef(IconButton))>
                   </CopyToClipboard>
+                  <WithStyles(ForwardRef(Tooltip))
+                    title="Deletar conteúdo"
+                  >
+                    <WithStyles(ForwardRef(IconButton))
+                      aria-label="delete"
+                      id="deleteRadioSavedContentundefined"
+                      onClick={[Function]}
+                      size="small"
+                    >
+                      <DeleteOutlineOutlinedIcon
+                        fontSize="inherit"
+                      />
+                    </WithStyles(ForwardRef(IconButton))>
+                  </WithStyles(ForwardRef(Tooltip))>
                 </WithStyles(ForwardRef(Grid))>
                 <WithStyles(ForwardRef(Grid))
                   item={true}

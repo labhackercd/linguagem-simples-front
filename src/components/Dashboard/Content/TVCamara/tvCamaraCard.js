@@ -5,6 +5,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
+import Tooltip from '@material-ui/core/Tooltip';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import moment from 'moment';
 import {postSaveContent, deleteSavedContent} from '../FetchFunctions/postSaveContent'
@@ -33,6 +35,7 @@ export default class TVCard extends React.Component{
         }
     };
     this.handleSaveContent=this.handleSaveContent.bind(this);
+    this.handleDeleteContent=this.handleDeleteContent.bind(this);
   }
 
 
@@ -48,6 +51,18 @@ export default class TVCard extends React.Component{
 
   showCopiedSnackBar = () => {
     this.setState({openSnackBar:true, snackbar:{open: true, message: uiMessages.clipboardCopySucess, type:"success"}})
+  }
+
+  async handleDeleteContent(){
+
+    const hasBeenDeleted = await deleteSavedContent(this.state.info.id);
+    
+    if(hasBeenDeleted){
+      await this.setState({openSnackBar:true, snackbar:{open:true, message:"Conteúdo Removido!", type:"success"}});
+      this.props.updateComponent(true)
+    }else{
+        this.setState({openSnackBar:true, snackbar:{open:true, message:"Erro ao remover conteúdo salvo!", type:"error"}});
+    }
   }
 
   render(){
@@ -70,15 +85,20 @@ export default class TVCard extends React.Component{
                             <Grid item xs={1}>
                               <CopyToClipboard text={this.state.info.url}>
                                 <IconButton size="small">
-                                <FileCopyTwoToneIcon text={this.state.info.url}
-                                                     fontSize="inherit"
-                                                    onClick={this.showCopiedSnackBar}/>                                </IconButton>
+                                  <FileCopyTwoToneIcon text={this.state.info.url} fontSize="inherit" onClick={this.showCopiedSnackBar}/>                                
+                                </IconButton>
                               </CopyToClipboard>
 
-                              {this.state.isDataFromSavedContentsComponent &&
+                              {this.state.isDataFromSavedContentsComponent ?
                                   <IconButton id={"saveButtonTv"+this.state.info.id} aria-label="delete" size="small" onClick={this.handleSaveContent}>
-                                  <BookmarkIcon fontSize="inherit"  style={{ color: "#00AF82" }} />
+                                    <BookmarkIcon fontSize="inherit" style={{ color: "#C4C4C4" }}/>
                                   </IconButton>
+                                  :
+                                  <Tooltip title="Deletar conteúdo">
+                                    <IconButton id={"deleteTVSavedContent"+this.state.info.id} aria-label="delete" size="small" onClick={this.handleDeleteContent}>
+                                      <DeleteOutlineOutlinedIcon fontSize="inherit" />
+                                    </IconButton> 
+                                  </Tooltip> 
                                 }
                             </Grid>
                             <Grid item xs={12}>
