@@ -55,7 +55,7 @@ const useStyles = theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: '0 25px 0 0',
+    borderRadius: '0 20px 20px 0',
   },
   loginButton: {
     backgroundColor: '#C4C4C4',
@@ -78,7 +78,7 @@ const useStyles = theme => ({
   },
   camaraLogo: {
     justifyContent: 'flex-end',
-    margin: '5rem 0 -10rem 0'
+    margin: '10rem 0 -10rem 0',
   }
 });
 
@@ -161,7 +161,7 @@ class LoginScreen extends React.Component {
               <div className={classes.loginArea}>
                 <Grid item xs={12} sm={6} md={6} className={classes.loginBox}>
                     <Grid container item xs={6} sm={6} md={6} style={{display: 'flex', justifyContent: 'space-between'}}>
-                      <div className="formItems">
+                      <Box className="formItems" paddingTop={22} marginLeft={4}>
                         <Grid item>
                           <img src={EstudioAcompanheIcon} alt="Estudio Acompanhe logo"/>
                         </Grid>
@@ -174,16 +174,18 @@ class LoginScreen extends React.Component {
                         </Grid>
                         <Grid container className={classes.buttonArea}>
                           <Grid item>
-                            <Button className={classes.loginButton} onClick={this.loginMethod} variant="contained">Acessar</Button>
+                            <Button style= {{textTransform: 'capitalize'}} className={classes.loginButton} onClick={this.loginMethod} variant="contained">Acessar</Button>
                           </Grid>
                           <Grid item>
                             <a href={APPLICATION_RESET_PASSWORD_URL} className={classes.forgotPassword}>Esqueci a senha </a>
                           </Grid>
                         </Grid>
-                      </div>
+                      </Box>
                       <div className="camaraLogo">
                         <Grid item className={classes.camaraLogo}>
-                          <img src={CamaraLogoIcon} alt="Câmara dos Deputados Logo"/>
+                          <Box marginLeft={5} paddingTop={4}>
+                            <img src={CamaraLogoIcon} alt="Câmara dos Deputados Logo"/>
+                          </Box>
                         </Grid>
                       </div>
                     </Grid>
@@ -191,7 +193,7 @@ class LoginScreen extends React.Component {
               </div>
               <Grid item xs={12} sm={8} md={8}>
                 <div className={classes.prototipoArea}>
-                  <Box style={{margin: '8rem 0 0 0'}} width={1}>
+                  <Box style={{margin: '5rem 0 0 0'}} width={1}>
                     <Box display="flex" flexDirection="row-reverse" paddingRight={10}>
                       <img src={PrototipoIcon} alt="Imagem ilustrativa da interação do protótipo"/>
                     </Box>
