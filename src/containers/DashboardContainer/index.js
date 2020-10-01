@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
 import { withStyles } from "@material-ui/core/styles";
+import { flexbox } from '@material-ui/system';
 
 import { fetchData, changeBroadcastingStatus } from './APIHandler';
 import { withRouter } from "react-router";
@@ -85,20 +86,34 @@ class Dashboard extends React.Component {
     }
 
     return (
-			<Grid container className={classes.body}>
-				<Grid item md={1} className={classes.sidebar}>
-					<Sidebar></Sidebar>
-				</Grid>
-				<Grid item md={4} style={{	backgroundColor: "#FFF"}}>
-          <Timeline sessionID={this.state.dashboardId}
-                    broadcastingOnline={this.state.broadcastingOnline}
-                    setBroadcastingStatus={this.setBroadcastingStatus}
-                    sessionInfo={this.state.sessionInfo}></Timeline>
-				</Grid>
-				<Grid item md={7} style={{backgroundColor: "#F2F2F2"}}>
-          <Content sessionID={this.state.dashboardId} sessionInfo={this.state.sessionInfo}></Content>
-				</Grid>
-			</Grid>
+      <div>
+      <div style={{ width: '100%' }}>
+          <Box display="flex">
+            <Box width={"10%"} bgcolor="grey.300" className={classes.sidebar} flexShrink={1} display="flex" flex-direction= "column" >
+
+                      <Sidebar></Sidebar>
+
+            </Box>
+            <Box flexGrow={1} bgcolor="grey.300">
+                      <Grid container className={classes.body}>
+       
+                        <Grid item md={4} style={{	backgroundColor: "#FFF"}}>
+                          <Timeline sessionID={this.state.dashboardId}
+                                    broadcastingOnline={this.state.broadcastingOnline}
+                                    setBroadcastingStatus={this.setBroadcastingStatus}
+                                    sessionInfo={this.state.sessionInfo}></Timeline>
+                        </Grid>
+                        <Grid item md={8} style={{backgroundColor: "#F2F2F2"}}>
+                          <Content sessionID={this.state.dashboardId} sessionInfo={this.state.sessionInfo}></Content>
+                        </Grid>
+                      </Grid>
+            </Box>
+
+          </Box>
+        </div>
+
+
+      </div>
 		)
   }
 }

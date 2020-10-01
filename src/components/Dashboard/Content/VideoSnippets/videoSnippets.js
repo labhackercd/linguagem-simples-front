@@ -122,7 +122,7 @@ export default class VideoSnippets extends React.Component {
   }
 
   render(){
-    const widthSnippetsBox = parseInt(((window.innerWidth)*0.54));
+    const widthSnippetsBox = parseInt(((window.innerWidth)*0.58));
     const widthSnippetsItem = (((window.innerWidth)*0.5)*0.12);
     //console.log(widthSnippetsBox)
 
@@ -151,7 +151,7 @@ export default class VideoSnippets extends React.Component {
         <Grid container >
         {this.renderSearchBarFunction()}
           <Grid item xs={12}>
-            <Box marginLeft={1}>
+            <Box display="flex" justifyContent="center">
               <FixedSizeList width={widthSnippetsBox} height={"12.5vh"} itemSize={widthSnippetsItem} layout="horizontal" itemCount={this.state.filteredSnippets.length}>
                 {this.renderListItem}
               </FixedSizeList>

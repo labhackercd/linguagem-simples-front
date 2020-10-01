@@ -40,13 +40,14 @@ export default class AttendanceListAlphabetic extends React.Component {
 
   render(){
     //console.log(this.state.news)
+    const heightAttendanceBox = parseInt(((window.innerHeight)*0.25));
 
     return (
       <div>
         <Grid container>
           <Grid item xs={12}>
             <Box style={{overflow: "auto"}}>
-              <FixedSizeList height={215} itemSize={25} itemCount={this.state.plenaryAttendanceList.length}>        
+              <FixedSizeList height={heightAttendanceBox} itemSize={25} itemCount={this.state.plenaryAttendanceList.length}>        
                 {this.renderListItem}
               </FixedSizeList>
             </Box>

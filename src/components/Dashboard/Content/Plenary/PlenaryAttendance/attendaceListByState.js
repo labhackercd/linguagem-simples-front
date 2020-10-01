@@ -61,7 +61,7 @@ export default class AttendanceListByState extends React.Component {
       <div>
         <Grid container spacing={0}>
           <Grid item xs={12}>
-            <Box style={{maxHeight: "21vh", overflow: "auto"}}>
+            <Box style={{maxHeight: "23vh", overflow: "auto"}}>
               <List>
                {this.state.listFilteredByState.map((state) => (
                   <ListItem key={state.uf} style={{paddingTop:0}}>

@@ -126,7 +126,8 @@ export default class PlenaryVoting extends React.Component {
 
 
   render(){
-    
+    const heightVotingBox = parseInt(((window.innerHeight)*0.25));
+
     if(!this.state.dataLoaded){
       return (        
         <Box display="flex" justifyContent="center" alignItems="center" minWidth="40vh" minHeight="10vh" width={1}>
@@ -164,7 +165,7 @@ export default class PlenaryVoting extends React.Component {
           </Grid>
             {this.state.orientationSelectedVotingListDataLoaded === true && 
               <Grid item xs={12}>
-                <Box mx={1} width={'95%'} style={{maxHeight: "23vh", overflow: 'auto'}}>    
+                <Box mx={1} width={'98%'} style={{maxHeight: "24vh", overflow: 'auto'}}>    
                   <Grid container>
                       {this.state.orientationSelectedVotingListItem.map((item) => (
                           <VoteOrientationCard key={item.numOrdemOrientacao} info={item}></VoteOrientationCard>
@@ -177,7 +178,7 @@ export default class PlenaryVoting extends React.Component {
               <Grid item xs={12}>
                 <Box style={{overflow: "auto"}}>
                   {
-                    <FixedSizeList height={215} itemSize={25} itemCount={this.state.nominalSelectedVotingListItem.length}>        
+                    <FixedSizeList height={heightVotingBox} itemSize={25} itemCount={this.state.nominalSelectedVotingListItem.length}>        
                       {this.renderNominalVotingListItem}
                     </FixedSizeList>
                   }
