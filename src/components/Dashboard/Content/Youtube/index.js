@@ -36,7 +36,7 @@ export default class Youtube extends React.Component {
   componentDidMount(){
     this._isMounted = true;
     if(this._isMounted){
-        //console.log(this.props)
+        console.log(this.props)
         this.fetchYoutubeVideo();
     }
   }
@@ -44,8 +44,10 @@ export default class Youtube extends React.Component {
   render(){
     if(this.props.sessionIdDadosAbertos===null || this.state.youtubeVideoId === null){
       return (
-        <Box width="100%" height="100%" display="flex" alignContent="center" justifyContent="center">
-          <Typography variant="h5" style={{ color: "grey" }}> Transmissão não disponível</Typography>
+        <Box width={1} height={1}>
+          <Box display="flex" justifyContent="center" alignItems="center" width={"100%"} height={"100%"}>
+            <Typography variant="h5" style={{color: "#C4C4C4"}}>Transmissão não disponível</Typography>
+          </Box>
         </Box>
       )
     }

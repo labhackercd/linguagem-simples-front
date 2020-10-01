@@ -17,7 +17,7 @@ describe('Testing VideoSnippet Component', () => {
         "author": {
           "id": 1,
           "is_superuser": true,
-          "username": "jpnsoares",
+          "email": "jpnsoares",
           "first_name": "",
           "last_name": "",
           "email": "jpnsoares@email.com",
@@ -36,7 +36,7 @@ describe('Testing VideoSnippet Component', () => {
         "author": {
           "id": 1,
           "is_superuser": true,
-          "username": "jpnsoares",
+          "email": "jpnsoares",
           "first_name": "",
           "last_name": "",
           "email": "jpnsoares@email.com",
@@ -61,7 +61,7 @@ describe('Testing VideoSnippet Component', () => {
    
     test("Should render pre session div information when session status is PRE_SESSION", async (done) => {
         const component = mount(<VideoSnippets sessionId={mockSessionId} sessionInfo={mockSessionInfoPreSessionStatus}></VideoSnippets>);
-        expect(component.text()).toMatch(/A transmissão/i)
+        expect(component.text()).toMatch(/Trechos/i)
         done();
     });
    

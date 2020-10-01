@@ -84,7 +84,7 @@ class LoginScreen extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      username:"",
+      email:"",
       password:"" ,
       succesfullLogin:false,
       error:{
@@ -102,7 +102,7 @@ class LoginScreen extends React.Component {
     //const history = useHistory();
     try{
       //console.log("chamou")
-      const result = await sendLoginRequest(this.state.username,this.state.password );
+      const result = await sendLoginRequest(this.state.email,this.state.password );
       //console.log(result.status)
       if(result.status===200){
         axiosInstance.defaults.headers['Authorization'] = "JWT " + result.data.access;
@@ -124,7 +124,7 @@ class LoginScreen extends React.Component {
         case "TypeError": // Server didn't answered 
           this.setState({error:{status:true, message:"Erro no servidor. Tente novamente em alguns minutos."}})
           break;
-        case "Error": // 401 - Username or password wrong
+        case "Error": // 401 - email or password wrong
           this.setState({error:{status:true, message:" Email ou senha incorretos. Tente novamente."}})
           break;
         default:
@@ -135,7 +135,7 @@ class LoginScreen extends React.Component {
 
   handleEmailFormChange = (e) =>
   {
-    this.setState({username: e.target.value});
+    this.setState({email: e.target.value});
   };
 
   handlePasswordFormChange = (e) =>
@@ -167,7 +167,7 @@ class LoginScreen extends React.Component {
                           {this.state.error.status ?
                             <Alert severity="error">{this.state.error.message}</Alert>
                           : null}     
-                          <TextField className={classes.textField} variant="outlined" value={this.state.username} placeholder="email" id="username" type="email" onChange={(e)=>{this.handleEmailFormChange(e)}} fullWidth autoFocus required />
+                          <TextField className={classes.textField} variant="outlined" value={this.state.email} placeholder="email" id="email" type="email" onChange={(e)=>{this.handleEmailFormChange(e)}} fullWidth autoFocus required />
                           <TextField className={classes.textField} variant="outlined" value={this.state.password} placeholder="senha" id="password" type="password" onChange={(e)=>{this.handlePasswordFormChange(e)}} fullWidth required />
                         </Grid>
                         <Grid container className={classes.buttonArea}>

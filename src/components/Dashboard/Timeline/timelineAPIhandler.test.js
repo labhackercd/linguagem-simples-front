@@ -17,7 +17,7 @@ describe('Test fetchFeedUpdates function requisitions with mock adapter', () => 
             author: {
                 id: 1,
                 is_superuser: true,
-                username: "teomoura",
+                email: "teomoura",
                 first_name: "",
                 last_name: "",
                 email: "mourateogenes@gmail.com",

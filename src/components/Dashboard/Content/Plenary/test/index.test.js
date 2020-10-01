@@ -27,7 +27,7 @@ it("should render the PlenaryPanel message of not syncronized session", () => {
     const component = mount(<PlenaryPanel sessionIdDadosAbertos={null}/>);
 
     expect(component.exists()).toEqual(true);
-    expect(component.text()).toMatch(/Dados/i)
+    expect(component.text()).toMatch(/Sincronize/i)
 
 
 });

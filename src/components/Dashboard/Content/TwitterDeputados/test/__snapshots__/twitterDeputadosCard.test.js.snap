@@ -13,7 +13,7 @@ exports[`Testing News Card should render the TwitterCard component and match sna
 >
   <Styled(MuiBox)
     marginTop={0.5}
-    width="97%"
+    width="100%"
   >
     <div
       className="MuiBox-root MuiBox-root-1"
@@ -309,7 +309,7 @@ exports[`Testing News Card should render the TwitterCard component and match sna
                         className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
                       >
                         <a
-                          href="https://twitter.com/adrianodobaldy"
+                          href="twitter.com/adrianodobaldy"
                           rel="external noopener noreferrer"
                           style={
                             Object {
@@ -564,6 +564,7 @@ exports[`Testing News Card should render the TwitterCard component and match sna
                                                 "color": "gray",
                                               }
                                             }
+                                            variant="body1"
                                           >
                                             <ForwardRef(Typography)
                                               classes={
@@ -605,6 +606,7 @@ exports[`Testing News Card should render the TwitterCard component and match sna
                                                   "color": "gray",
                                                 }
                                               }
+                                              variant="body1"
                                             >
                                               <p
                                                 className="MuiTypography-root MuiTypography-body1"
@@ -744,138 +746,147 @@ exports[`Testing News Card should render the TwitterCard component and match sna
                                         <div
                                           className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-1"
                                         >
-                                          <WithStyles(ForwardRef(IconButton))
-                                            aria-label="Ir para Twitter"
-                                            size="small"
+                                          <Styled(MuiBox)
+                                            display="flex"
+                                            flexDirection="row-reverse"
                                           >
-                                            <ForwardRef(IconButton)
-                                              aria-label="Ir para Twitter"
-                                              classes={
-                                                Object {
-                                                  "colorInherit": "MuiIconButton-colorInherit",
-                                                  "colorPrimary": "MuiIconButton-colorPrimary",
-                                                  "colorSecondary": "MuiIconButton-colorSecondary",
-                                                  "disabled": "Mui-disabled",
-                                                  "edgeEnd": "MuiIconButton-edgeEnd",
-                                                  "edgeStart": "MuiIconButton-edgeStart",
-                                                  "label": "MuiIconButton-label",
-                                                  "root": "MuiIconButton-root",
-                                                  "sizeSmall": "MuiIconButton-sizeSmall",
-                                                }
-                                              }
-                                              size="small"
+                                            <div
+                                              className="MuiBox-root MuiBox-root-3"
                                             >
-                                              <WithStyles(ForwardRef(ButtonBase))
+                                              <WithStyles(ForwardRef(IconButton))
                                                 aria-label="Ir para Twitter"
-                                                centerRipple={true}
-                                                className="MuiIconButton-root MuiIconButton-sizeSmall"
-                                                disabled={false}
-                                                focusRipple={true}
+                                                size="small"
                                               >
-                                                <ForwardRef(ButtonBase)
+                                                <ForwardRef(IconButton)
                                                   aria-label="Ir para Twitter"
-                                                  centerRipple={true}
-                                                  className="MuiIconButton-root MuiIconButton-sizeSmall"
                                                   classes={
                                                     Object {
+                                                      "colorInherit": "MuiIconButton-colorInherit",
+                                                      "colorPrimary": "MuiIconButton-colorPrimary",
+                                                      "colorSecondary": "MuiIconButton-colorSecondary",
                                                       "disabled": "Mui-disabled",
-                                                      "focusVisible": "Mui-focusVisible",
-                                                      "root": "MuiButtonBase-root",
+                                                      "edgeEnd": "MuiIconButton-edgeEnd",
+                                                      "edgeStart": "MuiIconButton-edgeStart",
+                                                      "label": "MuiIconButton-label",
+                                                      "root": "MuiIconButton-root",
+                                                      "sizeSmall": "MuiIconButton-sizeSmall",
                                                     }
                                                   }
-                                                  disabled={false}
-                                                  focusRipple={true}
+                                                  size="small"
                                                 >
-                                                  <button
+                                                  <WithStyles(ForwardRef(ButtonBase))
                                                     aria-label="Ir para Twitter"
-                                                    className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                                    centerRipple={true}
+                                                    className="MuiIconButton-root MuiIconButton-sizeSmall"
                                                     disabled={false}
-                                                    onBlur={[Function]}
-                                                    onDragLeave={[Function]}
-                                                    onFocus={[Function]}
-                                                    onKeyDown={[Function]}
-                                                    onKeyUp={[Function]}
-                                                    onMouseDown={[Function]}
-                                                    onMouseLeave={[Function]}
-                                                    onMouseUp={[Function]}
-                                                    onTouchEnd={[Function]}
-                                                    onTouchMove={[Function]}
-                                                    onTouchStart={[Function]}
-                                                    tabIndex={0}
-                                                    type="button"
+                                                    focusRipple={true}
                                                   >
-                                                    <span
-                                                      className="MuiIconButton-label"
-                                                    >
-                                                      <ForwardRef
-                                                        fontSize="inherit"
-                                                      >
-                                                        <WithStyles(ForwardRef(SvgIcon))
-                                                          fontSize="inherit"
-                                                        >
-                                                          <ForwardRef(SvgIcon)
-                                                            classes={
-                                                              Object {
-                                                                "colorAction": "MuiSvgIcon-colorAction",
-                                                                "colorDisabled": "MuiSvgIcon-colorDisabled",
-                                                                "colorError": "MuiSvgIcon-colorError",
-                                                                "colorPrimary": "MuiSvgIcon-colorPrimary",
-                                                                "colorSecondary": "MuiSvgIcon-colorSecondary",
-                                                                "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
-                                                                "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
-                                                                "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
-                                                                "root": "MuiSvgIcon-root",
-                                                              }
-                                                            }
-                                                            fontSize="inherit"
-                                                          >
-                                                            <svg
-                                                              aria-hidden={true}
-                                                              className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
-                                                              focusable="false"
-                                                              viewBox="0 0 24 24"
-                                                            >
-                                                              <path
-                                                                d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
-                                                              />
-                                                            </svg>
-                                                          </ForwardRef(SvgIcon)>
-                                                        </WithStyles(ForwardRef(SvgIcon))>
-                                                      </ForwardRef>
-                                                    </span>
-                                                    <WithStyles(memo)
-                                                      center={true}
-                                                    >
-                                                      <ForwardRef(TouchRipple)
-                                                        center={true}
-                                                        classes={
-                                                          Object {
-                                                            "child": "MuiTouchRipple-child",
-                                                            "childLeaving": "MuiTouchRipple-childLeaving",
-                                                            "childPulsate": "MuiTouchRipple-childPulsate",
-                                                            "ripple": "MuiTouchRipple-ripple",
-                                                            "ripplePulsate": "MuiTouchRipple-ripplePulsate",
-                                                            "rippleVisible": "MuiTouchRipple-rippleVisible",
-                                                            "root": "MuiTouchRipple-root",
-                                                          }
+                                                    <ForwardRef(ButtonBase)
+                                                      aria-label="Ir para Twitter"
+                                                      centerRipple={true}
+                                                      className="MuiIconButton-root MuiIconButton-sizeSmall"
+                                                      classes={
+                                                        Object {
+                                                          "disabled": "Mui-disabled",
+                                                          "focusVisible": "Mui-focusVisible",
+                                                          "root": "MuiButtonBase-root",
                                                         }
+                                                      }
+                                                      disabled={false}
+                                                      focusRipple={true}
+                                                    >
+                                                      <button
+                                                        aria-label="Ir para Twitter"
+                                                        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+                                                        disabled={false}
+                                                        onBlur={[Function]}
+                                                        onDragLeave={[Function]}
+                                                        onFocus={[Function]}
+                                                        onKeyDown={[Function]}
+                                                        onKeyUp={[Function]}
+                                                        onMouseDown={[Function]}
+                                                        onMouseLeave={[Function]}
+                                                        onMouseUp={[Function]}
+                                                        onTouchEnd={[Function]}
+                                                        onTouchMove={[Function]}
+                                                        onTouchStart={[Function]}
+                                                        tabIndex={0}
+                                                        type="button"
                                                       >
                                                         <span
-                                                          className="MuiTouchRipple-root"
+                                                          className="MuiIconButton-label"
                                                         >
-                                                          <TransitionGroup
-                                                            childFactory={[Function]}
-                                                            component={null}
-                                                            exit={true}
-                                                          />
+                                                          <ForwardRef
+                                                            fontSize="inherit"
+                                                          >
+                                                            <WithStyles(ForwardRef(SvgIcon))
+                                                              fontSize="inherit"
+                                                            >
+                                                              <ForwardRef(SvgIcon)
+                                                                classes={
+                                                                  Object {
+                                                                    "colorAction": "MuiSvgIcon-colorAction",
+                                                                    "colorDisabled": "MuiSvgIcon-colorDisabled",
+                                                                    "colorError": "MuiSvgIcon-colorError",
+                                                                    "colorPrimary": "MuiSvgIcon-colorPrimary",
+                                                                    "colorSecondary": "MuiSvgIcon-colorSecondary",
+                                                                    "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                                                                    "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                                                                    "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                                                                    "root": "MuiSvgIcon-root",
+                                                                  }
+                                                                }
+                                                                fontSize="inherit"
+                                                              >
+                                                                <svg
+                                                                  aria-hidden={true}
+                                                                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+                                                                  focusable="false"
+                                                                  viewBox="0 0 24 24"
+                                                                >
+                                                                  <path
+                                                                    d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                                                                  />
+                                                                </svg>
+                                                              </ForwardRef(SvgIcon)>
+                                                            </WithStyles(ForwardRef(SvgIcon))>
+                                                          </ForwardRef>
                                                         </span>
-                                                      </ForwardRef(TouchRipple)>
-                                                    </WithStyles(memo)>
-                                                  </button>
-                                                </ForwardRef(ButtonBase)>
-                                              </WithStyles(ForwardRef(ButtonBase))>
-                                            </ForwardRef(IconButton)>
-                                          </WithStyles(ForwardRef(IconButton))>
+                                                        <WithStyles(memo)
+                                                          center={true}
+                                                        >
+                                                          <ForwardRef(TouchRipple)
+                                                            center={true}
+                                                            classes={
+                                                              Object {
+                                                                "child": "MuiTouchRipple-child",
+                                                                "childLeaving": "MuiTouchRipple-childLeaving",
+                                                                "childPulsate": "MuiTouchRipple-childPulsate",
+                                                                "ripple": "MuiTouchRipple-ripple",
+                                                                "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                                                "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                                                "root": "MuiTouchRipple-root",
+                                                              }
+                                                            }
+                                                          >
+                                                            <span
+                                                              className="MuiTouchRipple-root"
+                                                            >
+                                                              <TransitionGroup
+                                                                childFactory={[Function]}
+                                                                component={null}
+                                                                exit={true}
+                                                              />
+                                                            </span>
+                                                          </ForwardRef(TouchRipple)>
+                                                        </WithStyles(memo)>
+                                                      </button>
+                                                    </ForwardRef(ButtonBase)>
+                                                  </WithStyles(ForwardRef(ButtonBase))>
+                                                </ForwardRef(IconButton)>
+                                              </WithStyles(ForwardRef(IconButton))>
+                                            </div>
+                                          </Styled(MuiBox)>
                                         </div>
                                       </ForwardRef(Grid)>
                                     </WithStyles(ForwardRef(Grid))>

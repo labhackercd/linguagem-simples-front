@@ -41,7 +41,7 @@ describe('Testing lifeclycle of SessionHistoryComponent content', () => {
           "author": {
             "id": 1,
             "is_superuser": true,
-            "username": "admin",
+            "email": "admin",
             "first_name": "",
             "last_name": "",
             "email": "a@a.com",
@@ -62,7 +62,7 @@ describe('Testing lifeclycle of SessionHistoryComponent content', () => {
           "author": {
             "id": 1,
             "is_superuser": true,
-            "username": "admin",
+            "email": "admin",
             "first_name": "",
             "last_name": "",
             "email": "a@a.com",

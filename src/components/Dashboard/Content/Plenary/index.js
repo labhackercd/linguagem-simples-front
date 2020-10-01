@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import Paper from '@material-ui/core/Paper'
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography'
 
 import AgendaOfTheDayComponent from './AgendaOfTheDay/index'
 import PlenaryAttendance from './PlenaryAttendance/index'
 import PlenaryVoting from './PlenaryVoting/index'
+
 
 
 const styles = (theme) => ({
@@ -56,8 +58,14 @@ class PlenaryPanel extends React.Component {
     const { value } = this.state;
 
     if(this.props.sessionIdDadosAbertos === undefined || this.props.sessionIdDadosAbertos === null){
-      return <div> Dados abertos não sincronizados </div>
-    }
+      return (
+          <Box width={1} height={1}>
+            <Box display="flex" justifyContent="center" alignItems="center" width={"100%"} height={"100%"}>
+              <Typography variant="h5" style={{color: "#C4C4C4"}}>Sincronize para carregar</Typography>
+            </Box>
+          </Box>
+      )
+    };
 
     return [
       <div>
@@ -139,9 +147,9 @@ class PlenaryPanel extends React.Component {
         </Tabs>
       </div>,
       <div key="tab-content">
-        {value === 0 && <Box width={"97%"} pt={1}><AgendaOfTheDayComponent sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></AgendaOfTheDayComponent></Box>}
-        {value === 1 && <Box width={"97%"}><PlenaryAttendance sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></PlenaryAttendance></Box>}
-        {value === 2 && <Box width={"97%"}><PlenaryVoting sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></PlenaryVoting></Box>}
+        {value === 0 && <Box key={"agendaDiv"} width={"97%"} pt={1}><AgendaOfTheDayComponent sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></AgendaOfTheDayComponent></Box>}
+        {value === 1 && <Box key={"attentdanceDiv"} width={"97%"}><PlenaryAttendance sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></PlenaryAttendance></Box>}
+        {value === 2 && <Box key={"votingDiv"} width={"97%"}><PlenaryVoting sessionIdDadosAbertos={this.props.sessionIdDadosAbertos}></PlenaryVoting></Box>}
       </div>
     ];
   }

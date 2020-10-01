@@ -31,15 +31,10 @@ export default class RadioCamaraContent extends React.Component {
   topBarRadioCamaraBar(props){
     return(
       <React.Fragment>
-        <Grid item xs={8}>
+        <Grid item xs={10}>
           <Typography variant="h6" style={{ color: "#007E5A" }}>Mais recentes </Typography>
         </Grid>
-        <Grid item xs={1}>
-          <IconButton color="primary" aria-label="folder picture" component="span" style={{padding:0}}>
-            <CreateNewFolderIcon />
-          </IconButton>
-        </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           <TextField
             id="input-search-radio"
             size="small"
@@ -103,7 +98,7 @@ export default class RadioCamaraContent extends React.Component {
           {this.topBarRadioCamaraBar()}
           <Grid item xs={12}>
             <Box paddingTop={3}>
-              <List style={{maxHeight: '200px', overflow: 'auto'}}>            
+              <List style={{maxHeight: '232px', overflow: 'auto'}}>             
                 {this.state.radioNewsFiltered.map((news) => (
                     <li key={`section-${news._id}`}>
                         <Box my={0.5}><RadioCard info={news._source} sessionId={this.props.sessionId}></RadioCard></Box>

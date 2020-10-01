@@ -14,7 +14,7 @@ import MockTheme from './mockTheme';
 import { Button } from '@material-ui/core';
 
 window.alert = jest.fn();
-const mockSessionInfo = {"id":1,"author":{"id":1,"is_superuser":true,"username":"admin","first_name":"","last_name":"","email":"a@a.com","profile":"editor"},"location":"plenary","date":"2020-09-24","type_session":"virtual","situation_session":"pre_session","resume":"Resumo","enable":true,"id_session_dados_abertos":null}
+const mockSessionInfo = {"id":1,"author":{"id":1,"is_superuser":true,"email":"admin","first_name":"","last_name":"","email":"a@a.com","profile":"editor"},"location":"plenary","date":"2020-09-24","type_session":"virtual","situation_session":"pre_session","resume":"Resumo","enable":true,"id_session_dados_abertos":null}
 it("snapshot should not have differences", () => {
     const component = shallow(<Timeline/>);
     expect(component).toMatchSnapshot();

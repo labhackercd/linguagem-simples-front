@@ -70,7 +70,7 @@ describe('Testing lifeclycle ', () => {
             "author": {
               "id": 1,
               "is_superuser": true,
-              "username": "jpnsoares",
+              "email": "jpnsoares",
               "first_name": "",
               "last_name": "",
               "email": "jpnsoares@email.com",

@@ -20,17 +20,17 @@ describe('Test Fields', () => {
     expect(linkElement).toBeInTheDocument();
   });
   
-  test('renders username field', () => {
+  test('renders email field', () => {
     const { getByPlaceholderText } = render(<LoginScreen />);
     const linkElement = getByPlaceholderText('email');
     expect(linkElement).toBeInTheDocument();
   });
   
-  test('renders username field and change value', () => {
+  test('renders email field and change value', () => {
     const  wrapper = mount(<LoginScreen />);
-    const usernameField = wrapper.find("input").at(0);
-    usernameField.instance().value = "LABHacker";
-    usernameField.simulate("change");
+    const emailField = wrapper.find("input").at(0);
+    emailField.instance().value = "LABHacker";
+    emailField.simulate("change");
     expect(wrapper.find("input").at(0).prop('value')).toEqual("LABHacker");
   });
   
@@ -65,10 +65,10 @@ describe('Test Login Lifecycle', () => {
       
       const  wrapper = mount(<Router><LoginScreen/></Router>);
       //console.log(wrapper.debug())
-      const usernameField = wrapper.find("input").at(0);
-      //console.log(usernameField.debug())
-      usernameField.instance().value = "LABHacker";
-      usernameField.simulate("change");
+      const emailField = wrapper.find("input").at(0);
+      //console.log(emailField.debug())
+      emailField.instance().value = "LABHacker";
+      emailField.simulate("change");
       const passwordField = wrapper.find("input").at(1);
       passwordField.instance().value = "LABHacker";
       passwordField.simulate("change");
@@ -92,10 +92,10 @@ describe('Test Login Lifecycle', () => {
     
     const  wrapper = mount(<Router><LoginScreen/></Router>);
     //console.log(wrapper.debug())
-    const usernameField = wrapper.find("input").at(0);
-    //console.log(usernameField.debug())
-    usernameField.instance().value = "LABHacker";
-    usernameField.simulate("change");
+    const emailField = wrapper.find("input").at(0);
+    //console.log(emailField.debug())
+    emailField.instance().value = "LABHacker";
+    emailField.simulate("change");
     const passwordField = wrapper.find("input").at(1);
     passwordField.instance().value = "LABHacker";
     passwordField.simulate("change");
@@ -118,10 +118,10 @@ describe('Test Login Lifecycle', () => {
     
     const  wrapper = mount(<Router><LoginScreen/></Router>);
     //console.log(wrapper.debug())
-    const usernameField = wrapper.find("input").at(0);
-    //console.log(usernameField.debug())
-    usernameField.instance().value = "LABHacker";
-    usernameField.simulate("change");
+    const emailField = wrapper.find("input").at(0);
+    //console.log(emailField.debug())
+    emailField.instance().value = "LABHacker";
+    emailField.simulate("change");
     const passwordField = wrapper.find("input").at(1);
     passwordField.instance().value = "LABHacker";
     passwordField.simulate("change");
@@ -142,10 +142,10 @@ describe('Test Login Lifecycle', () => {
     
     const  wrapper = mount(<Router><LoginScreen/></Router>);
     //console.log(wrapper.debug())
-    const usernameField = wrapper.find("input").at(0);
-    //console.log(usernameField.debug())
-    usernameField.instance().value = "LABHacker";
-    usernameField.simulate("change");
+    const emailField = wrapper.find("input").at(0);
+    //console.log(emailField.debug())
+    emailField.instance().value = "LABHacker";
+    emailField.simulate("change");
     const passwordField = wrapper.find("input").at(1);
     passwordField.instance().value = "LABHacker";
     passwordField.simulate("change");

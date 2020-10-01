@@ -21,7 +21,7 @@ describe('Test login requisitions', () => {
         "config": {
           "url": "/token/obtain/",
           "method": "post",
-          "data": "{\"username\":\"admin\",\"password\":\"labhacker16\"}",
+          "data": "{\"email\":\"admin\",\"password\":\"labhacker16\"}",
           "headers": {
             "Accept": "application/json",
             "Content-Type": "application/json",
