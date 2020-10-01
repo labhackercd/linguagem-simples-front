@@ -8,7 +8,7 @@ import Box from '@material-ui/core/Box'
 
 import axiosInstance from './../../auth/axiosApi.js'
 import {ESTUDIO_PAGE_URL,APPLICATION_RESET_PASSWORD_URL} from './../../api_urls';
-import sendLoginRequest from './sendLoginRequest'
+import {sendLoginRequest, verifyUserToken} from './sendLoginRequest'
 import Alert from '@material-ui/lab/Alert';
 import EstudioAcompanheIcon from './../../assets/estudio_acompanhe_logo.svg';
 import CamaraLogoIcon from './../../assets/camara_logo.svg';
@@ -98,42 +98,49 @@ class LoginScreen extends React.Component {
     this.loginMethod = this.loginMethod.bind(this);
   }
  
+  async verifyIfUserIsAlreadyLogged(){
+
+    try{
+      const result = await verifyUserToken( localStorage.getItem('access_token'));
+
+      if(result.status===200){
+        this.setState({succesfullLogin:true})
+      }
+    }catch(e){
+      this.setState({succesfullLogin:false})
+    }
+  }
 
   async loginMethod(event){
     event.preventDefault();
     //const history = useHistory();
     try{
-      //console.log("chamou")
       const result = await sendLoginRequest(this.state.email,this.state.password );
-      //console.log(result.status)
+
       if(result.status===200){
         axiosInstance.defaults.headers['Authorization'] = "JWT " + result.data.access;
         localStorage.setItem('access_token', result.data.access);
         localStorage.setItem('refresh_token', result.data.refresh);
         this.setState({succesfullLogin:true})
         
-      }else{
-        this.setState({error:{status:true, message:"Erro desconhecido. Tente novamente em alguns minutos."}})
       }
     }catch(e){
       if(e.name === "TypeError"){
         this.setState({error:{status:true, message:"Erro no servidor. Tente novamente em alguns minutos."}})
       }else if(e.name === "Error"){
+        console.log("entrou")
         this.setState({error:{status:true, message:" Email ou senha incorretos. Tente novamente."}})
       }
-      /*
-      switch(e.name) {
-        case "TypeError": // Server didn't answered 
-          this.setState({error:{status:true, message:"Erro no servidor. Tente novamente em alguns minutos."}})
-          break;
-        case "Error": // 401 - email or password wrong
-          this.setState({error:{status:true, message:" Email ou senha incorretos. Tente novamente."}})
-          break;
-        default:
-          this.setState({error:{status:true, message:"Erro desconhecido. Tente novamente em alguns minutos."}})
-      }*/
     }
   }
+
+  componentDidMount(){
+    this._isMounted = true;
+
+    if(this._isMounted){
+        this.verifyIfUserIsAlreadyLogged();
+    }
+}
 
   handleEmailFormChange = (e) =>
   {
@@ -207,7 +214,7 @@ class LoginScreen extends React.Component {
         </div>
 
       )
-    }
+  }
 
   }
 

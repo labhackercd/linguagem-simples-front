@@ -1,8 +1,8 @@
 import axiosInstance from '../../../auth/axiosApi'
 import MockAdapter from "axios-mock-adapter"
 
-import {TOKEN_OBTAIN_URL} from '../../../api_urls'
-import sendLoginRequest from '../sendLoginRequest'
+import {TOKEN_OBTAIN_URL, TOKEN_VERIFY_URL} from '../../../api_urls'
+import {sendLoginRequest, verifyUserToken} from '../sendLoginRequest'
 
 
 describe('Test login requisitions', () => {
@@ -54,7 +54,18 @@ describe('Test login requisitions', () => {
         done()
     });
 
-
 });
 
-  
+describe('Test verifyToken requisitions', () => {
+    
+  test("Test if Verify token returns 200 when it has worked correct", async (done) => {
+      var data = null;
+      var mock = new MockAdapter(axiosInstance);
+      mock.onPost(TOKEN_VERIFY_URL).replyOnce(201);
+
+      data = await verifyUserToken("123456");
+      mock.restore();
+      done();
+  });
+
+});
