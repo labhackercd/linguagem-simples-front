@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
-	      DialogTitle, Grid, Typography, Box, IconButton, List, ListItem} from '@material-ui/core';
+import React, { useEffect} from 'react';
+import {Button, Dialog, DialogActions, DialogContentText,
+	      Grid, IconButton} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import BroadcastIcon from './../../../../../../assets/broadcast.svg';
 import ExitIcon from './../../../../../../assets/exit_icon.svg';
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function StartBroadcastAlert(props) {
 	const classes = useStyles();
-	const { onClose, value: valueProp, action, open, ...other } = props;
+	const { onClose, value: valueProp, action, open } = props;
 	const [value, setValue] = React.useState(valueProp);
 
 	useEffect(() => {
@@ -57,7 +57,7 @@ export default function StartBroadcastAlert(props) {
 					<Grid item sm={11}></Grid>
 					<Grid item sm={1} spacing={1}>
 					<IconButton aria-label="exit" id="exit-button-start-broadcast" onClick={handleCancel}>
-						<img src={ExitIcon} />
+						<img src={ExitIcon} alt="exit"/>
 					</IconButton>
 					</Grid>
 				</Grid>
