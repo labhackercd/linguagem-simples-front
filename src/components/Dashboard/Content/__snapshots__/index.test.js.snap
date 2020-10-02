@@ -115,7 +115,25 @@ exports[`should render the content section 1`] = `
         key="5"
         label={
           <TabLabel
-            tabIcon={<UNDEFINED />}
+            tabIcon={
+              <ForwardRef(WithStyles)
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "render": [Function],
+                  }
+                }
+                fontSize="large"
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "marginLeft": "10px",
+                    "marginTop": "7px",
+                  }
+                }
+              />
+            }
             tabText="Glossário"
             tabValue={5}
           />

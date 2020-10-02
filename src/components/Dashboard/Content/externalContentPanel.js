@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 
-
+import SvgIcon from '@material-ui/core/SvgIcon'
 import { ReactComponent as AgenciaCamaraIcon } from  './icons/agenciaCamaraIcon.svg';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import LiveTvOutlinedIcon from '@material-ui/icons/LiveTvOutlined';
@@ -144,7 +144,12 @@ export default function ExternalContentPanel(props) {
           <Tab  key={4} id="twitterContentTab" classes={{ root: classes.tab}}
                 label={<TabLabel tabValue={4} tabText={"Twitter"} tabIcon={<TwitterIcon/>}/>}/>
           <Tab  key={5} id="glossarioContentTab" classes={{ root: classes.tab}}
-                label={<TabLabel tabValue={5} tabText={"Glossário"} tabIcon={<TwitterIcon/>}/>}/>
+                label={<TabLabel tabValue={5} tabText={"Glossário"} tabIcon={<SvgIcon fontSize="large" style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginLeft: "10px",
+                  marginTop: "7px"
+              }} component={GlossarioIcon}></SvgIcon>}/>}/>
         </Tabs>
       </Grid>
       <Grid item md={9}>
