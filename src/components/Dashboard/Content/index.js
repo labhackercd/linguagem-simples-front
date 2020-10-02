@@ -98,18 +98,18 @@ class Content extends React.Component {
 
   async handleSynchronize(){
     let sessionsScheduleDadosAbertos = await checkIfSessionsAlreadyExistsInSILEG((moment(this.state.sessionInfo.date).format('YYYY-MM-DD')));
-
+    
     if(sessionsScheduleDadosAbertos.dados[0] ){
       // Session is registered at sileg, so update the information of dashboard
       const dashboardInfoUpdated = await updateSession(this.state.sessionId,sessionsScheduleDadosAbertos.dados[0].id)
-  
+      
       if(dashboardInfoUpdated){
         this.setState({ snackbar:{open:true, message:"O ID da sessão foi sincronizado com sucesso.", type:"success"}});
-        //window.location.reload(false);
       }else{
-        //window.alert("Falhou :(");
         this.setState({ snackbar:{open:true, message:"Não foi possível sincronizar o ID da sessão.", type:"error"}});
       }
+    }else{
+      this.setState({ snackbar:{open:true, message:"Não foi possível sincronizar o ID da sessão. Nenhuma sessão agendada para o dia escolhido.", type:"error"}});
     }
   }
 

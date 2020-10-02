@@ -13,7 +13,7 @@ export async function updateSession(sessionId,sessionIdDadosAbertos){
 }
 
 export async function checkIfSessionsAlreadyExistsInSILEG(sessionDate) {
-    const date = sessionDate
+    const date = sessionDate;
     //const date = (moment(sessionDate).format('YYYY-MM-DD'))
     const url =  API_CD_EVENTOS_PLENARIO+"&dataInicio="+date+"&dataFim="+date+"&ordem=ASC&ordenarPor=dataHoraInicio";
 
