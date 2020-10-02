@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   	backgroundColor: '#00AF82',
     "&:hover": {
     //you want this to be the same as the backgroundColor above
-      backgroundColor: 'red',
+      backgroundColor: theme.palette.primary.main,
     }
   },
   buttonBroadcastingOffline: {
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#000000',
     "&:hover": {
     //you want this to be the same as the backgroundColor above
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: '#EB5757',
     }
   }
 }));
@@ -83,7 +83,7 @@ export default function Header(props){
               id="end-stream"
               onClick={(e) => handleEndBroadcastDialogOpen(e)}
               className={classes.buttonBroadcastingOffline}
-              startIcon={<img src={FinishButtonIcon} alt="button to finish stream"/>}>
+              startIcon={<img src={InitStreamWhiteIcon} alt="button to finish stream"/>}>
               <h6>Finalizar transmissão</h6>
             </Button> :
             <Button

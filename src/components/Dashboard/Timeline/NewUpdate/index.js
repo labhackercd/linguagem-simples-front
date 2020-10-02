@@ -26,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
   textField: {
 		height: '100%',
 		width: '100%',
+		fontSize: theme.typography.body1.fontSize,
+		fontStyle: theme.typography.body1.fontStyle,
 	},
   submenu: {
     display: 'flex',
@@ -55,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
     borderWidthBottom: '0px',
     color: theme.palette.secondary,
     borderRadius: '5px 5px 0 0px',
+		fontSize: 'small',
   },
   time: {
     color: theme.palette.primary.main,
@@ -68,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
 	container: {
 		height: '100%',
 	},
+
 }))
 export default function NewUpdate(props) {
   const classes = useStyles();
@@ -107,7 +111,8 @@ export default function NewUpdate(props) {
                   onChange = {props.handleChange}
                   InputProps={{
                     classes: {
-                      notchedOutline: classes.notchedOutline
+											input: classes.textField,
+                      notchedOutline: classes.notchedOutline,
                     },
                   }}
                 />
