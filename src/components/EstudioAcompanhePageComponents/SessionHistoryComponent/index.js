@@ -71,7 +71,7 @@ class SessionHistoryComponent extends React.Component {
         let sessionId = props.value.id;
         let outgoingURL = DASHBOARD_BASE_URL + sessionId;
         return(
-            <Link href={outgoingURL}  {...props} />
+            <Link style={{ textDecoration: 'none' }} href={outgoingURL}  {...props} />
         )
     }
 
@@ -88,12 +88,12 @@ class SessionHistoryComponent extends React.Component {
                 <Grid container>
                     <Grid item xs={12}>
                         <Grid container>
-                            <Grid item xs={6}>
+                            <Grid item xs={8}>
                                 <Box display="flex" justifyContent="flex-start" paddingBottom={2}>
                                     <Typography variant="h4" color="textSecondary">Histórico</Typography>
                                 </Box>
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={4}>
                                 <Box display="flex" justifyContent="flex-end" paddingBottom={2}>
                                     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={ptBrLocale}>
                                     <KeyboardDatePicker

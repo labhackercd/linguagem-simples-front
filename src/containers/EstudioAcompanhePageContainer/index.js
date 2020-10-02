@@ -64,7 +64,7 @@ export default function EstudioAcompanhePageContainer(){
                   <Grid container>
                     <Grid item xs={12}>
                       <Box display="flex" justifyContent="flex-start" pt={3} pb={4}>
-                        <Typography variant="h3">Bem vindo, editor </Typography>
+                        <Typography variant="h3">Bem vindo, </Typography>
                       </Box>
                     </Grid>
                     <Grid item xs={5}>
