@@ -13,6 +13,7 @@ import {Redirect } from "react-router-dom";
 
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { Alert, AlertTitle } from '@material-ui/lab';
 
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
@@ -55,7 +56,8 @@ class NewSessionFormComponent extends React.Component {
             sessionIdDadosAbertos:"",
             openCreatingSessionModal:false,
             sucessfullCreatedSession:false,
-            idSessionCreatedToRedirect:null
+            idSessionCreatedToRedirect:null,
+            errorCreateSession:false
         };
         this.handleSessionDateChange = this.handleSessionDateChange.bind(this);
         this.handleSessionTypeChange = this.handleSessionTypeChange.bind(this);
@@ -99,11 +101,11 @@ class NewSessionFormComponent extends React.Component {
             const response = await createSessionRequest(sessionJson);
 
             if(response !== null){
-
                 await this.setState({idSessionCreatedToRedirect:response.id, sucessfullCreatedSession:true});
             }
 
         }catch(e){
+            await this.setState({errorCreateSession:true})
             await this.setState({openCreatingSessionModal:false});
             //Set error message here informing
         }
@@ -116,7 +118,6 @@ class NewSessionFormComponent extends React.Component {
 
         this.createSession();
     };
-
     render(){
     const { classes } = this.props;
     
@@ -126,6 +127,14 @@ class NewSessionFormComponent extends React.Component {
 
     return(
         <Box>
+            { this.state.errorCreateSession &&
+                <div>
+                    <Alert severity="error" style={{width:"95%",height:"100%"}}>
+                    <AlertTitle>Erro :(</AlertTitle>
+                        Um erro ocorreu ao tentar criar uma nova sessão. Tente novamente mais tarde!
+                    </Alert>
+                </div>
+            }
             <CreatingSessionDialog open={this.state.openCreatingSessionModal}></CreatingSessionDialog>
             <Grid container>
                 <Grid item xs={12}>
