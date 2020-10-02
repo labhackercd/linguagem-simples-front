@@ -4,9 +4,11 @@ import {Redirect } from "react-router-dom";
 import { Grid, TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import Box from '@material-ui/core/Box'
+
 import axiosInstance from './../../auth/axiosApi.js'
 import {ESTUDIO_PAGE_URL,APPLICATION_RESET_PASSWORD_URL} from './../../api_urls';
-import sendLoginRequest from './sendLoginRequest'
+import {sendLoginRequest, verifyUserToken} from './sendLoginRequest'
 import Alert from '@material-ui/lab/Alert';
 import EstudioAcompanheIcon from './../../assets/estudio_acompanhe_logo.svg';
 import CamaraLogoIcon from './../../assets/camara_logo.svg';
@@ -22,7 +24,7 @@ const useStyles = theme => ({
     border: 0,
   },
   sidebar: {
-  	height: "100vh",
+  	height: "5vh",
   },
   loginArea: {
     height: '100vh',
@@ -53,7 +55,7 @@ const useStyles = theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: '0 25px 0 0',
+    borderRadius: '0 20px 20px 0',
   },
   loginButton: {
     backgroundColor: '#C4C4C4',
@@ -76,7 +78,7 @@ const useStyles = theme => ({
   },
   camaraLogo: {
     justifyContent: 'flex-end',
-    margin: '5rem 0 -10rem 0'
+    margin: '10rem 0 -10rem 0',
   }
 });
 
@@ -96,42 +98,49 @@ class LoginScreen extends React.Component {
     this.loginMethod = this.loginMethod.bind(this);
   }
  
+  async verifyIfUserIsAlreadyLogged(){
+
+    try{
+      const result = await verifyUserToken( localStorage.getItem('access_token'));
+
+      if(result.status===200){
+        this.setState({succesfullLogin:true})
+      }
+    }catch(e){
+      this.setState({succesfullLogin:false})
+    }
+  }
 
   async loginMethod(event){
     event.preventDefault();
     //const history = useHistory();
     try{
-      //console.log("chamou")
       const result = await sendLoginRequest(this.state.email,this.state.password );
-      //console.log(result.status)
+
       if(result.status===200){
         axiosInstance.defaults.headers['Authorization'] = "JWT " + result.data.access;
         localStorage.setItem('access_token', result.data.access);
         localStorage.setItem('refresh_token', result.data.refresh);
         this.setState({succesfullLogin:true})
         
-      }else{
-        this.setState({error:{status:true, message:"Erro desconhecido. Tente novamente em alguns minutos."}})
       }
     }catch(e){
       if(e.name === "TypeError"){
         this.setState({error:{status:true, message:"Erro no servidor. Tente novamente em alguns minutos."}})
       }else if(e.name === "Error"){
+        console.log("entrou")
         this.setState({error:{status:true, message:" Email ou senha incorretos. Tente novamente."}})
       }
-      /*
-      switch(e.name) {
-        case "TypeError": // Server didn't answered 
-          this.setState({error:{status:true, message:"Erro no servidor. Tente novamente em alguns minutos."}})
-          break;
-        case "Error": // 401 - email or password wrong
-          this.setState({error:{status:true, message:" Email ou senha incorretos. Tente novamente."}})
-          break;
-        default:
-          this.setState({error:{status:true, message:"Erro desconhecido. Tente novamente em alguns minutos."}})
-      }*/
     }
   }
+
+  componentDidMount(){
+    this._isMounted = true;
+
+    if(this._isMounted){
+        this.verifyIfUserIsAlreadyLogged();
+    }
+}
 
   handleEmailFormChange = (e) =>
   {
@@ -159,7 +168,7 @@ class LoginScreen extends React.Component {
               <div className={classes.loginArea}>
                 <Grid item xs={12} sm={6} md={6} className={classes.loginBox}>
                     <Grid container item xs={6} sm={6} md={6} style={{display: 'flex', justifyContent: 'space-between'}}>
-                      <div className="formItems">
+                      <Box className="formItems" paddingTop={22} marginLeft={4}>
                         <Grid item>
                           <img src={EstudioAcompanheIcon} alt="Estudio Acompanhe logo"/>
                         </Grid>
@@ -172,27 +181,32 @@ class LoginScreen extends React.Component {
                         </Grid>
                         <Grid container className={classes.buttonArea}>
                           <Grid item>
-                            <Button className={classes.loginButton} onClick={this.loginMethod} variant="contained">Acessar</Button>
+                            <Button style= {{textTransform: 'capitalize'}} className={classes.loginButton} onClick={this.loginMethod} variant="contained">Acessar</Button>
                           </Grid>
                           <Grid item>
                             <a href={APPLICATION_RESET_PASSWORD_URL} className={classes.forgotPassword}>Esqueci a senha </a>
                           </Grid>
                         </Grid>
-                      </div>
+                      </Box>
                       <div className="camaraLogo">
                         <Grid item className={classes.camaraLogo}>
-                          <img src={CamaraLogoIcon} alt="Câmara dos Deputados Logo"/>
+                          <Box marginLeft={5} paddingTop={4}>
+                            <img src={CamaraLogoIcon} alt="Câmara dos Deputados Logo"/>
+                          </Box>
                         </Grid>
                       </div>
                     </Grid>
                 </Grid>
               </div>
-              <Grid item xs={12} sm={5} md={5}>
+              <Grid item xs={12} sm={8} md={8}>
                 <div className={classes.prototipoArea}>
-                  <div style={{margin: '10rem 0 0 0'}}>
-                    <img src={PrototipoIcon} alt="Imagem ilustrativa da interação do protótipo"/>
-                  </div>
+                  <Box style={{margin: '5rem 0 0 0'}} width={1}>
+                    <Box display="flex" flexDirection="row-reverse" paddingRight={10}>
+                      <img src={PrototipoIcon} alt="Imagem ilustrativa da interação do protótipo"/>
+                    </Box>
+                  </Box>
                 </div>
+                
               </Grid>
               <Grid item xs={12} sm={1} md={1} className={classes.sidebar}></Grid>
             </Grid>
@@ -200,7 +214,7 @@ class LoginScreen extends React.Component {
         </div>
 
       )
-    }
+  }
 
   }
 
