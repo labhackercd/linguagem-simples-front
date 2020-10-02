@@ -5,18 +5,31 @@ import  { isURLValid } from './../../../../Util';
 
 export default function URLInputDialog(props) {
 	const [validURL, setValidURL] = useState(false)
+	const [urlInput, setURLInput] = useState('')
+	const [standardProtocol] = useState('https://')
+
+	function handlePaste(e) {
+		e.preventDefault()
+		e.target.value = e.clipboardData.getData('Text')
+		validateStoreURL(e)
+	}
 
 	function validateStoreURL(e) {
 			e.preventDefault()
-			props.setCustomURL(e.target.value)
-			if(isURLValid(props.customURL)) {
-				if(props.customURL.length > 0) {
-					setValidURL(true)
+			let inputURL = e.target.value
+			if(inputURL.length > 0) {
+				if(!(inputURL.indexOf("http://") == 0 || inputURL.indexOf("https://") == 0)) {
+					e.target.value = standardProtocol + inputURL
 				}
-			} else {
-				setValidURL(false)
+				if(isURLValid(e.target.value)) {
+						props.setCustomURL(e.target.value)
+						setValidURL(true)
+				} else {
+					setValidURL(false)
+				}
 			}
 	}
+
 
   return (
     <Dialog open={props.URLInputDialogOpen} onClose={(e) => props.handleDialogStateAction(e, false, "URLInputDialog", null)}>
@@ -27,6 +40,7 @@ export default function URLInputDialog(props) {
        <TextField
          autoFocus
          name="customURL"
+				 onPaste={(e) => handlePaste(e)}
          onChange={(e) => validateStoreURL(e)}
          margin="dense"
          id="url-input"

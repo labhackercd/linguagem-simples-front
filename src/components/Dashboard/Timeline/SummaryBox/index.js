@@ -39,6 +39,8 @@ const useStyles = makeStyles((theme) => ({
 		margin: '0 1rem 0 0',
 		height: '100%',
 		width: '100%',
+		fontSize: theme.typography.body1.fontSize,
+		fontStyle: theme.typography.body1.fontStyle,
 	},
 	box: {
 		borderRadius: '0 0 0 5px',
