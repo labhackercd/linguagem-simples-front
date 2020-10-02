@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import MockTheme from './../mockTheme';
 
 it("snapshot should not have differences", () => {
-    const component = shallow(<MockTheme><NewUpdate date={new Date(1995,11,17,3,24,0)}/></MockTheme>);
+    const component = shallow(<MockTheme><NewUpdate date={"December 17, 1995 03:24:00"}/></MockTheme>);
     expect(component.exists()).toEqual(true);
     expect(component).toMatchSnapshot();
 });

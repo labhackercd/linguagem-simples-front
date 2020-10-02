@@ -313,7 +313,7 @@ exports[`snapshot should not have differences 1`] = `
   }
 >
   <NewUpdate
-    date={1995-12-17T05:24:00.000Z}
+    date="December 17, 1995 03:24:00"
   />
 </ThemeProvider>
 `;
