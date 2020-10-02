@@ -13,6 +13,7 @@ import {Redirect } from "react-router-dom";
 
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { Alert, AlertTitle } from '@material-ui/lab';
 
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
@@ -55,7 +56,8 @@ class NewSessionFormComponent extends React.Component {
             sessionIdDadosAbertos:"",
             openCreatingSessionModal:false,
             sucessfullCreatedSession:false,
-            idSessionCreatedToRedirect:null
+            idSessionCreatedToRedirect:null,
+            errorCreateSession:false
         };
         this.handleSessionDateChange = this.handleSessionDateChange.bind(this);
         this.handleSessionTypeChange = this.handleSessionTypeChange.bind(this);
@@ -90,8 +92,8 @@ class NewSessionFormComponent extends React.Component {
             date:new Date(this.state.sessionDate).toISOString().slice(0,10),
             type_session: this.state.sessionType,
             situation_session:"pre_session",
-            resume: "Resumo",
-            enable:true
+            resume: "",
+            enable:false
         }
         try{
             await this.setState({openCreatingSessionModal:true});
@@ -99,11 +101,11 @@ class NewSessionFormComponent extends React.Component {
             const response = await createSessionRequest(sessionJson);
 
             if(response !== null){
-
                 await this.setState({idSessionCreatedToRedirect:response.id, sucessfullCreatedSession:true});
             }
 
         }catch(e){
+            await this.setState({errorCreateSession:true})
             await this.setState({openCreatingSessionModal:false});
             //Set error message here informing
         }
@@ -116,7 +118,6 @@ class NewSessionFormComponent extends React.Component {
 
         this.createSession();
     };
-
     render(){
     const { classes } = this.props;
     
@@ -126,6 +127,14 @@ class NewSessionFormComponent extends React.Component {
 
     return(
         <Box>
+            { this.state.errorCreateSession &&
+                <div>
+                    <Alert severity="error" style={{width:"95%",height:"100%"}}>
+                    <AlertTitle>Erro :(</AlertTitle>
+                        Um erro ocorreu ao tentar criar uma nova sessão. Tente novamente mais tarde!
+                    </Alert>
+                </div>
+            }
             <CreatingSessionDialog open={this.state.openCreatingSessionModal}></CreatingSessionDialog>
             <Grid container>
                 <Grid item xs={12}>
@@ -137,7 +146,7 @@ class NewSessionFormComponent extends React.Component {
                     <Grid container spacing={2}>
                         <Grid item xs={5}>
                             <Box display="block" justifyContent="flex-start" >
-                                <div><Typography variant="h6"> Local </Typography></div>
+                                <div><Typography style={{ color: "#666666" }} variant="h6"> Local </Typography></div>
                                 <TextField
                                 className={classes.inputBorderColor}
                                 id="sessionPlace"
@@ -153,7 +162,7 @@ class NewSessionFormComponent extends React.Component {
                         </Grid>
                         <Grid item xs={7}>
                             <Box display="block" justifyContent="flex-start" >
-                                <div><Typography variant="h6" color="textSecondary"> Comissão </Typography></div>
+                                <div><Typography variant="h6" style={{ color: "#C4C4C4" }}> Comissão </Typography></div>
                                 <TextField id="selectComission" value="" variant="outlined" size="small" fullWidth={true} disabled select>
                                     <MenuItem value="">Selecione</MenuItem>
                                 </TextField>
@@ -162,10 +171,11 @@ class NewSessionFormComponent extends React.Component {
                         </Grid>
                         <Grid item xs={5}>
                             <Box display="block" justifyContent="flex-start" >
-                                <div><Typography variant="h6"> Data </Typography></div>
+                                <div><Typography variant="h6" style={{ color: "#666666" }}> Data </Typography></div>
 
                                     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={ptBrLocale}>
                                     <KeyboardDatePicker
+                                        disablePast
                                         disableToolbar
                                         variant="inline"
                                         format="dd/MM/yyyy"
@@ -184,7 +194,7 @@ class NewSessionFormComponent extends React.Component {
                         </Grid>
                         <Grid item xs={7}>
                             <Box display="block" justifyContent="flex-start" >
-                                <div><Typography variant="h6"> Tipo de Sessão </Typography></div>
+                                <div><Typography variant="h6" style={{ color: "#666666" }}> Tipo de Sessão </Typography></div>
                                 <TextField id="sessionType" value={this.state.sessionType} variant="outlined" size="small" fullWidth={true} select onChange={(e)=>{this.handleSessionTypeChange(e)}}>
                                     <MenuItem value="virtual">Virtual</MenuItem>
                                     <MenuItem value="presential">Presencial</MenuItem>
@@ -193,7 +203,7 @@ class NewSessionFormComponent extends React.Component {
                         </Grid>
                         <Grid item xs={12}>
                             <Box display="block" justifyContent="flex-start" >
-                                <div><Typography variant="h6"> Canais de transmissão </Typography></div>
+                                <div><Typography variant="h6" style={{ color: "#666666" }}> Canais de transmissão </Typography></div>
                                 <FormGroup aria-label="position" row>
                                     <FormControlLabel
                                     id="acompanheTransmissionChannel"
@@ -209,7 +219,7 @@ class NewSessionFormComponent extends React.Component {
                                     <FormControlLabel
                                     id="twitterTransmissionChannel"
                                     control={
-                                        <Checkbox disabled color="primary" checked={this.state.twitterTransmissionChannel}  
+                                        <Checkbox style={{ color: "#C4C4C4" }} disabled color="primary" checked={this.state.twitterTransmissionChannel}  
                                                 onChange={(e)=>{this.handleTwitterTransmissionChannelChange(e)}} 
                                                 name="checkedTwitterTransmissionChannel"/>
                                     }
@@ -226,8 +236,10 @@ class NewSessionFormComponent extends React.Component {
             <Box pt={4} pb={8}>
                 <Button
                     id="submitButton"
+                    style= {{textTransform: 'capitalize', backgroundColor:"#00AF82", color:"white"}}
                     variant="contained"
-                    color="primary"
+                    color="white"
+
                     className={classes.button}
                     startIcon={<SendIcon />}
                     onClick={(e) => { this.submitCreateSessionForm(e) }}

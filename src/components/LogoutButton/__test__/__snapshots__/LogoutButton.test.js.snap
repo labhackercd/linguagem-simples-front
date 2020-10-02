@@ -23,6 +23,13 @@ exports[`Test if LogoutButton snapshot matches 1`] = `
     className="MuiButton-label makeStyles-label-6"
   >
     sair
+    <span
+      className="MuiButton-endIcon MuiButton-iconSizeMedium"
+    >
+      <svg>
+        logout_icon.svg
+      </svg>
+    </span>
   </span>
 </a>
 `;
