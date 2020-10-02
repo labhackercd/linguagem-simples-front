@@ -39,6 +39,36 @@ describe('Test fetchFeedUpdates function requisitions with mock adapter', () => 
         done()
     });
 
+    test("Test if fetchFeedUpdates returns response objects when status != 200", async (done) => {
+        const sessionID = 1;
+
+        mock.onGet("/publications/?session__id="+sessionID).replyOnce(201,{
+            id: 1,
+            author: {
+                id: 1,
+                is_superuser: true,
+                email: "teomoura",
+                first_name: "",
+                last_name: "",
+                email: "mourateogenes@gmail.com",
+                profile: "editor"
+            },
+            content: "{\"updateTextArea\":\"teste\",\"customURL\":\"\"}",
+            created: "2020-08-31T14:33:24.694684-03:00",
+            id: 1,
+            image: null,
+            session: 1,
+            state: "published",
+            title: "",
+            tweet_id: ""
+        });
+
+        data = await fetchFeedUpdates(sessionID);
+        expect(data).not.toBeNull();
+        expect(data).not.toBeUndefined();
+        done()
+    });
+
     test("Test if fetchFeedUpdates returns error if no publication id is passed", async (done) => {
         data = await fetchFeedUpdates( );
         expect(data).toBe("Please provide a valid session Id");
