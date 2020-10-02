@@ -57,7 +57,6 @@ describe('Test internal components', () => {
     const newUpdateWrapper= wrapper.findWhere(node => node.is(NewUpdate))
     const twitterButton = newUpdateWrapper.find('#tweet-insert-icon').last()
     twitterButton.simulate('click')
-    console.log(newUpdateWrapper.debug())
     // const twitterURLInput = newUpdateWrapper.findWhere(node => node.is(URLInput));
     // console.log(twitterURLInput.debug())
     // const inputTextField = twitterURLInput.find('#url-input').last();
