@@ -58,6 +58,7 @@ class PreviewDialog extends React.Component {
 			<Dialog
 				fullWidth={true}
 				maxWidth={'sm'}
+				style={{margin: '0 1rem'}}
 				PaperProps={{
 					style: {
 						backgroundColor: '#F2F2F2',
@@ -73,7 +74,10 @@ class PreviewDialog extends React.Component {
 								onClick={(e) => this.props.handleDialogStateAction(e, false, "previewDialog", null) }
 								alt="exit" />
 				 </div>
-				 <Paper style={{backgroundColor: 'white', padding: '1rem', borderRadius: '15px'}} elevation={0}>
+				 <Paper style={{backgroundColor: 'white',
+				  							padding: '1rem',
+												borderRadius: '15px',
+												margin: '0 0.5rem'}} elevation={0}>
 				 <DialogContent className={classes.previewModal}>
 					<Grid style={{display: this.props.updateTitle ? 'flex' : 'none' }}
 								container

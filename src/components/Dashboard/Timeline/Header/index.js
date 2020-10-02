@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {Button, Grid, Typography} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import InitStreamIcon from './../../../../assets/init_stream_button_icon.svg';
+import InitStreamWhiteIcon from './../../../../assets/init_stream_button_icon.svg';
+import FinishButtonIcon from './../../../../assets/finish_stream_button_icon.svg';
 import StartBroadcastAlert from './../Dialogs/Alert/StartBroadcast';
 import EndBroadcastAlert from './../Dialogs/Alert/EndBroadcast';
 
@@ -29,12 +30,20 @@ const useStyles = makeStyles((theme) => ({
   	height: '30%',
   	color: '#FFF',
   	backgroundColor: '#00AF82',
+    "&:hover": {
+    //you want this to be the same as the backgroundColor above
+      backgroundColor: 'red',
+    }
   },
   buttonBroadcastingOffline: {
     alignSelf: 'flex-start',
     height: '30%',
     color: '#FFF',
     backgroundColor: '#000000',
+    "&:hover": {
+    //you want this to be the same as the backgroundColor above
+      backgroundColor: theme.palette.primary.main,
+    }
   }
 }));
 
@@ -74,7 +83,7 @@ export default function Header(props){
               id="end-stream"
               onClick={(e) => handleEndBroadcastDialogOpen(e)}
               className={classes.buttonBroadcastingOffline}
-              startIcon={<img src={InitStreamIcon} alt="button to init stream"/>}>
+              startIcon={<img src={FinishButtonIcon} alt="button to finish stream"/>}>
               <h6>Finalizar transmissão</h6>
             </Button> :
             <Button
@@ -83,7 +92,7 @@ export default function Header(props){
     	        disableElevation
     	        className={classes.buttonBroadcastingOnline}
               onClick={(e) => handleStartBroadcastDialogOpen(e)}
-    	        startIcon={<img src={InitStreamIcon} alt="button to init stream"/>}>
+    	        startIcon={<img src={InitStreamWhiteIcon} alt="button to init stream"/>}>
     	        <h6>Iniciar transmissão</h6>
     	      </Button>
           }
