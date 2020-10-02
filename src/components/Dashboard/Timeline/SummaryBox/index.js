@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	summaryHeader: {
   	display: 'flex',
-		margin: '1rem 0 1rem 0',
+		margin: '1rem 0 0.5rem 0',
   },
 	notchedOutline: {
 		border: '2px solid #F2F2F2',

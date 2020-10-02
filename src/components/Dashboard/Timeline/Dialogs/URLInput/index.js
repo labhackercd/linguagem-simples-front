@@ -38,11 +38,13 @@ export default function URLInputDialog(props) {
      <DialogActions>
        <Button onClick={(e) => props.handleDialogStateAction(e, false, "URLInputDialog", null)}
 			 				 color="primary"
+							 style={{textTransform: 'capitalize'}}
 							 id="cancel-button">
          Cancelar
        </Button>
        <Button onClick={(e) => props.handleDialogStateAction(e, false, "URLInputDialog", "previewModalOpen")}
 				 			 disabled={validURL ? false : true}
+							 style={{textTransform: 'capitalize'}}
 							 color="primary"
 							 id="submit-button">
          Incorporar link

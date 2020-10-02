@@ -14,7 +14,8 @@ const useStyles = theme => ({
     color: '#FFF',
     alignSelf: 'flex-end',
     backgroundColor: '#00AF82',
-    borderRadius: '0 0 5px 5px'
+    borderRadius: '0 0 5px 5px',
+		textTransform: 'capitalize',
   },
   previewModalFooter: {
     padding: '0',
