@@ -17,6 +17,7 @@ exports[`snapshot should not have differences 1`] = `
       margin="dense"
       name="customURL"
       onChange={[Function]}
+      onPaste={[Function]}
       type="text"
     />
   </WithStyles(ForwardRef(DialogContent))>
@@ -25,6 +26,11 @@ exports[`snapshot should not have differences 1`] = `
       color="primary"
       id="cancel-button"
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
     >
       Cancelar
     </WithStyles(ForwardRef(Button))>
@@ -33,6 +39,11 @@ exports[`snapshot should not have differences 1`] = `
       disabled={true}
       id="submit-button"
       onClick={[Function]}
+      style={
+        Object {
+          "textTransform": "capitalize",
+        }
+      }
     >
       Incorporar link
     </WithStyles(ForwardRef(Button))>
