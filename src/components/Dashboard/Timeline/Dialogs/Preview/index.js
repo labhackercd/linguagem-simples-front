@@ -47,11 +47,6 @@ class PreviewDialog extends React.Component {
 		}
 	}
 
-	handleDialog = (e, state) => {
-		e.preventDefault()
-		this.setState({dialogOpen: false})
-	}
-
 	render() {
 		const { classes } = this.props;
 		return (
