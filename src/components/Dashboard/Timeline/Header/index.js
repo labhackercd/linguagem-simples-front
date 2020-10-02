@@ -27,13 +27,13 @@ const useStyles = makeStyles((theme) => ({
   buttonBroadcastingOnline: {
     alignSelf: 'flex-start',
   	height: '30%',
-  	color: 'default',
+  	color: '#FFF',
   	backgroundColor: '#00AF82',
   },
   buttonBroadcastingOffline: {
     alignSelf: 'flex-start',
     height: '30%',
-    color: 'default',
+    color: '#FFF',
     backgroundColor: '#000000',
   }
 }));
@@ -70,7 +70,6 @@ export default function Header(props){
           {props.broadcastingOnline ?
             <Button
               variant="contained"
-              color="secondary"
               disableElevation
               id="end-stream"
               onClick={(e) => handleEndBroadcastDialogOpen(e)}
@@ -80,7 +79,6 @@ export default function Header(props){
             </Button> :
             <Button
     	        variant="contained"
-    	        color="secondary"
               id="start-stream"
     	        disableElevation
     	        className={classes.buttonBroadcastingOnline}
