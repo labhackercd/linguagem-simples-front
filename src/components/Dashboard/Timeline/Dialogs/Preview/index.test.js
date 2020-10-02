@@ -27,16 +27,29 @@ it('should not break on textual update', () => {
   exitDialog.simulate('click')
 })
 
-  it('should not break on twitter update', () => {
-    const wrapper = mount(<PreviewDialog previewModalOpen={true}
-          handleDialogStateAction={jest.fn()}
-          handleChange={jest.fn()}
-          broadcastingOnline={true}
-          tweetID={'1300777342864953345'}
-          URLInputIsTwitter={true} />);
-    const textfield = wrapper.find('#textfield-preview-dialog').last()
-    const submitButton = wrapper.find('#button-preview-click').last()
-    textfield.instance().value = "testing textfield"
-    textfield.simulate('change')
-    submitButton.simulate('click')
+it('should not break on twitter update', () => {
+  const wrapper = mount(<PreviewDialog previewModalOpen={true}
+        handleDialogStateAction={jest.fn()}
+        handleChange={jest.fn()}
+        broadcastingOnline={true}
+        tweetID={'1300777342864953345'}
+        URLInputIsTwitter={true} />);
+  const textfield = wrapper.find('#textfield-preview-dialog').last()
+  const submitButton = wrapper.find('#button-preview-click').last()
+  textfield.instance().value = "testing textfield"
+  textfield.simulate('change')
+  submitButton.simulate('click')
+})
+
+it('should not break on removing title', () => {
+  const wrapper = mount(<PreviewDialog previewModalOpen={true}
+        handleDialogStateAction={jest.fn()}
+        handleChange={jest.fn()}
+        broadcastingOnline={true}
+        tweetID={'1300777342864953345'}
+        URLInputIsTwitter={true}
+        setUpdateTitle={jest.fn()} />);
+  const textfield = wrapper.find('#textfield-preview-dialog').last()
+  const removeTitleButton = wrapper.find('#remove-post-title').last()
+  removeTitleButton.simulate('click')
 })

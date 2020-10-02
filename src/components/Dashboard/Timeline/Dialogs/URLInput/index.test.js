@@ -21,6 +21,7 @@ test('Clicking on buttons doesnt break page', () => {
                                         setCustomURL={jest.fn()}
                                         customURL="testURL"
                                         handleDialogStateAction={jest.fn()}/>)
+
   const textfield = wrapper.find('#url-input').last()
   textfield.instance().value = "test text"
   textfield.simulate('change')
@@ -28,4 +29,30 @@ test('Clicking on buttons doesnt break page', () => {
   submitButton.simulate('click')
   const deleteButton = wrapper.find('#cancel-button').last()
   deleteButton.simulate('click')
+})
+
+test('Test with URL doesnt break page', () => {
+  const wrapper = mount(<URLInputDialog URLInputDialogOpen={true}
+                                        setCustomURL={jest.fn()}
+                                        customURL="testURL"
+                                        handleDialogStateAction={jest.fn()}/>)
+
+  const textfield = wrapper.find('#url-input').last()
+  textfield.instance().value = "http://google.com"
+  textfield.simulate('change')
+  const submitButton = wrapper.find('#submit-button').last()
+  submitButton.simulate('click')
+  const deleteButton = wrapper.find('#cancel-button').last()
+  deleteButton.simulate('click')
+})
+
+test('Paste URL', () => {
+  const wrapper = mount(<URLInputDialog URLInputDialogOpen={true}
+                                        setCustomURL={jest.fn()}
+                                        customURL="testURL"
+                                        handleDialogStateAction={jest.fn()}/>)
+  const textfield = wrapper.find('#url-input').last()
+  const mEvent = { clipboardData: { getData: jest.fn().mockReturnValueOnce('12') } };
+  textfield.simulate('paste', mEvent)
+  expect(mEvent.clipboardData.getData).toBeCalledWith('Text');
 })

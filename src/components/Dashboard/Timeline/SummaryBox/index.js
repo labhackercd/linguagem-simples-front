@@ -4,7 +4,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import axiosInstance from '../../../../auth/axiosApi.js';
 import DownArrowIcon from './../../../../assets/down-arrow.svg';
 import {API_SESSIONS_URL} from './../../../../api_urls'
-
+import {submitSummaryContent} from './../timelineAPIhandler';
 const useStyles = makeStyles((theme) => ({
 	summaryBox: {
 		display: 'flex',
@@ -63,22 +63,15 @@ export default function SummaryBox(props) {
   function handleChange(e) {
     setTextFieldValue(e.target.value)
   }
-  function handleSubmit() {
-    const url = API_SESSIONS_URL + sessionID + '/';
-    axiosInstance.patch(url, {
-            id: sessionID,
-            resume: textFieldValue
-        }).then(
-            result => {
-              if(result.status === 200) {
-                alert('Resumo atualizado com sucesso!')
-              }
-            }
-    ).catch (error => {
-        console.log(error)
-    })
 
-  }
+	const handleSubmit = async (e) => {
+		let result = await submitSummaryContent(sessionID, textFieldValue)
+		if(result) {
+			alert('Resumo atualizado com sucesso!')
+			return true;
+		}
+	}
+
   return (
     <React.Fragment>
     <Grid container className={classes.summaryBox}>
@@ -114,7 +107,12 @@ export default function SummaryBox(props) {
 						<Grid container className={classes.container}>
 								<Grid item xs={8}></Grid>
 								<Grid item xs={4} className={classes.buttonContainer}>
-									<Button disabled={!props.broadcastingOnline} id="summary-box-submit-button" className={classes.button} onClick={(e) => handleSubmit(e)} variant="contained" disableElevation>
+									<Button disabled={!props.broadcastingOnline}
+													id="summary-box-submit-button"
+													className={classes.button}
+													onClick={(e) => handleSubmit(e)}
+													variant="contained"
+													disableElevation>
 										Atualizar
 									</Button>
 								</Grid>
