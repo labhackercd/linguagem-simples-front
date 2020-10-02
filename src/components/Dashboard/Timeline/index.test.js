@@ -6,6 +6,7 @@ import Header from './Header';
 import StatusSelection from './StatusSelection';
 import NewUpdate from './NewUpdate';
 import Feed from './Feed';
+import URLInput from './Dialogs/URLInput';
 import SummaryBox from './SummaryBox';
 import ReactDOM from 'react-dom';
 import MockAdapter from "axios-mock-adapter"
@@ -13,8 +14,7 @@ import axiosInstance from './../../../auth/axiosApi';
 import MockTheme from './mockTheme';
 import { Button } from '@material-ui/core';
 
-window.alert = jest.fn();
-const mockSessionInfo = {"id":1,"author":{"id":1,"is_superuser":true,"email":"admin","first_name":"","last_name":"","email":"a@a.com","profile":"editor"},"location":"plenary","date":"2020-09-24","type_session":"virtual","situation_session":"pre_session","resume":"Resumo","enable":true,"id_session_dados_abertos":null}
+const mockSessionInfo = {"id":1,"author":{"id":1,"is_superuser":true,"username":"admin","first_name":"","last_name":"","email":"a@a.com","profile":"editor"},"location":"plenary","date":"2020-09-24","type_session":"virtual","situation_session":"pre_session","resume":"Resumo","enable":true,"id_session_dados_abertos":null}
 it("snapshot should not have differences", () => {
     const component = shallow(<Timeline/>);
     expect(component).toMatchSnapshot();
@@ -51,5 +51,19 @@ describe('Test internal components', () => {
     textField.simulate("change");
     const newUpdateButton = newUpdateWrapper.find('#updateSubmitButton').last()
     newUpdateButton.simulate('click');
+  })
+
+  test('test input with tweet', () => {
+    const newUpdateWrapper= wrapper.findWhere(node => node.is(NewUpdate))
+    const twitterButton = newUpdateWrapper.find('#tweet-insert-icon').last()
+    twitterButton.simulate('click')
+    console.log(newUpdateWrapper.debug())
+    // const twitterURLInput = newUpdateWrapper.findWhere(node => node.is(URLInput));
+    // console.log(twitterURLInput.debug())
+    // const inputTextField = twitterURLInput.find('#url-input').last();
+    // inputTextField.instance().value = "https://twitter.com/RodrigoMaia/status/1311033727804465157?s=20"
+    // inputTextField.simulate('change');
+    // const submitButton = twitterURLInput.find('submit-button').last();
+    // submitButton.simulate('click')
   })
 })
