@@ -4,8 +4,8 @@ import {Paper,Grid,Button, TextField, Dialog, DialogActions, DialogContent,
 import {withStyles} from '@material-ui/core/styles';
 import {TwitterTweetEmbed} from 'react-twitter-embed';
 import ExitIcon from './../../../../../assets/exit_icon.svg';
-import AlertIcon from './../../../../../assets/exit_icon.svg';
-import AlertDialogIcon from './../../../../../assets/exit_icon.svg';
+import AlertIcon from './../../../../../assets/alert.svg';
+import AlertDialogIcon from './../../../../../assets/alert_within_dialog_exit_icon.svg';
 import { ReactTinyLink } from 'react-tiny-link';
 import ImageUploader from 'react-images-upload';
 
@@ -65,10 +65,10 @@ class PreviewDialog extends React.Component {
 				open={this.props.previewModalOpen}
 				onClose={(e) => this.props.handleDialogStateAction(e, false, "previewDialog", null)}>
 				<div style={{display: 'flex', justifyContent: 'space-between'}}>
-					 <DialogTitle id="form-dialog-title">Nova atualizacao</DialogTitle>
+					 <DialogTitle id="form-dialog-title">Nova atualização</DialogTitle>
 					 <img src={ExitIcon}
 								style={{margin: '0 1rem 0 0'}}
-								id="close-preview-dialog" 
+								id="close-preview-dialog"
 								onClick={(e) => this.props.handleDialogStateAction(e, false, "previewDialog", null) }
 								alt="exit" />
 				 </div>

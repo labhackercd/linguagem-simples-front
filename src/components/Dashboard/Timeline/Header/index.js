@@ -8,7 +8,7 @@ import EndBroadcastAlert from './../Dialogs/Alert/EndBroadcast';
 const useStyles = makeStyles((theme) => ({
   body: {
     width: '100%',
-    margin: '1rem 0 -2rem 1rem',
+    margin: '1rem 0 -2rem 0rem',
   },
   titleRow: {
   	display: 'flex',
@@ -23,8 +23,6 @@ const useStyles = makeStyles((theme) => ({
   buttonContainer: {
     display: 'flex',
     justifyContent: 'flex-end',
-    margin: '0.3rem 0 0 0',
-    padding: '0 1rem 0 0',
   },
   buttonBroadcastingOnline: {
     alignSelf: 'flex-start',
