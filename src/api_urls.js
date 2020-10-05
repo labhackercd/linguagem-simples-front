@@ -4,68 +4,66 @@ module.exports = Object.freeze({
     APPLICATION_NAME: "Estudio",
 
     //APPLICATION URL'S
-        APPLICATION_FRONT_BASE_URL: "www.teste.com",  //APPLICATION FRONT BASE URL
-        // APPLICATION_SERVER_API_BASE_URL: 'http://localhost:8000/api/', //APPLICATION API SERVER BASE URL
-        APPLICATION_SERVER_API_BASE_URL: 'https://acompanhe.camara.leg.br/server/api/',
-        APPLICATION_RESET_PASSWORD_URL: 'https://acompanhe.camara.leg.br/server/password_reset/',
+        APPLICATION_FRONT_BASE_URL:  process.env.REACT_APP_APPLICATION_FRONT_BASE_URL, //APPLICATION FRONT BASE URL
+        APPLICATION_SERVER_API_BASE_URL: process.env.REACT_APP_APPLICATION_SERVER_API_BASE_URL,
+        APPLICATION_RESET_PASSWORD_URL: process.env.REACT_APP_APPLICATION_RESET_PASSWORD_URL,
 
     //ROUTES
-        INITIAL_PAGE_URL: '/', //Application Login and Initial page
-        ESTUDIO_PAGE_URL: '/estudio', //Application Estudio Page
-        DASHBOARD_PAGE_URL: '/dashboard/:dashboardId', //Application Dashboard page
-        DASHBOARD_BASE_URL: '/dashboard/',
+        INITIAL_PAGE_URL: process.env.REACT_APP_INITIAL_PAGE_URL, //Application Login and Initial page
+        ESTUDIO_PAGE_URL: process.env.REACT_APP_ESTUDIO_PAGE_URL, //Application Estudio Page
+        DASHBOARD_PAGE_URL: process.env.REACT_APP_DASHBOARD_PAGE_URL, //Application Dashboard page
+        DASHBOARD_BASE_URL: process.env.REACT_APP_DASHBOARD_BASE_URL,
 
     //API'S CAMARA DOS DEPUTADOS
-        API_CD_EVENTOS_PLENARIO: 'https://dadosabertos.camara.leg.br/api/v2/eventos?codTipoEvento=110',// 110 code corresponds to Plenary
-        API_CD_EVENTOS: 'https://dadosabertos.camara.leg.br/api/v2/eventos/',
-        API_CD_ORIENTACAO_VOTACAO: 'https://liderancadigital.camara.leg.br/proxy_pass/secod-wsVotDecom-orientacao',
-        API_CD_NOMINAL_VOTACAO: 'https://liderancadigital.camara.leg.br/proxy_pass/secod-wsVotDecom-orientacao',
-        API_CD_ITENS_EM_VOTACAO: 'https://infoleg.camara.gov.br/wsVotDecom/votacao/itens-em-votacao-na-reuniao/',
-        API_CD_PRESENCA_VOTACAO_PLENARIO: 'https://infoleg.camara.gov.br/wsVotDecom/api/presenca?ide-reuniao=',
-        API_CD_PAUTA_SESSAO_PLENARIO: 'https://liderancadigital.camara.leg.br/proxy_pass/ws-pauta-itens-da-pauta/',
-        API_CD_VOTACAO_ITEM: 'https://infoleg.camara.gov.br/wsVotDecom/api/votacao/',
+        API_CD_EVENTOS_PLENARIO: process.env.REACT_APP_API_CD_EVENTOS_PLENARIO,// 110 code corresponds to Plenary
+        API_CD_EVENTOS: process.env.REACT_APP_API_CD_EVENTOS,
+        API_CD_ORIENTACAO_VOTACAO: process.env.REACT_APP_API_CD_ORIENTACAO_VOTACAO,
+        API_CD_NOMINAL_VOTACAO: process.env.REACT_APP_API_CD_NOMINAL_VOTACAO,
+        API_CD_ITENS_EM_VOTACAO: process.env.REACT_APP_API_CD_ITENS_EM_VOTACAO,
+        API_CD_PRESENCA_VOTACAO_PLENARIO: process.env.REACT_APP_API_CD_PRESENCA_VOTACAO_PLENARIO,
+        API_CD_PAUTA_SESSAO_PLENARIO: process.env.REACT_APP_API_CD_PAUTA_SESSAO_PLENARIO,
+        API_CD_VOTACAO_ITEM: process.env.REACT_APP_API_CD_VOTACAO_ITEM,
 
     //URL's
-        ACOMPANHE_PORTAL_URL_PAGE: 'https://www.camara.leg.br/evento-legislativo/',
-        PROPOSICAO_INFO_PAGE: 'https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=',
+        ACOMPANHE_PORTAL_URL_PAGE: process.env.REACT_APP_ACOMPANHE_PORTAL_URL_PAGE,
+        PROPOSICAO_INFO_PAGE: process.env.REACT_APP_PROPOSICAO_INFO_PAGE,
         
 
     //API'S BACKEND
         //AUTH URL'S
-            TOKEN_REFRESH_URL: '/token/refresh/', //Application Api Token REFRESH PATH
-            TOKEN_OBTAIN_URL: '/token/obtain/', //Application Api Token PATH
-            TOKEN_VERIFY_URL: '/token/verify/', //Application Api Token Verify
+            TOKEN_REFRESH_URL: process.env.REACT_APP_TOKEN_REFRESH_URL, //Application Api Token REFRESH PATH
+            TOKEN_OBTAIN_URL: process.env.REACT_APP_TOKEN_OBTAIN_URL, //Application Api Token PATH
+            TOKEN_VERIFY_URL: process.env.REACT_APP_TOKEN_VERIFY_URL, //Application Api Token Verify
 
         //FILE-VIDEO
-            API_FILE_VIDEO_URL:'/file-video/', //Application end-point to obtain the source of specific video
+            API_FILE_VIDEO_URL:process.env.REACT_APP_API_FILE_VIDEO_URL, //Application end-point to obtain the source of specific video
 
         //NEWS
-            API_NEWS_URL:'/news​/news_list', //Obtain news list
-            API_NEWS_SEARCH_URL:'/news-search/', //Obtain specific news using parameters
+            API_NEWS_URL:process.env.REACT_APP_API_NEWS_URL, //Obtain news list
+            API_NEWS_SEARCH_URL:process.env.REACT_APP_API_NEWS_SEARCH_URL, //Obtain specific news using parameters
 
         //PUBLICATIONS
-            API_PUBLICATIONS_URL:'/publications/',
-
+            API_PUBLICATIONS_URL:process.env.REACT_APP_API_PUBLICATIONS_URL,
         //RADIO AGENCY
-            API_RADIO_AGENCY_URL:'/radioagency/',
-            API_RADIO_AGENCY_SEARCH_URL:'/radioagency-search/',
+            API_RADIO_AGENCY_URL:process.env.REACT_APP_API_RADIO_AGENCY_URL,
+            API_RADIO_AGENCY_SEARCH_URL:process.env.REACT_APP_API_RADIO_AGENCY_SEARCH_URL,
 
         //RADIO CAMARA
-            API_RADIO_CAMARA_URL:'/radiocamara/',
-            API_RADIO_CAMARA_SEARCH_URL:'/radiocamara-search/',
+            API_RADIO_CAMARA_URL:process.env.REACT_APP_API_RADIO_CAMARA_URL,
+            API_RADIO_CAMARA_SEARCH_URL:process.env.REACT_APP_API_RADIO_CAMARA_SEARCH_URL,
 
         //SAVED CONTENTS
-            API_SAVED_CONTENTS_URL:'/saved-contents/',
+            API_SAVED_CONTENTS_URL:process.env.REACT_APP_API_SAVED_CONTENTS_URL,
 
         //SESSIONS
-            API_SESSIONS_URL:'/sessions/',
-            API_SESSIONS_URL_NOT_LIVE:'/sessions/?enable=false',
-            API_SESSIONS_CURRENT_LIVE_URL:'sessions/?enable=true',
+            API_SESSIONS_URL:process.env.REACT_APP_API_SESSIONS_URL,
+            API_SESSIONS_URL_NOT_LIVE:process.env.REACT_APP_API_SESSIONS_URL_NOT_LIVE,
+            API_SESSIONS_CURRENT_LIVE_URL:process.env.REACT_APP_API_SESSIONS_CURRENT_LIVE_URL,
 
         //TV CAMARA
-            API_TV_CAMARA_URL:'/tvcamara/',
-            API_TV_CAMARA_SEARCH_URL:'/tvcamara-search/',
+            API_TV_CAMARA_URL:process.env.REACT_APP_API_TV_CAMARA_URL,
+            API_TV_CAMARA_SEARCH_URL:process.env.REACT_APP_API_TV_CAMARA_SEARCH_URL,
 
         //VIDEOS
-            API_VIDEOS_SNIPPETS:'/videos-session/'
+            API_VIDEOS_SNIPPETS:process.env.REACT_APP_API_VIDEOS_SNIPPETS,
   });
