@@ -1,10 +1,10 @@
 import moxios from 'moxios'
 import axiosInstance from './../../../auth/axiosApi'
 import MockAdapter from "axios-mock-adapter"
-import {fetchFeedUpdates, deletePostFromFeed} from './timelineAPIhandler'
+import {fetchFeedUpdates, deletePostFromFeed, submitSummaryContent} from './timelineAPIhandler'
 import moment from 'moment'
 import axios from 'axios'
-import {API_PUBLICATIONS_URL} from './../../../api_urls'
+import {API_PUBLICATIONS_URL, API_SESSIONS_URL} from './../../../api_urls'
 
 describe('Test fetchFeedUpdates function requisitions with mock adapter', () => {
     var mock = new MockAdapter(axiosInstance);
@@ -107,6 +107,30 @@ describe('Test fetchFeedUpdates function requisitions with mock adapter', () => 
 
     test("Test if deletePostFromFeed returns error if no publication id is passed", async (done) => {
         data = await deletePostFromFeed( );
+        expect(data).toBe("Please provide a valid publication id");
+        done()
+    });
+
+    test("Test if submitSummaryContent returns modified object correctly", async (done) => {
+        const sessionID = 1;
+        const summaryText = "teste"
+        mock.onPatch(API_SESSIONS_URL + sessionID + '/').replyOnce(200,{
+          "id":16,
+          "author":{"id":1,"is_superuser":true,"username":"admin","first_name":"","last_name":"","email":"a@a.com","profile":"editor"},
+          "location":"plenary","date":"2020-10-02",
+          "type_session":"presential",
+          "situation_session":"pre_session",
+          "resume":"k","enable":true,
+          "id_session_dados_abertos":null});
+
+        data = await submitSummaryContent(sessionID, summaryText);
+        expect(data).not.toBeNull();
+        expect(data).not.toBeUndefined();
+        done()
+    });
+
+    test("Test if submitSummaryContent returns error if no publication id is passed", async (done) => {
+        data = await  submitSummaryContent();
         expect(data).toBe("Please provide a valid publication id");
         done()
     });

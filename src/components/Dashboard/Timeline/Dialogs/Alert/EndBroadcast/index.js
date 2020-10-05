@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {Paper,Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText,
-	      DialogTitle, Grid, Typography, Box, IconButton, List, ListItem} from '@material-ui/core';
+import React, {useEffect} from 'react';
+import {Button, Dialog, DialogActions, DialogContentText,
+	       Grid, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import BroadcastOffIcon from './../../../../../../assets/broadcast_off.svg';
 import ExitIcon from './../../../../../../assets/exit_icon.svg';
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EndBroadcastAlert(props) {
   const classes = useStyles();
-	const { onClose, value: valueProp, action, open, ...other } = props;
+	const { onClose, value: valueProp, action, open } = props;
 	const [value, setValue] = React.useState(valueProp);
 
 	useEffect(() => {
@@ -62,7 +62,7 @@ export default function EndBroadcastAlert(props) {
 					<Grid item sm={11}></Grid>
 					<Grid item sm={1}>
 					<IconButton aria-label="exit">
-						<img src={ExitIcon} />
+						<img src={ExitIcon} alt="exit" />
 					</IconButton>
 					</Grid>
 				</Grid>

@@ -16,21 +16,22 @@ const useStyles = makeStyles((theme) => ({
 	},
 	summaryHeader: {
   	display: 'flex',
-		margin: '1rem 0 1rem 0',
+		margin: '1rem 0 0.5rem 0',
   },
   textArea: {
     height: '100%',
-    margin: '0rem 0 0 0',
     width: '100%',
     border: '0',
   },
   textField: {
-		margin: '0 1rem 0 0',
 		height: '100%',
 		width: '100%',
+		fontSize: theme.typography.body1.fontSize,
+		fontStyle: theme.typography.body1.fontStyle,
 	},
   submenu: {
     display: 'flex',
+		height: 'inherit',
   },
   subMenuItem: {
     display: 'flex',
@@ -39,18 +40,38 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 0.5rem 0 1rem',
   },
   button: {
-    height: '70%',
-    alignSelf: 'flex-end',
+    height: 'inherit',
+    alignSelf: 'center',
+		borderRadius: '0 0 5px 5px',
+		backgroundColor: theme.palette.verdeCamaraLight.main,
+		color: theme.palette.white.main,
+		textTransform: 'capitalize',
   },
+	buttonContainer: {
+		display: 'flex',
+		justifyContent: 'flex-end',
+		 height: 'inherit'
+	},
   notchedOutline: {
     border: '2px solid #F2F2F2',
     borderWidthBottom: '0px',
     color: theme.palette.secondary,
-    borderRadius: '0 0 0 0',
+    borderRadius: '5px 5px 0 0px',
+		fontSize: 'small',
   },
   time: {
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
+		fontWeight: 'bold',
+		fontSize: 'smaller',
   },
+	box: {
+		height: '20%',
+		borderRadius: '0 0 0 5px',
+	},
+	container: {
+		height: '100%',
+	},
+
 }))
 export default function NewUpdate(props) {
   const classes = useStyles();
@@ -90,17 +111,18 @@ export default function NewUpdate(props) {
                   onChange = {props.handleChange}
                   InputProps={{
                     classes: {
-                      notchedOutline: classes.notchedOutline
+											input: classes.textField,
+                      notchedOutline: classes.notchedOutline,
                     },
                   }}
                 />
               </form>
           </Grid>
-          <Box borderTop={1} color="#F2F2F2" borderRadius="0 0 10px 25px" bgcolor="#F2F2F2">
-            <Grid container>
+          <Box className={classes.box} color="#F2F2F2" bgcolor="#F2F2F2">
+            <Grid container className={classes.container}>
               <Grid item xs={8} className={classes.submenu}>
                 <div className={classes.subMenuItem}>
-                  <Typography className={classes.time} variant="h6"> {date} </Typography>
+                  <p className={classes.time}> {date} </p>
                 </div>
                 <div className={classes.subMenuItem}>
                   <img src={DividerIcon} alt="divider icon"/>
@@ -115,9 +137,9 @@ export default function NewUpdate(props) {
 									<a href="/"><img src={LinkIcon} id={"link-insert-icon"} alt="incorporate url icon" onClick={(e) => props.handleDialogStateAction(e, true, "URLInputDialog", "noAction")}/></a>
 								</div>
               </Grid>
-              <Grid item xs={4} style={{display: 'flex', justifyContent: 'flex-end'}}>
-                <Button disabled={!props.broadcastingOnline} id={"updateSubmitButton"}className={classes.button} onClick={props.handleClick} variant="contained" disableElevation>
-                  Inserir
+              <Grid item xs={4} className={classes.buttonContainer}>
+                <Button disabled={!props.broadcastingOnline} id={"updateSubmitButton"} className={classes.button} onClick={props.handleClick} variant="contained" disableElevation>
+                  Publicar
                 </Button>
               </Grid>
             </Grid>

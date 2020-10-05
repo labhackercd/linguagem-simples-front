@@ -4,7 +4,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import axiosInstance from '../../../../auth/axiosApi.js';
 import DownArrowIcon from './../../../../assets/down-arrow.svg';
 import {API_SESSIONS_URL} from './../../../../api_urls'
-
+import {submitSummaryContent} from './../timelineAPIhandler';
 const useStyles = makeStyles((theme) => ({
 	summaryBox: {
 		display: 'flex',
@@ -13,13 +13,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 	summaryHeader: {
   	display: 'flex',
-		margin: '1rem 0 1rem 0',
+		margin: '1rem 0 0.5rem 0',
   },
 	notchedOutline: {
 		border: '2px solid #F2F2F2',
 		borderWidthBottom: '0px',
 		color: theme.palette.secondary,
-		borderRadius: '0 0 0 0',
+		borderRadius: '5px 5px 0 0',
 	},
 	textArea: {
 		height: '100%',
@@ -27,11 +27,33 @@ const useStyles = makeStyles((theme) => ({
 		width: '100%',
 		border: '0',
 	},
+	button: {
+	  height: 'inherit',
+	  alignSelf: 'center',
+		borderRadius: '0 0 5px 5px',
+		backgroundColor: theme.palette.verdeCamaraLight.main,
+		color: theme.palette.white.main,
+		textTransform: 'capitalize',
+	},
 	textField: {
 		margin: '0 1rem 0 0',
 		height: '100%',
 		width: '100%',
-	}
+		fontSize: theme.typography.body1.fontSize,
+		fontStyle: theme.typography.body1.fontStyle,
+	},
+	box: {
+		borderRadius: '0 0 0 5px',
+		width: '100%',
+	},
+	buttonContainer: {
+		display: 'flex',
+		justifyContent: 'flex-end',
+		 height: 'inherit'
+	},
+	container: {
+		height: '100%',
+	},
 }));
 
 export default function SummaryBox(props) {
@@ -41,22 +63,15 @@ export default function SummaryBox(props) {
   function handleChange(e) {
     setTextFieldValue(e.target.value)
   }
-  function handleSubmit() {
-    const url = API_SESSIONS_URL + sessionID + '/';
-    axiosInstance.patch(url, {
-            id: sessionID,
-            resume: textFieldValue
-        }).then(
-            result => {
-              if(result.status === 200) {
-                alert('Resumo atualizado com sucesso!')
-              }
-            }
-    ).catch (error => {
-        console.log(error)
-    })
 
-  }
+	const handleSubmit = async (e) => {
+		let result = await submitSummaryContent(sessionID, textFieldValue)
+		if(result) {
+			alert('Resumo atualizado com sucesso!')
+			return true;
+		}
+	}
+
   return (
     <React.Fragment>
     <Grid container className={classes.summaryBox}>
@@ -65,7 +80,6 @@ export default function SummaryBox(props) {
           <Typography variant="h5"> Resumo </Typography>
         </Grid>
         <Grid item md={6} style={{display:'flex', justifyContent: 'flex-end'}}>
-          <a href="/"><img src={DownArrowIcon} alt="up arrow icon"/></a>
         </Grid>
       </Grid>
     </Grid>
@@ -89,23 +103,23 @@ export default function SummaryBox(props) {
                 }}
               />
             </form>
-        </Grid>
-          <Box borderTop={1} color="#F2F2F2" borderRadius="0 0 10px 25px" bgcolor="#F2F2F2">
-            <Grid container>
-              <Grid item xs={8} style={{display: 'flex', justifyContent: 'flex-start'}}></Grid>
-              <Grid item xs={4} style={{display:  'flex', justifyContent: 'flex-end'}}>
-                <Button	disabled={!props.broadcastingOnline}
-												className={classes.button}
-												id="summary-box-submit-button"
-												onClick={(e) => handleSubmit(e)}
-												variant="contained"
-												disableElevation>
-                  Atualizar
-                </Button>
-              </Grid>
-            </Grid>
+          <Box className={classes.box} color="#F2F2F2" bgcolor="#F2F2F2">
+						<Grid container className={classes.container}>
+								<Grid item xs={8}></Grid>
+								<Grid item xs={4} className={classes.buttonContainer}>
+									<Button disabled={!props.broadcastingOnline}
+													id="summary-box-submit-button"
+													className={classes.button}
+													onClick={(e) => handleSubmit(e)}
+													variant="contained"
+													disableElevation>
+										Atualizar
+									</Button>
+								</Grid>
+						</Grid>
           </Box>
       </Grid>
+		</Grid>
     </React.Fragment>
   )
 }

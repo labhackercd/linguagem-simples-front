@@ -4,8 +4,8 @@ import {Paper,Grid,Button, TextField, Dialog, DialogActions, DialogContent,
 import {withStyles} from '@material-ui/core/styles';
 import {TwitterTweetEmbed} from 'react-twitter-embed';
 import ExitIcon from './../../../../../assets/exit_icon.svg';
-import AlertIcon from './../../../../../assets/exit_icon.svg';
-import AlertDialogIcon from './../../../../../assets/exit_icon.svg';
+import AlertIcon from './../../../../../assets/alert.svg';
+import AlertDialogIcon from './../../../../../assets/alert_within_dialog_exit_icon.svg';
 import { ReactTinyLink } from 'react-tiny-link';
 import ImageUploader from 'react-images-upload';
 
@@ -14,7 +14,8 @@ const useStyles = theme => ({
     color: '#FFF',
     alignSelf: 'flex-end',
     backgroundColor: '#00AF82',
-    borderRadius: '0 0 5px 5px'
+    borderRadius: '0 0 5px 5px',
+		textTransform: 'capitalize',
   },
   previewModalFooter: {
     padding: '0',
@@ -46,17 +47,13 @@ class PreviewDialog extends React.Component {
 		}
 	}
 
-	handleDialog = (e, state) => {
-		e.preventDefault()
-		this.setState({dialogOpen: false})
-	}
-
 	render() {
 		const { classes } = this.props;
 		return (
 			<Dialog
 				fullWidth={true}
 				maxWidth={'sm'}
+				style={{margin: '0 1rem'}}
 				PaperProps={{
 					style: {
 						backgroundColor: '#F2F2F2',
@@ -65,14 +62,17 @@ class PreviewDialog extends React.Component {
 				open={this.props.previewModalOpen}
 				onClose={(e) => this.props.handleDialogStateAction(e, false, "previewDialog", null)}>
 				<div style={{display: 'flex', justifyContent: 'space-between'}}>
-					 <DialogTitle id="form-dialog-title">Nova atualizacao</DialogTitle>
+					 <DialogTitle id="form-dialog-title">Nova atualização</DialogTitle>
 					 <img src={ExitIcon}
 								style={{margin: '0 1rem 0 0'}}
-								id="close-preview-dialog" 
+								id="close-preview-dialog"
 								onClick={(e) => this.props.handleDialogStateAction(e, false, "previewDialog", null) }
 								alt="exit" />
 				 </div>
-				 <Paper style={{backgroundColor: 'white', padding: '1rem', borderRadius: '15px'}} elevation={0}>
+				 <Paper style={{backgroundColor: 'white',
+				  							padding: '1rem',
+												borderRadius: '15px',
+												margin: '0 0.5rem'}} elevation={0}>
 				 <DialogContent className={classes.previewModal}>
 					<Grid style={{display: this.props.updateTitle ? 'flex' : 'none' }}
 								container

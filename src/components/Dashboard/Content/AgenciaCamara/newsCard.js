@@ -40,7 +40,7 @@ export default class NewsCard extends React.Component{
 
     async handleSaveContent(){
       const hasBeenSaved = await postSaveContent("news", this.state.info, this.props.sessionId);
-      
+
       if(hasBeenSaved){
           this.setState({openSnackBar:true, snackbar:{open:true, message:"Conteúdo da agência salvo com sucesso!", type:"success"}});
           //this.props.updateComponent()
@@ -52,7 +52,7 @@ export default class NewsCard extends React.Component{
     async handleDeleteContent(){
 
         const hasBeenDeleted = await deleteSavedContent(this.state.info.id);
-        
+
         if(hasBeenDeleted){
           await this.setState({openSnackBar:true, snackbar:{open:true, message:"Conteúdo Removido!", type:"success"}});
           this.props.updateComponent(true)
@@ -75,19 +75,19 @@ export default class NewsCard extends React.Component{
                                   <Box display="flex" justifyContent="flex-end">
                                     <CopyToClipboard text={this.state.info.url}>
                                       <IconButton size="small" id={"copyButtonAgencia"+this.state.info.id}>
-                                        <FileCopyTwoToneIcon text={this.state.info.url} fontSize="inherit" onClick={this.showCopiedSnackBar}/>
+                                        <FileCopyTwoToneIcon text={this.state.info.url} id="file-copy" fontSize="inherit" onClick={this.showCopiedSnackBar}/>
                                       </IconButton>
                                     </CopyToClipboard>
                                     {this.state.isDataFromSavedContentsComponent ?
                                         <IconButton id={"saveButtonAgencia"+this.state.info.id} aria-label="save" size="small" onClick={this.handleSaveContent}>
                                             <BookmarkIcon fontSize="inherit" style={{ color: "#C4C4C4" }}/>
-                                        </IconButton> 
+                                        </IconButton>
                                         :
                                         <Tooltip title="Deletar conteúdo">
                                           <IconButton id={"deleteSavedContent"+this.state.info.id} aria-label="delete" size="small" onClick={this.handleDeleteContent}>
                                             <DeleteOutlineOutlinedIcon fontSize="inherit" />
-                                          </IconButton> 
-                                        </Tooltip>     
+                                          </IconButton>
+                                        </Tooltip>
                                     }
                                   </Box>
                                 </Grid>

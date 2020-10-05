@@ -4,7 +4,7 @@ exports[`snapshot should not have differences 1`] = `
 <Timeline
   classes={
     Object {
-      "body": "Timeline-body-62",
+      "body": "Timeline-body-69",
     }
   }
 />

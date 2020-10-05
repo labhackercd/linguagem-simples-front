@@ -60,6 +60,7 @@ exports[`Testing News Card Should render the NewsCard component and match snapsh
                   >
                     <FileCopyTwoToneIcon
                       fontSize="inherit"
+                      id="file-copy"
                       onClick={[Function]}
                     />
                   </WithStyles(ForwardRef(IconButton))>
