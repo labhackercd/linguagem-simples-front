@@ -8,9 +8,12 @@ Este repositório contém os arquivos de front-end do projeto Linguagem Simples
 # Como iniciar o projeto?
 
 ## Pré-requisitos
-É necessário ter instalados os seguintes softwares:
+É necessário ter instalados os seguintes softwares para executar utilizando o Docker:
 * [Docker](https://docs.docker.com/engine/install/) versão 19.03.6
 * [Docker-Compose](https://docs.docker.com/compose/install/) versão 1.25.5
+
+Para executar localmente, é necessário:
+* [Node](https://nodejs.org/en/) versão 10 ou superior
 * [React](https://reactjs.org/) versão 16.13.1
 
 ## Comandos para executar o projeto
