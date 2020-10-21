@@ -48,6 +48,11 @@ docker-compose up dev
 ```
 **A API neste momento já vai estar rodando na porta 3000 do localhost.**
 
+## Como rodar os testes do projeto
+- Com o projeto já em execução rode o comando:
+```bash
+sudo docker-compose exec dev /bin/bash -c "npm run test -- --coverage --watchAll=false"
+``` 
 ## Documentação 
 
 Devido a arquitetura escolhida pela equipe (com front e backend desacoplados entre si), e por uma questão de organização, o desenvolvimento deste projeto utilizou a metodologia ágil Scrum, e os documentos gerados podem ser acessados na nossa <a href="https://github.com/labhackercd/linguagem-simples-backend/wiki"> Wiki </a>
@@ -91,7 +96,12 @@ docker-compose up
 ```bash
 docker-compose up dev
 ```
-**The API will be running on port 3000.**
+**How to run tests.**
+
+- run the following command when the Docker container is already up:
+```bash
+sudo docker-compose exec dev /bin/bash -c "npm run test -- --coverage --watchAll=false"
+``` 
 
 ## Documentation
 
