@@ -11,7 +11,7 @@
   </a>
 </p>
 
-<a href="/#About-the-project"> Click here to see the English version </a>
+<a href="https://github.com/labhackercd/linguagem-simples-front/#About-the-project"> Click here to see the English version </a>
 
 ## Sobre o projeto
 <center><img src="https://media.giphy.com/media/GDzLnVXvO67Q0hTloy/giphy.gif"></center>
